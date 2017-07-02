@@ -1,0 +1,85 @@
+/*
+ *登录和注册模块：sso 
+ */
+
+接口说明				接口路径								传递参数												提交方式																			
+------------------------------------------------------------------------------------------------------------------------
+密码登录				index.php/sso/login/loginp			gateway	:登录入口,固定值myqc								post
+														type	:登录类型,puser为个人用户,cuser为企业用户
+														username:登录手机号
+														password:登录密码
+														captcha	:图形验证码
+短信登录				index.php/sso/login/loginm			gateway	:登录入口,固定值myqc								post
+														type	:登录类型,puser为个人用户,cuser为企业用户
+														username:登录手机号
+														msgcode	:短信验证码
+														captcha	:图形验证码
+用户注册				index.php/sso/register				gateway	:注册入口,固定值myqc								post
+		1												type	:注册类型,puser为个人用户,cuser为企业用户
+														username:注册手机号
+														password:注册密码
+														msgcode	:短信验证码																																														
+------------------------------------------------------------------------------------------------------------------------
+/*
+ *个人用户中心：puser 
+ */
+
+接口说明				接口路径										传递参数										提交方式																
+------------------------------------------------------------------------------------------------------------------------
+获取个人信息			index.php/puser/profile/getinfo				无											get
+获取教育信息			index.php/puser/profile/getedu				无											get
+获取工作经历			index.php/puser/profile/getwork				无											get
+获取培训经历			index.php/puser/profile/gettrain			无											get
+获取技能列表			index.php/puser/profile/getskills			无											get
+获取项目经历			index.php/puser/profile/getproject			无											get
+获取期望工作			index.php/puser/profile/getexpectwork		无											get
+获取个人作品			index.php/puser/profile/getproduct			无											get
+设置个人信息			index.php/puser/profile/setinfo				realname	:真实姓名							post
+																email		:邮箱
+																thumburl 	:头像地址
+																eduction 	:学历
+																city	 	:城市代码
+																gender	 	:性别
+																birth	 	:出生年月
+																phone	 	:联系方式
+添加教育经历			index.php/puser/profile/setedu				school	 	:学校代码(先查询学校代码)				post
+																begintime	:开始的时间戳
+																endtime	 	:结束的时间戳
+																major	 	:专业
+																record	 	:学位代码(先查询学位代码)																									
+添加工作经历			index.php/puser/profile/setwork				conpany		：公司名称							post
+																begintime	:开始的时间戳
+			cu													endtime		:结束的时间戳
+																position	:职位
+																description	:工作描述
+添加培训经历			index.php/puser/profile/settrain			school		:培训机构
+																begintime	:开始的时间戳
+																endtime		:结束的时间戳
+																skills		:培训技能
+																description	:更多描述
+添加技能列表			index.php/puser/profile/setskills			pname		:技能名称
+																description	:技能描述
+																monthtime	:使用月份数
+																mastery		:熟练度(请传递0-100的整数值)
+添加项目经历			index.php/puser/profile/setproject			proname		:项目名称
+																begintime	:开始的时间戳
+																endtime		:结束的时间戳
+																yourworks	:你负责的部分
+																description	:更多描述
+添加期望工作			index.php/puser/profile/setexpectwork		pname		:工作名称
+																description	:工作描述																		
+																salary		:期望薪资代码(先查询薪资代码)
+																city		:期望工作城市代码(先查询城市代码)
+添加个人作品			index.php/puser/profile/setproduct			plink		:作品链接
+																description	:作品描述
+																imgurl		:作品图片																
+------------------------------------------------------------------------------------------------------------------------
+/*
+ *企业用户中心：cuser 
+ */
+
+接口说明				接口路径										传递参数										提交方式																
+------------------------------------------------------------------------------------------------------------------------
+获取企业信息			index.php/cuser/profile/getinfo				无
+获取职位列表			index.php/cuser/profile/getpost				无
+设置企业信息			index.php/cuser/profile/setpost																																																																																																												

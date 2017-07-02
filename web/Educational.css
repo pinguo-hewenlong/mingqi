@@ -1,0 +1,15 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+.add{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    /*border: 1px solid red;*/
+    margin-left: 10%;
+    margin-top: 13px;
+}
+option{
+    text-align: left;
+}

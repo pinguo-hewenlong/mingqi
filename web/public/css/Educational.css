@@ -1,0 +1,10 @@
+.add{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+.camera{
+    font-size: 30px;
+}
