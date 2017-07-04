@@ -8,11 +8,11 @@ window.onload=function(){
     //console.log(screenHeight);
     $(".enroll-text").css("height",screenHeight*0.8)
 }
-//点击切换图片验证吗
+//点击切换图片验证码
 function reloadcode(){
 var verify=document.getElementById('captcha');
-verify.setAttribute('src','http://127.0.0.1/mingqiyoucai/index.php/captcha.html?'+Math.random());
 //这里必须加入随机数不然地址相同我发重新加载
+verify.setAttribute('src','http://127.0.0.1/mingqi/index.php/captcha.html?'+Math.random());
 }
 //调用封装的AjaxPost方法来进行数据传递
 $('#btn').click(function(){

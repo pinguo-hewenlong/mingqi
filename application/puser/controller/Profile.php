@@ -32,8 +32,7 @@ class Profile extends Base
 		$this->data['table'] = 'puser_edu';		
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/getfromdb');
-		//return $url;
-				
+		//return $url;		
 		$return = curlHttp($url,'POST',$this->data);
 		return json_decode ($return);				
 		

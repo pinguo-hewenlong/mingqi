@@ -8,8 +8,6 @@ window.onload=function(){
     $(".section").css("height",screenHeight);
     console.log(screenHeight);
     $(".information-Box").css("height",screenHeight*0.8)
-    
-    //
 }
 //调用接口发送信息给后台设置个人信息
 $('#next').click(function(){
@@ -29,17 +27,12 @@ function succCallback(date){
 		//三秒后跳转下一个页面
   	setTimeout(function(){
 			location.href='Educational.html'
-		},1000);
-		
-		//console.log(333333);
-		
-		
-	}
+		},1000);	
+		//console.log(333333);	
+}
 //添加信息过程出现错误后执行的方法
 function errorCallback(date){
 //		$('#spantx').text(date.message);
 //		$(this).css('boderColor','red');
 //		//$('#span').text('网络错误');
-
-	
 }
