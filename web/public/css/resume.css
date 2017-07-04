@@ -70,6 +70,24 @@ textarea {
     color: white;
     background: #7cd296
 }
+.delete-skill{
+    color: black;
+    margin: -10% 0 0 100%;
+    width: 50px;
+}
+.delete-skill:hover{
+    color: red;
+    cursor: pointer;
+}
+.delete{
+    color: #7cd296;
+    /*border: 1px solid red ;*/
+    margin: 5% 0 0 90%
+}
+.delete:hover{
+    color: red;
+    cursor: pointer;
+}
 .head-portrait>img{
 	width: 100%;
 	height: 100%;
