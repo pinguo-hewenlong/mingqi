@@ -76,4 +76,18 @@ function get_client_ip($type = 0,$adv=false) {
     $ip   = $long ? array($ip, $long) : array('0.0.0.0', 0);
     return $ip[$type];
 }
+
+//判断登录
+function isLogin()
+{
+	if(session('?UID') == 1)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
+}
 ?>

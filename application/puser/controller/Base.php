@@ -15,7 +15,7 @@ class Base extends Controller
 		//用户处于非登录状态下的执行代码
 		else
 		{
-			$this->error('尚未登录','sso/index/test');		
+			//$this->error('尚未登录','sso/index/test');		
 		}
 	}
 }

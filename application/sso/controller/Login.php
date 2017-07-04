@@ -25,7 +25,38 @@ class Login extends Controller
 		$this->smsCode	=	'';
 		$this->req		=	request();					
 	}
-	//密码登录
+
+	//判断用户是否登录
+	public function isLogin()
+	{
+	if(session('?UID') == 1)
+	{
+		$return['status']	=	1;
+		$return['message']	=	'success';
+		if(request()->isAjax())
+		{
+			return $return;
+		}
+		else
+		{
+			return json($return);
+		}
+	}
+	else
+	{
+		$return['status']	=	0;
+		$return['message']	=	'error';
+		if(request()->isAjax())
+		{
+			return $return;
+		}
+		else
+		{
+			return json($return);
+		}		
+	}	
+	}
+	//密码登录	
 	public function LoginP()
 	{
 		//---------接收前端信息------------

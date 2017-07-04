@@ -102,79 +102,177 @@ class Profile extends Base
 	//设置个人信息
 	public function setInfo()
 	{
-		if(Request::instance()->isPost())
+				
+		if(request()->isPost())
 		{
+		//用户id，通过构造函数获取,无需传递	
 		$data['uid'] 			= $this->data['puid'];
-		$data['realname'] 		= $_POST['realname'];
-		$data['email'] 			= $_POST['email'];
-		$data['thumburl'] 		= $_POST['thumburl'];
-		$data['eduction'] 		= $_POST['eduction'];
-		$data['city'] 			= $_POST['city'];
-		$data['gender'] 		= $_POST['gender'];
-		$data['birth'] 			=  strtotime($_POST['birth']);
-		$data['phone'] 			= $_POST['phone'];
+		//真实姓名
+		if(input('?post.realname'))
+		{
+		$data['realname'] 		= trim(request()->post('realname'));
+		}
+		//电话
+		if(input('?post.phone'))
+		{
+		$data['phone'] 			= trim(request()->post('phone'));
+		}
+		//最高学历
+		if(input('?post.eduction'))
+		{
+		$data['eduction'] 		= trim(request()->post('eduction'));
+		}
+		//工作年限
+		if(input('?post.workexp'))
+		{
+		$data['workexp']		= trim(request()->post('workexp'));
+		}				
+		//邮箱
+		if(input('?post.email'))
+		{
+		$data['email'] 			= trim(request()->post('email'));
+		}
+		//头像地址
+		//$data['thumburl'] 		= $_POST['thumburl'];
+
+		//所在城市
+		if(input('?post.city'))
+		{
+		$data['city'] 			= trim(request()->post('city'));
+		}
+		//性别
+		if(input('?post.gender'))
+		{
+		$data['gender'] 		= trim(request()->post('gender'));
+		}
+		//出生年月
+		if(input('?post.birth'))
+		{
+		$data['birth'] 			=  strtotime(trim(request()->post('birth')));
+		}
+
 		}
 		else
 		{
 			$data = array();
 		}
-		
-		//return json($data);		
+				
 		//调用验证器:Puser\valisate\index
 		$validateResult = $this->validate($data,'Info');
 		//输出错误信息
 		if(true !== $validateResult)
 		{
 			$return['status'] = 0;
-			$return['message'] = $validateResult;	
-			return json_decode ($return);	
+			$return['message'] = $validateResult;
+			if(request()->isAjax())
+			{	
+			return $return;
+			}
+			else
+			{
+				return json($return);
+			}	
 
 		}
+		
+
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setinfo');
 		$return = curlHttp($url,'POST',$data);
-		return json_decode ($return);						
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}
+		
+								
 	}
 	
 	//设置教育经历
 	public function setEdu()
 	{
-		if(Request::instance()->isPost())
+		$data	=	array();
+		//判断是修改还是添加		
+		if(input('?get.update'))
 		{
-		$data['uid'] 			= $this->data['puid'];
-		$data['school'] 		= $_POST['school'];
-		//$data['begintime'] 		= strtorime($_POST['begintime']);
-		$data['endtime'] 		= strtotime($_POST['endtime']);
-		$data['major'] 			= $_POST['major'];
-		$data['record'] 		= $_POST['record'];
-		}
-		else
-		{
-			$data = array();
+			$data['update']		=	request()->get('update');
 		}
 		
-		//return json($data);		
-		//调用验证器:Puser\valisate\index
+				
+		if(request()->isPost())
+		{
+
+		$data['uid'] 			= $this->data['puid'];
+		//学校名称
+		if(input('?post.school'))
+		{		
+		$data['school'] 		= trim(request()->post('school'));
+		}
+		if(input('?post.begintime'))
+		{
+		$data['begintime'] 		= strtorime(trim(request()->post('begintime')));
+		}
+		//毕业时间
+		if(input('?post.endtime'))
+		{
+		$data['endtime'] 		= strtotime(trim(request()->post('endtime')));
+		}
+		//专业
+		if(input('?post.major'))
+		{
+		$data['major'] 			= trim(request()->post('major'));
+		}
+		//学历
+		if(input('?post.record'))
+		{
+		$data['record'] 		= trim(request()->post('record'));
+		}
+		}
+		
+		
 		$validateResult = $this->validate($data,'Edu');
 		//输出错误信息
 		if(true !== $validateResult)
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json_decode ($return);	
+			if(request()->isAjax())
+			{	
+			return $return;
+			}
+			else
+			{
+				return json($return);
+			}				
 
 		}
-
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setedu');
 		$return = curlHttp($url,'POST',$data);
-		return json_decode ($return);						
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}		
+											
 	}
 	
 	//设置项目经历
 	public function setProject()
 	{
+		//判断是修改还是添加		
+		if(input('?get.update'))
+		{
+			$data['update']		=	request()->get('update');
+		}
+				
 		if(Request::instance()->isPost())
 		{
 		$data['uid'] 			= $this->data['puid'];
@@ -210,6 +308,12 @@ class Profile extends Base
 	//工作经历表
 	public function setwork()
 	{
+		//判断是修改还是添加		
+		if(input('?get.update'))
+		{
+			$data['update']		=	request()->get('update');
+		}
+				
 		if(Request::instance()->isPost())
 		{
 		$data['uid'] 			= $this->data['puid'];
