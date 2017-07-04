@@ -120,26 +120,99 @@ input{
 option{
     color: #adadad;
 }
-#next {
+    .sex span.warning {
+    font-size: 1.4rem;
+    color: #ccc;
+}
+.sex .male,
+.sex .female {
+    position: relative;
+    top: 15px;
+    left: 35%;
+    width: 4rem;
+    height: 3.9rem;
+    z-index: 1;
+    line-height: 3.9rem;
+    text-align: center;
+}
+.sex .male label,
+.sex .female label {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4rem;
+    height: 3.9rem;
+    z-index: 3;
+    opacity: 0;
+    margin: auto;
+    display: inline-block;
+    line-height: 3.9rem;
+    cursor: pointer;
+}
+.sex input {
+    display: inline-block;
+    vertical-align: middle;/*让默认的单选样式的圆圈和“男”“女”的文本没有高差，看起来在同一水平线*/
+    height: 2.8rem;
+    line-height: 2.8rem;
+    margin: 0; /*清除浏览器默认的外边距*/
+}
+.sex .male span.btn,
+.sex .female span.btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4rem;
+    height: 2.8rem;
+    z-index: 2;
+    margin: auto;
+    display: inline-block;
+    text-align: center;
+    border: .1rem solid #7cd296;
+    color: #7cd296;
+}
+.sex .male span {
+    border-top-left-radius: .2rem;
+    border-bottom-left-radius: .2rem;
+}
+.sex .female span {
+    border-top-right-radius: .2rem;
+    border-bottom-right-radius: .2rem;
+}
+.sex .male span.active,
+.sex .female span.active {
+    background-color: #7cd296;
+    color: #fff;
+}
+.sex>label>input{
+    width: 30px;
+    height: 30px;
+}
+.fl{
+    float: left;
+    margin-left: 20px;
+}
+#next{
     width: 80%;
     height: 44px;
     text-align: center;
-    line-height: 39px;
+    line-height: 35px;
     background: #7cd296;
     color: white;
     font-size: 18px;
-    /* margin-left: 10%; */
     margin-top: 40px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    behavior: url(../doc/ie-css3.htc);
-
+    behavior: url(../doc/ie-css3.htc); /* 通知IE浏览器调用脚本作用于'enroll-text'类 */
+   
 }
 #next:hover{
    background: #60bbd5;
     cursor: pointer;
 }
+
 @media screen and (min-width:1600px){
     .header-title {
     width: 90%;

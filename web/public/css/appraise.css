@@ -12,6 +12,21 @@ textarea{
     margin-top: 20px;
     text-align: right;
 }
+#next {
+    width: 80%;
+    height: 44px;
+    text-align: center;
+    line-height: 35px;
+    background: #7cd296;
+    color: white;
+    font-size: 18px;
+    margin-left: 10%;
+    margin-top: 40px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    behavior: url(../doc/ie-css3.htc);
+}
 @media screen and (max-width: 500px){
     .add{
         margin-top: 10px;
