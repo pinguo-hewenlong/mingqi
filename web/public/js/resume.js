@@ -24,6 +24,44 @@ $("#edu-quxiao2").click(function(){
 })
 $("#ping-editor").click(function(){
 	$("#pingjia").toggleClass("job-practice")
+<<<<<<< HEAD
+=======
+})
+$("#edu-quxiao3").click(function(){
+	$("#pingjia").toggleClass("job-practice")
+})
+$("#skill-editor").click(function(){
+	$("#tinajia-skill").toggleClass("tinajia-skill")
+})
+$("#edu-quxiao4").click(function(){
+	$("#tinajia-skill").toggleClass("tinajia-skill")
+})
+//添加技能
+$("#baocun-skill").click(function(){
+	let a=document.getElementById("input-text").value;
+	let b=document.getElementById("Mastery-select").value;
+	console.log(a)
+	if(a != 0){
+		if(b == 0){
+           $(".progress-bar").addClass("progress-bar1")
+		}else if(b == 1){
+			 $(".progress-bar").addClass("progress-bar2")
+		}else if(b == 2){
+			 $(".progress-bar").addClass("progress-bar3")
+		}else if(b == 3){
+			 $(".progress-bar").addClass("progress-bar4")
+		}
+      $("#skill-box").append('<h3 class="progress-title">'+$("#input-text").val() +'</h3>'+
+	  '<div class="progress">' +
+	     '<div class="progress-bar" style=" background:#7ad396;">'+
+	           '<div class="progress-value">'+ $("#Mastery-select").val()+'</div>'+ 
+	     '</div>'+
+      '</div>')
+	}else{
+		alert("hhh")
+	}
+	
+>>>>>>> 41e35262a0dd8119dc5f1c2510133dd8181a199a
 })
 $("#edu-quxiao3").click(function(){
 	$("#pingjia").toggleClass("job-practice")
