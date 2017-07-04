@@ -1,96 +1,136 @@
 $("#jod-editor").click(function(){
 	$("#job-practice").toggleClass("job-practice")
+})
+window.onload = function(){
+				    var postData = '';
+				    //获取基本信息
+				    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
+					function succCallback(date){
+						//console.log(1111);
+						//alert(date[0].realname);
+						//alert(date[0].thumburl)
+						$(".head-portrait>img").attr("src",date[0].thumburl); 
+						//$("td:eq(2)") 选择所有的td元素中序号为2的那个td元素 
+						//.html() 取出或设置html内容
+						//.text() 取出或设置text内容
+						//.attr() 取出或设置某个属性的值
+						//.attr(“属性名”,”属性值”) 设置标签的属性值
+						//.attr(“属性名”)获取标签的属性值
+						//.width() 取出或设置某个元素的宽度
+						//.height() 取出或设置某个元素的高度
+						//.val() 取出某个表单元素的值
+						$(".name1").html(date[0].realname);
+						$(".simple-little1").html(date[0].gender);
+						$(".simple-little2").html(date[0].eduction);
+						//根据出生年月算当前年龄
+						var ages=agefun(date[0].birth);
+						$(".simple-little3").html(ages+"岁");	
+				//		$(".simple-little4").html(date[0].gender);
+						$(".simple-little5").html(date[0].city);	
+						$(".info-phone").html(date[0].phone);
+						$(".info-email").html(date[0].email);
+					}
+					//获取工作经历
+					var work	=	AjaxPost('index.php/puser/profile/getwork',postData,succCallbackwork,errorCallback,"post","json");
+					function succCallbackwork(date)
+					{
+						$(".work-company").html(date[0].company);
+						$(".work-position").html(date[0].position);
+				//		var date = new Date(时间戳); 
+						//alert(date[0].begintime);
+						var begintime = new Date();
+						begintime.setTime(date[0].begintime*1000);
+						//alert(begintime.Format("yyyy-MM-dd"));
+						var endtime = new Date();
+						endtime.setTime(date[0].endtime*1000);
+						//alert(endtime.setTime(date[0].endime*1000));
+						var begintime = begintime.Format("yyyy-MM-dd");
+						var endtime	  = endtime.Format("yyyy-MM-dd");
+						//alert(begintime);
+						$(".begin-endtime").html(begintime +"-"+ endtime);
+						$(".work-description").html(date[0].description);
+					}
+					//获取教育经历
+					var edu	=	AjaxPost('index.php/puser/profile/getedu',postData,succCallbackedu,errorCallback,"post","json");
+					function succCallbackedu(date){
+						$(".edu-school").html(date[0].school);
+						$(".edu-major").html(date[0].major + "." + date[0].record);
+						//这里还缺少毕业时间计算毕业年份的算法
+					}
+					//过程出现错误后执行的方法
+						function errorCallback(date){
+							//alert(date);
+						}  
+					//获取期望工作
+					var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackedu,errorCallback,"post","json");
+					function succCallbackedu(date){
+						var jjj = '小马哥';
+						$.each(date,function(n,obj){
+							var html;
+							html = '<option value="">'+jjj+'</option>';
+							//console.log(html);
+							$('#expect-pname').append(html);
+						})
+						$(".expect-pname").html='<option value="">'+jjj+'</option>';
+						$(".expect-city").html(date[0].city);
+						$(".expect-salary").html(date[0].salary);
+					}
+				//过程出现错误后执行的方法
+					function errorCallback(date){
+						//alert(date);
+					}
+}
+
+//添加编辑按钮click事件
+$("#jod-editor").click(function(){
+	$("#job-practice").toggleClass("job-practice")
 });
 $("#quxiao").click(function(){
 	$("#job-practice").toggleClass("job-practice")
-})
+});
 $("#editor").click(function(){
 	$("#job-practice-bianji").toggleClass("job-practice")
 });
 $("#e-qixiao").click(function(){
 	$("#job-practice-bianji").toggleClass("job-practice")
-})
+});
 $("#edu-editor").click(function(){
 	$("#geteducational").toggleClass("job-practice")
-})
+});
 $("#edu-quxiao").click(function(){
 	$("#geteducational").toggleClass("job-practice")
-})
+});
 $("#edu-tainjia").click(function(){
 	$("#geteducational2").toggleClass("job-practice")
-})
+});
 $("#edu-quxiao2").click(function(){
 	$("#geteducational2").toggleClass("job-practice")
-})
+});
 $("#ping-editor").click(function(){
 	$("#pingjia").toggleClass("job-practice")
-<<<<<<< HEAD
-=======
-})
+});
 $("#edu-quxiao3").click(function(){
 	$("#pingjia").toggleClass("job-practice")
-})
+});
 $("#skill-editor").click(function(){
 	$("#tinajia-skill").toggleClass("tinajia-skill")
-})
+});
 $("#edu-quxiao4").click(function(){
 	$("#tinajia-skill").toggleClass("tinajia-skill")
-})
+});
 //添加技能
 $("#baocun-skill").click(function(){
 	let a=document.getElementById("input-text").value;
 	let b=document.getElementById("Mastery-select").value;
-	console.log(a)
+	let options=$("#Mastery-select option:selected");
+	// console.log(options.text())
+	// let texts=options.innerHTML();
+	// console.log(a)
 	if(a != 0){
-		if(b == 0){
-           $(".progress-bar").addClass("progress-bar1")
-		}else if(b == 1){
-			 $(".progress-bar").addClass("progress-bar2")
-		}else if(b == 2){
-			 $(".progress-bar").addClass("progress-bar3")
-		}else if(b == 3){
-			 $(".progress-bar").addClass("progress-bar4")
-		}
       $("#skill-box").append('<h3 class="progress-title">'+$("#input-text").val() +'</h3>'+
 	  '<div class="progress">' +
-	     '<div class="progress-bar" style=" background:#7ad396;">'+
-	           '<div class="progress-value">'+ $("#Mastery-select").val()+'</div>'+ 
-	     '</div>'+
-      '</div>')
-	}else{
-		alert("hhh")
-	}
-	
->>>>>>> 41e35262a0dd8119dc5f1c2510133dd8181a199a
-})
-$("#edu-quxiao3").click(function(){
-	$("#pingjia").toggleClass("job-practice")
-})
-$("#skill-editor").click(function(){
-	$("#tinajia-skill").toggleClass("tinajia-skill")
-})
-$("#edu-quxiao4").click(function(){
-	$("#tinajia-skill").toggleClass("tinajia-skill")
-})
-//添加技能
-$("#baocun-skill").click(function(){
-	let a=document.getElementById("input-text").value;
-	let b=document.getElementById("Mastery-select").value;
-	console.log(a)
-	if(a != 0){
-		if(b == 0){
-           $(".progress-bar").addClass("progress-bar1")
-		}else if(b == 1){
-			 $(".progress-bar").addClass("progress-bar2")
-		}else if(b == 2){
-			 $(".progress-bar").addClass("progress-bar3")
-		}else if(b == 3){
-			 $(".progress-bar").addClass("progress-bar4")
-		}
-      $("#skill-box").append('<h3 class="progress-title">'+$("#input-text").val() +'</h3>'+
-	  '<div class="progress">' +
-	     '<div class="progress-bar" style=" background:#7ad396;">'+
-	           '<div class="progress-value">'+ $("#Mastery-select").val()+'</div>'+ 
+	     '<div class="progress-bar" style="width:'+b+'%; background:#7ad396;">'+
+	           '<div class="progress-value">'+ options.text()+'</div>'+ 
 	     '</div>'+
       '</div>')
 	}else{
@@ -98,123 +138,19 @@ $("#baocun-skill").click(function(){
 	}
 	
 })
-window.onload = function(){
-    
-    
-    var postData = '';
-    
-    
-    //获取基本信息
-    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
-    
-	function succCallback(date){
-		//console.log(1111);
-		//alert(date[0].realname);
-		//alert(date[0].thumburl)
-		$(".head-portrait>img").attr("src",date[0].thumburl); 
-		//$("td:eq(2)") 选择所有的td元素中序号为2的那个td元素 
-		//.html() 取出或设置html内容
-		//.text() 取出或设置text内容
-		//.attr() 取出或设置某个属性的值
-		//.attr(“属性名”,”属性值”) 设置标签的属性值
-		//.attr(“属性名”)获取标签的属性值
-		//.width() 取出或设置某个元素的宽度
-		//.height() 取出或设置某个元素的高度
-		//.val() 取出某个表单元素的值
-		$(".name1").html(date[0].realname);
-		$(".simple-little1").html(date[0].gender);
-		$(".simple-little2").html(date[0].eduction);
-		//根据出生年月算当前年龄
-		var ages=agefun(date[0].birth);
-		$(".simple-little3").html(ages+"岁");	
-//		$(".simple-little4").html(date[0].gender);
-		$(".simple-little5").html(date[0].city);	
-		$(".info-phone").html(date[0].phone);
-		$(".info-email").html(date[0].email);
-	}
-	
-	//获取工作经历
-	var work	=	AjaxPost('index.php/puser/profile/getwork',postData,succCallbackwork,errorCallback,"post","json");
-	
-	function succCallbackwork(date)
-	{
-		$(".work-company").html(date[0].company);
-		$(".work-position").html(date[0].position);
-//		var date = new Date(时间戳); 
-		//alert(date[0].begintime);
-		var begintime = new Date();
-		begintime.setTime(date[0].begintime*1000);
-		//alert(begintime.Format("yyyy-MM-dd"));
-		var endtime = new Date();
-		endtime.setTime(date[0].endtime*1000);
-		//alert(endtime.setTime(date[0].endime*1000));
-		var begintime = begintime.Format("yyyy-MM-dd");
-		var endtime	  = endtime.Format("yyyy-MM-dd");
-		//alert(begintime);
-		$(".begin-endtime").html(begintime +"-"+ endtime);
-		$(".work-description").html(date[0].description);
-	}
-	
-	
-	//获取教育经历
-	var edu	=	AjaxPost('index.php/puser/profile/getedu',postData,succCallbackedu,errorCallback,"post","json");
-	
-	function succCallbackedu(date){
-		$(".edu-school").html(date[0].school);
-		$(".edu-major").html(date[0].major + "." + date[0].record);
-		//这里还缺少毕业时间计算毕业年份的算法
-	}
-	
-	
-//过程出现错误后执行的方法
-	function errorCallback(date){
-		//alert(date);
-	}  
-	
-	
-	//获取期望工作
-	var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackedu,errorCallback,"post","json");
-	
-	function succCallbackedu(date){
-		//console.log(1111)
-		var jjj = '小马哥';
-		$.each(date,function(n,obj){
-			var html;
-			html = '<option value="">'+jjj+'</option>';
-			//console.log(html);
-			$('#expect-pname').append(html);
-		})
-		
-		$(".expect-pname").html='<option value="">'+jjj+'</option>';
-		$(".expect-city").html(date[0].city);
-		$(".expect-salary").html(date[0].salary);
-	}
-	
-	
-//过程出现错误后执行的方法
-	function errorCallback(date){
-		//alert(date);
-	}
-}
 
 //添加工作经历
-
 $('#jod-editor').click(function()
 {
-	//alert(111);
 var edu	=	AjaxPost('index.php/puser/profile/getwork',postData,succCallbackwork,errorCallback,"post","json");
-
 })
-
 //出生年月计算如今年纪的计算方法
-
 var agefun=function  (birth) 
 {
 // 获得今天的时间
 var date = new Date();
 //获取数据库出生的时间戳
 var birthday = birth;
-//alert(birthday);
 //var startDate = new Date(birthday);
 //当前时间减去出生年月的时间
 var newDate = date.getTime() - birthday;
@@ -227,8 +163,6 @@ var age = Math.ceil(newDate / 1000 / 60 / 60 / 24 /365);
     return age;
 // $(".simple-little2").html(age);
 };
-
-
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {
         "M+": this.getMonth() + 1, //月份 
@@ -243,4 +177,28 @@ Date.prototype.Format = function (fmt) { //author: meizz
     for (var k in o)
     if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
-}       
+}
+//编辑基本信息
+$('#next').click(function(){
+	//声明要传递给服务器的json数据
+	var postData = $('#personal-information').serialize();
+	//AjaxPost方法传递数据
+	AjaxPost('index.php/puser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
+})
+//添加信息成功后执行的方法
+function succCallback(date){
+	//显示登录成功！
+//		$('.tixoin').css({
+//			"display":"block"
+//		})
+		//三秒后跳转下一个页面
+  	setTimeout(function(){
+			location.href='Educational.html'
+	},1000);	
+}
+//添加信息过程出现错误后执行的方法
+function errorCallback(date){
+//		$('#spantx').text(date.message);
+//		$(this).css('boderColor','red');
+//		//$('#span').text('网络错误');
+}
