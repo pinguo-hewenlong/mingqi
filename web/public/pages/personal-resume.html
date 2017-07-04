@@ -50,6 +50,7 @@
                                              <span class="practice-text">工作经历</span>
                                              <span class="first-line"></span>
                                              <span class=" editor" id="editor"><i class="iconfont rem-icon">&#xe68b;</i>编辑</span>
+                                             <span class=" editor"  id="jod-editor"><i class="iconfont rem-icon">&#xe60a;</i>添加</span>
                                          </div>
                                        <!--工作经历编辑框-->
                                          <form action="" id="job-practice-bianji" class="job-practice">
@@ -77,21 +78,25 @@
                                                 <button type="button" class="btn baocun">保存</button>
                                             </div>
                                         </form>
-                                         <div class="company-an">
-                                             <div>
-                                                 <div class="company-com class= work-company">西宇科技</div>
-                                                 <div id='job'class="work-position">ui设计师</div>
-                                             </div>
-                                             <div>
-                                               <span class=" editor"  id="jod-editor"><i class="iconfont rem-icon">&#xe60a;</i>添加</span>
-                                             </div>
-                                         </div>
-                                         <div id="job-time" class="begin-endtime">
-                                                    
-                                         </div>
-                                         <div class="describe work-description">  
-                                         	
-                                         </div> 
+                                        <div>
+                                            <div class="company-an">
+                                                <div>
+                                                    <div class="company-com class= work-company">西宇科技</div>
+                                                    <div id='job'class="work-position">ui设计师</div>
+                                                </div>
+                                                <div>
+                                               
+                                                </div>
+                                            </div>
+                                            <div id="job-time" class="begin-endtime">
+                                                        
+                                            </div>
+                                            <div class="describe work-description">  
+                                                
+                                            </div> 
+                                            <div class="delete">删除</div>
+                                        </div>
+                                         
                                          <!--工作经历添加框-->
                                          <form action="" id="job-practice" class="job-practice">
                                             <div class="information"><input type="text" placeholder="公司名称"></div>
@@ -126,6 +131,7 @@
                                              <span class="practice-text">教育经历</span>
                                              <span class="first-line"></span> 
                                              <span class=" editor" id="edu-editor"><i class="iconfont rem-icon">&#xe68b;</i>&nbsp;编辑</span>
+                                            <span class=" editor" id="edu-tainjia"><i class="iconfont rem-icon">&#xe60a;</i>添加</span>
                                          </div>
                                          <!--教育经历编辑框-->
                                         <form  id="geteducational" action="" class="job-practice">
@@ -155,18 +161,23 @@
                                                 <button type="button" class="btn baocun">保存</button>
                                             </div>
                                         </form>
-                                         <div class="company-an">
-                                             <div>
-                                                 <div class="company-com edu-school"></div>
-                                                 <div id='major' class="edu-major">计算机.本科</div>
-                                             </div>
-                                             <div>
-                                               <span class=" editor" id="edu-tainjia"><i class="iconfont rem-icon">&#xe60a;</i>添加</span>
-                                             </div>
-                                         </div>
-                                         <div id="major-time" class="edu-majortime">
+                                        <div>
+                                          <div class="company-an">
+                                                <div>
+                                                    <div class="company-com edu-school"></div>
+                                                    <div id='major' class="edu-major">计算机.本科</div>
+                                                </div>
+                                                <div>
+                                                
+                                                </div>
+                                          </div>
+                                          <div id="major-time" class="edu-majortime">
                                                     2016年毕业
-                                         </div>  
+                                          </div> 
+                                           <div class="delete">删除</div>
+                                        </div>
+                                         
+                                          
                                           <!--教育经历添加框-->
                                             <form  id="geteducational2" action="" class="job-practice">
                                                 <div class="information"><input name="school" type="text" placeholder="学校名称"></div>
@@ -275,10 +286,10 @@
                                             <div class="Mastery">
                                                 <span>&nbsp;掌握程度* </span>
                                                 <select name="" id="Mastery-select">
-                                                    <option value="0">一般</option>
-                                                    <option value="1">良好</option>
-                                                    <option value="2">熟练</option>
-                                                    <option value="3">精通</option>
+                                                    <option value="25">一般</option>
+                                                    <option value="50">良好</option>
+                                                    <option value="75">熟练</option>
+                                                    <option value="100">精通</option>
                                                 </select>
                                             </div>
                                             <div class="modal-footer">
@@ -288,30 +299,6 @@
                                          </div>
                                         <div id="skill">
                                                     <div class="col-lg-8 col-md-8 col-sm-hidden col-lg-offset-2 col-md-offset-2" id="skill-box">
-                                                        <h3 class="progress-title">HTML5</h3>
-                                                        <div class="progress">
-                                                             <div class="progress-bar" style="width:70%; background:#7ad396;">
-                                                                     <div class="progress-value">70%</div>
-                                                             </div>
-                                                        </div>
-                                                       <h3 class="progress-title">CSS3</h3>
-                                                       <div class="progress">
-                                                             <div class="progress-bar" style="width:90%; background:#7ad396;">
-                                                                    <div class="progress-value">90%</div>
-                                                             </div>
-                                                       </div>
-                                                      <h3 class="progress-title">J-Query</h3>
-                                                      <div class="progress">
-                                                           <div class="progress-bar" style="width:55%; background:#7ad396;">
-                                                                <div class="progress-value">55%</div>
-                                                           </div>
-                                                        </div>
-                                                        <h3 class="progress-title">Bootstrap</h3>
-                                                        <div class="progress">
-                                                               <div class="progress-bar" style="width:80%; background:#7ad396;">
-                                                                    <div class="progress-value">80%</div>
-                                                               </div>
-                                                        </div>
                                                     </div>
                                         </div>
                                     </div>

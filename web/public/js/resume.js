@@ -38,28 +38,33 @@ $("#edu-quxiao4").click(function(){
 $("#baocun-skill").click(function(){
 	let a=document.getElementById("input-text").value;
 	let b=document.getElementById("Mastery-select").value;
-	console.log(a)
+	let options=$("#Mastery-select option:selected");
+	// console.log(options.text())
+	// let texts=options.innerHTML();
+	// console.log(a)
 	if(a != 0){
-		if(b == 0){
-           $(".progress-bar").addClass("progress-bar1")
-		}else if(b == 1){
-			 $(".progress-bar").addClass("progress-bar2")
-		}else if(b == 2){
-			 $(".progress-bar").addClass("progress-bar3")
-		}else if(b == 3){
-			 $(".progress-bar").addClass("progress-bar4")
-		}
-      $("#skill-box").append('<h3 class="progress-title">'+$("#input-text").val() +'</h3>'+
+      $("#skill-box").append('<div>'+
+	  '<h3 class="progress-title">'+$("#input-text").val() +'</h3>'+
 	  '<div class="progress">' +
-	     '<div class="progress-bar" style=" background:#7ad396;">'+
-	           '<div class="progress-value">'+ $("#Mastery-select").val()+'</div>'+ 
+	     '<div class="progress-bar" style="width:'+b+'%; background:#7ad396;">'+
+	           '<div class="progress-value">'+ options.text()+'</div>'+ 
 	     '</div>'+
-      '</div>')
+      '</div>'+
+	  '<div class="delete-skill">删除</div>'+
+	  '</div>')
+	  $(".delete-skill").click(function(){
+	//    console.log(11111);
+      $(this).parent().remove()
+     })
 	}else{
-		alert("hhh")
+		$(".skill-language").append('<span>*</span>')
 	}
 	
 })
+ $(".delete").click(function(){
+	//    console.log(11111);
+      $(this).parent().remove()
+     })
 window.onload=function(){
     
     
