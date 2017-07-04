@@ -29,10 +29,9 @@ function succCallback(date){
 	//显示登录成功！
 		$('.tixoin').css({
 			"display":"block"
-		});
-		$('.tixoin').html(date.message)
+		})
 		//三秒后跳转下一个页面
-	setTimeout(function(){
+  	setTimeout(function(){
   		
   		//判断信息填写状态选择跳转的路径
   		var postData = '';

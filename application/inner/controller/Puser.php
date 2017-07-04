@@ -5,12 +5,12 @@ use think\Controller;
 
 use think\Db;
 
-class Puser extends Controller
+class Puser extends Base
 {
 	
 	public function __construct()
 	{
-			
+		parent::__construct();			
 	}
 	//处理信息:获取个人相关信息
 	public function getFromDb()
@@ -49,7 +49,7 @@ class Puser extends Controller
 		$dbData['eduction'] = $_POST['eduction'];
 		$dbData['city'] = $_POST['city'];
 		$dbData['gender'] = $_POST['gender'];
-		//$dbData['birth'] = $_POST['birth'];
+		$dbData['birth'] = $_POST['birth'];
 		$dbData['phone'] = $_POST['phone'];
 		
 		
@@ -82,7 +82,7 @@ class Puser extends Controller
 		
 		$dbData['uid'] = $_POST['uid'];
 		$dbData['school'] = $_POST['school'];
-		$dbData['begintime'] = $_POST['begintime'];
+		//$dbData['begintime'] = $_POST['begintime'];
 		$dbData['endtime'] = $_POST['endtime'];
 		$dbData['major'] = $_POST['major'];
 		$dbData['record'] = $_POST['record'];
@@ -204,6 +204,36 @@ class Puser extends Controller
 			return json($return); 			
 		}
 		
+	}
+	
+	//添加个人描述
+		public function setDesc()
+	{
+		//初始化变量
+		$preDbData = array();
+		$dbData = array();
+		$return = array();
+		
+		
+		$dbData['uid'] = $_POST['uid'];
+		$dbData['Desc'] = $_POST['Desc'];
+		
+		$result = Db::table('mq_puser_desc')->insert($dbData);
+		//dump($result);
+		//return json($dbData);
+		if($result !== 1)
+		{
+			$return['status'] = 0;
+			$return['message'] = '个人描述添加失败';
+			return json($return); 			
+		}
+		else
+		{
+			$return['status'] = 1;
+			$return['message'] = '个人描述添加成功';
+			return json($return); 			
+		}
+		
 	}	
 	
 	//添加技能
@@ -217,8 +247,8 @@ class Puser extends Controller
 		
 		$dbData['uid'] = $_POST['uid'];
 		$dbData['pname'] = $_POST['pname'];
-		$dbData['description'] = $_POST['description'];
-		$dbData['monthstime'] = $_POST['monthstime'];
+		//$dbData['description'] = $_POST['description'];
+		//$dbData['monthstime'] = $_POST['monthstime'];
 		$dbData['mastery'] = $_POST['mastery'];
 		
 		$result = Db::table('mq_puser_skills')->insert($dbData);
@@ -304,6 +334,35 @@ class Puser extends Controller
 		
 	}
 	
+	
+	//添加简历状态
+	public function setarrival()
+	{
+		//初始化变量
+		$preDbData = array();
+		$dbData = array();
+		$return = array();
+		
+		
+		$dbData['uid'] = $_POST['uid'];
+		$dbData['sesc'] = $_POST['sesc'];
+		//dump($result);
+		//return json($dbData);
+		if($result !== 1)
+		{
+			$return['status'] = 0;
+			$return['message'] = '到岗时间添加失败';
+			return json($return); 			
+		}
+		else
+		{
+			$return['status'] = 1;
+			$return['message'] = '到岗时间添加成功';
+			return json($return); 			
+		}
+		
+	}
+	
 	//获取子级列表信息(暂时没有使用这个函数)
 	public function getList()
 	{
@@ -325,42 +384,29 @@ class Puser extends Controller
 		//查询个人基本信息
 	}
 	
-	//判断用户登录流程的内部方法
-	public function pregetfirst()
+	//获取用户注册状态
+	public function preGetFirst()
 	{
 		$data['id']	=	request()->post('uid');
-		$request	=	db('puser')->where($data)->find();
+		
+		$request = db('puser')->where($data)->find();
+		
 		if($request)
 		{
 			$return['status']	=	$request['prestatus'];
-			$return['message']	=	'正在跳转';
-			return json($return);
+			$return['message']	=	'success';
+			return json($return);			
 		}
 		else
 		{
 			$return['status']	=	0;
-			$return['message']	=	'内部错误,该页无法显示';
+			$return['message']	=	'error';
 			return json($return);
 		}
+		
+		
+		
+		
 	}
-	//更新用户登录流程的内部方法
-	 public function presetFirst()
-	 {
-		$data['id']	=	request()->post('uid');
-		$dbdata['prestatus']	=	'1';
-		$request	=	db('puser')->where($data)->update($dbdata);
-		if($request)
-		{
-			$return['status']	=	1;
-			$return['message']	=	'成功';
-			return json($return);			
-		}
-		else
-		{
-			$return['status']	=	0;
-			$return['message']	=	'失败';
-			return json($return);			
-		}			 	
-	 }
 											
 }

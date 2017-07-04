@@ -120,21 +120,21 @@ input{
 option{
     color: #adadad;
 }
-#next {
+#next{
     width: 80%;
     height: 44px;
     text-align: center;
-    line-height: 39px;
+    line-height: 44px;
     background: #7cd296;
     color: white;
     font-size: 18px;
-    /* margin-left: 10%; */
+    margin-left: 10%;
     margin-top: 40px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    behavior: url(../doc/ie-css3.htc);
-
+    behavior: url(../doc/ie-css3.htc); /* 通知IE浏览器调用脚本作用于'enroll-text'类 */
+   
 }
 #next:hover{
    background: #60bbd5;

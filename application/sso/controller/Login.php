@@ -25,9 +25,6 @@ class Login extends Controller
 		$this->smsCode	=	'';
 		$this->req		=	request();					
 	}
-	
-	
-	
 	//密码登录
 	public function LoginP()
 	{
@@ -73,9 +70,7 @@ class Login extends Controller
 		//获取登录时间
 		$data['logintime']	=	time();		
 		//发送到inner
-		
 		$url	=	BASE_URL.url('/inner/sso/loginfrompassword');
-		//return $url;
 		$return = curlHttp($url,'POST',$data);
 		//判断是否登录成功，内部获取json，转为数组进行判断
 		$returnArray = json_decode($return,true);
@@ -107,12 +102,12 @@ class Login extends Controller
 		//短信验证码
 		$data['smsCode'] 	=	trim($this->req->post('smsCode')); 	
 		//图形验证码	
-		$data['captcha'] 	=	trmm($this->req->post('captcha'));
+		$data['captcha'] 	=	trim($this->req->post('captcha'));
 		}
 		else
 		{
 			$return['status'] = 0;
-			$return['message'] = '非法请求,不正确的请求类型';	
+			$return['smsage'] = '非法请求,不正确的请求类型';	
 			return json($return);			
 		}
 		//----------验证器-----------

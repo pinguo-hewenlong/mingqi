@@ -50,7 +50,9 @@ class Profile extends Base
 		//企业名称
 		$data['companyname'] 	= $_POST['companyname'];
 		//hr邮箱
-		$data['compayurl'] 		= $_POST['compayurl'];
+		$data['hremail'] 		= $_POST['hremail'];
+		//企业logo
+		$data['thumburl'] 		= $_POST['thumburl'];
 		//企业电话
 		$data['comphone'] 		= $_POST['comphone'];
 		//企业城市代码
@@ -88,10 +90,6 @@ class Profile extends Base
 		$return = curlHttp($url,'POST',$data);
 		return $return;					
 	}
-	
-	
-	
-	
 
 	//发布职位
 	public function setPost()

@@ -17,21 +17,3 @@ function maxtext(x,y){
           } 
           textlen(x,y); 
 }
-//调用接口发送信息给后台设置公司基本信息
-$('#next').bind("click",function(){
-    
-	//声明要传递给服务器的json数据
-	var postData = {"time":"","title":$("#title").val()};
-	//AjaxPost方法传递数据
-	AjaxPost('index.php/cuser/profile/setMilepost',postData,succCallback,errorCallback,"post","json");
-});
-function succCallback(date){
-     //跳转页面 	
-	 location.href="../index.html"		
-}
-function errorCallback(date){
-			$('.tixoin').css({
-			"display":"block"
-		})
-	
-}

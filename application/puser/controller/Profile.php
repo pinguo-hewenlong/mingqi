@@ -24,7 +24,7 @@ class Profile extends Base
 		$url = BASE_URL.url('/inner/puser/getfromdb');
 		//return $url;
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;		
+		return json_decode ($return);		
 	}
 	//获取教育信息
 	public function getEdu()	
@@ -35,7 +35,7 @@ class Profile extends Base
 		//return $url;
 				
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;				
+		return json_decode ($return);				
 		
 	}
 	//获取工作经历
@@ -45,7 +45,7 @@ class Profile extends Base
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/getfromdb');
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;			
+		return json_decode ($return);			
 		
 	}
 	//获取培训经历
@@ -55,7 +55,7 @@ class Profile extends Base
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/getfromdb');
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;			
+		return json_decode ($return);			
 		
 	}
 	//获取个人技能
@@ -65,7 +65,7 @@ class Profile extends Base
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/getfromdb');
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;			
+		return json_decode ($return);				
 		
 	}
 	//获取project
@@ -75,7 +75,7 @@ class Profile extends Base
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/getfromdb');
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;			
+		return json_decode ($return);			
 		
 	}
 	//获取期望工作
@@ -85,7 +85,7 @@ class Profile extends Base
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/getfromdb');
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;			
+		return json_decode ($return);			
 		
 	}
 	//获取个人作品
@@ -95,7 +95,7 @@ class Profile extends Base
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/getfromdb');
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;			
+		return json_decode ($return);			
 		
 	}
 	//------获取信息结束，设置信息开始
@@ -104,7 +104,7 @@ class Profile extends Base
 	{
 		if(Request::instance()->isPost())
 		{
-		$data['uid'] 			= $this->data['uid'];
+		$data['uid'] 			= $this->data['puid'];
 		$data['realname'] 		= $_POST['realname'];
 		$data['email'] 			= $_POST['email'];
 		$data['thumburl'] 		= $_POST['thumburl'];
@@ -127,14 +127,14 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json($return);
+			return json_decode ($return);	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setinfo');
 		$return = curlHttp($url,'POST',$data);
-		return $return;					
+		return json_decode ($return);						
 	}
 	
 	//设置教育经历
@@ -142,9 +142,9 @@ class Profile extends Base
 	{
 		if(Request::instance()->isPost())
 		{
-		$data['uid'] 			= $this->data['uid'];
+		$data['uid'] 			= $this->data['puid'];
 		$data['school'] 		= $_POST['school'];
-		$data['begintime'] 		= strtorime($_POST['begintime']);
+		//$data['begintime'] 		= strtorime($_POST['begintime']);
 		$data['endtime'] 		= strtotime($_POST['endtime']);
 		$data['major'] 			= $_POST['major'];
 		$data['record'] 		= $_POST['record'];
@@ -162,14 +162,14 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json($return);
+			return json_decode ($return);	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setedu');
 		$return = curlHttp($url,'POST',$data);
-		return $return;					
+		return json_decode ($return);						
 	}
 	
 	//设置项目经历
@@ -177,7 +177,7 @@ class Profile extends Base
 	{
 		if(Request::instance()->isPost())
 		{
-		$data['uid'] 			= $this->data['uid'];
+		$data['uid'] 			= $this->data['puid'];
 		$data['proname'] 		= $_POST['proname'];
 		$data['begintime'] 		= $_POST['begintime'];
 		$data['endtime'] 		= $_POST['endtime'];
@@ -197,14 +197,14 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json($return);
+			return json_decode ($return);	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setproject');
 		$return = curlHttp($url,'POST',$data);
-		return $return;					
+		return json_decode ($return);						
 	}
 	
 	//工作经历表
@@ -212,7 +212,7 @@ class Profile extends Base
 	{
 		if(Request::instance()->isPost())
 		{
-		$data['uid'] 			= $this->data['uid'];
+		$data['uid'] 			= $this->data['puid'];
 		$data['company'] 		= $_POST['company'];
 		$data['begintime'] 		= $_POST['begintime'];
 		$data['endtime'] 		= $_POST['endtime'];
@@ -232,14 +232,14 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json($return);
+			return json_decode ($return);	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setwork');
 		$return = curlHttp($url,'POST',$data);
-		return $return;					
+		return json_decode ($return);					
 	}
 		
 			
@@ -248,7 +248,7 @@ class Profile extends Base
 	{
 		if(Request::instance()->isPost())
 		{
-		$data['uid'] 			= $this->data['uid'];
+		$data['uid'] 			= $this->data['puid'];
 		$data['school'] 		= $_POST['school'];
 		$data['begintime'] 		= $_POST['begintime'];
 		$data['endtime'] 		= $_POST['endtime'];
@@ -268,14 +268,46 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json($return);
+			return json_decode ($return);	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/settrain');
 		$return = curlHttp($url,'POST',$data);
-		return $return;					
+		return json_decode ($return);					
+	}
+	
+	
+	//个人描述表
+	public function setdesc()
+	{
+		if(Request::instance()->isPost())
+		{
+		$data['uid'] 			= $this->data['puid'];
+		$data['desc'] 		= $_POST['desc'];
+		}
+		else
+		{
+			$data = array();
+		}
+		
+		//return json($data);		
+		//调用验证器:Puser\valisate\index
+		$validateResult = $this->validate($data,'Desc');
+		//输出错误信息
+		if(true !== $validateResult)
+		{
+			$return['status'] = 0;
+			$return['message'] = $validateResult;	
+			return json_decode ($return);	
+
+		}
+
+		//发送到inner
+		$url = BASE_URL.url('/inner/puser/setdesc');
+		$return = curlHttp($url,'POST',$data);
+		return json_decode ($return);					
 	}
 	
 	
@@ -284,10 +316,10 @@ class Profile extends Base
 	{
 		if(Request::instance()->isPost())
 		{
-		$data['uid'] 			= $this->data['uid'];
+		$data['uid'] 			= $this->data['puid'];
 		$data['pname'] 			= $_POST['pname'];
-		$data['description'] 	= $_POST['description'];
-		$data['monthstime'] 	= $_POST['monthstime'];
+		//$data['description'] 	= $_POST['description'];
+		//$data['monthstime'] 	= $_POST['monthstime'];
 		$data['mastery'] 		= $_POST['mastery'];
 		}
 		else
@@ -303,14 +335,14 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json($return);
+			return json_decode ($return);	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setskills');
 		$return = curlHttp($url,'POST',$data);
-		return $return;					
+		return json_decode ($return);					
 	}
 	
 				//设置期望职位
@@ -318,7 +350,7 @@ class Profile extends Base
 	{
 		if(Request::instance()->isPost())
 		{
-		$data['uid'] 			= $this->data['uid'];
+		$data['uid'] 			= $this->data['puid'];
 		$data['pname'] 			= $_POST['pname'];
 		$data['description'] 	= $_POST['description'];
 		$data['salary'] 		= $_POST['salary'];
@@ -337,14 +369,14 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json($return);
+			return json_decode ($return);	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setexpectwork');
 		$return = curlHttp($url,'POST',$data);
-		return $return;					
+		return json_decode ($return);	 					
 	}
 	
 	//设置个人作品
@@ -352,7 +384,7 @@ class Profile extends Base
 	{
 		if(Request::instance()->isPost())
 		{
-		$data['uid'] 			= $this->data['uid'];
+		$data['uid'] 			= $this->data['puid'];
 		$data['plink'] 			= $_POST['plink'];
 		$data['description'] 	= $_POST['description'];
 		$data['imgurl'] 		= $_POST['imgurl'];
@@ -370,15 +402,14 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json($return);
+			return json_decode ($return);	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setproduct');
 		$return = curlHttp($url,'POST',$data);
-		return $return;					
+		return json_decode ($return);					
 	}
-	
 	
 }

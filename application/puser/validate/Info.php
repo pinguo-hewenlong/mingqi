@@ -10,10 +10,10 @@ class Info extends Validate
 		'email' => 'email',
 		'phone' => ['regex' => '13\d{9}|15\d{9}|18\d{9}|17\d{9}'],
 		'thumburl' => ['regex' => '/^(http|https):\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?$/'],
-		'eduction' => '\d{3,10}',
-		'city' => '\d{3,10}',
+		'eduction' => 'chs|length:2,10',
+		'city' => 'chs|length:2,20',
 		'gender' => 'chs|length:1,6',
-		//'birth' => '\d{9,16}',	
+		'birth' => '\d{9,16}',	
 	];
 	
 	protected $message = [
@@ -27,6 +27,6 @@ class Info extends Validate
 		'eduction' => 'errorCode-1001-1002',
 		'city' => 'errorCode-1001-1003',
 		'gender' => 'errorCode-1001-1004',
-		//'birth' => 'errorCode-1001-1005',											
+		'birth' => 'errorCode-1001-1005',											
 	];	
 }

@@ -10,10 +10,8 @@ window.onload=function(){
 //调用接口发送信息给后台设置个人信息
 $('#next').click(function(){
 	//声明要传递给服务器的json数据
-//	var postData = $('#personal-information').serialize();
-	var postData={"realname":$("#realname").val(),"email":$("#email").val(),"thumburl":"","eduction":$("#eduction").val(),"city":$("#city").val(),"gender":"","birth":"","phone":$("#phone").val()}
+	var postData = $('#personal-information').serialize();
 	//AjaxPost方法传递数据
-	console.log(postData)
 	AjaxPost('index.php/puser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
 })
 //添加信息成功后执行的方法

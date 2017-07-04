@@ -19,9 +19,11 @@ class Pre extends Base
 	
 	public function getFirst()
 	{
+		
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/pregetfirst');
 		$return = curlHttp($url,'POST',$this->data);
+		
 		
 		if(request()->isAjax())
 		{
@@ -31,23 +33,5 @@ class Pre extends Base
 		{
 			return $return;
 		}
-	}
-	
-	//登录流程完毕之后更新状态
-	public function setFirst()
-	{
-		//发送到inner
-		$url = BASE_URL.url('/inner/puser/presetfirst');
-		$return = curlHttp($url,'POST',$this->data);
-		
-		if(request()->isAjax())
-		{
-			return json_decode($return);
-		}		
-		else
-		{
-			return $return;
-		}		
-	}
-					
+	}				
 }

@@ -1,8 +1,6 @@
 
 $("#header").load("header.html");
 $("#footer").load("footer.html");
-
-
 var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataType){
 		//alert("ccc");
         /**

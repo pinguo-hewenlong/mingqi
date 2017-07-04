@@ -44,7 +44,7 @@ function succCallback(date){
 		//三秒后跳转下一个页面
   	setTimeout(function(){
 			location.href='logo-p-p.html'
-		},500);
+		},3000);
 		
 		//console.log(333333);
 		
@@ -77,5 +77,5 @@ function settime(obj) {
 //一秒钟后开始执行验证码倒计时方法
    setTimeout(function() { 
     settime(obj) }
-    ,500) 
+    ,1000) 
 }
