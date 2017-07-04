@@ -65,31 +65,6 @@ class Resume extends Base
 			return json($return);
 		}
 		
-	}
-	
-	
-	//根据uid查询职位
-	public function resumeQueryList()
-	{
-		//企业用户uid
-		$data['uid']		=	request()->post('uid');		
-		
-		//通过企业uid查询职位列表
-		$request	=	db('cuser_post')->where($data)->select();
-		
-		
-		if($request)
-		{
-			return json($return);
-		}
-		else
-		{
-			$return['status']	=	'';
-			$return['message']	=	'error';
-			return json($return);
-		}
-		
-		
 	}	
 
 }

@@ -178,43 +178,5 @@ class Cuser extends Controller
 			return json($return); 			
 		}
 		
-	}
-	
-	//判断用户登录流程的内部方法
-	public function pregetfirst()
-	{
-		$data['id']	=	request()->post('uid');
-		$request	=	db('cuser')->where($data)->find();
-		if($request)
-		{
-			$return['status']	=	$request['prestatus'];
-			$return['message']	=	'正在跳转';
-			return json($return);
-		}
-		else
-		{
-			$return['status']	=	0;
-			$return['message']	=	'内部错误,该页无法显示';
-			return json($return);
-		}
-	}
-	//更新用户登录流程的内部方法
-	 public function presetFirst()
-	 {
-		$data['id']	=	request()->post('uid');
-		$dbdata['prestatus']	=	'1';
-		$request	=	db('cuser')->where($data)->update($dbdata);
-		if($request)
-		{
-			$return['status']	=	1;
-			$return['message']	=	'成功';
-			return json($return);			
-		}
-		else
-		{
-			$return['status']	=	0;
-			$return['message']	=	'失败';
-			return json($return);			
-		}			 	
-	 }		
+	}	
 }

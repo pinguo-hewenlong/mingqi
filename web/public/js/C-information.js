@@ -1,7 +1,5 @@
 //创建初始地图完毕
 window.onload=function (){
-    $("#header").load("header.html");
-    $("#footer").load("footer.html");
     var options={
         enableHighAccuracy:true, //是否允许高精度
         maximumAge:1000  //接受新点位的时间
@@ -14,23 +12,7 @@ window.onload=function (){
     }else{
         //浏览器不支持geolocation
     }
-    //ajax请求
-    var postData="";
-    AjaxPost('index.php/cuser/profile/getInfo',postData,succCallback,errorCallback,"post","json");
-    function succCallback(date){
-        
-    }
-    function errorCallback(date){
-       console.log(date[0].companyname)
-      $(".head>img").attr("src",date[0].thumburl);
-      $("#name").html(date[0].companyname);
-      $(".number-pople").html(date[0].nature) ;
-      $(".passages>p").html(date[0].description)
-    }
 }
-$(".the-xiu").click(function(){
-    $("form").toggleClass("chenge-form")
-})
 
 //成功时
 function onSuccess(position){

@@ -1,6 +1,6 @@
 <?php
 	
-namespace app\cuser\controller;
+namespace app\inner\controller;
 
 class Resume extends Base
 {
@@ -33,16 +33,5 @@ class Resume extends Base
 		$return = curlHttp($url,'POST',$this->data);
 		return $return;	
 	}
-	
-	
-	//职位列表查询
-	public function queryList()
-	{
-		//发送到inner
-		$url = BASE_URL.url('/inner/resume/resumequery');
-		$return = curlHttp($url,'POST',$this->data);
-		return $return;			
-	}
-	
-	//
+
 }

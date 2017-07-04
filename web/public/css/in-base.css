@@ -120,7 +120,7 @@ input{
 option{
     color: #adadad;
 }
-    .sex span.warning {
+.sex span.warning {
     font-size: 1.4rem;
     color: #ccc;
 }
@@ -193,14 +193,16 @@ option{
     float: left;
     margin-left: 20px;
 }
+
 #next{
     width: 80%;
     height: 44px;
     text-align: center;
-    line-height: 35px;
+    line-height: 44px;
     background: #7cd296;
     color: white;
     font-size: 18px;
+    margin-left: 10%;
     margin-top: 40px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;

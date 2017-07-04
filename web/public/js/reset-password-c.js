@@ -25,11 +25,11 @@ function succCallback(date){
 		$('.tixoin').css({
 			"display":"block"
 		})
-		//三秒后跳转下一个页面
+		//0.5秒后跳转下一个页面
   	setTimeout(function(){
   			
 			location.href='../index.html'
-		},1000);
+		},500);
 		
 		//console.log(333333);
 		

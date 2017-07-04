@@ -41,13 +41,13 @@ $("#baocun-skill").click(function(){
 	console.log(a)
 	if(a != 0){
 		if(b == 0){
-           $(".progress-bar").addclass("progress-bar1")
+           $(".progress-bar").addClass("progress-bar1")
 		}else if(b == 1){
-			 $(".progress-bar").addclass("progress-bar2")
+			 $(".progress-bar").addClass("progress-bar2")
 		}else if(b == 2){
-			 $(".progress-bar").addclass("progress-bar3")
+			 $(".progress-bar").addClass("progress-bar3")
 		}else if(b == 3){
-			 $(".progress-bar").addclass("progress-bar4")
+			 $(".progress-bar").addClass("progress-bar4")
 		}
       $("#skill-box").append('<h3 class="progress-title">'+$("#input-text").val() +'</h3>'+
 	  '<div class="progress">' +

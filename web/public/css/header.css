@@ -64,13 +64,7 @@
 .second-header{
     height: 64px;
     box-shadow:0 0 10px #d7d7d7;
-       
     
-}
-.header-bocs{
- display: flex;
-justify-content: space-between;
-line-height: 64px;
 }
 .second-header-box{
     display: flex;

@@ -272,7 +272,7 @@ class Sso extends Base
 
 		//$return['status'] 	= 	0;
 		//$return['message'] 	= 	$table;
-		///return json($return);	
+		//return json($return);	
 						
 		$dbdata['username']		=	$data['username'];		
 		$request = Db::name($table)->where($dbdata)->find();
@@ -299,18 +299,12 @@ class Sso extends Base
 			}
 			else
 			{
-			
 				//登录成功，更新数据库
 				$successData['logintime']	=	$data['logintime'];
 				$successData['loginip']		=	$data['loginip'];
 				$successData['gateway']		=	$data['gateway'];
-				
-					
 	
-				//$request3	=	Db::name($table)->where($dbdata)->update($successData);
-				
-				$request3	=	1;
-
+				$request3	=	Db::name($table)->where($dbdata)->update($successData);
 				
 				if($request3 == 0)
 				{
@@ -389,8 +383,5 @@ class Sso extends Base
 		}
 		
 	}
-	
-	//简历查询
-	
 		
 }

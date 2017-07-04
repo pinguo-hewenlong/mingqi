@@ -9,7 +9,7 @@ class LoginM extends Validate
  		'gateway'       => ['require','regex'=>'/^mqyc$/'],   
 		'type'       	=> ['require','regex'=>'/^puser$|^cuser$/'],
 		'username'  	=> ['require','regex' => '13\d{9}|15\d{9}|18\d{9}|17\d{9}'],
-        'msgCode'  		=> ['require','regex' => '\d{6}'],
+        'smsCode'  		=> ['require','regex' => '\d{6}'],
 		'captcha|验证码'=> 'require|captcha',		
     ];
 	
