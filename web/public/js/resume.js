@@ -66,16 +66,17 @@ $("#baocun-skill").click(function(){
       $(this).parent().remove()
      })
 window.onload=function(){
+
     
     
-    var postData	=	'';
+    var postData = '';
     
     
     //获取基本信息
-    var info	=	AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
+    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
     
 	function succCallback(date){
-
+		//console.log(1111);
 		//alert(date[0].realname);
 		//alert(date[0].thumburl)
 		$(".head-portrait>img").attr("src",date[0].thumburl); 
