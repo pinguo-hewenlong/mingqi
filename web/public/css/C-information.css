@@ -61,6 +61,10 @@
     margin-top: 40px;
     /*border: 1px solid red;*/
 }
+.head>img{
+    width: 100%;
+    height: 100%;
+}
 .heade-text{
     /*border: 1px solid red;*/
     text-align: left;
@@ -76,9 +80,10 @@
     display: flex;
     justify-content: space-between;
 }
-.foush>span {
+.foush>div {
     margin-left: 5px;
     font-size: 12px;
+    float: left;
 }
 .basic-information{
     width: 90%;
@@ -86,6 +91,22 @@
     border-top: 1px solid #eeeeee;
     margin-top: 47px;
     overflow: hidden;
+}
+.little-header>i{
+    font-size: 25px;
+}
+.chenge-form{
+    display: none;
+}
+#xiu-btn{
+    background: #7cd296;
+    color: white;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px ;
+    font-size: 18px;
+    border-radius: 5px;
 }
 .information-first{
     display: flex;

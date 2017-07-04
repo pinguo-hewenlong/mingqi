@@ -1,22 +1,16 @@
 window.onload=function(){
-	   $(".select label").click(function() {
-    $(this).siblings("span").addClass("active");
-    $(this).parent().siblings("div").find("span").removeClass("active");
-});
     //获取屏幕高度
     var screenHeight=$(document).height();
     $(".section").css("height",screenHeight);
     console.log(screenHeight);
     $(".information-Box").css("height",screenHeight*0.8)
-    
-    //
 }
-//调用接口发送信息给后台设置个人信息
-$('#next').click(function(){
+//调用接口发送信息给后台设置工作经历
+$('#next1').click(function(){
 	//声明要传递给服务器的json数据
-	var postData = $('#personal-information').serialize();
+	var postData = $('#setperson-express').serialize();
 	//AjaxPost方法传递数据
-	AjaxPost('index.php/puser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
+	AjaxPost('index.php/puser/profile/setwork',postData,succCallback,errorCallback,"post","json");
 })
 //添加信息成功后执行的方法
 function succCallback(date){
@@ -28,7 +22,7 @@ function succCallback(date){
 //		})
 		//三秒后跳转下一个页面
   	setTimeout(function(){
-			location.href='Educational.html'
+			location.href='person-express.html'
 		},1000);
 		
 		//console.log(333333);

@@ -1,5 +1,64 @@
 $("#jod-editor").click(function(){
 	$("#job-practice").toggleClass("job-practice")
+});
+$("#quxiao").click(function(){
+	$("#job-practice").toggleClass("job-practice")
+})
+$("#editor").click(function(){
+	$("#job-practice-bianji").toggleClass("job-practice")
+});
+$("#e-qixiao").click(function(){
+	$("#job-practice-bianji").toggleClass("job-practice")
+})
+$("#edu-editor").click(function(){
+	$("#geteducational").toggleClass("job-practice")
+})
+$("#edu-quxiao").click(function(){
+	$("#geteducational").toggleClass("job-practice")
+})
+$("#edu-tainjia").click(function(){
+	$("#geteducational2").toggleClass("job-practice")
+})
+$("#edu-quxiao2").click(function(){
+	$("#geteducational2").toggleClass("job-practice")
+})
+$("#ping-editor").click(function(){
+	$("#pingjia").toggleClass("job-practice")
+})
+$("#edu-quxiao3").click(function(){
+	$("#pingjia").toggleClass("job-practice")
+})
+$("#skill-editor").click(function(){
+	$("#tinajia-skill").toggleClass("tinajia-skill")
+})
+$("#edu-quxiao4").click(function(){
+	$("#tinajia-skill").toggleClass("tinajia-skill")
+})
+//添加技能
+$("#baocun-skill").click(function(){
+	let a=document.getElementById("input-text").value;
+	let b=document.getElementById("Mastery-select").value;
+	console.log(a)
+	if(a != 0){
+		if(b == 0){
+           $(".progress-bar").addClass("progress-bar1")
+		}else if(b == 1){
+			 $(".progress-bar").addClass("progress-bar2")
+		}else if(b == 2){
+			 $(".progress-bar").addClass("progress-bar3")
+		}else if(b == 3){
+			 $(".progress-bar").addClass("progress-bar4")
+		}
+      $("#skill-box").append('<h3 class="progress-title">'+$("#input-text").val() +'</h3>'+
+	  '<div class="progress">' +
+	     '<div class="progress-bar" style=" background:#7ad396;">'+
+	           '<div class="progress-value">'+ $("#Mastery-select").val()+'</div>'+ 
+	     '</div>'+
+      '</div>')
+	}else{
+		alert("hhh")
+	}
+	
 })
 window.onload = function(){
     
