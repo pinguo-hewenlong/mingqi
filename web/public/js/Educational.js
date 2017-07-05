@@ -60,11 +60,7 @@ function succCallback(date){
 		//三秒后跳转下一个页面
   	setTimeout(function(){
 			location.href='person-express.html'
-		},1000);
-		
-		//console.log(333333);
-		
-		
+		},1000);	
 	}
 //添加信息过程出现错误后执行的方法
 function errorCallback(date){

@@ -742,12 +742,21 @@ class Profile extends Base
 		}
 		//期望薪资
 		if(input('?post.salary'))
+<<<<<<< HEAD
 		{
 		$data['salary'] 		= trim(request()->post('salary'));
 		}
 		//期望工作城市
 		if(input('post.city'))
 		{
+=======
+		{
+		$data['salary'] 		= trim(request()->post('salary'));
+		}
+		//期望工作城市
+		if(input('post.city'))
+		{
+>>>>>>> e166fa1525eba62e4a508a9127239eb83c29f917
 		$data['city'] 			= trim(request()->post('city'));
 		}
 		}
