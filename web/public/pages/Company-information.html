@@ -7,39 +7,13 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/in-base.css">
     <link rel="stylesheet" href="../css/resume.css">
     <link rel="stylesheet" href="../css/C-information.css">
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=F77ea56a60ea0879e940c6c787fa0f6e"></script>
 </head>
 <body>
-             <div class="col-lg-12 col-md-12 col-ms-12 col-xs-12 first-header">
-                      <div class="left-text">
-                          <i class="iconfont phone">&#xe6d1;</i>
-                          <span class="app"><a href="">名企APP</a></span>
-                          <span class="come-into"><a href="">进入企业版</a></span>
-                      </div>
-                      <div class="right-text">
-                             <span class="little-text"><a href="">消息</a></span>
-                             <span class="little-text"><a href="">我的简历</a></span>
-                             <span class="little-text"><a href="">投递箱</a></span>
-                             <span class="little-text"><a href="">收藏夹</a></span>
-                      </div>
-             </div>
-             <div class="col-lg-12 col-md-12 col-ms-12 col-xs-12 second-header">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 second-header-box">
-                        <div class="header-logo">
-                            <img src="../images/enroll/logo.png" alt="">
-                        </div>
-                        <div>
-                            <span class="header-nav"><a href="" style="color:#119ec7">首页</a></span>
-                            <span class="header-nav"><a href="">公司</a></span>
-                            <span class="header-nav"><a href="">职位</a></span>
-                            <span class="header-nav"><a href="">优单</a></span>
-                            <span class="header-nav"><a href="">社区</a></span>
-                            <span class="header-nav"><a href="">测评</a></span>
-                       </div>
-                    </div> 
-             </div>
+             <div id="header"></div>
              <div class="col-lg-12 col-md-12 col-ms-12 col-xs-12">
                  <div class="master col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3">
                        <div class="large-box col-lg-8 col-md-8">
@@ -49,9 +23,28 @@
                                       <p>有趣有爱做教育，打造英语大杀器</p>
                                       <div class="foush">
                                           <div><i class="iconfont head-icon">&#xe683;</i> &nbsp;移动互联网</div>
-                                          <div><i class="iconfont head-icon">&#xe721;</i> &nbsp;成长型（A轮）</div>
-                                          <div><i class="iconfont head-icon">&#xe69f;</i> &nbsp;50-150人</div>
-                                          <div><i class="iconfont head-icon">&#xe884;</i> &nbsp;高新区</div> 
+                                          <div>
+                                              <i class="iconfont head-icon">&#xe721;</i>
+                                               <select name="" id="">
+                                                   <option value="0">不需要融资</option>
+                                                   <option value="1">初创型（未融资）</option>
+                                                   <option value="2">成长型（A轮）</option>
+                                                   <option value="3">成长型（B轮）</option>
+                                                   <option value="4">成熟型（C轮）</option>
+                                                   <option value="5">已上市</option>
+                                               </select>
+                                            </div>
+                                          <div>
+                                              <i class="iconfont head-icon">&#xe69f;</i>
+                                              <select name="" id="">
+                                                  <option value="0">20人以下</option>
+                                                  <option value="1">20-50人</option>
+                                                  <option value="2">50-150人</option>
+                                                  <option value="3">150-500人</option>
+                                                  <option value="4">500人以上</option>
+                                              </select>
+                                           </div>
+                                          <div><i class="iconfont head-icon">&#xe884;</i> 成都</div> 
                                       </div>
                                 </div>
                                 <div class="basic-information">
@@ -60,7 +53,7 @@
                                             <div class="cirlic"></div>
                                             <span>基本信息</span>
                                          </div>
-                                         <span><i class="iconfont little-icon">&#xe617;</i>编辑</span>
+                                         <span class="bianji1"><i class="iconfont little-icon">&#xe617;</i>编辑</span>
                                     </div>
                                     <div class="passages">
                                             <p>
@@ -69,6 +62,17 @@
                                                 /主要是ue维护图标字体的时候，偷了一点小懒，“Font Class 前缀”“”Font Family没有修改使用了默认，所以，当同一个页面引用多个“Font Class 前缀”“”Font Family“没有修改使用默认的css时，浏览器会认为是引用的同一套字体，所以也就错乱了。
                                             </p>
                                     </div>
+                                    <!--基本信息编辑框-->
+                                    <div id="bianji-information" class="bianji-information">
+                                        <form action="" name="myform">
+                                            <textarea  name="mytextarea"  placeholder="请输入50字简单介绍下公司吧"  wrap="virtual" onkeypress="return(this.value.length<50)" onkeydown="textlen(this,50)" onkeyup="textlen(this,50)" onblur="maxtext(this,50)"></textarea>
+                                        </form>
+                                         <div class="modal-footer" id="modal-footer">
+                                                    <button type="button" class="btn quxiao" data-dismiss="modal" id="quxiao" >取消</button>
+                                                    <button type="button" class="btn baocun">保存</button>
+                                          </div>
+                                    </div>
+                                    
                                 </div>
                                 <div class="basic-information">
                                     <div class="information-first">
@@ -76,7 +80,7 @@
                                             <div class="cirlic"></div>
                                             <span>发展历程</span>
                                          </div>
-                                         <span><i class="iconfont little-icon">&#xe617;</i>编辑</span>
+                                         <span class="bianji2"><i class="iconfont little-icon">&#xe617;</i>编辑</span>
                                     </div>
                                     <div class="passages">
                                             <div class="first-passages">
@@ -87,6 +91,7 @@
                                                         <div>融资机构：中国文化产业投资基金</div>
                                                     </div>
                                             </div>
+                                           <div class="delete">删除</div>
                                     </div>
                                     <div class="passages">
                                             <div class="first-passages">
@@ -97,8 +102,33 @@
                                                         <div>融资机构：中国文化产业投资基金</div>
                                                     </div>
                                             </div>
+                                            <div class="delete">删除</div>
                                     </div>
-                                    <div class="fp-add"><i class="iconfont little-icon">&#xf0037;</i>添加</div>
+                                    <div class="fp-add"><i class="iconfont little-icon">&#xe60a;</i>添加</div>
+                                    <!--发展历程编辑框-->
+                                    <div class="bianji-information" id="boianji-herstory">
+                                        <form action="" name="myform">
+                                            <div class="information phone"><input type="text" name="" id="event-time" placeholder="时间"></div>
+                                            <div class="information phone"><input type="text" name="" id="event-time" placeholder="标题"></div>
+                                            <textarea name="title" id="mytextarea" placeholder="请输入50字简单说下公司的历程吧"  wrap="virtual" onkeypress="return(this.value.length<50)" onkeydown="textlen(this,50)" onkeyup="textlen(this,50)" onblur="maxtext(this,50)"></textarea>
+                                        </form>
+                                        <div class="modal-footer" id="modal-footer">
+                                                    <button type="button" class="btn quxiao" data-dismiss="modal" id="quxiao2">取消</button>
+                                                    <button type="button" class="btn baocun">保存</button>
+                                        </div>
+                                    </div>
+                                    <!--发展历程添加框-->
+                                    <div class="" id="tianjia-herstory">
+                                        <form action="" name="myform">
+                                            <div class="information phone"><input type="text" name="" id="event-time" placeholder="时间"></div>
+                                            <div class="information phone"><input type="text" name="" id="event-time" placeholder="标题"></div>
+                                            <textarea name="title"  placeholder="请输入50字简单说下公司的历程吧"  wrap="virtual" onkeypress="return(this.value.length<50)" onkeydown="textlen(this,50)" onkeyup="textlen(this,50)" onblur="maxtext(this,50)"></textarea>
+                                        </form>
+                                        <div class="modal-footer" id="modal-footer">
+                                                    <button type="button" class="btn quxiao" data-dismiss="modal" >取消</button>
+                                                    <button type="button" class="btn baocun">保存</button>
+                                        </div>
+                                    </div>
                                 </div>
                                  <div class="basic-information">
                                     <div class="information-first">
@@ -183,20 +213,7 @@
                      </div>
                  </div>
              </div> 
-             <div class="col-lg-12 col-md-12 col-ms-12 col-xs-12 footer">
-                  <div class="first-text">
-                      <spn><a href="">名企微博</a></spn>
-                      <spn><a href="">名企微信</a></spn>
-                      <spn><a href="">帮助中心</a></spn>
-                      <spn><a href="">联系我们</a></spn>
-                      <spn><a href="">招聘解决方案</a></spn>
-                      <spn>服务热线 ： 4006-2828-35（9:00-18:00）</spn>
-                  </div>
-                  <div class="second-text">
-                     <span>安全联盟</span>
-                     <span>女今年年底开始你v十多年斯诺克说的那么矛盾kv</span>
-                  </div>
-             </div>          
+             <div id="footer"></div>          
         <script src="../js/jquery-1.11.0.min.js"></script>
         <script src="../js/bootstrap.js"></script>
         <script src="../js/C-information.js"></script>

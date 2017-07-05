@@ -1,5 +1,7 @@
 //创建初始地图完毕
 window.onload=function (){
+    $("#header").load("header.html");
+    $("#footer").load("footer.html");
     var options={
         enableHighAccuracy:true, //是否允许高精度
         maximumAge:1000  //接受新点位的时间
@@ -13,7 +15,34 @@ window.onload=function (){
         //浏览器不支持geolocation
     }
 }
-
+// textarea输入字数判断
+function textlen(x,y){ 
+            var thelength = x.value.length; 
+            window.status=thelength+' of '+y+' maximum characters.'; 
+} 
+function maxtext(x,y){ 
+          tempstr = x.value 
+          if(tempstr.length>y){ 
+                x.value = tempstr.substring(0,y); 
+          } 
+          textlen(x,y); 
+}
+$(".bianji1").click(function(){
+    $("#bianji-information").toggleClass("bianji-information")
+})
+$("#quxiao").click(function(){
+    $("#bianji-information").toggleClass("bianji-information")
+})
+$(".delete").click(function(){
+	//    console.log(11111);
+      $(this).parent().remove()
+})
+$(".bianji2").click(function(){
+    $("#boianji-herstory").toggleClass("bianji-information")
+})
+$("#quxiao2").click(function(){
+    $("#boianji-herstory").toggleClass("bianji-information")
+})
 //成功时
 function onSuccess(position){
     //使用百度地图API
