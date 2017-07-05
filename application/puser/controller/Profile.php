@@ -11,7 +11,7 @@ class Profile extends Base
 	{
 		parent::__construct();
 		$this->data['uid'] = session('UID');
-		$this->data['uid']	=	'7';
+		//$this->data['uid']	=	'7';
 	}
 	public function index()	
 	{
