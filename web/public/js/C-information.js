@@ -43,6 +43,12 @@ $(".bianji2").click(function(){
 $("#quxiao2").click(function(){
     $("#boianji-herstory").toggleClass("bianji-information")
 })
+$(".fp-add").click(function(){
+    $("#tianjia-herstory").toggleClass("bianji-information")
+})
+$("#guanbi-tianjia-herstory").click(function(){
+    $("#tianjia-herstory").toggleClass("bianji-information")
+})
 //成功时
 function onSuccess(position){
     //使用百度地图API
