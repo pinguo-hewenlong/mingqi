@@ -14,8 +14,9 @@ $('#thumburl').click(function(){
     var postData = $('#fromthumburl').serialize();
     AjaxPost('index.php/file/upload/upsingle',postData,filesuccCallback,fileerrorCallback,"post","json");
     function filesuccCallback(date){
-        console.log(date);
-    }
+        var postdata="";
+
+}
 //添加信息过程出现错误后执行的方法
     function fileerrorCallback(date){
 
