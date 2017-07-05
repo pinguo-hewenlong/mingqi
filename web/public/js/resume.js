@@ -253,7 +253,7 @@ window.onload=function(){
 //添加工作经历
 $('#jod-editor').click(function()
 {
-var edu	=	AjaxPost('index.php/puser/profile/getwork',postData,succCallbackwork,errorCallback,"post","json");
+$("#job-practice").toggleClass("job-practice")
 })
 //出生年月计算如今年纪的计算方法
 var agefun=function  (birth) 
