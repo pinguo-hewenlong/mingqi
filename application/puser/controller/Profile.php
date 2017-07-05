@@ -209,7 +209,7 @@ class Profile extends Base
 
 		}
 		
-				
+		//return json($data);
 		//调用验证器:Puser\valisate\index
 		$validateResult = $this->validate($data,'Info');
 		//输出错误信息
@@ -268,7 +268,7 @@ class Profile extends Base
 		}
 		if(input('?post.begintime'))
 		{
-		$data['begintime'] 		= strtorime(trim(request()->post('begintime')));
+		$data['begintime'] 		= strtotime(trim(request()->post('begintime')));
 		}
 		//毕业时间
 		if(input('?post.endtime'))
@@ -287,7 +287,7 @@ class Profile extends Base
 		}
 		}
 		
-		
+		//return $data;
 		$validateResult = $this->validate($data,'Edu');
 		//输出错误信息
 		if(true !== $validateResult)

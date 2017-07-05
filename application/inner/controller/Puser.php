@@ -92,15 +92,17 @@ class Puser extends Base
 		{
 		$data['birth'] 			=  request()->post('birth');
 		}		
-		
+
+		//return json($dbData);
 		//判断该用户个人信息是否存在
 		$request = db('puser_info')->where($dbData)->find();
 		//如果不存在就插入,如果存在就添加
 		if(!$request)
 		{
-			$request	=	db('puser_info')->insert($data);
-			
-			if($request !== 1)
+			//return json($data);
+			$request2	=	db('puser_info')->insert($data);
+
+			if($request2 !== 1)
 			{
 				$return['status'] = 0;
 				$return['message'] = '添加个人信息失败';
