@@ -58,6 +58,7 @@ class Upload extends Controller
     if($info){
     	$return['status']	=	1;
     	$return['url']		=	$info->getSaveName();
+		$return['url']      =   str_replace($$return['url'],'\\','\/'); 
     	$return['message']	=	'上传成功';
 		return json($return);    	
     }else{
