@@ -76,12 +76,43 @@
 }                                                                                               
 .foush {
     /*border: 1px solid red;*/
-    width: 65%;
-    display: flex;
-    justify-content: space-between;
+    width: 70%;
+    
+}
+#modal-footer{
+  border-top:none;
+ text-align: center;
+}
+textarea {
+     overflow: hidden; 
+    width: 80%;
+    margin: 20px 0 0 10%;
+    margin-left: 10%;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+#mytextarea{
+    margin-left: 10%;
+    margin-top: 20px;
+}
+.bianji-information{
+    display: none
+}
+.bianji1:hover{
+ color: #7cd296;
+ cursor: pointer
+}
+.bianji2:hover{
+ color: #7cd296;
+ cursor: pointer
+}
+.delete {
+    color: #7cd296;
+    /* border: 1px solid red; */
+    margin: 0% 0 0 90%;
 }
 .foush>div {
-    margin-left: 5px;
+    /*margin-left: 5px;*/
     font-size: 12px;
     float: left;
 }
@@ -180,9 +211,8 @@
 @media screen and (min-width:1600px){
   .foush {
     /*border: 1px solid red;*/
-    width: 70%;
-    display: flex;
-    justify-content: space-between;
+    width: 75%;
+    
   }
 }
 @media screen and (max-width:1440px){

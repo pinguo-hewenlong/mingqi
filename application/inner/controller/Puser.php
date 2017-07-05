@@ -13,6 +13,18 @@ class Puser extends Base
 		parent::__construct();
 		
 	}
+	
+	/*
+	 * 定义内部处理函数
+	 */	
+	
+	//处理设置返回信息,第二版添加
+	private function setReturn()
+	{		
+		
+	}
+	
+	
 	//处理信息:获取个人相关信息
 	public function getFromDb()
 	{
@@ -25,6 +37,8 @@ class Puser extends Base
 		return json($result);
 
 	}
+	
+	
 	//设置个人基本信息
 	public function setInfo()
 	{
@@ -126,9 +140,6 @@ class Puser extends Base
 		$dbData	=	array();		
 		//获取数据
 		$data['uid']	=	request()->post('uid');
-		
-		//测试数据
-		$data['uid']	=	'7';
 
 		$dbData['uid']	=	$data['uid'];		
 		
@@ -158,9 +169,9 @@ class Puser extends Base
 		}
 		
 		//判断是更新还是添加
-		$data['record']	=	'本科';
 		if(input('?post.update'))
 		{
+			$dbData['id']				= request()->post('id');
 			//更新教育信息
 			$request	=	db('puser_edu')->where($dbData)->update($data);
 			if($request !== 1)
@@ -206,32 +217,79 @@ class Puser extends Base
 	public function setProject()
 	{
 		//初始化变量
-		$preDbData = array();
-		$dbData = array();
-		$return = array();
+		$data	=	array();
+		$dbData	=	array();		
+		//获取数据
+		$data['uid']	=	request()->post('uid');
+
+		$dbData['uid']	=	$data['uid'];
 
 
-		$dbData['uid'] = $_POST['uid'];
-		$dbData['proname'] = $_POST['proname'];
-		$dbData['begintime'] = $_POST['begintime'];
-		$dbData['endtime'] = $_POST['endtime'];
-		$dbData['yourworks'] = $_POST['yourworks'];
-		$dbData['description'] = $_POST['description'];
-
-		$result = Db::table('mq_puser_project')->insert($dbData);
-		//dump($result);
-		//return json($dbData);
-		if($result !== 1)
+		//公司
+		if(input('?post.proname'))
 		{
-			$return['status'] = 0;
-			$return['message'] = '项目经历添加失败';
-			return json($return);
+		$data['proname'] 		= request()->post('proname');
+		}
+		//开始时间
+		if(input('?post.begintime'))
+		{
+		$data['begintime'] 		= request()->post('begintime');
+		}
+		//结束时间
+		if(input('?post.endtime'))
+		{
+		$data['endtime'] 		= request()->post('endtime');
+		}
+		//你负责的部分
+		if(input('?post.yourworks'))
+		{
+		$data['yourworks'] 		= request()->post('yourworks');
+		}
+		//更多描述
+		if(input('?post.description'))
+		{
+		$data['description'] 	= request()->post('description');
+		}
+
+		//判断是更新还是添加
+		if(input('?post.update'))
+		{
+			$dbData['id']				= request()->post('id');
+			//更新教育信息
+			$request	=	db('puser_project')->where($dbData)->update($data);
+			if($request !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '项目经历更新失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '项目经历更新成功';
+				return json($return);
+			}			
+			
+			
 		}
 		else
 		{
-			$return['status'] = 1;
-			$return['message'] = '项目经历添加成功';
-			return json($return);
+			//添加教育信息
+			$result = db('puser_project')->insert($data);
+		
+			if($result !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '项目经历添加失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '项目经历添加成功';
+				return json($return);
+			}			
+			
 		}
 
 	}
@@ -240,32 +298,78 @@ class Puser extends Base
 	public function setWork()
 	{
 		//初始化变量
-		$preDbData = array();
-		$dbData = array();
-		$return = array();
+		$data	=	array();
+		$dbData	=	array();		
+		//获取数据
+		$data['uid']	=	request()->post('uid');
+
+		$dbData['uid']	=	$data['uid'];
 
 
-		$dbData['uid'] = $_POST['uid'];
-		$dbData['company'] = $_POST['company'];
-		$dbData['begintime'] = $_POST['begintime'];
-		$dbData['endtime'] = $_POST['endtime'];
-		$dbData['position'] = $_POST['position'];
-		$dbData['description'] = $_POST['description'];
-
-		$result = Db::table('mq_puser_work')->insert($dbData);
-		//dump($result);
-		//return json($dbData);
-		if($result !== 1)
+		//公司名称
+		if(input('?post.company'))
 		{
-			$return['status'] = 0;
-			$return['message'] = '工作经历添加失败';
-			return json($return);
+		$data['company'] 		= request()->post('company');
+		}
+		//开始时间
+		if(input('post.begintime'))
+		{
+		$data['begintime'] 		= request()->post('begintime');
+		}
+		//结束时间
+		if(input('?post.endtime'))
+		{
+		$data['endtime'] 		= request()->post('endtime');
+		}
+		//职位
+		if(input('?post.position'))
+		{	
+		$data['position'] 		= request()->post('position');
+		}
+		if(input('?post.description'))
+		{
+		$data['description'] 	= request()->post('description');
+		}
+
+		//判断是更新还是添加
+		if(input('?post.update'))
+		{
+			$dbData['id']				= request()->post('id');
+			//更新教育信息
+			$request	=	db('puser_work')->where($dbData)->update($data);
+			if($request !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '工作经历更新失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '工作经历更新成功';
+				return json($return);
+			}			
+			
+			
 		}
 		else
 		{
-			$return['status'] = 1;
-			$return['message'] = '工作经历添加成功';
-			return json($return);
+			//添加教育信息
+			$result = db('puser_work')->insert($data);
+		
+			if($result !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '工作经历添加失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '工作经历添加成功';
+				return json($return);
+			}			
+			
 		}
 
 	}
@@ -274,62 +378,139 @@ class Puser extends Base
 	public function setTrain()
 	{
 		//初始化变量
-		$preDbData = array();
-		$dbData = array();
-		$return = array();
+		$data	=	array();
+		$dbData	=	array();		
+		//获取数据
+		$data['uid']	=	request()->post('uid');
+
+		$dbData['uid']	=	$data['uid'];
 
 
-		$dbData['uid'] = $_POST['uid'];
-		$dbData['school'] = $_POST['school'];
-		$dbData['begintime'] = $_POST['begintime'];
-		$dbData['endtime'] = $_POST['endtime'];
-		$dbData['skills'] = $_POST['skills'];
-		$dbData['description'] = $_POST['description'];
-
-		$result = Db::table('mq_puser_train')->insert($dbData);
-		//dump($result);
-		//return json($dbData);
-		if($result !== 1)
+		//培训机构
+		if(input('?post.school'))
 		{
-			$return['status'] = 0;
-			$return['message'] = '培训经历添加失败';
-			return json($return);
+		$data['school'] 		= request()->post('school');
+		}
+		//开始时间
+		if(input('?post.begintime'))
+		{
+		$data['begintime'] 		= request()->post('begintime');
+		}
+		//结束时间
+		if(input('?post.endtime'))
+		{
+		$data['endtime'] 		= request()->post('endtime');
+		}
+		//培训技能
+		if(input('?post.skills'))
+		{
+		$data['skills'] 		= request()->post('skills');
+		}
+		//更多描述
+		if(input('post.description'))
+		{
+		$data['description'] 	= request()->post('description');
+		}
+
+		//判断是更新还是添加
+		if(input('?post.update'))
+		{
+			$dbData['id']				= request()->post('id');
+			//更新教育信息
+			$request	=	db('puser_train')->where($dbData)->update($data);
+			if($request !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '培训经历更新失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '培训经历更新成功';
+				return json($return);
+			}			
+			
+			
 		}
 		else
 		{
-			$return['status'] = 1;
-			$return['message'] = '培训经历添加成功';
-			return json($return);
+			//添加教育信息
+			$result = db('puser_train')->insert($data);
+		
+			if($result !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '培训经历添加失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '培训经历添加成功';
+				return json($return);
+			}			
+			
 		}
 
 	}
 
 	//添加个人描述
-		public function setDesc()
+	public function setDesc()
 	{
 		//初始化变量
-		$preDbData = array();
-		$dbData = array();
-		$return = array();
+		$data	=	array();
+		$dbData	=	array();		
+		//获取数据
+		$data['uid']	=	request()->post('uid');
+
+		$dbData['uid']	=	$data['uid'];
 
 
-		$dbData['uid'] = $_POST['uid'];
-		$dbData['Desc'] = $_POST['Desc'];
-
-		$result = Db::table('mq_puser_desc')->insert($dbData);
-		//dump($result);
-		//return json($dbData);
-		if($result !== 1)
+		//自我评价
+		if(input('?post.self'))
 		{
-			$return['status'] = 0;
-			$return['message'] = '个人描述添加失败';
-			return json($return);
+		$data['self'] 		= 	request()->post('self');
+		}
+
+		//判断是更新还是添加
+		if(input('?post.update'))
+		{
+			//更新教育信息
+			$request	=	db('puser_desc')->where($dbData)->update($data);
+			if($request !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '自我评价更新失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '自我评价更新成功';
+				return json($return);
+			}			
+			
+			
 		}
 		else
 		{
-			$return['status'] = 1;
-			$return['message'] = '个人描述添加成功';
-			return json($return);
+			//添加教育信息
+			$result = db('puser_desc')->insert($data);
+		
+			if($result !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '自我评价添加失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '自我评价添加成功';
+				return json($return);
+			}			
+			
 		}
 
 	}
@@ -338,31 +519,74 @@ class Puser extends Base
 	public function setSkills()
 	{
 		//初始化变量
-		$preDbData = array();
-		$dbData = array();
-		$return = array();
+		$data	=	array();
+		$dbData	=	array();		
+		//获取数据
+		$data['uid']	=	request()->post('uid');
+
+		$dbData['uid']	=	$data['uid'];
 
 
-		$dbData['uid'] = $_POST['uid'];
-		$dbData['pname'] = $_POST['pname'];
-		//$dbData['description'] = $_POST['description'];
-		//$dbData['monthstime'] = $_POST['monthstime'];
-		$dbData['mastery'] = $_POST['mastery'];
-
-		$result = Db::table('mq_puser_skills')->insert($dbData);
-		//dump($result);
-		//return json($dbData);
-		if($result !== 1)
+		//技能名称
+		if(input('?post.pname'))
 		{
-			$return['status'] = 0;
-			$return['message'] = '技能添加失败';
-			return json($return);
+		$data['pname'] 			= request()->post('pname');
+		}
+		//技能描述
+		if(input('?post.descrption'))
+		{
+		$data['description'] 	= request()->post('description');
+		}
+		//使用时间
+		if(input('?post.monthstime'))
+		{
+		$data['monthstime'] 	= request()->post('monthstime');
+		}
+		//熟练度
+		if(input('?post.mastery'))
+		{
+		$data['mastery'] 		= request()->post('mastery');
+		}
+
+		//判断是更新还是添加
+		if(input('?post.update'))
+		{
+			$dbData['id']				= request()->post('id');
+			//更新教育信息
+			$request	=	db('puser_skills')->where($dbData)->update($data);
+			if($request !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '技能评价更新失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '技能评价更新成功';
+				return json($return);
+			}			
+			
+			
 		}
 		else
 		{
-			$return['status'] = 1;
-			$return['message'] = '技能添加成功';
-			return json($return);
+			//添加教育信息
+			$result = db('puser_skills')->insert($data);
+		
+			if($result !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '技能评价添加失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '技能评价添加成功';
+				return json($return);
+			}			
+			
 		}
 
 	}
@@ -371,31 +595,73 @@ class Puser extends Base
 	public function setExpectwork()
 	{
 		//初始化变量
-		$preDbData = array();
-		$dbData = array();
-		$return = array();
+		$data	=	array();
+		$dbData	=	array();		
+		//获取数据
+		$data['uid']	=	request()->post('uid');
+
+		$dbData['uid']	=	$data['uid'];
 
 
-		$dbData['uid'] = $_POST['uid'];
-		$dbData['pname'] = $_POST['pname'];
-		$dbData['description'] = $_POST['description'];
-		$dbData['salary'] = $_POST['salary'];
-		$dbData['city'] = $_POST['city'];
-
-		$result = Db::table('mq_puser_expectwork')->insert($dbData);
-		//dump($result);
-		//return json($dbData);
-		if($result !== 1)
+		if(input('?post.pname'))
+		{	
+		$data['pname'] 			= request()->post('pname');
+		}
+		//职位描述
+		if(input('?post.description'))
 		{
-			$return['status'] = 0;
-			$return['message'] = '期望工作添加失败';
-			return json($return);
+		$data['description'] 	= request()->post('description');
+		}
+		//期望薪资
+		if(input('?post.salary'))
+		{
+		$data['salary'] 		= request()->post('salary');
+		}
+		//期望工作城市
+		if(input('post.city'))
+		{
+		$data['city'] 			= request()->post('city');
+		}
+
+		//判断是更新还是添加
+		if(input('?post.update'))
+		{
+			$dbData['id']				= request()->post('id');
+			//更新教育信息
+			$request	=	db('puser_expectwork')->where($dbData)->update($data);
+			if($request !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '期望工作更新失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '期望工作更新成功';
+				return json($return);
+			}			
+			
+			
 		}
 		else
 		{
-			$return['status'] = 1;
-			$return['message'] = '期望工作添加成功';
-			return json($return);
+			//添加教育信息
+			$result = db('puser_expectwork')->insert($data);
+		
+			if($result !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '期望工作添加失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '期望工作添加成功';
+				return json($return);
+			}			
+			
 		}
 
 	}
@@ -404,30 +670,70 @@ class Puser extends Base
 	public function setProduct()
 	{
 		//初始化变量
-		$preDbData = array();
-		$dbData = array();
-		$return = array();
+		$data	=	array();
+		$dbData	=	array();		
+		//获取数据
+		$data['uid']	=	request()->post('uid');
+
+		$dbData['uid']	=	$data['uid'];
 
 
-		$dbData['uid'] = $_POST['uid'];
-		$dbData['plink'] = $_POST['plink'];
-		$dbData['description'] = $_POST['description'];
-		$dbData['imgurl'] = $_POST['imgurl'];
-		//return json($dbData);
-		$result = Db::table('mq_puser_product')->insert($dbData);
-		//dump($result);
-		//return json($dbData);
-		if($result !== 1)
+		//作品链接
+		if(input('?post.plink'))
 		{
-			$return['status'] = 0;
-			$return['message'] = '个人作品添加失败';
-			return json($return);
+		$data['plink'] 			= request()->post('plink');
+		}
+		//作品描述
+		if(input('?post.description'))
+		{
+		$data['description'] 	= request()->post('description');
+		}
+		//作品url
+		if(input('?post.imgurl'))
+		{
+		$data['imgurl'] 		= request()->post('imgurl');
+		}
+		//return json($data);
+		//判断是更新还是添加
+		if(input('?post.update'))
+		{
+			$dbData['id']				= request()->post('id');
+			//更新个人作品
+			$request	=	db('puser_product')->where($dbData)->update($data);
+			dump($request);
+			if($request !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '个人作品更新失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '个人作品更新成功';
+				return json($return);
+			}			
+			
+			
 		}
 		else
 		{
-			$return['status'] = 1;
-			$return['message'] = '个人作品添加成功';
-			return json($return);
+			//添加教育信息
+			$result = db('puser_product')->insert($data);
+		
+			if($result !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '个人作品添加失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '个人作品添加成功';
+				return json($return);
+			}			
+			
 		}
 
 	}
@@ -437,26 +743,57 @@ class Puser extends Base
 	public function setarrival()
 	{
 		//初始化变量
-		$preDbData = array();
-		$dbData = array();
-		$return = array();
+		$data	=	array();
+		$dbData	=	array();		
+		//获取数据
+		$data['uid']	=	request()->post('uid');
 
+		$dbData['uid']	=	$data['uid'];
 
-		$dbData['uid'] = $_POST['uid'];
-		$dbData['sesc'] = $_POST['sesc'];
-		//dump($result);
-		//return json($dbData);
-		if($result !== 1)
+		if(input('?post.time'))
 		{
-			$return['status'] = 0;
-			$return['message'] = '到岗时间添加失败';
-			return json($return);
+			$data['time'] 		= 	request()->post('time');
+		}
+		//dump($result);
+		//return json($data);
+		//判断是更新还是添加
+		if(input('?post.update'))
+		{
+			//更新教育信息
+			$request	=	db('puser_arrival')->where($dbData)->update($data);
+			if($request !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '到岗时间更新失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '到岗时间更新成功';
+				return json($return);
+			}			
+			
+			
 		}
 		else
 		{
-			$return['status'] = 1;
-			$return['message'] = '到岗时间添加成功';
-			return json($return);
+			//添加教育信息
+			$result = db('puser_arrival')->insert($data);
+		
+			if($result !== 1)
+			{
+				$return['status'] = 0;
+				$return['message'] = '到岗时间添加失败';
+				return json($return);
+			}
+			else
+			{
+				$return['status'] = 1;
+				$return['message'] = '到岗时间添加成功';
+				return json($return);
+			}			
+			
 		}
 
 	}
@@ -506,5 +843,8 @@ class Puser extends Base
 
 
 	}
+	
+	
+	
 
 }
