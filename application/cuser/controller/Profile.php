@@ -53,16 +53,29 @@ class Profile extends Base
 			$data['companyname'] = $_POST['companyname'];
 		}
 		//hr邮箱
-
-		$data['hremail'] 		= $_POST['hremail'];
+		if(input('?post.hremail'))
+		{
+			$data['hremail'] = $_POST['hremail'];
+		}
 		//企业logo
-		$data['thumburl'] 		= $_POST['thumburl'];
+		if(input('?post.thubmurl'))
+		{
+			$data['thumburl'] = $_POST['thumburl'];
+		}
 		//企业电话
-		$data['comphone'] 		= $_POST['comphone'];
+		if(input('?post.comphone'))
+		{
+			$data['comphone'] = $_POST['comphone'];
+		}
 		//企业城市代码
-		$data['city'] 			= $_POST['city'];
+		if(input('post.city')) {
+			$data['city'] = $_POST['city'];
+		}
 		//hr姓名
-		$data['hrname'] 		= $_POST['hrname'];
+		if(input('post.hrname'))
+		{
+			$data['hrname'] = $_POST['hrname'];
+		}
 		//hr联系电话
 		$data['hrphone'] 		= $_POST['hrphone'];
 		//企业性质代码

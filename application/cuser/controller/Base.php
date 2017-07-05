@@ -11,12 +11,12 @@ class Base extends Controller
 		if(Session::has('UID') == 1)
 		//用户处于登录状态下的执行代码
 		{
-			echo '登录状态';
+			//echo '登录状态';
 		}
 		//用户处于非登录状态下的执行代码
 		else
 		{
-			$this->error('尚未登录','index.php');		
+			$this->error('尚未登录','http://127.0.0.1');
 		}
 	}
 }
