@@ -6,7 +6,7 @@ use think\Validate;
 class Edu extends Validate
 {
 	protected $rule = [
-		'school'=> 'chsAlpha|length:4,50',
+		'school'=> 'chsAlpha|length:2,50',
 		'begintime' => '\d{9,16}',
 		'endtime' => '\d{9,16}',
 		'major' => 'chs|length:2,50',

@@ -9,6 +9,20 @@ window.onload=function(){
     console.log(screenHeight);
     $(".information-Box").css("height",screenHeight*0.8)
 }
+//头像文件上传
+$('#thumburl').click(function(){
+    var postData = $('#fromthumburl').serialize();
+    AjaxPost('index.php/file/upload/upsingle',postData,filesuccCallback,fileerrorCallback,"post","json");
+    function filesuccCallback(date){
+        var postdata="";
+
+}
+//添加信息过程出现错误后执行的方法
+    function fileerrorCallback(date){
+
+    }
+
+})
 //调用接口发送信息给后台设置个人信息
 $('#next').click(function(){
 	//声明要传递给服务器的json数据
@@ -26,7 +40,7 @@ function succCallback(date){
 //		})
 		//三秒后跳转下一个页面
   	setTimeout(function(){
-			location.href='Educational.html'
+			location.href='personal-Educational.html'
 		},1000);	
 		//console.log(333333);	
 }

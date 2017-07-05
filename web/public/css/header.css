@@ -84,3 +84,14 @@
     color: #119ec7;
     text-decoration: none;
 }
+@media screen and (max-width:800px){
+    .second-header{
+        display: none
+    }
+    .right-text{
+        display: none
+    }
+    .header-xs{
+        display: none
+    }
+}
