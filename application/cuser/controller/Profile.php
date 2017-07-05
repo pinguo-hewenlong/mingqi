@@ -44,12 +44,16 @@ class Profile extends Base
 	//设置企业基本信息
 	public function setInfo()
 	{
-		if(Request::instance()->isPost())
+		if(request()->isPost())
 		{
 		$data['uid'] = $this->data['cuid'];
 		//企业名称
-		$data['companyname'] 	= $_POST['companyname'];
+		if(input('?post.companyname'))
+		{
+			$data['companyname'] = $_POST['companyname'];
+		}
 		//hr邮箱
+
 		$data['hremail'] 		= $_POST['hremail'];
 		//企业logo
 		$data['thumburl'] 		= $_POST['thumburl'];
