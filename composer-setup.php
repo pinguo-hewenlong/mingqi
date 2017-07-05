@@ -24,7 +24,7 @@ function process($argv)
         displayHelp();
         exit(0);
     }
-
+``
     $check      = in_array('--check', $argv);
     $help       = in_array('--help', $argv);
     $force      = in_array('--force', $argv);

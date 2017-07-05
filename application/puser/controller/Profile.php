@@ -266,25 +266,43 @@ class Profile extends Base
 	//设置项目经历
 	public function setProject()
 	{
+		$data	=	array();
 		//判断是修改还是添加		
 		if(input('?get.update'))
 		{
 			$data['update']		=	request()->get('update');
 		}
 				
-		if(Request::instance()->isPost())
+		if(request()->isPost())
 		{
 		$data['uid'] 			= $this->data['puid'];
-		$data['proname'] 		= $_POST['proname'];
-		$data['begintime'] 		= $_POST['begintime'];
-		$data['endtime'] 		= $_POST['endtime'];
-		$data['yourworks'] 		= $_POST['yourworks'];
-		$data['description'] 	= $_POST['description'];
-		}
-		else
+		//公司
+		if(input('?post.proname'))
 		{
-			$data = array();
+		$data['proname'] 		= trim(request()->post('proname'));
 		}
+		//开始时间
+		if(input('?post.begintime'))
+		{
+		$data['begintime'] 		= trim(request()->post('begintime'));
+		}
+		//结束时间
+		if(input('?post.endtime'))
+		{
+		$data['endtime'] 		= trim(request()->post('endtime'));
+		}
+		//你负责的部分
+		if(input('?post.yourworks'))
+		{
+		$data['yourworks'] 		= trim(request()->post('yourworks'));
+		}
+		//更多描述
+		if(input('?post.description'))
+		{
+		$data['description'] 	= trim(request()->post('description'));
+		}
+		}
+
 		
 		//return json($data);		
 		//调用验证器:Puser\valisate\index
@@ -294,74 +312,142 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json_decode ($return);	
+			if(request()->isAjax())
+			{	
+			return $return;
+			}
+			else
+			{
+				return json($return);
+			}	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setproject');
 		$return = curlHttp($url,'POST',$data);
-		return json_decode ($return);						
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}						
 	}
 	
 	//工作经历表
 	public function setwork()
 	{
+		$data	=	array();
 		//判断是修改还是添加		
 		if(input('?get.update'))
 		{
 			$data['update']		=	request()->get('update');
 		}
 				
-		if(Request::instance()->isPost())
+		if(request()->isPost())
 		{
 		$data['uid'] 			= $this->data['puid'];
-		$data['company'] 		= $_POST['company'];
-		$data['begintime'] 		= $_POST['begintime'];
-		$data['endtime'] 		= $_POST['endtime'];
-		$data['position'] 		= $_POST['position'];
-		$data['description'] 	= $_POST['description'];
-		}
-		else
+		//公司名称
+		if(input('?post.company'))
 		{
-			$data = array();
+		$data['company'] 		= trim(request()->post('company'));
+		}
+		//开始时间
+		if(input('post.begintime'))
+		{
+		$data['begintime'] 		= strtotime(trim(request()->post('begintime')));
+		}
+		//结束时间
+		if(input('?post.endtime'))
+		{
+		$data['endtime'] 		= strtotime(trim(request()->post('endtime')));
+		}
+		//职位
+		if(input('?post.position'))
+		{	
+		$data['position'] 		= trim(request()->post('position'));
+		}
+		if(input('?post.description'))
+		{
+		$data['description'] 	= trim(request()->post('description'));
+		}
 		}
 		
 		//return json($data);		
-		//调用验证器:Puser\valisate\index
+		//调用验证器:Puser\valisate\work
 		$validateResult = $this->validate($data,'Work');
 		//输出错误信息
 		if(true !== $validateResult)
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json_decode ($return);	
+			if(request()->isAjax())
+			{	
+			return $return;
+			}
+			else
+			{
+				return json($return);
+			}				
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setwork');
 		$return = curlHttp($url,'POST',$data);
-		return json_decode ($return);					
-	}
-		
-			
-		//设置培训经历
-	public function setTrain()
-	{
-		if(Request::instance()->isPost())
-		{
-		$data['uid'] 			= $this->data['puid'];
-		$data['school'] 		= $_POST['school'];
-		$data['begintime'] 		= $_POST['begintime'];
-		$data['endtime'] 		= $_POST['endtime'];
-		$data['skills'] 		= $_POST['skills'];
-		$data['description'] 	= $_POST['description'];
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
 		}
 		else
 		{
-			$data = array();
+			return $return;
+		}							
+	}
+		
+			
+	//设置培训经历
+	public function setTrain()
+	{
+		//定义变量
+		$data	=	array();
+		//判断是修改还是添加		
+		if(input('?get.update'))
+		{
+			$data['update']		=	request()->get('update');
+		}				
+		if(request()->isPost())
+		{
+		$data['uid'] 			= $this->data['puid'];
+		//培训机构
+		if(input('?post.school'))
+		{
+		$data['school'] 		= trim(request()->post('school'));
 		}
+		//开始时间
+		if(input('?post.begintime'))
+		{
+		$data['begintime'] 		= trim(request()->post('begintime'));
+		}
+		//结束时间
+		if(input('?post.endtime'))
+		{
+		$data['endtime'] 		= trim(request()->post('endtime'));
+		}
+		//培训技能
+		if(input('?post.skills'))
+		{
+		$data['skills'] 		= trim(request()->post('skills'));
+		}
+		//更多描述
+		if(input('post.description'))
+		{
+		$data['description'] 	= trim(request()->post('description'));
+		}
+		}
+
 		
 		//return json($data);		
 		//调用验证器:Puser\valisate\index
@@ -371,21 +457,42 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json_decode ($return);	
+			if(request()->isAjax())
+			{	
+			return $return;
+			}
+			else
+			{
+				return json($return);
+			}	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/settrain');
 		$return = curlHttp($url,'POST',$data);
-		return json_decode ($return);					
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}					
 	}
 	
 	
 	//个人描述表
 	public function setdesc()
 	{
-		if(Request::instance()->isPost())
+		//定义变量
+		$data	=	array();
+		//判断是修改还是添加		
+		if(input('?get.update'))
+		{
+			$data['update']		=	request()->get('update');
+		}				
+		if(request()->isPost())
 		{
 		$data['uid'] 			= $this->data['puid'];
 		$data['desc'] 		= $_POST['desc'];
@@ -403,31 +510,64 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json_decode ($return);	
+			if(request()->isAjax())
+			{	
+			return $return;
+			}
+			else
+			{
+				return json($return);
+			}	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setdesc');
 		$return = curlHttp($url,'POST',$data);
-		return json_decode ($return);					
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}					
 	}
 	
 	
 			//设置个人技能
 	public function setSkills()
 	{
-		if(Request::instance()->isPost())
+		//定义变量
+		$data	=	array();
+		//判断是修改还是添加		
+		if(input('?get.update'))
+		{
+			$data['update']		=	request()->get('update');
+		}				
+		if(request()->isPost())
 		{
 		$data['uid'] 			= $this->data['puid'];
-		$data['pname'] 			= $_POST['pname'];
-		//$data['description'] 	= $_POST['description'];
-		//$data['monthstime'] 	= $_POST['monthstime'];
-		$data['mastery'] 		= $_POST['mastery'];
-		}
-		else
+		//技能名称
+		if(input('?post.pname'))
 		{
-			$data = array();
+		$data['pname'] 			= trim(request()->post('pname'));
+		}
+		//技能描述
+		if(input('?post.descrption'))
+		{
+		$data['description'] 	= trim(request()->post('description'));
+		}
+		//使用时间
+		if(input('?post.monthstime'))
+		{
+		$data['monthstime'] 	= trim(request()->post('monthstime'));
+		}
+		//熟练度
+		if(input('?post.mastery'))
+		{
+		$data['mastery'] 		= trim(request()->post('mastery'));
+		}
 		}
 		
 		//return json($data);		
@@ -438,22 +578,46 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json_decode ($return);	
+			if(request()->isAjax())
+			{	
+			return $return;
+			}
+			else
+			{
+				return json($return);
+			}				
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setskills');
 		$return = curlHttp($url,'POST',$data);
-		return json_decode ($return);					
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}					
 	}
 	
-				//设置期望职位
+	//设置期望职位
 	public function setExpectwork()
 	{
-		if(Request::instance()->isPost())
+		//定义变量
+		$data	=	array();
+		//判断是修改还是添加		
+		if(input('?get.update'))
+		{
+			$data['update']		=	request()->get('update');
+		}				
+		if(request()->isPost())
 		{
 		$data['uid'] 			= $this->data['puid'];
+		//职位名称
+		if(input('?post.pname'))
+		{
 		$data['pname'] 			= $_POST['pname'];
 		$data['description'] 	= $_POST['description'];
 		$data['salary'] 		= $_POST['salary'];
@@ -472,20 +636,41 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json_decode ($return);	
+			if(request()->isAjax())
+			{	
+			return $return;
+			}
+			else
+			{
+				return json($return);
+			}	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setexpectwork');
 		$return = curlHttp($url,'POST',$data);
-		return json_decode ($return);	 					
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}	 					
 	}
 	
 	//设置个人作品
 	public function setProduct()
 	{
-		if(Request::instance()->isPost())
+		//定义变量
+		$data	=	array();
+		//判断是修改还是添加		
+		if(input('?get.update'))
+		{
+			$data['update']		=	request()->get('update');
+		}				
+		if(request()->isPost())
 		{
 		$data['uid'] 			= $this->data['puid'];
 		$data['plink'] 			= $_POST['plink'];
@@ -505,14 +690,28 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json_decode ($return);	
+			if(request()->isAjax())
+			{	
+			return $return;
+			}
+			else
+			{
+				return json($return);
+			}	
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setproduct');
 		$return = curlHttp($url,'POST',$data);
-		return json_decode ($return);					
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}					
 	}
 	
 }
