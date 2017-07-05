@@ -22,7 +22,27 @@ body{
    background: url("../images/enroll/background.jpg");
    width: 100%;
 }
-
+.file-box{
+    position: absolute;
+    top: -40%;
+    left: -40%;
+    z-index: 2;
+    width: 150px ;
+    height: 150px ;
+    border-radius:150px ;
+    text-align: center;
+    line-height: 100px;
+    opacity: 0;
+}
+.in-header{
+    position: relative;
+}
+.camera{
+    position: absolute;
+    top:0;
+    left: 20%;
+    z-index: 1;
+}
 .information-Box{
        width: 30%;
        margin-top: 80px ;
@@ -30,8 +50,7 @@ body{
       background: white ;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    border-radius: 10px; 
-    behavior: url(../doc/ie-css3.htc); /* 通知IE浏览器调用脚本作用于'enroll-text'类 */
+    border-radius: 10px;
     text-align: center;
     overflow: hidden;
 }
@@ -43,7 +62,6 @@ body{
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
-    behavior: url(../doc/ie-css3.htc); /* 通知IE浏览器调用脚本作用于'enroll-text'类 */
     text-align: center;
     margin: 30px 0 0 35%;
     text-align: center;
@@ -207,7 +225,6 @@ option{
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    behavior: url(../doc/ie-css3.htc); /* 通知IE浏览器调用脚本作用于'enroll-text'类 */
    
 }
 #next:hover{
@@ -235,7 +252,7 @@ option{
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
-    behavior: url(../doc/ie-css3.htc);
+
     text-align: center;
     margin: 30px 0 0 38%;
 }
@@ -293,7 +310,7 @@ option{
     -webkit-border-radius: 80px;
     -moz-border-radius: 80px;
     border-radius: 80px;
-    behavior: url(../doc/ie-css3.htc); /* 通知IE浏览器调用脚本作用于'enroll-text'类 */
+
     text-align: center;
     margin: 40px 0 0 38%;
    }

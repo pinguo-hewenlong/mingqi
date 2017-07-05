@@ -13,3 +13,24 @@
     border-radius: 5px;
     behavior: url(../doc/ie-css3.htc);
 }
+.file-box{
+   position: absolute;
+    top: -40%;
+    left: -40%;
+    z-index: 2;
+    width: 150px ;
+    height: 150px ;
+    border-radius:150px ;
+    text-align: center;
+    line-height: 100px;
+    opacity: 0;
+}
+.in-header{
+    position: relative;
+}
+.camera{
+    position: absolute;
+    top:0;
+    left: 20%;
+    z-index: 1;
+}

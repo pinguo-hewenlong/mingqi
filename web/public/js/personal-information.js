@@ -9,6 +9,9 @@ window.onload=function(){
     console.log(screenHeight);
     $(".information-Box").css("height",screenHeight*0.8)
 }
+$('#thumburl').click(function(){
+
+})
 //调用接口发送信息给后台设置个人信息
 $('#next').click(function(){
 	//声明要传递给服务器的json数据
@@ -26,7 +29,7 @@ function succCallback(date){
 //		})
 		//三秒后跳转下一个页面
   	setTimeout(function(){
-			location.href='Educational.html'
+			location.href='personal-Educational.html'
 		},1000);	
 		//console.log(333333);	
 }
