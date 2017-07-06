@@ -1,6 +1,4 @@
-// $("#header").load("header.html");
-// $("#footer").load("footer.html");
-//创建初始地图完毕
+
 window.onload=function (){
     var options={
         enableHighAccuracy:true, //是否允许高精度
@@ -14,6 +12,54 @@ window.onload=function (){
     }else{
         //浏览器不支持geolocation
     }
+    var x;
+    var pids;
+     $.ajax({
+         type:'get',
+         url:'http://127.0.0.1/mingqi/index.php/index/index/getPostionView',
+         data:{"poid":'02bf8ead9f4cd51a25593d637d1eba54'},
+         dataType:'json',
+         async : false,
+         success:function(data){
+             $(".job-name").text(data[0].title);
+            $("#salary").text(data[0].salary+'/');
+            $("#city").text(data[0].city+'/');
+            $("#workexp").text(data[0].workexp+'/');
+            $("#eduction").text(data[0].eduction+'/');
+            $("#begintime").text(data[0].begintime+'发布');
+            $(".responsibility-text").text(data[0].content);
+           $("#ask").text(data[0].content);
+           var  y=data[0].uid;
+           x=y;
+        //   console.log(data[0].uid)
+          return y
+         }
+     })
+       var postData2={"uid":x}
+       
+       AjaxPost('index.php/index/index/getinfo',postData2,succCallback,errorCallback,"get","json");
+       function succCallback(data){
+        
+       }
+       function errorCallback(data){
+           $("#companyname").text(data[0].companyname);
+           $("#address").text(data[0].address);
+        //    var pid=data[0].poid;
+        //    pids=pid;
+        //    return pid
+       }
+    $("#Job-Details-title-btn").bind('click',function(){
+    let postData={"poid":"02bf8ead9f4cd51a25593d637d1eba54"};
+    AjaxPost('index.php/puser/resume/send',postData,succCallback,errorCallback,"post","json");
+    function succCallback(data){
+           alert("投递成功")
+    }
+    function errorCallback(data){
+       alert("投递失败")
+    }
+
+})
+  
 }
 
 //成功时
@@ -35,27 +81,7 @@ function onSuccess(position){
     //获取起点和终点的经纬度
     var p1 = new BMap.Point(longitude,latitude);
     var p2 = new BMap.Point(104.08993,30.658331);
-    //规划驾车路线
-
-    // var searchComplete = function (results){
-    //     if (driving.getStatus() != BMAP_STATUS_SUCCESS){
-    //         return ;
-    //     }
-    //     var plan = results.getPlan(0);
-    //     var distance = plan.getDistance(true);
-    //     document.getElementById("distance").innerHTML = distance;
-    // }
-    // var driving =new BMap.DrivingRoute(map, {
-    //     renderOptions: {
-    //         map: map,
-    //     },
-    //     onSearchComplete: searchComplete,
-    // });
-    // //绘制驾车路线
-    // driving.search(p1, p2);
 }
-
-
 //失败时
 function onError(error){
     switch(error.code){

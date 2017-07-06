@@ -71,10 +71,10 @@ class Register extends Controller{
 		$data['regip'] 			= request()->ip();
 		$data['regtime'] 		= time();				
 		//发送到inner
-		// return json($data);		
+		//return json($data);		
 		$url = BASE_URL.url('/inner/sso/register');
 		$return = curlHttp($url,'POST',$data);
-		
+		//return $return;
 		//注册行为结束之后立即删除短信session
 		
 		session('MSGCODE',null);	

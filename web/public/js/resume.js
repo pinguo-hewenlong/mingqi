@@ -1,4 +1,6 @@
+
 window.onload=function(){
+	islogin();
     var postData = '';
     //获取基本信息
     var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
@@ -118,7 +120,82 @@ window.onload=function(){
 	{
 		
 	}
+
+
+
+$("#jod-editor").click(function(){
+	$("#job-practice").toggleClass("job-practice")
+})
+//添加编辑按钮click事件
+$("#jod-editor").click(function(){
+	$("#job-practice").toggleClass("job-practice")
+});
+$("#quxiao").click(function(){
+	$("#job-practice").toggleClass("job-practice")
+});
+$("#editor").click(function(){
+	$("#job-practice-bianji").toggleClass("job-practice")
+});
+$("#e-qixiao").click(function(){
+	$("#job-practice-bianji").toggleClass("job-practice")
+});
+$("#edu-editor").click(function(){
+	$("#geteducational").toggleClass("job-practice")
+});
+$("#edu-quxiao").click(function(){
+	$("#geteducational").toggleClass("job-practice")
+});
+$("#edu-tainjia").click(function(){
+	$("#geteducational2").toggleClass("job-practice")
+});
+$("#edu-quxiao2").click(function(){
+	$("#geteducational2").toggleClass("job-practice")
+});
+$("#ping-editor").click(function(){
+	$("#pingjia").toggleClass("job-practice")
+
+})
+$("#edu-quxiao3").click(function(){
+	$("#pingjia").toggleClass("job-practice")
+})
+$("#skill-editor").click(function(){
+	$("#tinajia-skill").toggleClass("tinajia-skill")
+})
+$("#edu-quxiao4").click(function(){
+	$("#tinajia-skill").toggleClass("tinajia-skill")
+})
+//添加技能
+$("#baocun-skill").click(function(){
+	let a=document.getElementById("input-text").value;
+	let b=document.getElementById("Mastery-select").value;
+	let options=$("#Mastery-select option:selected");
+	// console.log(options.text())
+	// let texts=options.innerHTML();
+	// console.log(a)
+	if(a != 0){
+      $("#skill-box").append('<div>'+
+	  '<h3 class="progress-title">'+$("#input-text").val() +'</h3>'+
+	  '<div class="progress">' +
+	     '<div class="progress-bar" style="width:'+b+'%; background:#7ad396;">'+
+	           '<div class="progress-value">'+ options.text()+'</div>'+ 
+	     '</div>'+
+      '</div>'+
+	  '<div class="delete-skill">删除</div>'+
+	  '</div>')
+	  $(".delete-skill").click(function(){
+	//    console.log(11111);
+      $(this).parent().remove()
+     })
+	}else{
+		$(".skill-language").append('<span>*</span>')
+	}
 	
+})
+ $(".delete").click(function(){
+	//    console.log(11111);
+      $(this).parent().remove()
+     })
+
 	//获取目前状态
 	
 	var arrival	=	AjaxPost('index.php/puser/profile/getarrival',postData,succCallbackarrival,errorCallbackarrival,"get","json");
@@ -133,6 +210,7 @@ window.onload=function(){
 	}
 }
 //获取信息到此结束啦啦啦！！！
+
 
 
 //出生年月计算如今年纪的计算方法
@@ -213,40 +291,7 @@ function errorCallback(date)
 
 
 
-$("#quxiao").click(function(){
-	$("#job-practice").toggleClass("job-practice")
-});
-$("#editor").click(function(){
-	$("#job-practice-bianji").toggleClass("job-practice")
-});
-$("#e-qixiao").click(function(){
-	$("#job-practice-bianji").toggleClass("job-practice")
-});
-$("#edu-editor").click(function(){
-	$("#geteducational").toggleClass("job-practice")
-});
-$("#edu-quxiao").click(function(){
-	$("#geteducational").toggleClass("job-practice")
-});
-$("#edu-tainjia").click(function(){
-	$("#geteducational2").toggleClass("job-practice")
-});
-$("#edu-quxiao2").click(function(){
-	$("#geteducational2").toggleClass("job-practice")
-});
-$("#ping-editor").click(function(){
-	$("#pingjia").toggleClass("job-practice")
 
-})
-$("#edu-quxiao3").click(function(){
-	$("#pingjia").toggleClass("job-practice")
-})
-$("#skill-editor").click(function(){
-	$("#tinajia-skill").toggleClass("tinajia-skill")
-})
-$("#edu-quxiao4").click(function(){
-	$("#tinajia-skill").toggleClass("tinajia-skill")
-})
 //添加技能
 $("#baocun-skill").click(function(){
 	let a=document.getElementById("input-text").value;
@@ -277,4 +322,4 @@ $("#baocun-skill").click(function(){
  $(".delete").click(function(){
 	//    console.log(11111);
       $(this).parent().remove()
-     })
+    })

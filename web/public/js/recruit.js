@@ -5,3 +5,6 @@ var GG = {
         }
     }
 $("#page").initPage(71,1,GG.kk);
+window.onload=function(){
+    islogin()
+}

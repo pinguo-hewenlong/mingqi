@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-07-05 10:12:40
+-- Generation Time: 2017-07-06 08:36:30
 -- 服务器版本： 5.7.14
 -- PHP Version: 5.6.25
 
@@ -34,16 +34,20 @@ CREATE TABLE `mq_cuser` (
   `regip` varchar(255) NOT NULL COMMENT '企业用户注册ip',
   `logintime` int(16) NOT NULL COMMENT '企业用户最后一次登录的时间',
   `loginip` varchar(255) NOT NULL COMMENT '企业用户最后一次登陆的ip',
-  `isauthentication` tinyint(4) NOT NULL COMMENT '企业是否认证'
+  `isauthentication` tinyint(4) NOT NULL COMMENT '企业是否认证',
+  `gateway` varchar(255) NOT NULL,
+  `prestatus` tinyint(4) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mq_cuser`
 --
 
-INSERT INTO `mq_cuser` (`id`, `username`, `password`, `regtime`, `regip`, `logintime`, `loginip`, `isauthentication`) VALUES
-(1, '13800138000', '1bbd886460827015e5d605ed44252251', 11, '11', 11, '11', 11),
-(2, '13800138001', 'xx023297', 1497684602, '127.0.0.1', 1497684602, '127.0.0.1', 0);
+INSERT INTO `mq_cuser` (`id`, `username`, `password`, `regtime`, `regip`, `logintime`, `loginip`, `isauthentication`, `gateway`, `prestatus`) VALUES
+(1, '13800138000', '1bbd886460827015e5d605ed44252251', 11, '11', 11, '11', 11, '', 0),
+(2, '13800138001', 'xx023297', 1497684602, '127.0.0.1', 1497684602, '127.0.0.1', 0, '', 0),
+(3, '13111111111', '1bbd886460827015e5d605ed44252251', 1499328211, '127.0.0.1', 1499328211, '127.0.0.1', 0, 'mqyc', 0),
+(4, '13222222222', 'bae5e3208a3c700e3db642b6631e95b9', 1499328263, '127.0.0.1', 1499329104, '127.0.0.1', 0, 'mqyc', 0);
 
 -- --------------------------------------------------------
 
@@ -214,7 +218,7 @@ INSERT INTO `mq_puser` (`id`, `gateway`, `username`, `password`, `regtime`, `reg
 (18, 'mqyc', '13438047925', 'xx023297', 1498289189, '127.0.0.1', 1498289189, '127.0.0.1', 0, NULL, NULL, 0),
 (19, 'mqyc', '18582460935', '1bbd886460827015e5d605ed44252251', 1498980135, '127.0.0.1', 1498980135, '127.0.0.1', 0, NULL, NULL, 0),
 (20, 'mqyc', '13438047929', '1bbd886460827015e5d605ed44252251', 1498985200, '127.0.0.1', 1498985200, '127.0.0.1', 0, NULL, NULL, 0),
-(21, 'mqyc', '13888888888', '1bbd886460827015e5d605ed44252251', 1499247473, '127.0.0.1', 1499247480, '127.0.0.1', 0, NULL, NULL, 0);
+(21, 'mqyc', '13888888888', '1bbd886460827015e5d605ed44252251', 1499247473, '127.0.0.1', 1499257975, '127.0.0.1', 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -346,7 +350,8 @@ INSERT INTO `mq_puser_info` (`id`, `uid`, `realname`, `email`, `thumburl`, `educ
 (1, 7, '张死', '29255@qq.com', 'http://static3.photo.sina.com.cn/orignal/4bfc9f47cbe90e6ae56f2', '本科', '成都', '男', 934646400, '13800138006', '从小就是一个不爱吃酸菜的娃'),
 (3, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 4, '张死', '122@asa.cc', NULL, '', '', '男', NULL, '13888888888', NULL);
+(5, 4, '张死', '122@asa.cc', '20170705\\662853873b01e1b8fe5e27239c32183a.png', '', '', '男', NULL, '13888888888', NULL),
+(6, 21, NULL, NULL, '20170705\\4ec1a1236ba65edbdc337b6aa1848b3a.png', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -4186,6 +4191,44 @@ INSERT INTO `mq_sys_eduction` (`id`, `eid`, `evalue`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `mq_sys_elite`
+--
+
+CREATE TABLE `mq_sys_elite` (
+  `id` int(10) NOT NULL,
+  `uid` int(16) DEFAULT NULL COMMENT '绑定个人uid',
+  `sort` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '分类',
+  `sortid` int(10) DEFAULT NULL,
+  `imgurl` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '照片',
+  `realname` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '姓名',
+  `position` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '职位',
+  `description` varchar(1024) CHARACTER SET utf8 DEFAULT NULL COMMENT '职位描述'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='行业精英表';
+
+--
+-- 转存表中的数据 `mq_sys_elite`
+--
+
+INSERT INTO `mq_sys_elite` (`id`, `uid`, `sort`, `sortid`, `imgurl`, `realname`, `position`, `description`) VALUES
+(1, 1, 'ui设计', 1, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(2, 1, 'ui设计', 1, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(3, 1, 'ui设计', 1, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(4, 1, 'web前端', 2, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(5, 1, 'web前端', 2, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(6, 1, 'web前端', 2, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(8, 1, 'php开发', 3, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(9, 1, 'php开发', 3, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(10, 1, 'php开发', 3, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(11, 1, 'java', 4, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(12, 1, 'java', 4, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(13, 1, '通讯服务', 5, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(14, 1, '通讯服务', 5, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(15, 1, '通讯服务', 5, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', ''),
+(17, 1, 'java', 4, 'http://127.0.0.1/mingqi/public/uploads/elite/ma.jpg', '马家威', 'PHP工程师', '');
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `mq_sys_industry`
 --
 
@@ -5574,6 +5617,12 @@ ALTER TABLE `mq_sys_eduction`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mq_sys_elite`
+--
+ALTER TABLE `mq_sys_elite`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `mq_sys_industry`
 --
 ALTER TABLE `mq_sys_industry`
@@ -5623,7 +5672,7 @@ ALTER TABLE `mq_sys_token`
 -- 使用表AUTO_INCREMENT `mq_cuser`
 --
 ALTER TABLE `mq_cuser`
-  MODIFY `id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '企业用户表主键自增', AUTO_INCREMENT=3;
+  MODIFY `id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '企业用户表主键自增', AUTO_INCREMENT=5;
 --
 -- 使用表AUTO_INCREMENT `mq_cuser_info`
 --
@@ -5678,7 +5727,7 @@ ALTER TABLE `mq_puser_expectwork`
 -- 使用表AUTO_INCREMENT `mq_puser_info`
 --
 ALTER TABLE `mq_puser_info`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '个人详细信息表主键自增', AUTO_INCREMENT=6;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '个人详细信息表主键自增', AUTO_INCREMENT=7;
 --
 -- 使用表AUTO_INCREMENT `mq_puser_product`
 --
@@ -5749,6 +5798,11 @@ ALTER TABLE `mq_sys_cities`
 --
 ALTER TABLE `mq_sys_eduction`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键自增', AUTO_INCREMENT=6;
+--
+-- 使用表AUTO_INCREMENT `mq_sys_elite`
+--
+ALTER TABLE `mq_sys_elite`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- 使用表AUTO_INCREMENT `mq_sys_industry`
 --

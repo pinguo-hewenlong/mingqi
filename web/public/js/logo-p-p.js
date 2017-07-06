@@ -21,12 +21,14 @@ $('#btn').click(function(){
 	var postData = $('#logop').serialize();
 	//AjaxPost方法传递数据
 	AjaxPost('index.php/sso/login/loginp',postData,succCallback,errorCallback,"post","json");
+	
 })
 //登录成功后执行的方法
 function succCallback(date){
-		$('.tixoin').css({
-			"display":"block"
-		})
+
+	$('.tixoin').text(date.message)
+	//显示登录成功！
+		
 		//三秒后跳转下一个页面
   	setTimeout(function(){
   		
@@ -37,7 +39,6 @@ function succCallback(date){
   		function succCallback(date){
 			location.href='../index.html'
 		}
-  		//0执行方法去设置小页面
   		function errorCallback(date){
 			location.href='personal-information.html'
 	
@@ -46,6 +47,11 @@ function succCallback(date){
 }
 //登录过程出现错误后执行的方法
 function errorCallback(date){
-	$('#spantx').text(date.message);
+
+       	$('.tixoin').text(date.message)
+
+	//console.log("OK1")
+	//$('#span').text('网络错误');
+
 	
 }
