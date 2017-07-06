@@ -525,7 +525,17 @@
                     </div>
                 </div>
 <script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/index.js"></script>
+<script>
+    $("#search-btn").click(function(){
+        data=$("#search-input").val()==''?'web':$("#search-input").val();
+        $.get("http://127.0.0.1/mingqi/index.php/search/index/byword?word="+data, function(result){
+            $.cookie('search_res',result);
+            location.href="./pages/serch-job.html";
+        });
+    });
+</script>
 </body>
 </html>

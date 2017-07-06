@@ -54,4 +54,162 @@ carousels.each(function() {
       newSet.appendTo($inner);
     }
   }
-});    
+});
+
+
+$(document).ready(function(){
+
+
+  //判断是否登录
+  $.ajax({
+    type:"get",
+    url:"http://127.0.0.1/mingqiyoucai/index.php/index/base",
+    async:true,
+    success:function(data)
+    {
+      if(data.status == 1)
+      {
+        $(".heiiden-header").css({
+          "display":"block"
+        });
+        $(".block-header").css({
+          "dispaly":"none"
+        })
+      }
+      else
+      {
+
+      }
+    }
+
+  });
+
+  //查询随机职位
+  $.ajax({
+    type:"get",
+    url:"http://127.0.0.1/mingqiyoucai/index.php/index/index/getLatestPosition",
+    async:true,
+    success:function(data)
+    {
+
+
+      $.each(data, function(n,obj) {
+
+        var html;
+        var begintime	=	new Date();
+        begintime.setTime(obj.begintime*1000);
+        begintime = begintime.Format("hh:mm");
+
+
+        $.ajax({
+          type:"get",
+          url:"http://127.0.0.1/mingqiyoucai/index.php/index/index/getCompanyByPosition",
+          async:false,
+          data:{'uid':obj.uid},
+          success:function(data)
+          {
+            obj.companyname=data.companyname;
+            obj.nature	=	data.nature;
+            obj.scale	=	data.scale;
+            console.log(obj.scale);
+          },
+        });
+
+        console.log(obj.scale)
+
+        html ='<div class="jobs-first">'+
+            '<div class="job-first-text">'+
+            '<div><span>'+obj.title+'</span><span>【成都】</span><span>'+begintime+'发布</span></div>'+
+            '<div class="job-com">'+obj.companyname+'</div>'+
+            '</div>'+
+            '<div class="job-first-text job-first-text2">'+
+            '<div>'+
+            '<span class="jobs-money">'+obj.salary+'</span>'+
+            '<span>'+obj.workexp+'/'+obj.eduction+'</span>'+
+            '</div>'+
+            '<div>'+
+            ''+obj.nature+'/'+obj.scale+'）'+
+            '</div>'+
+            '</div>'+
+            '<div class="job-first-text job-first-text2">'+
+            '<div class="little-text">'+
+            '<span>中级</span>'+
+            '<span>web</span>'+
+            '<span>软件开发</span>'+
+            '</div>'+
+            '<div>"'+obj.content+'"</div>'+
+            '</div>'+
+            '</div>';
+        $('#jobs').append(html);
+      });;
+    }
+  });
+
+
+
+  $('<ul id="fuzzySearch"></ul>').hide().insertAfter("#search-input");
+
+  $('#search-input').bind('input propertychange',function(){
+    fuzzySearch();
+  });
+
+  function fuzzySearch()
+  {
+    $('#fuzzySearch').empty();
+
+    var word;
+    word =	$('#search-input').val();
+
+
+    $.ajax({
+      type:'get',
+      url:'http://127.0.0.1/mingqiyoucai/index.php/search',
+      data:{'word':word},
+      async:true,
+      success:function(data)
+      {
+        $('#fuzzySearch').show();
+        var html	=	'';
+        $.each(data,function(n,obj){
+
+          html	=	'<li><span class="li-des">'+obj.des+'</span><span class="li-span">共<span class="li-num">50</span>个职位</span></li>';
+
+          $('#fuzzySearch').append(html);
+
+          $('#fuzzySearch>li').click(function(){
+            $('#search-input').val($(this).find('.li-des').text());
+          });
+
+        })
+      },
+    });
+
+  }
+
+});
+
+
+$('#search-btn').bind('click',function(){
+  window.location.href	=	'pages/search.html'
+})
+
+
+
+
+
+
+Date.prototype.Format = function (fmt) { //author: meizz
+  var o = {
+    "M+": this.getMonth() + 1, //月份
+    "d+": this.getDate(), //日
+    "h+": this.getHours(), //小时
+    "m+": this.getMinutes(), //分
+    "s+": this.getSeconds(), //秒
+    "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+    "S": this.getMilliseconds() //毫秒
+  };
+  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+  for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+  return fmt;
+}
