@@ -13,7 +13,7 @@ $('#next').click(function(){
 	//声明要传递给服务器的json数据
 	var postData = $('#personal-information').serialize();
 	//AjaxPost方法传递数据
-	AjaxPost('index.php/puser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
+	AjaxPost('index.php/cuser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
 })
 //添加信息成功后执行的方法
 function succCallback(date){

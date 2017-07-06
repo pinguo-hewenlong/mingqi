@@ -17,3 +17,25 @@ function maxtext(x,y){
           } 
           textlen(x,y); 
 }
+
+//调用接口发送信息给后台设置企业信息
+$('#next').click(function(){
+    
+	//声明要传递给服务器的json数据
+	var postData = $('#company-h').serialize();
+	//AjaxPost方法传递数据
+	AjaxPost('index.php/cuser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
+})
+//添加信息成功后执行的方法
+function succCallback(date){
+  	setTimeout(function(){
+			location.href='../index.html'
+		},500);	
+}
+//添加信息过程出现错误后执行的方法
+function errorCallback(date){
+    
+		$('#errmessage').text(date.message);
+		$(this).css('boderColor','red');
+//		//$('#span').text('网络错误');
+}
