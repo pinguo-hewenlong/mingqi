@@ -24,9 +24,6 @@ $('#btn').click(function(){
 })
 //登录成功后执行的方法
 function succCallback(date){
-	//console.log(555);
-	//console.log(date.status);
-	//显示登录成功！
 		$('.tixoin').css({
 			"display":"block"
 		})
@@ -42,18 +39,13 @@ function succCallback(date){
 		}
   		//0执行方法去设置小页面
   		function errorCallback(date){
-//		$('#spantx').text(date.message);
-//		$(this).css('boderColor','red');
-//		//$('#span').text('网络错误');
 			location.href='personal-information.html'
 	
 		}
 	},500);
-		//console.log(333333);	
 }
 //登录过程出现错误后执行的方法
 function errorCallback(date){
-	//console.log("OK1")
-	//$('#span').text('网络错误');
+	$('#spantx').text(date.message);
 	
 }
