@@ -16,7 +16,14 @@ class Index extends Controller
 		//发送到inner
 		$url = BASE_URL.url('/inner/index/getPostionView');
 		$return = curlHttp($url,'POST',$data);
-		return $return;
+		if(request()->isAjax())
+		{
+			return json_decode($return);
+		}
+		else
+		{
+			return $return;
+		}
 
 	}
 
@@ -56,5 +63,19 @@ class Index extends Controller
 		//$view	=	new View();
 		//return $view->fetch();
 	}
+
+	//无权限获取企业信息
+	public function getInfo()
+	{
+		//设置要查询的表
+		$data['uid']   = request()->get('uid');		
+		$data['table'] = 'cuser_info';
+		//return json($this->data);
+		//发送到inner
+		$url = BASE_URL.url('/inner/cuser/getfromdb');
+		//return $url;
+		$return = curlHttp($url,'POST',$data);
+		return json_decode($return);		
+	}	
 
 }
