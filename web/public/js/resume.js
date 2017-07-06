@@ -1,24 +1,11 @@
-$("#jod-editor").click(function(){
-	$("#job-practice").toggleClass("job-practice")
-})
+
 window.onload = function(){
+	            islogin();
 				    var postData = '';
 				    //获取基本信息
 				    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
 					function succCallback(date){
-						//console.log(1111);
-						//alert(date[0].realname);
-						//alert(date[0].thumburl)
 						$(".head-portrait>img").attr("src",date[0].thumburl); 
-						//$("td:eq(2)") 选择所有的td元素中序号为2的那个td元素 
-						//.html() 取出或设置html内容
-						//.text() 取出或设置text内容
-						//.attr() 取出或设置某个属性的值
-						//.attr(“属性名”,”属性值”) 设置标签的属性值
-						//.attr(“属性名”)获取标签的属性值
-						//.width() 取出或设置某个元素的宽度
-						//.height() 取出或设置某个元素的高度
-						//.val() 取出某个表单元素的值
 						$(".name1").html(date[0].realname);
 						$(".simple-little1").html(date[0].gender);
 						$(".simple-little2").html(date[0].eduction);
@@ -36,8 +23,6 @@ window.onload = function(){
 					{
 						$(".work-company").html(date[0].company);
 						$(".work-position").html(date[0].position);
-				//		var date = new Date(时间戳); 
-						//alert(date[0].begintime);
 						var begintime = new Date();
 						begintime.setTime(date[0].begintime*1000);
 						//alert(begintime.Format("yyyy-MM-dd"));
@@ -80,7 +65,9 @@ window.onload = function(){
 						//alert(date);
 					}
 }
-
+$("#jod-editor").click(function(){
+	$("#job-practice").toggleClass("job-practice")
+})
 //添加编辑按钮click事件
 $("#jod-editor").click(function(){
 	$("#job-practice").toggleClass("job-practice")
@@ -150,105 +137,105 @@ $("#baocun-skill").click(function(){
 	//    console.log(11111);
       $(this).parent().remove()
      })
-window.onload=function(){
+// window.onload=function(){
 
     
     
-    var postData = '';
+//     var postData = '';
     
     
-    //获取基本信息
-    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
+//     //获取基本信息
+//     var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
     
-	function succCallback(date){
-		//console.log(1111);
-		//alert(date[0].realname);
-		//alert(date[0].thumburl)
-		$(".head-portrait>img").attr("src",date[0].thumburl); 
-		//$("td:eq(2)") 选择所有的td元素中序号为2的那个td元素 
-		//.html() 取出或设置html内容
-		//.text() 取出或设置text内容
-		//.attr() 取出或设置某个属性的值
-		//.attr(“属性名”,”属性值”) 设置标签的属性值
-		//.attr(“属性名”)获取标签的属性值
-		//.width() 取出或设置某个元素的宽度
-		//.height() 取出或设置某个元素的高度
-		//.val() 取出某个表单元素的值
-		$(".name1").html(date[0].realname);
-		$(".simple-little1").html(date[0].gender);
-		$(".simple-little2").html(date[0].eduction);
-		//根据出生年月算当前年龄
-		var ages=agefun(date[0].birth);
-		$(".simple-little3").html(ages+"岁");	
-//		$(".simple-little4").html(date[0].gender);
-		$(".simple-little5").html(date[0].city);	
-		$(".info-phone").html(date[0].phone);
-		$(".info-email").html(date[0].email);
-	}
+// 	function succCallback(date){
+// 		//console.log(1111);
+// 		//alert(date[0].realname);
+// 		//alert(date[0].thumburl)
+// 		$(".head-portrait>img").attr("src",date[0].thumburl); 
+// 		//$("td:eq(2)") 选择所有的td元素中序号为2的那个td元素 
+// 		//.html() 取出或设置html内容
+// 		//.text() 取出或设置text内容
+// 		//.attr() 取出或设置某个属性的值
+// 		//.attr(“属性名”,”属性值”) 设置标签的属性值
+// 		//.attr(“属性名”)获取标签的属性值
+// 		//.width() 取出或设置某个元素的宽度
+// 		//.height() 取出或设置某个元素的高度
+// 		//.val() 取出某个表单元素的值
+// 		$(".name1").html(date[0].realname);
+// 		$(".simple-little1").html(date[0].gender);
+// 		$(".simple-little2").html(date[0].eduction);
+// 		//根据出生年月算当前年龄
+// 		var ages=agefun(date[0].birth);
+// 		$(".simple-little3").html(ages+"岁");	
+// //		$(".simple-little4").html(date[0].gender);
+// 		$(".simple-little5").html(date[0].city);	
+// 		$(".info-phone").html(date[0].phone);
+// 		$(".info-email").html(date[0].email);
+// 	}
 	
-	//获取工作经历
-	var work	=	AjaxPost('index.php/puser/profile/getwork',postData,succCallbackwork,errorCallback,"post","json");
+// 	//获取工作经历
+// 	var work	=	AjaxPost('index.php/puser/profile/getwork',postData,succCallbackwork,errorCallback,"post","json");
 	
-	function succCallbackwork(date)
-	{
-		$(".work-company").html(date[0].company);
-		$(".work-position").html(date[0].position);
-//		var date = new Date(时间戳); 
-		//alert(date[0].begintime);
-		var begintime = new Date();
-		begintime.setTime(date[0].begintime*1000);
-		//alert(begintime.Format("yyyy-MM-dd"));
-		var endtime = new Date();
-		endtime.setTime(date[0].endtime*1000);
-		//alert(endtime.setTime(date[0].endime*1000));
-		var begintime = begintime.Format("yyyy-MM-dd");
-		var endtime	  = endtime.Format("yyyy-MM-dd");
-		//alert(begintime);
-		$(".begin-endtime").html(begintime +"-"+ endtime);
-		$(".work-description").html(date[0].description);
-	}
-	
-	
-	//获取教育经历
-	var edu	=	AjaxPost('index.php/puser/profile/getedu',postData,succCallbackedu,errorCallback,"post","json");
-	
-	function succCallbackedu(date){
-		$(".edu-school").html(date[0].school);
-		$(".edu-major").html(date[0].major + "." + date[0].record);
-		//这里还缺少毕业时间计算毕业年份的算法
-	}
+// 	function succCallbackwork(date)
+// 	{
+// 		$(".work-company").html(date[0].company);
+// 		$(".work-position").html(date[0].position);
+// //		var date = new Date(时间戳); 
+// 		//alert(date[0].begintime);
+// 		var begintime = new Date();
+// 		begintime.setTime(date[0].begintime*1000);
+// 		//alert(begintime.Format("yyyy-MM-dd"));
+// 		var endtime = new Date();
+// 		endtime.setTime(date[0].endtime*1000);
+// 		//alert(endtime.setTime(date[0].endime*1000));
+// 		var begintime = begintime.Format("yyyy-MM-dd");
+// 		var endtime	  = endtime.Format("yyyy-MM-dd");
+// 		//alert(begintime);
+// 		$(".begin-endtime").html(begintime +"-"+ endtime);
+// 		$(".work-description").html(date[0].description);
+// 	}
 	
 	
-//过程出现错误后执行的方法
-	function errorCallback(date){
-		//alert(date);
-	}  
+// 	//获取教育经历
+// 	var edu	=	AjaxPost('index.php/puser/profile/getedu',postData,succCallbackedu,errorCallback,"post","json");
+	
+// 	function succCallbackedu(date){
+// 		$(".edu-school").html(date[0].school);
+// 		$(".edu-major").html(date[0].major + "." + date[0].record);
+// 		//这里还缺少毕业时间计算毕业年份的算法
+// 	}
 	
 	
-	//获取期望工作
-	var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackedu,errorCallback,"post","json");
+// //过程出现错误后执行的方法
+// 	function errorCallback(date){
+// 		//alert(date);
+// 	}  
 	
-	function succCallbackedu(date){
-		//console.log(1111)
-		var jjj = '小马哥';
-		$.each(date,function(n,obj){
-			var html;
-			html = '<option value="">'+jjj+'</option>';
-			//console.log(html);
-			$('#expect-pname').append(html);
-		})
+	
+// 	//获取期望工作
+// 	var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackedu,errorCallback,"post","json");
+	
+// 	function succCallbackedu(date){
+// 		//console.log(1111)
+// 		var jjj = '小马哥';
+// 		$.each(date,function(n,obj){
+// 			var html;
+// 			html = '<option value="">'+jjj+'</option>';
+// 			//console.log(html);
+// 			$('#expect-pname').append(html);
+// 		})
 		
-		$(".expect-pname").html='<option value="">'+jjj+'</option>';
-		$(".expect-city").html(date[0].city);
-		$(".expect-salary").html(date[0].salary);
-	}
+// 		$(".expect-pname").html='<option value="">'+jjj+'</option>';
+// 		$(".expect-city").html(date[0].city);
+// 		$(".expect-salary").html(date[0].salary);
+// 	}
 	
 	
-//过程出现错误后执行的方法
-	function errorCallback(date){
-		//alert(date);
-	}
-}
+// //过程出现错误后执行的方法
+// 	function errorCallback(date){
+// 		//alert(date);
+// 	}
+// }
 
 //添加工作经历
 $('#jod-editor').click(function()
@@ -288,28 +275,4 @@ Date.prototype.Format = function (fmt) { //author: meizz
     for (var k in o)
     if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
-}
-//编辑基本信息
-$('#next').click(function(){
-	//声明要传递给服务器的json数据
-	var postData = $('#personal-information').serialize();
-	//AjaxPost方法传递数据
-	AjaxPost('index.php/puser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
-})
-//添加信息成功后执行的方法
-function succCallback(date){
-	//显示登录成功！
-//		$('.tixoin').css({
-//			"display":"block"
-//		})
-		//三秒后跳转下一个页面
-  	setTimeout(function(){
-			location.href='Educational.html'
-	},1000);	
-}
-//添加信息过程出现错误后执行的方法
-function errorCallback(date){
-//		$('#spantx').text(date.message);
-//		$(this).css('boderColor','red');
-//		//$('#span').text('网络错误');
 }

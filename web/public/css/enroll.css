@@ -135,10 +135,10 @@ input{
     margin-top: -10px;
 }
 /*其他注册登录方式*/
-.three-icon{
+/*.three-icon{
     font-size: 50px;
     margin-left: 18%;
-}
+}*/
 .three-icon:hover{
     color: #60bbd5;
     cursor: pointer;

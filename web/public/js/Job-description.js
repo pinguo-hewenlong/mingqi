@@ -1,6 +1,4 @@
-// $("#header").load("header.html");
-// $("#footer").load("footer.html");
-//创建初始地图完毕
+
 window.onload=function (){
     var options={
         enableHighAccuracy:true, //是否允许高精度

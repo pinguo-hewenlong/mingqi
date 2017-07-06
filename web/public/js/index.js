@@ -64,13 +64,36 @@ window.onload=function(){
         if(date.status==1){
             $(".right-text").html('<span class="little-text"><a href="pages/Message-center.html">消息</a></span>'+
                              '<span class="little-text"><a href="pages/personal-resume.html">我的简历</a></span>'+
-                             '<span class="little-text"><a href="pages/Resume-status.html">投递箱</a></span>')
+                             '<span class="little-text"><a href="pages/Resume-status.html">投递箱</a></span>'+
+                             '<span class="little-text" id="login-out"><a href="index.html">注销</a></span>');
+                             //退出登陆
+                              $("#login-out").bind('click',function(){
+                                console.log(1111)
+                                  var postData="";
+                                  AjaxPost('index.php/sso/logout',postData,succCallback,errorCallback,"post","json");
+                                  function succCallback(data){
+                                    if(data.status==1){
+                                        $(".right-text").html('<span class="little-text"><a href="pages/enroll-p">注册</a></span>'+
+                                                          '<span class="little-text"><a href="pages/logo-p-p.html">登陆</a></span>')
+                                    }
+                                    
+                                  }
+                                  function errorCallback(data){
+                                    if(data.status==0){
+                                      $(".right-text").html('<span class="little-text"><a href="pages/Message-center.html">消息</a></span>'+
+                                                          '<span class="little-text"><a href="pages/personal-resume.html">我的简历</a></span>'+
+                                                          '<span class="little-text"><a href="pages/Resume-status.html">投递箱</a></span>'+
+                                                          '<span class="little-text" id="login-out"><a href="index.html">注销</a></span>')
+                                    }
+                                  }
+                              })
         }
     }
     function errorCallback(date){
         if(date.status==0){
-            $(".right-text").html('<span class="little-text"><a href="">注册</a></span>'+
-                             '<span class="little-text"><a href="">登陆</a></span>')
+            $(".right-text").html('<span class="little-text"><a href="pages/enroll-p">注册</a></span>'+
+                             '<span class="little-text"><a href="pages/logo-p-p.html">登陆</a></span>')
         }
     }
 } 
+

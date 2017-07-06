@@ -1,6 +1,5 @@
 
-$("#header").load("header.html");
-$("#footer").load("footer.html");
+
 var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataType){
 		//alert("ccc");
         /**
@@ -40,3 +39,49 @@ var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataTyp
 
     //文件上传ajax        $(function () {
                
+
+
+
+  function islogin(){
+   //判断是否登陆
+  var postData2 = '';
+    AjaxPost('index.php/sso/login/islogin',postData2,succCallback,errorCallback,"post","json");
+    function succCallback(date){
+
+        if(date.status==1){
+            $(".right-text").html('<span class="little-text"><a href="Message-center.html">消息</a></span>'+
+                             '<span class="little-text"><a href="personal-resume.html">我的简历</a></span>'+
+                             '<span class="little-text"><a href="Resume-status.html">投递箱</a></span>'+
+                             '<span class="little-text" id="login-out"><a href="../index.html">注销</a></span>');
+                             //退出登陆
+                              $("#login-out").bind('click',function(){
+                                console.log(1111)
+                                  var postData3="";
+                                  AjaxPost('index.php/sso/logout',postData3,succCallback,errorCallback,"post","json");
+                                  function succCallback(data){
+                                    if(data.status==1){
+                                        $(".right-text").html('<span class="little-text"><a href="enroll-p">注册</a></span>'+
+                                                          '<span class="little-text"><a href="logo-p-p.html">登陆</a></span>')
+                                    }
+                                    
+                                  }
+                                  function errorCallback(data){
+                                    if(data.status==0){
+                                      $(".right-text").html('<span class="little-text"><a href="Message-center.html">消息</a></span>'+
+                                                          '<span class="little-text"><a href="personal-resume.html">我的简历</a></span>'+
+                                                          '<span class="little-text"><a href="Resume-status.html">投递箱</a></span>'+
+                                                          '<span class="little-text" id="login-out"><a href="../index.html">注销</a></span>')
+                                    }
+                                  }
+                              })
+        }
+    }
+    function errorCallback(date){
+        if(date.status==0){
+            $(".right-text").html('<span class="little-text"><a href="enroll-p">注册</a></span>'+
+                             '<span class="little-text"><a href="logo-p-p.html">登陆</a></span>')
+        }
+    }
+  }
+  
+ 

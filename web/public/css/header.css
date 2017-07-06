@@ -71,7 +71,7 @@
     justify-content: space-between;
     line-height: 64px;
 }
-.header-logo>img{
+.header-logo>a>img{
     width: 166px;
 }
 .header-nav>a{

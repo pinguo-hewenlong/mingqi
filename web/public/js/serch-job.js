@@ -1,3 +1,4 @@
+
 // 初始化分页
 var GG = {
         "kk":function(mm){

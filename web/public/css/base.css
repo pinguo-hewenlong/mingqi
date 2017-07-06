@@ -13,7 +13,7 @@ a:hover{
 	color: red;
 	text-align: center;
 	font-size: 16px;
-	display: none;
+	/*display: none;*/
 }
 /*矢量图标引入*/
 @font-face {
