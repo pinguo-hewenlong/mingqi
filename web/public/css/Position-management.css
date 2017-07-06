@@ -1,0 +1,12 @@
+.nominate{
+  background: #4eb2e8;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+  border-radius: 10px; 
+  border: none;
+  margin-top: -2%
+
+}

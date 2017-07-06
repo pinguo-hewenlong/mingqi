@@ -55,7 +55,7 @@ var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataTyp
                              '<span class="little-text" id="login-out"><a href="../index.html">注销</a></span>');
                              //退出登陆
                               $("#login-out").bind('click',function(){
-                                console.log(1111)
+                               
                                   var postData3="";
                                   AjaxPost('index.php/sso/logout',postData3,succCallback,errorCallback,"post","json");
                                   function succCallback(data){

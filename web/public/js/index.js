@@ -109,6 +109,7 @@ window.onload=function(){
                                                           '<span class="little-text"><a href="pages/personal-resume.html">我的简历</a></span>'+
                                                           '<span class="little-text"><a href="pages/Resume-status.html">投递箱</a></span>'+
                                                           '<span class="little-text" id="login-out"><a href="index.html">注销</a></span>')
+                                                          
                                     }
                                   }
                               })
