@@ -25,6 +25,7 @@ $('#btn').click(function(){
 })
 //登录成功后执行的方法
 function succCallback(date){
+
 	$('.tixoin').text(date.message)
 	//显示登录成功！
 		
@@ -46,9 +47,11 @@ function succCallback(date){
 }
 //登录过程出现错误后执行的方法
 function errorCallback(date){
+
        	$('.tixoin').text(date.message)
 
 	//console.log("OK1")
 	//$('#span').text('网络错误');
+
 	
 }

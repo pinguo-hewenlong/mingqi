@@ -86,31 +86,23 @@
                                             <div class="information phone"><input type="text" placeholder="职位"></div>
                                             <select name="" id="" class="first-select se-One">
                                                <option value="">&nbsp;&nbsp;&nbsp;&nbsp;起始时间</option>
-                                               <option value="">博士</option>
-                                               <option value="">硕士</option>
-                                               <option value="">研究生</option>
-                                               <option value="">本科</option>
-                                               <option value="">大专</option>
-                                               <option value="">高中</option>
+                                               <option value="2016-10-28">博士</option>
                                            </select>
                                             <select name="" id="" class="se-One">
                                               <option value="">&nbsp;&nbsp;&nbsp;&nbsp;结束时间</option>
-                                              <option value="">1-3年</option>
-                                              <option value="">3-5年</option>
-                                              <option value="">5-10年</option>
-                                              <option value="">10年以上</option>
+                                              <option value="2017-11-22">1-3年</option>
                                             </select>
-                                             <textarea name="" id="" placeholder="简单的描述一下你的工作吧"></textarea>
+                                             <textarea name="" id="" placeholder="	"></textarea>
                                              <div class="modal-footer">
                                                 <button type="button" class="btn quxiao" data-dismiss="modal" id="e-qixiao">取消</button>
-                                                <button type="button" class="btn baocun">保存</button>
+                                                <button type="button" id = "keep" class="btn baocun">保存</button>
                                             </div>
                                         </form>
-                                        <div>
+                                        <div id="company-an1">
                                             <div class="company-an">
                                                 <div>
                                                     <div class="company-com class= work-company">西宇科技</div>
-                                                    <div id='job'class="work-position">ui设计师</div>
+                                                    <div id="job" class="work-position">ui设计师</div>
                                                 </div>
                                                 <div>
                                                
@@ -148,7 +140,7 @@
                                              <textarea name="" id="" placeholder="简单的描述一下你的工作吧"></textarea>
                                              <div class="modal-footer">
                                                 <button type="button" class="btn quxiao" data-dismiss="modal" id="quxiao">取消</button>
-                                                <button type="button" class="btn baocun">保存</button>
+                                                <button type="button" class="btn baocun" id="workbtn">保存</button>
                                             </div>
                                         </form>
                                     </div>
@@ -192,8 +184,8 @@
                                         <div>
                                           <div class="company-an">
                                                 <div>
-                                                    <div class="company-com edu-school"></div>
-                                                    <div id='major' class="edu-major">计算机.本科</div>
+                                                    <div id="schooledu" class="company-com edu-school"></div>
+                                                    <div id="major" class="edu-major">计算机.本科</div>
                                                 </div>
                                                 <div>
                                                 
@@ -243,8 +235,7 @@
                                              <span class="first-line"></span>
                                              <span class=" editor" id="ping-editor"><i class="iconfont">&#xe68b;</i>编辑</span>
                                          </div>
-                                         <div class="describe">
-                                             提供了一些辅助类，以便更快地实现对移动设备友好的开发。这些可以通过媒体查询结合大型、小型和中型设备，实现内容对设备的显示和隐藏。
+                                         <div id="describe" class="describe">
                                          </div> 
                                          <form action="" id="pingjia" class="job-practice">
                                             <textarea name="" id="" placeholder="霸气的自我评价一下吧"></textarea>
@@ -267,35 +258,31 @@
                                          </div>
                                         <form action="">
                                                    <lable><i class="iconfont rem-icon">&#xe627;</i></lable>
-                                                   <select name="" id="">
-                                                             <option value="">ui设计师</option>
-                                                             <option value="">前端开发工程师</option>
-                                                             <option value="">PHP开发工程师</option>
-                                                             <option value="">java开发工程师</option>
-                                                             <option value="">.net开发工程师</option>
+                                                   <select name="pname" id="pname">
+                                                             <option value="0">ui设计师</option>
+                                                             <option value="1">前端开发工程师</option>
+                                                             <option value="2">PHP开发工程师</option>
+                                                             <option value="3">java开发工程师</option>
+                                                             <option value="4">.net开发工程师</option>
                                                   </select>   
                                                   <lable><i class="iconfont">&#xe64b;</i></lable>
-                                                  <select name="" id="">
-                                                         <option value="">全职</option>
-                                                         <option value="">兼职</option>
-                                                         <option value="">实习</option>
+                                                  <select name="zhiwei" id="zhiwei">
+                                                         <option value="0">全职</option>
+                                                         <option value="1">兼职</option>
+                                                         <option value="2">实习</option>
                                                   </select>
                                                   <lable><i class="iconfont">&#xe884;</i></lable>
-                                                  <select name="" id="">
-                                                        <option value="">成都</option>
-                                                        <option value="">武侯区</option>
-                                                        <option value="">青羊区</option>
-                                                        <option value="">金牛区</option>
-                                                        <option value="">双流区</option>
+                                                  <select name="city" id="city">
+                                                        <option value="51010">成都</option>
                                                  </select> 
                                                  <lable><i class="iconfont">&#xe611;</i></lable>
-                                                 <select name="" id="">
-                                                 		<option value="">5k以下</option>
-                                                        <option value="">5-6K</option>
-                                                        <option value="">6-10k</option>
-                                                        <option value="">10-15k</option>
-                                                        <option value="">15-20k</option>
-                                                        <option value="">面议</option>
+                                                 <select name="salary" id="salary">
+                                                 		<option value="0">5k以下</option>
+                                                        <option value="1">5-6K</option>
+                                                        <option value="2">6-10k</option>
+                                                        <option value="3">10-15k</option>
+                                                        <option value="4">15-20k</option>
+                                                        <option value="5">面议</option>
                                                  </select>  
                                         </form>
                                     </div>
@@ -333,7 +320,7 @@
                                     </div>
                                     <div id="conent-footer">
                                         <form action="">
-                                            <select name="time" id="">
+                                            <select name="time" id="arrival">
                                                 <option value="0">目前我已离职，可快速到岗</option>
                                                 <option value="1">目前我正在职，正考虑换个环境</option>
                                                 <option value="2">我暂时不想找工作</option>
@@ -418,9 +405,7 @@
              <div id="footer"></div>          
         <script src="../js/jquery-1.11.0.min.js"></script>
         <script src="../js/bootstrap.js"></script>
-        <script src="../js/baseurl.js"></script>
         <script src="../js/baseInfo.js"></script>
-        <script src="../js/base.js"></script>
         <script src="../js/resume.js"></script>
 </body>
 </html>

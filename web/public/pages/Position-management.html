@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/resume.css">
+    <link rel="stylesheet" href="../css/in-base.css">
     <link rel="stylesheet" href="../css/C-information.css">
     <link rel="stylesheet" href="../css/curriculum-vitae.css">
     <link rel="stylesheet" href="../css/Position-management.css">
+    <link href="../css/page.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
              <div class="col-lg-12 col-md-12 col-ms-12 col-xs-12 first-header">
@@ -54,133 +56,174 @@
                                       </form>
                                 </div>                               
                                 <div class="nominate">发布职位<i class="iconfont">&#xe642;</i></div>
-                            </div>    
+                            </div>
+                             <!--职位发布弹出框-->
+                            <div id="release-job" class="release-job">
+                                <form action="">
+                                    <div>
+                                        <div class="release-job-title">岗位名称</div>
+                                        <div class="information"><input name="realname" type="text"></div>
+                                    </div>
+                                    <div>
+                                        <div class="release-job-title release-job-title2">职位描述</div>
+                                        <textarea name="" id="" placeholder=""></textarea>
+                                    </div>
+                                   <div>
+                                        <div class="release-job-title release-job-title2">任职资格</div>
+                                        <textarea name="" id="" placeholder=""></textarea>
+                                    </div>
+                                    <div>
+                                        <div class="release-job-title release-job-title2">薪资待遇</div>
+                                        <select name="" id="">
+                                            <option value="">薪资待遇</option>
+                                            <option value="">3k以下</option>
+                                            <option value="">4-8k</option>
+                                            <option value="">8-10k</option>
+                                            <option value="">10k以上</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <div class="release-job-title release-job-title2">工作区域</div>
+                                        <select name="" id="">
+                                            <option value="">成都</option>
+                                            <option value="">成都</option>
+                                            
+                                        </select>
+                                    </div>
+                                </form>
+                                 <div class="modal-footer">
+                                        <button type="button" class="btn quxiao" data-dismiss="modal">取消</button>
+                                        <button type="button" class="btn baocun">发布</button>
+                                    </div>
+                            </div>   
                             <div id="vaite-conent">
-                                <div class="first-vconent">
-                                     <div class="v-heade">
-                                         <div class="v-circle"></div>
-                                         <div class="v-heade-text">5-6k</div>
-                                     </div>
-                                     <div class="vaite-text">
-                                            <div class="v-imformation">
-                                                <div id="name">肖达</div>
-                                                <div>期望职位c++</div>
-                                                <div>成都</div>
+                                <div class="first-job">
+                                    <div class="first-job-title">
+                                        <div>
+                                            <span class="job-podtions">ui设计师</span>
+                                        </div>
+                                        <div class="company-name"></div>
+                                    </div>
+                                    <div class="first-job-title first-job-section">
+                                            <div>
+                                                <span class="salary">成都 锦江区</span>
+                                                <span>经验3-5年/本科</span>
+                                                <span>3-6k</span>
                                             </div>
-                                            <div class="v-imformation">
-                                                <div>现任安卓微领头公司</div>
-                                                <div>曾任c++满打满</div>
-                                                <div>2年 . 本科</div>
+                                            <div class="company-name first-job-section-text">
+                                                12天前发布
                                             </div>
-                                            <div class="v-imformation">
-                                                <div>西南科技大学</div>
-                                                <div>地理信息系统</div>
-                                                <div>随时到岗</div>
-                                            </div>
-                                     </div>
-                                     <div class="v-line"></div>
-                                     <div class="three-btn">
-                                         <input type="button" value="不合适"  class="t-btn">
-                                         <input type="button" value="邀面试"  class="t-btn">
-                                         <input type="button" value="已查看"  class="t-btn">
-                                         <!--<input type="button" class="t-btn">不合适</input>-->
-                                         <!--<div class="t-btn">邀面试</div>
-                                         <div class="t-btn">已查看</div>-->
-                                     </div>
+                                    </div>
+                                    <div class=" job-first-text job-first-text2">
+                                                <div class="little-text">
+                                                    <span>在线2天</span>
+                                                    <span>2017-12-25发布</span>
+                                                </div>
+                                                <div class="company-name first-job-section-text"></div>
+                                        </div>
                                 </div>
-                                <div class="first-vconent">
-                                     <div class="v-heade">
-                                         <div class="v-circle"></div>
-                                         <div class="v-heade-text">5-6k</div>
-                                     </div>
-                                     <div class="vaite-text">
-                                            <div class="v-imformation">
-                                                <div id="name">肖达</div>
-                                                <div>期望职位c++</div>
-                                                <div>成都</div>
+                                <div class="first-job">
+                                    <div class="first-job-title">
+                                        <div>
+                                            <span class="job-podtions">ui设计师</span>
+                                        </div>
+                                        <div class="company-name"></div>
+                                    </div>
+                                    <div class="first-job-title first-job-section">
+                                            <div>
+                                                <span class="salary">成都 锦江区</span>
+                                                <span>经验3-5年/本科</span>
+                                                <span>3-6k</span>
                                             </div>
-                                            <div class="v-imformation">
-                                                <div>现任安卓微领头公司</div>
-                                                <div>曾任c++满打满</div>
-                                                <div>2年 . 本科</div>
+                                            <div class="company-name first-job-section-text">
+                                                12天前发布
                                             </div>
-                                            <div class="v-imformation">
-                                                <div>西南科技大学</div>
-                                                <div>地理信息系统</div>
-                                                <div>随时到岗</div>
-                                            </div>
-                                     </div>
-                                     <div class="v-line"></div>
-                                     <div class="three-btn">
-                                         <input type="button" value="不合适"  class="t-btn">
-                                         <input type="button" value="邀面试"  class="t-btn">
-                                         <input type="button" value="已查看"  class="t-btn">
-                                     </div>
+                                    </div>
+                                    <div class=" job-first-text job-first-text2">
+                                                <div class="little-text">
+                                                    <span>在线2天</span>
+                                                    <span>2017-12-25发布</span>
+                                                </div>
+                                                <div class="company-name first-job-section-text"></div>
+                                        </div>
                                 </div>
-                                <div class="first-vconent">
-                                     <div class="v-heade">
-                                         <div class="v-circle"></div>
-                                         <div class="v-heade-text">5-6k</div>
-                                     </div>
-                                     <div class="vaite-text">
-                                            <div class="v-imformation">
-                                                <div id="name">肖达</div>
-                                                <div>期望职位c++</div>
-                                                <div>成都</div>
+                                <div class="first-job">
+                                    <div class="first-job-title">
+                                        <div>
+                                            <span class="job-podtions">ui设计师</span>
+                                        </div>
+                                        <div class="company-name"></div>
+                                    </div>
+                                    <div class="first-job-title first-job-section">
+                                            <div>
+                                                <span class="salary">成都 锦江区</span>
+                                                <span>经验3-5年/本科</span>
+                                                <span>3-6k</span>
                                             </div>
-                                            <div class="v-imformation">
-                                                <div>现任安卓微领头公司</div>
-                                                <div>曾任c++满打满</div>
-                                                <div>2年 . 本科</div>
+                                            <div class="company-name first-job-section-text">
+                                                12天前发布
                                             </div>
-                                            <div class="v-imformation">
-                                                <div>西南科技大学</div>
-                                                <div>地理信息系统</div>
-                                                <div>随时到岗</div>
-                                            </div>
-                                     </div>
-                                     <div class="v-line"></div>
-                                     <div class="three-btn">
-                                         <input type="button" value="不合适"  class="t-btn">
-                                         <input type="button" value="邀面试"  class="t-btn">
-                                         <input type="button" value="已查看"  class="t-btn">
-                                     </div>
+                                    </div>
+                                    <div class=" job-first-text job-first-text2">
+                                                <div class="little-text">
+                                                    <span>在线2天</span>
+                                                    <span>2017-12-25发布</span>
+                                                </div>
+                                                <div class="company-name first-job-section-text"></div>
+                                        </div>
                                 </div>
-                                <div class="first-vconent">
-                                     <div class="v-heade">
-                                         <div class="v-circle"></div>
-                                         <div class="v-heade-text">5-6k</div>
-                                     </div>
-                                     <div class="vaite-text">
-                                            <div class="v-imformation">
-                                                <div id="name">肖达</div>
-                                                <div>期望职位c++</div>
-                                                <div>成都</div>
+                                <div class="first-job">
+                                    <div class="first-job-title">
+                                        <div>
+                                            <span class="job-podtions">ui设计师</span>
+                                        </div>
+                                        <div class="company-name"></div>
+                                    </div>
+                                    <div class="first-job-title first-job-section">
+                                            <div>
+                                                <span class="salary">成都 锦江区</span>
+                                                <span>经验3-5年/本科</span>
+                                                <span>3-6k</span>
                                             </div>
-                                            <div class="v-imformation">
-                                                <div>现任安卓微领头公司</div>
-                                                <div>曾任c++满打满</div>
-                                                <div>2年 . 本科</div>
+                                            <div class="company-name first-job-section-text">
+                                                12天前发布
                                             </div>
-                                            <div class="v-imformation">
-                                                <div>西南科技大学</div>
-                                                <div>地理信息系统</div>
-                                                <div>随时到岗</div>
-                                            </div>
-                                     </div>
-                                     <div class="v-line"></div>
-                                     <div class="three-btn">
-                                         <input name="an" type="radio" value="不合适"  class="t-btn">
-                                         <input name="an" type="radio" value="邀面试"  class="t-btn">
-                                         <input name="an" type="radio" value="已查看"  class="t-btn">-->
-                                         <label for="male" class="t-btn">                        
-                                                <input type="radio" name="sex" id="male" checked>不合适
-                                         </label>
-                                         <label for="male" class="t-btn">                        
-                                                <input type="radio" name="sex" id="male" checked>邀面试
-                                         </label>
-                                     </div>
+                                    </div>
+                                    <div class=" job-first-text job-first-text2">
+                                                <div class="little-text">
+                                                    <span>在线2天</span>
+                                                    <span>2017-12-25发布</span>
+                                                </div>
+                                                <div class="company-name first-job-section-text"></div>
+                                        </div>
                                 </div>
+                                <div class="first-job">
+                                    <div class="first-job-title">
+                                        <div>
+                                            <span class="job-podtions">ui设计师</span>
+                                        </div>
+                                        <div class="company-name"></div>
+                                    </div>
+                                    <div class="first-job-title first-job-section">
+                                            <div>
+                                                <span class="salary">成都 锦江区</span>
+                                                <span>经验3-5年/本科</span>
+                                                <span>3-6k</span>
+                                            </div>
+                                            <div class="company-name first-job-section-text">
+                                                12天前发布
+                                            </div>
+                                    </div>
+                                    <div class=" job-first-text job-first-text2">
+                                                <div class="little-text">
+                                                    <span>在线2天</span>
+                                                    <span>2017-12-25发布</span>
+                                                </div>
+                                                <div class="company-name first-job-section-text"></div>
+                                        </div>
+                                </div>
+                                 <!--分页-->
+                                <ul class="page col-lg-offset-2 col-md-offset-2 " maxshowpageitem="5" pagelistcount="10"  id="page"></ul>
                             </div>
                        </div>
                      <div class="little-box col-lg-3 col-md-3  col-lg-offset-1 col-md-offset-1">
@@ -268,6 +311,7 @@
               </div>            
         <script src="../js/jquery-1.11.0.min.js"></script>
         <script src="../js/bootstrap.js"></script>
+        <script src="../js/page.js"></script>
         <script src="../js/base.js"></script>
         <script src="../js/Position-management.js"></script>
 </body>

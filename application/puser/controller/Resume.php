@@ -23,7 +23,7 @@ class Resume extends Base
 	public function send()
 	{
 		//职位ID
-		$this->data['poid']			=	request()->get('poid');
+		$this->data['poid']			=	request()->post('poid');
 		$this->data['sendtime']		=	time();
 		//调用验证器:Puser\valisate\send
 		$validateResult = $this->validate($this->data,'Send');
@@ -34,11 +34,12 @@ class Resume extends Base
 			$return['message'] = $validateResult;	
 			return json($return);
 
-		}		
+		}
+		//return $this->data;		
 		//发送到inner
 		$url = BASE_URL.url('/inner/resume/resumesend');
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;	
+		return json_decode($return);	
 	}
 	
 		

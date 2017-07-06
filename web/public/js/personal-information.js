@@ -34,29 +34,20 @@ window.onload=function(){
 $('#next').click(function(){
     
 	//声明要传递给服务器的json数据
-	var postData = $('#company-in').serialize();
-	//AjaxPost方法传递数据
+	var postData = $('#personal-information').serialize();
 	AjaxPost('index.php/puser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
 })
 //添加信息成功后执行的方法
 function succCallback(date){
-	//console.log(555);
-	//console.log(date.status);
-	//显示登录成功！
-//		$('.tixoin').css({
-//			"display":"block"
-//		})
 		//三秒后跳转下一个页面
   	setTimeout(function(){
            
 			location.href='personal-Educational.html'
-		},1000);	
-		//console.log(333333);	
+		},500);	
 }
 //添加信息过程出现错误后执行的方法
 function errorCallback(date){
     
 		$('#errmessage').text(date.message);
 		$(this).css('boderColor','red');
-//		//$('#span').text('网络错误');
 }

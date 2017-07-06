@@ -98,5 +98,6 @@ class Info
 		{
 			return $return;
 		}		
-	}				
+	}
+			
 }

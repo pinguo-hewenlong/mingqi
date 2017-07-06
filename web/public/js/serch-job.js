@@ -1,15 +1,16 @@
 
-// 初始化分页
-//var GG = {
-//        "kk":function(mm){
-//            console.log(1111);
-//        }
-//    }
-//$("#page").initPage(71,1,GG.kk);
+
 
 var BASE_URL	=	'http://127.0.0.1/mingqi/index.php/';
 
 $(document).ready(function(){
+    //初始化分页
+var GG = {
+       "kk":function(mm){
+           console.log(1111);
+       }
+   }
+$("#page").initPage(71,1,GG.kk);
 
 	//判断是否登录	
   var postData = '';

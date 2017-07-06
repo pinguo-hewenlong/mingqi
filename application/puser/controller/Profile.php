@@ -103,6 +103,41 @@ class Profile extends Base
 		}				
 		
 	}
+		//获取个人描述
+	public function getDesc()
+	{
+		$this->data['table'] = 'puser_desc';		
+		//发送到inner
+		$url = BASE_URL.url('/inner/puser/getfromdb');
+		$return = curlHttp($url,'POST',$this->data);
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}				
+		
+	}
+	
+	//获取工作状态
+	public function getarrival()
+	{
+		$this->data['table'] = 'puser_arrival';		
+		//发送到inner
+		$url = BASE_URL.url('/inner/puser/getfromdb');
+		$return = curlHttp($url,'POST',$this->data);
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}			
+		
+	}
 	//获取project
 	public function getProject()
 	{
@@ -782,7 +817,7 @@ class Profile extends Base
 		{
 			return $return;
 		}	 					
-	
+}	
 	//设置个人作品
 	public function setProduct()
 	{
