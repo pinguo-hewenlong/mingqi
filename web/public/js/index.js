@@ -54,7 +54,6 @@ carousels.each(function() {
       newSet.appendTo($inner);
     }
   }
-<<<<<<< HEAD
 });
 
 
@@ -88,7 +87,7 @@ $(document).ready(function(){
   //查询随机职位
   $.ajax({
     type:"get",
-    url:"http://127.0.0.1/mingqiyoucai/index.php/index/index/getLatestPosition",
+    url:"http://127.0.0.1/mingqi/index.php/index/index/getLatestPosition",
     async:true,
     success:function(data)
     {
@@ -104,7 +103,7 @@ $(document).ready(function(){
 
         $.ajax({
           type:"get",
-          url:"http://127.0.0.1/mingqiyoucai/index.php/index/index/getCompanyByPosition",
+          url:"http://127.0.0.1/mingqi/index.php/index/index/getCompanyByPosition",
           async:false,
           data:{'uid':obj.uid},
           success:function(data)
@@ -112,7 +111,7 @@ $(document).ready(function(){
             obj.companyname=data.companyname;
             obj.nature	=	data.nature;
             obj.scale	=	data.scale;
-            console.log(obj.scale);
+            //console.log(obj.scale);
           },
         });
 
@@ -141,8 +140,9 @@ $(document).ready(function(){
             '<div>"'+obj.content+'"</div>'+
             '</div>'+
             '</div>';
+
         $('#jobs').append(html);
-      });;
+      });
     }
   });
 
@@ -214,8 +214,6 @@ Date.prototype.Format = function (fmt) { //author: meizz
     if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
   return fmt;
 }
-=======
-});   
 window.onload=function(){
   //判断是否登陆
   var postData = '';
@@ -234,5 +232,4 @@ window.onload=function(){
                              '<span class="little-text"><a href="">登陆</a></span>')
         }
     }
-} 
->>>>>>> ca4834baa0e7d359712423a7af11c414b28ad1bc
+}

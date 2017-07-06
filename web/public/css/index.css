@@ -29,6 +29,29 @@
     height: 50px;
     border: 1px solid #7bd396;
 }
+#fuzzySearch{
+    width:70%;
+    border: 1px solid #7bd396;
+    line-height:30px;
+    position:absolute;
+    z-index:9999;
+    background: #FFFFFF;
+}
+#fuzzySearch li:hover {
+    background-color: #7bd396;
+    color: white;
+    cursor: pointer;
+}
+
+#fuzzySearch .li-span{
+    text-align: right;
+    font-weight:bold;
+    display:block;
+    float:right;
+}
+#fuzzySearch .li-num{
+    color:#0d8dd4;
+}
 #search-btn{
     float: right;
     width: 30%;
