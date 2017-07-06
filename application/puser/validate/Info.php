@@ -10,8 +10,8 @@ class Info extends Validate
 		'email' => 'email',
 		'phone' => ['regex' => '13\d{9}|15\d{9}|18\d{9}|17\d{9}'],
 		'thumburl' => ['regex' => '/^(http|https):\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?$/'],
-		'eduction' => 'chs|length:2,10',
-		'city' => '\d{3,5}',
+		'eduction' => '\d{2,10}',
+		'city' => '\d{2,10}',
 		'gender' => 'chs|length:1,6',
 		'birth' => '\d{9,16}',	
 	];
