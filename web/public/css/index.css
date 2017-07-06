@@ -29,6 +29,29 @@
     height: 50px;
     border: 1px solid #7bd396;
 }
+#fuzzySearch{
+    width:70%;
+    border: 1px solid #7bd396;
+    line-height:30px;
+    position:absolute;
+    z-index:9999;
+    background: #FFFFFF;
+}
+#fuzzySearch li:hover {
+    background-color: #7bd396;
+    color: white;
+    cursor: pointer;
+}
+
+#fuzzySearch .li-span{
+    text-align: right;
+    font-weight:bold;
+    display:block;
+    float:right;
+}
+#fuzzySearch .li-num{
+    color:#0d8dd4;
+}
 #search-btn{
     float: right;
     width: 30%;
@@ -154,8 +177,8 @@
     cursor: pointer;
     color: white;
 }
-.first-name:before,
-.first-name:after{
+.first-name2:before,
+.first-name2:after{
             content: "";
             position: absolute;
             top: 80%;
@@ -169,7 +192,7 @@
             -ms-transform: rotate(-270deg);
             /*display: none;*/
 }
-.first-name:before{
+.first-name2:before{
     top: 20px;
     border: 11px solid transparent;
     border-left-color: #4eb2e7;
@@ -192,8 +215,12 @@
 .body-img{
      width: 200px;
      height: 200px;
-     border: 1px solid red;
+     border: 1px solid #CCCCCC
 }
+.body-img>img{
+	width: 100%;
+	height: 100%;
+	}
 .fb-text{
     background-color: #4eb2e7 \9;
     background-color: #4eb2e7;

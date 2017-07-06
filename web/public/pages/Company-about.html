@@ -18,7 +18,11 @@
            </div>
     </div>-->
     <div class="information-Box">
-                        <div class="in-header"></div>
+                        <div class="in-header">
+                        	<from id="fromthumburl" enctype="multipart/form-data">
+	                        	<input  id="imgButton" type="file" class="file-box" name="file" />
+	                        </from><i  class="iconfont camera">&#xe643;</i>
+                        </div>
                         <div class="in-body">
                             <!--title-->
                             <div class='header-title'>
@@ -27,15 +31,13 @@
                                 <div class="title">公司介绍</div>
                                 <div class="lines title lines2"></div>
                                 <div class="title">发展历程</div>
-                                <!--<div class="lines title lines3"></div>
-                                <div class="title">自我评价</div>-->
                             </div>
                             <div class="boder"></div>
-                            <form action="" name="myform">
+                            <form  id="company-about" action="" name="myform">
                                  <textarea name="mytextarea" id="" placeholder="请输入50字简单介绍下公司吧"  wrap="virtual" onkeypress="return(this.value.length<50)" onkeydown="textlen(this,50)" onkeyup="textlen(this,50)" onblur="maxtext(this,50)"></textarea>
                             </form>
                                 <div class="add">
-                                    <a href="">返回</a>
+                                    <a href="company-in.html">返回</a>
                                 </div>
                             <div type="botton" id="next">下一步</div>
                         </div>

@@ -49,21 +49,16 @@ window.onload = function(){
 					//获取期望工作
 					var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackedu,errorCallback,"post","json");
 					function succCallbackedu(date){
-						var jjj = '小马哥';
-						$.each(date,function(n,obj){
-							var html;
-							html = '<option value="">'+jjj+'</option>';
-							//console.log(html);
-							$('#expect-pname').append(html);
-						})
-						$(".expect-pname").html='<option value="">'+jjj+'</option>';
-						$(".expect-city").html(date[0].city);
-						$(".expect-salary").html(date[0].salary);
+						
 					}
 				//过程出现错误后执行的方法
 					function errorCallback(date){
 						//alert(date);
 					}
+					
+					
+					//获取技能评价
+				  
 }
 $("#jod-editor").click(function(){
 	$("#job-practice").toggleClass("job-practice")

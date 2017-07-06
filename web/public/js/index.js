@@ -54,9 +54,34 @@ carousels.each(function() {
       newSet.appendTo($inner);
     }
   }
-});   
+});
+
 window.onload=function(){
   //判断是否登陆
+    //判断是否登录
+    $.ajax({
+        type:"get",
+        url:"http://127.0.0.1/mingqi/index.php/index/base",
+        async:true,
+        success:function(data)
+        {
+            if(data.status == 1)
+            {
+                $(".heiiden-header").css({
+                    "display":"block"
+                });
+                $(".block-header").css({
+                    "dispaly":"none"
+                })
+            }
+            else
+            {
+
+            }
+        }
+
+    });
+
   var postData = '';
     AjaxPost('index.php/sso/login/islogin',postData,succCallback,errorCallback,"post","json");
     function succCallback(date){

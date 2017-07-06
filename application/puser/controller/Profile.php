@@ -782,7 +782,6 @@ class Profile extends Base
 		{
 			return $return;
 		}	 					
-	}
 	
 	//设置个人作品
 	public function setProduct()

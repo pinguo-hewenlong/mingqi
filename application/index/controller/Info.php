@@ -76,5 +76,27 @@ class Info
 	public function getSalary()
 	{
 		
+	}
+	//获取行业精英
+	public function getElite()
+	{
+		$data	=	array();
+		
+		if(input('get.sortid'))
+		{
+			$data['sortid']	=	trim(request()->get('sortid'));
+		}
+				
+		//发送到inner
+		$url = BASE_URL.url('/inner/other/getElite');
+		$return = curlHttp($url,'POST',$data);
+		if(request()->isAjax())
+		{
+			return json_decode($return);
+		}
+		else
+		{
+			return $return;
+		}		
 	}				
 }

@@ -46,7 +46,8 @@ class Puser extends Base
 		$data	=	array();
 		
 		$data['uid'] 	= request()->post('uid');
-
+		
+		$data['uid']	=	'4';
 		
 		$dbData['uid']	= $data['uid'];
 			
@@ -90,22 +91,16 @@ class Puser extends Base
 		if(input('?post.birth'))
 		{
 		$data['birth'] 			=  request()->post('birth');
-		}
-		//用户头像
-		if(input('?post.thumburl'))
-		{
-			$data['thumburl'] 			=  request()->post('thumburl');
-		}
-		//return json($dbData);
+		}		
+		
 		//判断该用户个人信息是否存在
 		$request = db('puser_info')->where($dbData)->find();
 		//如果不存在就插入,如果存在就添加
 		if(!$request)
 		{
-			//return json($data);
-			$request2	=	db('puser_info')->insert($data);
-
-			if($request2 !== 1)
+			$request	=	db('puser_info')->insert($data);
+			
+			if($request !== 1)
 			{
 				$return['status'] = 0;
 				$return['message'] = '添加个人信息失败';
@@ -176,7 +171,6 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
-			$dbData['id']				= request()->post('id');
 			//更新教育信息
 			$request	=	db('puser_edu')->where($dbData)->update($data);
 			if($request !== 1)
@@ -259,7 +253,6 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
-			$dbData['id']				= request()->post('id');
 			//更新教育信息
 			$request	=	db('puser_project')->where($dbData)->update($data);
 			if($request !== 1)
@@ -339,7 +332,6 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
-			$dbData['id']				= request()->post('id');
 			//更新教育信息
 			$request	=	db('puser_work')->where($dbData)->update($data);
 			if($request !== 1)
@@ -420,7 +412,6 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
-			$dbData['id']				= request()->post('id');
 			//更新教育信息
 			$request	=	db('puser_train')->where($dbData)->update($data);
 			if($request !== 1)
@@ -556,7 +547,6 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
-			$dbData['id']				= request()->post('id');
 			//更新教育信息
 			$request	=	db('puser_skills')->where($dbData)->update($data);
 			if($request !== 1)
@@ -631,7 +621,6 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
-			$dbData['id']				= request()->post('id');
 			//更新教育信息
 			$request	=	db('puser_expectwork')->where($dbData)->update($data);
 			if($request !== 1)
@@ -702,10 +691,9 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
-			$dbData['id']				= request()->post('id');
 			//更新个人作品
 			$request	=	db('puser_product')->where($dbData)->update($data);
-			dump($request);
+			dump($req)
 			if($request !== 1)
 			{
 				$return['status'] = 0;
@@ -755,12 +743,11 @@ class Puser extends Base
 
 		$dbData['uid']	=	$data['uid'];
 
-		if(input('?post.time'))
-		{
-			$data['time'] 		= 	request()->post('time');
-		}
+
+		$dbData['uid'] = $_POST['uid'];
+		$dbData['sesc'] = $_POST['sesc'];
 		//dump($result);
-		//return json($data);
+		//return json($dbData);
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
