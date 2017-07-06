@@ -5,7 +5,7 @@ use think\Controller;
 use think\Request;
 
 
-class Upload extends Controller
+class Upload extends Base
 {
 	private $ext;
 	private $folder;
@@ -19,13 +19,24 @@ class Upload extends Controller
 		$this->ext		=	'jpg,png,gif';
 	}
 	//单文件上传	
-	public function upSingle(){				
+	public function upSingle(){
+	$data	=	array();
+	$picType	=	'avatar';
+	$data['uid']	=	session('UID');
+	if(input('?post.pictype'))
+	{
+		$picType	=	request()->post('pictype');
+	}
+
     $file = request()->file('file');
     $info = $file->validate(['ext' => $this->ext])->move($this->folder);
     if($info){
     	$return['status']	=	1;
     	$return['url']		=	$info->getSaveName();
     	$return['message']	=	'上传成功';
+		$data['thumburl']	=	$return['url'];
+		//dump($data);
+		$this->saveFile($picType,$data);
 		return json($return);    	
     }else{
     	$return['status']	=	0;
@@ -33,6 +44,25 @@ class Upload extends Controller
 		return json($return);
     }
 	}
+
+	//存储上传后的文件到数据库
+	private function saveFile($picType,$fileData)
+	{
+		switch($picType)
+		{
+			//个人用户头像上传
+			case 'avatar':
+				//发送到inner
+				//dump($fileData);
+				$url = BASE_URL.url('/inner/puser/setinfo');
+				$return = curlHttp($url,'POST',$fileData);
+				return json($return);
+			default:
+
+
+		}
+	}
+
 	//多文件上传
 	public function upMulti(){		
     $files = request()->file('file');
@@ -58,6 +88,7 @@ class Upload extends Controller
     if($info){
     	$return['status']	=	1;
     	$return['url']		=	$info->getSaveName();
+		$return['url']      =   str_replace($$return['url'],'\\','\/'); 
     	$return['message']	=	'上传成功';
 		return json($return);    	
     }else{

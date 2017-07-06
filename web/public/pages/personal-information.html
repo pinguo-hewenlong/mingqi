@@ -14,7 +14,7 @@
    
                <div class="col-12 col-md-12 col-sm-12 col-xs-12">
                    <div class="information-Box">
-                        <div class="in-header"><from id="fromthumburl" enctype="multipart/form-data"><input  id="imgButton" type="file" class="file-box" name="file" /></from><i  class="iconfont camera">&#xe643;</i></div>
+                        <div id="thumburl1" class="in-header"><from id="fromthumburl" enctype="multipart/form-data"><input  id="imgButton" type="file" class="file-box" name="file" /></from><i  class="iconfont camera">&#xe643;</i></div>
                         <div class="in-body">
                             <!--title-->
                             <div class='header-title'>
@@ -48,29 +48,28 @@
                                 </select>
                                 <div class="information phone"><input name="email" type="text" placeholder="邮箱"></div>
                                  <select name="city" id="" class="city">
-                                    <option value="">城市</option>
-                                    <option value="">1-3年</option>
-                                    <option value="">3-5年</option>
-                                    <option value="">5-10年</option>
-                                    <option value="">10年以上</option>
+                                    <option value="51010">城市</option>
+                                    <option value="51010">成都</option>
                                 </select>
                                 <div class="sex">
    
-    <div class="select fr">
-        <div class="male fl">
-            <label for="male">                        
-                <input type="radio" name="sex" id="male" checked value="1">男
-            </label>
-            <span class="btn active">男</span>
-        </div>
-        <div class="female fl">
-            <label for="female">
-                <input type="radio" name="sex" id="female" value="0">女
-            </label>
-            <span class="btn">女</span>
-        </div>                    
-    </div>       
+                                    <div class="select fr">
+                                        <div class="male fl">
+                                            <label for="male">                        
+                                                <input type="radio" name="sex" id="male" checked value="1">男
+                                            </label>
+                                            <span class="btn active">男</span>
+                                        </div>
+                                        <div class="female fl">
+                                            <label for="female">
+                                                <input type="radio" name="sex" id="female" value="0">女
+                                            </label>
+                                            <span class="btn">女</span>
+                                        </div>                    
+                                    </div> 
+                                </div>        
                             </form>
+                            <div id="errmessage"></div>
                             <div class="btn" type="botton" id="next">下一步</div>
                         </div>
                    </div>
@@ -81,6 +80,36 @@
 <script src="../js/baseurl.js"></script>
 <script src="../js/base.js"></script>
 <script src='../js/personal-information.js'></script>
+ <script>
+        $(function () {
+            $("#imgButton").change(function () {
+                var formData = new FormData();
+                formData.append("file", document.getElementById("imgButton").files[0]);
+                formData.append('pictype','avatar');   
+                console.log(document.getElementById("imgButton").files[0]);
+                $.ajax({
+                    url: "http://127.0.0.1/mingqi/index.php/file/upload/upsingle",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                    	console.log(data);
+                        if (data.status == "1") {
+                            $("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+data.url+'"/>');
+                        }
+                        if (data.status == "0") {
+                            alert(data.msg);
+                        }
+                       
+                    },
+                    error: function () {
+                        alert("上传失败！");
+                    }
+                });
+            });
+        });
+    </script>
 <!--[if IE 8]> 
 <script> 
    (function() {
