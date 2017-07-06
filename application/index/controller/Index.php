@@ -16,7 +16,14 @@ class Index extends Controller
 		//发送到inner
 		$url = BASE_URL.url('/inner/index/getPostionView');
 		$return = curlHttp($url,'POST',$data);
-		return $return;
+		if(request()->isAjax())
+		{
+			return json_decode($return);
+		}
+		else
+		{
+			return $return;
+		}
 
 	}
 

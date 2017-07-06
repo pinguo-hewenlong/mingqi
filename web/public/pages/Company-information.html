@@ -19,10 +19,10 @@
                        <div class="large-box col-lg-8 col-md-8">
                                 <div class="head"></div>
                                 <div class="heade-text">
-                                     <h1>百词斩 <span><i class="iconfont link">&#xe61e;</i></span></h1>
+                                     <h3><span id="title">百词斩</span> <span><i class="iconfont link">&#xe61e;</i></span></h3>
                                       <p>有趣有爱做教育，打造英语大杀器</p>
                                       <div class="foush">
-                                          <div><i class="iconfont head-icon">&#xe683;</i> &nbsp;移动互联网</div>
+                                          <div><i class="iconfont head-icon">&#xe683;</i> &nbsp;<span id="industry"></span></div>
                                           <div>
                                               <i class="iconfont head-icon">&#xe721;</i>
                                                <select name="" id="">
@@ -56,20 +56,17 @@
                                          <span class="bianji1"><i class="iconfont little-icon">&#xe617;</i>编辑</span>
                                     </div>
                                     <div class="passages">
-                                            <p>
-                                                不同图标样式的unicode码冲突，哪个css优先就显示哪个。图标的显示与类名称无关。
-                                                但是，开源的图标字体经常下载几套合用并没有发现冲突。
-                                                /主要是ue维护图标字体的时候，偷了一点小懒，“Font Class 前缀”“”Font Family没有修改使用了默认，所以，当同一个页面引用多个“Font Class 前缀”“”Font Family“没有修改使用默认的css时，浏览器会认为是引用的同一套字体，所以也就错乱了。
+                                            <p id="description">
                                             </p>
                                     </div>
                                     <!--基本信息编辑框-->
                                     <div id="bianji-information" class="bianji-information">
-                                        <form action="" name="myform">
-                                            <textarea  name="mytextarea"  placeholder="请输入50字简单介绍下公司吧"  wrap="virtual" onkeypress="return(this.value.length<50)" onkeydown="textlen(this,50)" onkeyup="textlen(this,50)" onblur="maxtext(this,50)"></textarea>
+                                        <form action="" id="des">
+                                            <textarea  name="description"  placeholder="请输入50字简单介绍下公司吧"  wrap="virtual" onkeypress="return(this.value.length<50)" onkeydown="textlen(this,50)" onkeyup="textlen(this,50)" onblur="maxtext(this,50)"></textarea>
                                         </form>
                                          <div class="modal-footer" id="modal-footer">
                                                     <button type="button" class="btn quxiao" data-dismiss="modal" id="quxiao" >取消</button>
-                                                    <button type="button" class="btn baocun">保存</button>
+                                                    <button type="button" class="btn baocun" id="desBtn">保存</button>
                                           </div>
                                     </div>
                                     
@@ -82,27 +79,7 @@
                                          </div>
                                          <span class="bianji2"><i class="iconfont little-icon">&#xe617;</i>编辑</span>
                                     </div>
-                                    <div class="passages">
-                                            <div class="first-passages">
-                                                    <div>2015 Jan 11 <i class="iconfont dian">&#xe61d;</i></div>
-                                                    <div class="fp-text">
-                                                        <div>获得B轮融资</div>
-                                                        <div>融资机构：中国文化产业投资基金</div>
-                                                        <div>融资机构：中国文化产业投资基金</div>
-                                                    </div>
-                                            </div>
-                                           <div class="delete">删除</div>
-                                    </div>
-                                    <div class="passages">
-                                            <div class="first-passages">
-                                                    <div>2015 Jan 11 <i class="iconfont dian">&#xe61d;</i></div>
-                                                    <div class="fp-text">
-                                                        <div>获得B轮融资</div>
-                                                        <div>融资机构：中国文化产业投资基金</div>
-                                                        <div>融资机构：中国文化产业投资基金</div>
-                                                    </div>
-                                            </div>
-                                            <div class="delete">删除</div>
+                                    <div id="milepost">
                                     </div>
                                     <div class="fp-add"><i class="iconfont little-icon">&#xe60a;</i>添加</div>
                                     <!--发展历程编辑框-->
@@ -119,14 +96,14 @@
                                     </div>
                                     <!--发展历程添加框-->
                                     <div class="bianji-information" id="tianjia-herstory">
-                                        <form action="" name="myform">
-                                            <div class="information phone"><input type="text" name="" id="event-time" placeholder="时间"></div>
-                                            <div class="information phone"><input type="text" name="" id="event-time" placeholder="标题"></div>
-                                            <textarea name="title"  placeholder="请输入50字简单说下公司的历程吧"  wrap="virtual" onkeypress="return(this.value.length<50)" onkeydown="textlen(this,50)" onkeyup="textlen(this,50)" onblur="maxtext(this,50)"></textarea>
+                                        <form action="" name="myform" id="mile">
+                                            <div class="information phone"><input type="text" name="time" id="event-time" placeholder="时间"></div>
+                                            <div class="information phone"><input type="text" name="title" id="event-time" placeholder="标题"></div>
+                                            <textarea name="description"  placeholder="请输入50字简单说下公司的历程吧"  wrap="virtual" onkeypress="return(this.value.length<50)" onkeydown="textlen(this,50)" onkeyup="textlen(this,50)" onblur="maxtext(this,50)"></textarea>
                                         </form>
                                         <div class="modal-footer" id="modal-footer">
                                                     <button type="button" class="btn quxiao" data-dismiss="modal" id="guanbi-tianjia-herstory">取消</button>
-                                                    <button type="button" class="btn baocun">保存</button>
+                                                    <button type="button" class="btn baocun" id="mileBtn">保存</button>
                                         </div>
                                     </div>
                                 </div>

@@ -28,8 +28,34 @@ class Profile extends Base
 		$url = BASE_URL.url('/inner/cuser/getfromdb');
 		//return $url;
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;		
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}			
 	}
+	//获取企业发展历程
+	public function getMilePost()
+	{
+		//设置要查询的表		
+		$this->data['table'] = 'cuser_milepost';
+		//return json($this->data);
+		//发送到inner
+		$url = BASE_URL.url('/inner/cuser/getfromdb');
+		//return $url;
+		$return = curlHttp($url,'POST',$this->data);
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}			
+	}	
 	//获取企业发布职位列表
 	public function getPost()
 	{		
@@ -44,53 +70,79 @@ class Profile extends Base
 	//设置企业基本信息
 	public function setInfo()
 	{
+		$data	=	array();
+		
+		$data['uid']	=	$this->data['uid'];
+		
 		if(request()->isPost())
 		{
-		$data['uid'] = $this->data['cuid'];
-		//企业名称
+		//公司名称		
 		if(input('?post.companyname'))
 		{
-			$data['companyname'] = $_POST['companyname'];
+			$data['companyname']	=	request()->post('companyname');
 		}
-		//hr邮箱
+		//hr邮箱		
 		if(input('?post.hremail'))
 		{
-			$data['hremail'] = $_POST['hremail'];
-		}
-		//企业logo
-		if(input('?post.thubmurl'))
+			$data['hremail']	=	request()->post('hremail');
+		}		
+		//hr邮箱		
+		if(input('?post.thumburl'))
 		{
-			$data['thumburl'] = $_POST['thumburl'];
+			$data['thumburl']	=	request()->post('thumburl');
 		}
-		//企业电话
+		//公司电话	
 		if(input('?post.comphone'))
 		{
-			$data['comphone'] = $_POST['comphone'];
+			$data['comphone']	=	request()->post('comphone');
 		}
-		//企业城市代码
-		if(input('post.city')) {
-			$data['city'] = $_POST['city'];
-		}
-		//hr姓名
-		if(input('post.hrname'))
+		//所在城市	
+		if(input('?post.city'))
 		{
-			$data['hrname'] = $_POST['hrname'];
+			$data['city']	=	request()->post('city');
 		}
-		//hr联系电话
-		$data['hrphone'] 		= $_POST['hrphone'];
-		//企业性质代码
-		$data['nature'] 		= $_POST['nature'];
-		//企业规模代码
-		$data['scale'] 			= $_POST['scale'];
-		//企业简介
-		$data['description'] 	= $_POST['description'];
-		//是否认证
-		$data['isrz'] 			= $_POST['isrz'];						
-		}
-		else
+		//hr姓名		
+		if(input('?post.hrname'))
 		{
-			$data = array();
-		}	
+			$data['hrname']	=	request()->post('hrname');
+		}
+		//hr电话	
+		if(input('?post.hrphone'))
+		{
+			$data['hrphone']	=	request()->post('hrphone');
+		}
+		//公司性质		
+		if(input('?post.nature'))
+		{
+			$data['nature']	=	request()->post('nature');
+		}
+		//公司规模
+		if(input('?post.scale'))
+		{
+			$data['scale']	=	request()->post('scale');
+		}
+		//企业描述		
+		if(input('?post.description'))
+		{
+			$data['description']	=	request()->post('description');
+		}
+		//是否认证	
+		if(input('?post.isrz'))
+		{
+			$data['isrz']	=	request()->post('isrz');
+		}
+		//公司网址	
+		if(input('?post.comurl'))
+		{
+			$data['comurl']	=	request()->post('comurl');
+		}									
+		//公司地址
+		if(input('?post.address'))
+		{
+			$data['address']	=	request()->post('address');
+		}							
+		}
+		//return json($data);
 		//调用验证器:Cuser\valisate\Info
 		$validateResult = $this->validate($data,'Info');
 		//输出错误信息
@@ -98,14 +150,28 @@ class Profile extends Base
 		{
 			$return['status'] = 0;
 			$return['message'] = $validateResult;	
-			return json($return);
+			if(request()->isAjax())
+			{	
+			return $return;
+			}
+			else
+			{
+				return json($return);
+			}			
 
 		}
 
 		//发送到inner
 		$url = BASE_URL.url('/inner/cuser/setinfo');
 		$return = curlHttp($url,'POST',$data);
-		return $return;					
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}				
 	}
 
 	//发布职位
@@ -201,20 +267,23 @@ class Profile extends Base
 	//编辑发展历程信息
 	public function setMilepost()
 	{
+		$data	=	array();
+		
 		if(Request::instance()->isPost())
 		{
 		//读取企业UID	
-		$data['cid'] 		= $this->data['uid'];
+		$data['uid'] 		= $this->data['uid'];
 		//获取发展历程时间戳
 		$data['time'] 		= strtotime($_POST['time']);
 		//获取发展历程描述		
-		$data['title'] 		= $_POST['title'];					
-		}
-		else
+		$data['title'] 		= $_POST['title'];
+		//获取发展历程描述
+		if(input('description'))
 		{
-			$return['status'] = 0;
-			$return['message'] = '非法请求';
+			$data['description']	=	request()->post('description');
+		}				
 		}
+
 		
 		//return json($data);		
 		//调用验证器:Cuser\valisate\Info

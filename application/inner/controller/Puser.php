@@ -47,7 +47,6 @@ class Puser extends Base
 		
 		$data['uid'] 	= request()->post('uid');
 		
-		$data['uid']	=	'4';
 		
 		$dbData['uid']	= $data['uid'];
 			
