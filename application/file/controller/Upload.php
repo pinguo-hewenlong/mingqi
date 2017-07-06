@@ -35,7 +35,7 @@ class Upload extends Base
     	$return['url']		=	$info->getSaveName();
     	$return['message']	=	'上传成功';
 		$data['thumburl']	=	$return['url'];
-		//dump($picType);
+		//dump($data);
 		$this->saveFile($picType,$data);
 		return json($return);    	
     }else{
@@ -88,6 +88,7 @@ class Upload extends Base
     if($info){
     	$return['status']	=	1;
     	$return['url']		=	$info->getSaveName();
+		$return['url']      =   str_replace($$return['url'],'\\','\/'); 
     	$return['message']	=	'上传成功';
 		return json($return);    	
     }else{

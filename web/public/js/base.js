@@ -32,8 +32,11 @@ var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataTyp
                         }
                     }                   
                 },
-//              error:
+//            error:
 //             console.log("OK1")
             });
         //}
     };
+
+    //文件上传ajax        $(function () {
+               

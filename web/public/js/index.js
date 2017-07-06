@@ -54,6 +54,7 @@ carousels.each(function() {
       newSet.appendTo($inner);
     }
   }
+<<<<<<< HEAD
 });
 
 
@@ -213,3 +214,25 @@ Date.prototype.Format = function (fmt) { //author: meizz
     if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
   return fmt;
 }
+=======
+});   
+window.onload=function(){
+  //判断是否登陆
+  var postData = '';
+    AjaxPost('index.php/sso/login/islogin',postData,succCallback,errorCallback,"post","json");
+    function succCallback(date){
+
+        if(date.status==1){
+            $(".right-text").html('<span class="little-text"><a href="pages/Message-center.html">消息</a></span>'+
+                             '<span class="little-text"><a href="pages/personal-resume.html">我的简历</a></span>'+
+                             '<span class="little-text"><a href="pages/Resume-status.html">投递箱</a></span>')
+        }
+    }
+    function errorCallback(date){
+        if(date.status==0){
+            $(".right-text").html('<span class="little-text"><a href="">注册</a></span>'+
+                             '<span class="little-text"><a href="">登陆</a></span>')
+        }
+    }
+} 
+>>>>>>> ca4834baa0e7d359712423a7af11c414b28ad1bc

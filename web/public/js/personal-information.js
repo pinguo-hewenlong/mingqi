@@ -10,21 +10,29 @@ window.onload=function(){
     $(".information-Box").css("height",screenHeight*0.8)
 }
 //头像文件上传
-$('#thumburl').click(function(){
-    var postData = $('#fromthumburl').serialize();
-    AjaxPost('index.php/file/upload/upsingle',postData,filesuccCallback,fileerrorCallback,"post","json");
-    function filesuccCallback(date){
-        var postdata="";
-        ajax
-}
-//添加信息过程出现错误后执行的方法
-    function fileerrorCallback(date){
+// $('#thumburl1').change(function(){
+//        var data = new FormData();
+// 25         //为FormData对象添加数据
+// 26         //
+// 27         $.each($('#inputfile')[0].files, function(i, file) {
+// 28             data.append('upload_file', file);
+// 29         });
+//     //alert(111）
+//     Ajaxfile('index.php/file/upload/upsingle',postData,filesuccCallback,fileerrorCallback,"post","json");
+//     function filesuccCallback(date){
+//         var postdata="";
+//         Ajaxfile('index.php/file/upload/upsingle',postData,filesuccCallback,fileerrorCallback,"post","json");
+//         console.log(date)
+// }
+// //添加信息过程出现错误后执行的方法
+//     function fileerrorCallback(date){
 
-    }
+//     }
 
-})
+// })
 //调用接口发送信息给后台设置个人信息
 $('#next').click(function(){
+    
 	//声明要传递给服务器的json数据
 	var postData = $('#personal-information').serialize();
 	//AjaxPost方法传递数据
@@ -40,13 +48,15 @@ function succCallback(date){
 //		})
 		//三秒后跳转下一个页面
   	setTimeout(function(){
+           
 			location.href='personal-Educational.html'
 		},1000);	
 		//console.log(333333);	
 }
 //添加信息过程出现错误后执行的方法
 function errorCallback(date){
-//		$('#spantx').text(date.message);
-//		$(this).css('boderColor','red');
+    
+		$('#errmessage').text(date.message);
+		$(this).css('boderColor','red');
 //		//$('#span').text('网络错误');
 }
