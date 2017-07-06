@@ -126,5 +126,27 @@ class Other extends Base
 			$return['message']	=	'内部错误,技能无法显示';
 			return json($return);
 		}
+	}
+	
+	//获取行业精英
+	public function getElite()
+	{
+		$data	=	array();
+		if(input('post.sortid'))
+		{
+			$data['sortid']	=	request()->post('sortid');
+		}
+		
+		$request	=	db('sys_elite')->where($data)->limit(3)->select();
+		if($request)
+		{
+			return json($request);
+		}
+		else
+		{
+			$return['status']	=	0;
+			$return['message']	=	'内部错误,技能无法显示';
+			return json($return);
+		}				
 	}			
 }

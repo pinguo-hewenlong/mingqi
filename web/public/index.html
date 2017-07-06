@@ -140,43 +140,13 @@
                           <h3>行业精英</h3>
                           <div class="category-lines"></div>
                           <div class="job-name">
-                              <div class="names first-name">ui设计</div>
-                              <div class="names">web前端</div>
-                              <div class="names">php开发</div>
-                              <div class="names">Java</div>
-                              <div class="names">通讯服务</div>
+                              <div class="names first-name" id="sort1">ui设计</div>
+                              <div class="names" id="sort2">web前端</div>
+                              <div class="names" id="sort3">php开发</div>
+                              <div class="names" id="sort4">Java</div>
+                              <div class="names" id="sort5">通讯服务</div>
                           </div>
-                          <div class="three-img"> 
-                                    <div class="fb-img">
-                                        <div class="body-img">
-                                              <img src="" alt="">
-                                        </div>
-                                        <div class="fb-text">
-                                             <h4>名字</h4>
-                                             <div>职位：ui设计师</div>
-                                             <p>职位描述</p>
-                                        </div>
-                                    </div>
-                                    <div class="fb-img">
-                                        <div class="body-img">
-                                              <img src="" alt="">
-                                        </div>
-                                        <div class="fb-text">
-                                             <h4>名字</h4>
-                                             <div>职位：ui设计师</div>
-                                             <p>职位描述</p>
-                                        </div>
-                                    </div>
-                                    <div class="fb-img">
-                                        <div class="body-img">
-                                              <img src="" alt="">
-                                        </div>
-                                        <div class="fb-text">
-                                             <h4>名字</h4>
-                                             <div>职位：ui设计师</div>
-                                             <p>职位描述</p>
-                                        </div>
-                                    </div>
+                          <div class="three-img" id="elite"> 
                           </div> 
                     </div>     
                 </div>
@@ -414,14 +384,6 @@
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
 <script src="js/index.js"></script>
-<script>
-    $("#search-btn").click(function(){
-        data=$("#search-input").val()==''?'web':$("#search-input").val();
-        $.get("http://127.0.0.1/mingqi/index.php/search/index/byword?word="+data, function(result){
-            $.cookie('search_res',result);
-            location.href="./pages/serch-job.html";
-        });
-    });
-</script>
+<script src="js/indexBase.js"></script>
 </body>
 </html>
