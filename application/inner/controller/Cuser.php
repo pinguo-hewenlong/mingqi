@@ -178,5 +178,29 @@ class Cuser extends Controller
 			return json($return); 			
 		}
 		
-	}	
+	}
+	//获取用户注册状态
+	public function preGetFirst()
+	{
+		$data['id']	=	request()->post('uid');
+
+		$request = db('cuser')->where($data)->find();
+
+		if($request)
+		{
+			$return['status']	=	$request['prestatus'];
+			$return['message']	=	'success';
+			return json($return);
+		}
+		else
+		{
+			$return['status']	=	0;
+			$return['message']	=	'error';
+			return json($return);
+		}
+
+
+
+
+	}		
 }

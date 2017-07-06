@@ -27,7 +27,7 @@ function succCallback(date){
 		//三秒后跳转下一个页面
   	setTimeout(function(){
   		var postData = '';
-  		AjaxPost('index.php/puser/pre/getfirst',postData,succCallback,errorCallback,"post","json");
+  		AjaxPost('index.php/cuser/pre/getfirst',postData,succCallback,errorCallback,"post","json");
   		function succCallback(date){
 			location.href='../index.html'
 		}

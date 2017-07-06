@@ -17,6 +17,7 @@ class Sso extends Base
     //用户注册	
 	public function register()
 	{
+		//dump('OK');
 		//初始化内部传送过来的相关数据
 		$data['username']		=	$_POST['username'];			
 		$data['password']		=	$_POST['password'];
@@ -41,7 +42,7 @@ class Sso extends Base
 			$return['message'] 	= 	"非法请求,入口错误";
 			return json($return);			
 		}
-		//return json($data);
+		//dump($data);
 		//判断手机号是否已经被注册
 		$dbdata['username'] = $data['username'];
 		$result = Db::name($table)->where($dbdata)->find();
