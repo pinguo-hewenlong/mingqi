@@ -4,6 +4,19 @@ window.onload=function(){
     $(".section").css("height",screenHeight);
     console.log(screenHeight);
     $(".information-Box").css("height",screenHeight*0.8)
+    
+    
+    	  //继承前面设置好的头像
+
+	  //获取基本信息
+	  var postData = '';
+				    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
+					function errorCallback(date){
+						console.log(date);
+					$("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+date[0].thumburl+'"/>');
+					}
+					
+}
 }
 //调用接口发送信息给后台设置工作经历
 $('#next1').click(function(){

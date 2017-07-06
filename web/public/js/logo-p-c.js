@@ -45,10 +45,10 @@ function succCallback(date){
 //		$('#spantx').text(date.message);
 //		$(this).css('boderColor','red');
 //		//$('#span').text('网络错误');
-			location.href='personal-information.html'
+			location.href='company-in.html'
 	
 		}
-	},3000);
+	},500);
 		//console.log(333333);	
 }
 //登录过程出现错误后执行的方法
