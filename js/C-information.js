@@ -1,5 +1,5 @@
 //创建初始地图完毕
-var BASE_URL	=	"http://www.scmqyc.com/test/tp/index.php/";
+var BASE_URL	=	"http://www.scmqyc.com/mingqi/tp/index.php/";
 
 window.onload=function (){
     $("#header").load("header.html");

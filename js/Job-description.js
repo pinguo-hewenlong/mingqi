@@ -20,7 +20,7 @@ window.onload=function (){
     var pids;
      $.ajax({
          type:'get',
-         url:'http://www.scmqyc.com/test/tp/index.php/index/index/getPostionView',
+         url:'http://www.scmqyc.com/mingqi/tp/index.php/index/index/getPostionView',
          data:{"poid":'02bf8ead9f4cd51a25593d637d1eba54'},
          dataType:'json',
          async : false,

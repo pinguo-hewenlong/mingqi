@@ -11,7 +11,7 @@ window.onload=function(){
 //点击切换图片验证吗
 function reloadcode(){
 var verify=document.getElementById('captcha');
-verify.setAttribute('src','http://www.scmqyc.com/test/tp/index.php/captcha.html?'+Math.random());
+verify.setAttribute('src','http://www.scmqyc.com/mingqi/tp/index.php/captcha.html?'+Math.random());
 //这里必须加入随机数不然地址相同我发重新加载
 }
 
@@ -21,7 +21,7 @@ $('#getMsgCode').click(function(){
 	//console.log('111');
 	$.ajax({
 		type:"post",
-		url:"http://www.scmqyc.com/test/tp/index.php/sso/Register/getMsgCode",
+		url:"http://www.scmqyc.com/mingqi/tp/index.php/sso/Register/getMsgCode",
 		async:true,
 		data:$('#reset').serialize(),
 		//Console.log('date');

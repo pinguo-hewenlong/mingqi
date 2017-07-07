@@ -1,7 +1,7 @@
 
 
 
-var BASE_URL	=	'http://www.scmqyc.com/test/tp/index.php/';
+var BASE_URL	=	'http://www.scmqyc.com/mingqi/tp/index.php/';
 
 $(document).ready(function(){
     //初始化分页

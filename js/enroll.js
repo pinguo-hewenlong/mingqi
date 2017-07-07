@@ -13,7 +13,7 @@ $('#getMsgCode').click(function(){
 	//console.log('111');
 	$.ajax({
 		type:"post",
-		url:"http://www.scmqyc.com/test/tp/index.php/sso/Register/getMsgCode",
+		url:"http://www.scmqyc.com/mingqi/tp/index.php/sso/Register/getMsgCode",
 		async:true,
 		data:$('#enroll').serialize(),
 		//Console.log('date');
