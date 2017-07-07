@@ -47,7 +47,6 @@ class Puser extends Base
 		
 		$data['uid'] 	= request()->post('uid');
 		
-		$data['uid']	=	'4';
 		
 		$dbData['uid']	= $data['uid'];
 			
@@ -693,7 +692,6 @@ class Puser extends Base
 		{
 			//更新个人作品
 			$request	=	db('puser_product')->where($dbData)->update($data);
-			//dump($req)
 			if($request !== 1)
 			{
 				$return['status'] = 0;
@@ -835,7 +833,34 @@ class Puser extends Base
 
 
 	}
-	
+	//设置用户注册状态
+	public function preSetFirst()
+	{
+		$data['id']	=	request()->post('uid');
+		
+		$dbData['id']	=	$data['id'];
+		
+		if(input('?post.status'))
+		{
+			$data['prestatus']	=	request()->post('status');
+		}
+
+		$request = db('puser')->where($dbData)->update($data);
+
+		if($request == 1)
+		{
+			$return['status']	=	1;
+			$return['message']	=	'success';
+			return json($return);
+		}
+		else
+		{
+			$return['status']	=	0;
+			$return['message']	=	'error';
+			return json($return);
+		}
+
+	}	
 	
 	
 

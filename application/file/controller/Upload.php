@@ -35,7 +35,7 @@ class Upload extends Base
     	$return['url']		=	$info->getSaveName();
     	$return['message']	=	'上传成功';
 		$data['thumburl']	=	$return['url'];
-		//dump($data);
+		//return $data;
 		$this->saveFile($picType,$data);
 		return json($return);    	
     }else{
@@ -57,6 +57,10 @@ class Upload extends Base
 				$url = BASE_URL.url('/inner/puser/setinfo');
 				$return = curlHttp($url,'POST',$fileData);
 				return json($return);
+			case 'avatar_c':
+				$url = BASE_URL.url('/inner/cuser/setinfo');
+				$return = curlHttp($url,'POST',$fileData);
+				return json($return);			
 			default:
 
 

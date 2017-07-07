@@ -9,6 +9,7 @@ class Info extends Validate
 		'companyname' => 'chsAlpha|length:1,16',
 		'hremail' => 'email',
 		'thumburl' => ['regex' => '/^(http|https):\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?$/'],
+		'comurl' => ['regex' => '/^(http|https):\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?$/'],		
 		'comphone' => ['regex' => '13\d{9}|15\d{9}|18\d{9}|17\d{9}'],
 		'city' => '\d{1,16}',
 		'hrname' => 'chsAlpha|length:1,6',
@@ -16,6 +17,7 @@ class Info extends Validate
 		'nature' => '\d{1,16}',
 		'scale' => '\d{1,16}',
 		'description' => 'chs|length:8,200',
+		'address' => 'chsAlpha|length:8,200',		
 		'isrz' => '\d{1,16}',									
 	];
 	

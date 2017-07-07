@@ -33,17 +33,13 @@ window.onload=function(){
                                     '<div>'+             
                                     '</div>'+
                                 '</div>'+
-                                '<div id="job-time" class="begin-endtime">'+obj.begintime +"-"+ obj.endtime
-                                                        
-                                '</div>'+
-                                '<div class="describe work-description">'+  obj.description
-                                                
-                                '</div>'+ 
-                                '<div class="delete">'+'删除'+'</div>'+
+                                '<div id="job-time" class="begin-endtime">'+obj.begintime +"-"+ obj.endtime+'</div>'+
+                                '<div class="describe work-description">'+  obj.description+'</div>'+ 
+                                  '<div class="delete">'+'删除'+'</div>'+
                             '</div>';
 	  		
 	  		$("#company-an1").append(html);
-	  		$(".delete-skill").click(function(){
+	  		$(".delete").click(function(){
 	//    console.log(11111);
              $(this).parent().remove()
          })
@@ -60,8 +56,34 @@ window.onload=function(){
 	//获取教育经历
 	var edu	=	AjaxPost('index.php/puser/profile/getedu',postData,succCallbackEdu,errorCallbackEdu,"post","json");
 	function succCallbackEdu(date){
-		$("#schooledu").html(date[0].school);
-		$("#major").html(date[0].major + "." + date[0].record);
+//		$("#schooledu").html(date[0].school);
+//		$("#major").html(date[0].major + "." + date[0].record);
+		
+		
+		$.each(date,function(n,obj){
+			var html	=	'<div>'+
+                                '<div class="company-an">'+
+                                    '<div>'+
+                                        '<div id="schooledu" class="company-com edu-school">'+obj.school+'</div>'+
+                                        '<div id="major" class="edu-major">'+obj.major+'.'+obj.record+'</div>'+
+                                    '</div>'+
+                                        '<div>'+       
+                                    '</div>'+
+                                '</div>'+
+                                '<div id="major-time" class="edu-majortime">'+
+                                    '2016年毕业'+
+                                '</div>'+ 
+                               '<div class="delete">'+'删除'+'</div>'+
+                            '</div>';
+	  		
+	  		$("#company-an2").append(html);
+	  		$(".delete").click(function(){
+	//    console.log(11111);
+             $(this).parent().remove()
+         })
+			
+		})
+
 	}
 	function errorCallbackEdu(date)
 	{

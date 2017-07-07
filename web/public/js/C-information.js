@@ -1,4 +1,6 @@
 //创建初始地图完毕
+var BASE_URL	=	"http://127.0.0.1/mingqi/index.php/";
+
 window.onload=function (){
     $("#header").load("header.html");
     $("#footer").load("footer.html");
@@ -14,6 +16,115 @@ window.onload=function (){
     }else{
         //浏览器不支持geolocation
     }
+    
+    
+    //获取基本信息
+    $.ajax({
+    	type:"get",
+    	url:"http://127.0.0.1/mingqi/index.php/cuser/profile/getinfo",
+    	async:true,
+    	success:function(data)
+    	{	
+    		$("#title").html(data[0].companyname);
+    		$("#industry").html(data[0].industry);
+    		$("#description").html(data[0].description);
+    		$("#position").html(data[0].address);
+    	}
+    });
+    
+    //获取发展历程
+    $.ajax({
+    	type:"get",
+    	url:"http://127.0.0.1/mingqi/index.php/cuser/profile/getmilepost",
+    	async:true,
+    	success:function(data)
+    	{	
+			$.each(data,function(n,obj){
+				var html	=	"";
+				html		=   '<div class="passages">'+
+                                            '<div class="first-passages">'+
+                                                    '<div>'+obj.time+'<i class="iconfont dian">&#xe61d;</i></div>'+
+                                                    '<div class="fp-text">'+
+                                                        '<div>'+obj.title+'</div>'+
+                                                        '<div>'+obj.description+'</div>'+
+                                                    '</div>'+
+                                            '</div>'+
+                                           '<div class="delete">删除</div>'+
+                                    '</div>';
+                //alert(html);                    
+                $('#milepost').append(html);                    
+				
+			})
+    	}
+    });
+    
+    //修改公司描述
+    $('#desBtn').bind('click',function(){
+    	$.ajax({
+    		type:"post",
+    		url:"http://127.0.0.1/mingqi/index.php/cuser/profile/setinfo",
+    		async:true,
+    		data:$('#des').serialize(),
+    		success:function(data){ 				
+    		$("#bianji-information").toggleClass("bianji-information");		
+     				//获取基本信息
+    				$.ajax({
+    				type:"get",
+    				url:"http://127.0.0.1/mingqi/index.php/cuser/profile/getinfo",
+    				async:true,
+    				success:function(data)
+    				{	
+    					$("#description").html(data[0].description);
+    					
+    				}
+    				});
+    				
+    				
+    		}
+    	});
+    })
+    //添加发展历程
+    $('#mileBtn').bind('click',function(){
+    	$.ajax({
+    		type:"post",
+    		url:"http://127.0.0.1/mingqi/index.php/cuser/profile/setmilepost",
+    		async:true,
+    		data:$('#mile').serialize(),
+    		success:function(data)
+    		{
+    		$("#tianjia-herstory").toggleClass("bianji-information")	
+    			//获取发展历程
+    		$.ajax({
+    		type:"get",
+    		url:"http://127.0.0.1/mingqi/index.php/cuser/profile/getmilepost",
+    		async:true,
+    		success:function(data)
+    		{	
+				$('#milepost').empty();
+				$.each(data,function(n,obj){
+				var html	=	"";
+				html		=   '<div class="passages">'+
+                                            '<div class="first-passages">'+
+                                                    '<div>'+obj.time+'<i class="iconfont dian">&#xe61d;</i></div>'+
+                                                    '<div class="fp-text">'+
+                                                        '<div>'+obj.title+'</div>'+
+                                                        '<div>'+obj.description+'</div>'+
+                                                    '</div>'+
+                                            '</div>'+
+                                           '<div class="delete">删除</div>'+
+                                    '</div>';
+                //alert(html);                    
+                $('#milepost').append(html);                    
+				
+			})
+    	}
+    });    			
+    			
+    		}
+    	});
+    })
+    
+    
 }
 // textarea输入字数判断
 function textlen(x,y){ 
