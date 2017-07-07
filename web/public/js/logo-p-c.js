@@ -29,6 +29,7 @@ function succCallback(date){
   		var postData = '';
   		AjaxPost('index.php/cuser/pre/getfirst',postData,succCallback,errorCallback,"post","json");
   		function succCallback(date){
+  			
 			location.href='../index.html'
 		}
   		function errorCallback(date){
@@ -38,6 +39,6 @@ function succCallback(date){
 }
 //登录过程出现错误后执行的方法
 function errorCallback(date){
-	$('#span').text('网络错误');
+	$('.tixoin').text(date.message);
 	
 }
