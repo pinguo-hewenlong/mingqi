@@ -193,11 +193,12 @@ class Profile extends Base
 	//设置个人信息
 	public function setInfo()
 	{
+		//用户id，通过构造函数获取,无需传递	
+		$data['uid'] 			= $this->data['uid'];		
 				
 		if(request()->isPost())
 		{
-		//用户id，通过构造函数获取,无需传递	
-		$data['uid'] 			= $this->data['uid'];
+
 		//真实姓名
 		if(input('?post.realname'))
 		{

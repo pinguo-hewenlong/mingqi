@@ -12,11 +12,7 @@
 </head>
 <body>
     <div class="information-Box">
-                        <div class="in-header">	
-	                        <from id="fromthumburl" enctype="multipart/form-data">
-	                        	<input  id="imgButton" type="file" class="file-box" name="file" />
-	                        </from><i  class="iconfont camera">&#xe643;</i>
-                        </div>
+		<div id="thumburl1" class="in-header"><from id="fromthumburl" enctype="multipart/form-data"><input  id="imgButton" type="file" class="file-box" name="file" /></from><i  class="iconfont camera">&#xe643;</i></div>
                         <div class="in-body">
                             <!--title-->
                             <div class='header-title'>
@@ -31,7 +27,7 @@
                             <div class="boder"></div>
                             <form id="company-in" action="">
                                 <div class="information"><input name="companyname" type="text" placeholder="公司名称"></div>
-                                <div class="information phone"><input name="comurl" type="text" placeholder="公司网址"></div>
+                                <div class="information phone"><input name="comurl" id="comurl" type="text" placeholder="公司网址"></div>
                                 <select name="industry" id="" class="first-select se-One">
                                     <option value="">行业归属</option>
                                     <option value="101">互联网</option>
@@ -52,6 +48,7 @@
                                 </select>
                                  <div class="information phone"><input type="text" name="address" id="company-address" placeholder="公司具体地址"></div>
                             </form>
+                            <div class="tixoin"></div>
                             <div type="botton" id="next">下一步</div>
                         </div>
                    </div> 

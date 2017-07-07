@@ -7,7 +7,7 @@ class Milepost extends Validate
 {
 	protected $rule = [
 		'time' => '\d{9,16}',
-		'title' => 'chs|length:2,200',										
+		'title' => 'length:2,200',										
 	];
 	
 	protected $message = [

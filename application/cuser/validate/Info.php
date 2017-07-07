@@ -6,18 +6,18 @@ use think\Validate;
 class Info extends Validate
 {
 	protected $rule = [
-		'companyname' => 'chsAlpha|length:1,16',
+		'companyname' => 'chsDash|length:1,16',
 		'hremail' => 'email',
-		'thumburl' => ['regex' => '/^(http|https):\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?$/'],
-		'comurl' => ['regex' => '/^(http|https):\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?$/'],		
+		'thumburl' => 'url',
+		'comurl' => 'url',		
 		'comphone' => ['regex' => '13\d{9}|15\d{9}|18\d{9}|17\d{9}'],
 		'city' => '\d{1,16}',
-		'hrname' => 'chsAlpha|length:1,6',
+		'hrname' => 'chsDash|length:1,6',
 		'hrphone' =>  ['regex' => '13\d{9}|15\d{9}|18\d{9}|17\d{9}'],
 		'nature' => '\d{1,16}',
 		'scale' => '\d{1,16}',
-		'description' => 'chs|length:8,200',
-		'address' => 'chsAlpha|length:8,200',		
+		'description' => 'length:8,200',
+		'address' => 'chsDash|length:8,200',		
 		'isrz' => '\d{1,16}',									
 	];
 	
@@ -31,7 +31,7 @@ class Info extends Validate
 		'hrphone' => 'hr手机号码填写错误',
 		'nature' => 'errorCode-1002-1003',
 		'scale' => 'errorCode-1002-1004',
-		'description' => '企业描述不符合规范',
+		'description' => '请输入8-200个字符',
 		'isrz' => 'errorCode-1002-1005',											
 	];	
 }
