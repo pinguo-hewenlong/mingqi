@@ -4,7 +4,7 @@
  * 2、首页最新职位加载
  * 3、首页行业精英加载
  */
-var BASE_URL    =   'http://127.0.0.1/mingqi/index.php/';
+var BASE_URL    =   'http://www.scmqyc.com/test/tp/index.php/';
 $(document).ready(function(){
 	
 

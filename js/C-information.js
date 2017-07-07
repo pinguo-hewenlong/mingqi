@@ -1,5 +1,5 @@
 //创建初始地图完毕
-var BASE_URL	=	"http://127.0.0.1/mingqi/index.php/";
+var BASE_URL	=	"http://127.0.0.1/mingqi/tp/index.php/";
 
 window.onload=function (){
     $("#header").load("header.html");
@@ -21,7 +21,7 @@ window.onload=function (){
     //获取基本信息
     $.ajax({
     	type:"get",
-    	url:"http://127.0.0.1/mingqi/index.php/cuser/profile/getinfo",
+    	url:BASE_URL+"cuser/profile/getinfo",
     	async:true,
     	success:function(data)
     	{	
@@ -35,7 +35,7 @@ window.onload=function (){
     //获取发展历程
     $.ajax({
     	type:"get",
-    	url:"http://127.0.0.1/mingqi/index.php/cuser/profile/getmilepost",
+    	url:BASE_URL+"cuser/profile/getmilepost",
     	async:true,
     	success:function(data)
     	{	
@@ -63,7 +63,7 @@ window.onload=function (){
     $('#desBtn').bind('click',function(){
     	$.ajax({
     		type:"post",
-    		url:"http://127.0.0.1/mingqi/index.php/cuser/profile/setinfo",
+    		url:BASE_URL+"cuser/profile/setinfo",
     		async:true,
     		data:$('#des').serialize(),
     		success:function(data){ 				
@@ -71,7 +71,7 @@ window.onload=function (){
      				//获取基本信息
     				$.ajax({
     				type:"get",
-    				url:"http://127.0.0.1/mingqi/index.php/cuser/profile/getinfo",
+    				url:BASE_URL+"cuser/profile/getinfo",
     				async:true,
     				success:function(data)
     				{	
@@ -88,7 +88,7 @@ window.onload=function (){
     $('#mileBtn').bind('click',function(){
     	$.ajax({
     		type:"post",
-    		url:"http://127.0.0.1/mingqi/index.php/cuser/profile/setmilepost",
+    		url:BASE_URL+"cuser/profile/setmilepost",
     		async:true,
     		data:$('#mile').serialize(),
     		success:function(data)
@@ -97,7 +97,7 @@ window.onload=function (){
     			//获取发展历程
     		$.ajax({
     		type:"get",
-    		url:"http://127.0.0.1/mingqi/index.php/cuser/profile/getmilepost",
+    		url:BASE_URL+"cuser/profile/getmilepost",
     		async:true,
     		success:function(data)
     		{	

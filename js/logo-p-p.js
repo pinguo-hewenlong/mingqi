@@ -12,7 +12,7 @@ window.onload=function(){
 function reloadcode(){
 var verify=document.getElementById('captcha');
 //这里必须加入随机数不然地址相同我发重新加载
-verify.setAttribute('src','http://127.0.0.1/mingqi/index.php/captcha.html?'+Math.random());
+verify.setAttribute('src','http://www.scmqyc.com/test/tp/index.php/captcha.html?'+Math.random());
 }
 //调用封装的AjaxPost方法来进行数据传递
 $('#btn').click(function(){

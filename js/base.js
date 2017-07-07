@@ -10,7 +10,7 @@ var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataTyp
          * errorCallback 失败回调函数
          * type 请求方式("POST" 或 "GET")， 默认已经设置为 "POST"
          */
-    var demiain="http://127.0.0.1/mingqi/"
+    var demiain="http://127.0.0.1/mingqi/tp/"
         //console.log(url);
         //function $ajax(url, postData, succCallback, errorCallback, type,dataType){
         var type = type || "post";
@@ -45,7 +45,7 @@ var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataTyp
 function islogin(){
    //判断是否登陆
   var postData2 = '';
-    AjaxPost('index.php/sso/login/islogin',postData2,succCallback,errorCallback,"post","json");
+    AjaxPost('/tp/index.php/sso/login/islogin',postData2,succCallback,errorCallback,"post","json");
     function succCallback(date){
 
         if(date.status==1){
@@ -57,7 +57,7 @@ function islogin(){
                               $("#login-out").bind('click',function(){
                                
                                   var postData3="";
-                                  AjaxPost('index.php/sso/logout',postData3,succCallback,errorCallback,"post","json");
+                                  AjaxPost('/tp/index.php/sso/logout',postData3,succCallback,errorCallback,"post","json");
                                   function succCallback(data){
                                     if(data.status==1){
                                         $(".right-text").html('<span class="little-text"><a href="enroll-p">注册</a></span>'+
@@ -85,7 +85,7 @@ function islogin(){
 }
 function islogin2(){
     var postData2 = '';
-    AjaxPost('index.php/sso/login/islogin',postData2,succCallback,errorCallback,"post","json");
+    AjaxPost('/tp/index.php/sso/login/islogin',postData2,succCallback,errorCallback,"post","json");
     function succCallback(){
       
     }

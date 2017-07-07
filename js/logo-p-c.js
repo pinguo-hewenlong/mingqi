@@ -11,7 +11,7 @@ window.onload=function(){
 //点击切换图片验证吗
 function reloadcode(){
 var verify=document.getElementById('captcha');
-verify.setAttribute('src','http://127.0.0.1/mingqi/index.php/captcha.html?'+Math.random());
+verify.setAttribute('src','http://www.scmqyc.com/test/tp/index.php/captcha.html?'+Math.random());
 }
 //调用封装的AjaxPost方法来进行数据传递
 $('#btn').click(function(){

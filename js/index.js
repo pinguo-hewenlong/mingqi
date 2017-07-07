@@ -61,7 +61,7 @@ window.onload=function(){
     //判断是否登录
     $.ajax({
         type:"get",
-        url:"http://127.0.0.1/mingqi/index.php/index/base",
+        url:"tp/index.php/index/base",
         async:true,
         success:function(data)
         {
@@ -83,7 +83,7 @@ window.onload=function(){
     });
 
   var postData = '';
-    AjaxPost('index.php/sso/login/islogin',postData,succCallback,errorCallback,"post","json");
+    AjaxPost('/index.php/sso/login/islogin',postData,succCallback,errorCallback,"post","json");
     function succCallback(date){
 
         if(date.status==1){
@@ -95,7 +95,7 @@ window.onload=function(){
                               $("#login-out").bind('click',function(){
                                 console.log(1111)
                                   var postData="";
-                                  AjaxPost('index.php/sso/logout',postData,succCallback,errorCallback,"post","json");
+                                  AjaxPost('/tp/index.php/sso/logout',postData,succCallback,errorCallback,"post","json");
                                   function succCallback(data){
                                     if(data.status==1){
                                         $(".right-text").html('<span class="little-text"><a href="pages/enroll-p">注册</a></span>'+
