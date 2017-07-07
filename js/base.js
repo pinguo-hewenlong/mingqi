@@ -10,7 +10,7 @@ var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataTyp
          * errorCallback 失败回调函数
          * type 请求方式("POST" 或 "GET")， 默认已经设置为 "POST"
          */
-    var demiain="http://127.0.0.1/mingqi/tp/"
+    var demiain="http://www.scmqyc.com/test/tp/"
         //console.log(url);
         //function $ajax(url, postData, succCallback, errorCallback, type,dataType){
         var type = type || "post";
