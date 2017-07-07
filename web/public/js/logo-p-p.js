@@ -33,9 +33,9 @@ function succCallback(date){
   		
   		//判断信息填写状态选择跳转的路径
   		var postData = '';
-  		AjaxPost('index.php/puser/pre/getfirst',postData,succCallback,errorCallback,"post","json");
+  		AjaxPost('index.php/puser/pre/getfirst',postData,succCallback,errorCallback,"post","json");  
   		//1执行的方法去首页
-  		function succCallback(date){
+  		function succCallback(date){ 
 			location.href='../index.html'
 		}
   		function errorCallback(date){

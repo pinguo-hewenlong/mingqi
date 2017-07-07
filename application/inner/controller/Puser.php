@@ -693,7 +693,6 @@ class Puser extends Base
 		{
 			//更新个人作品
 			$request	=	db('puser_product')->where($dbData)->update($data);
-			dump($req)
 			if($request !== 1)
 			{
 				$return['status'] = 0;

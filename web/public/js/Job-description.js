@@ -1,5 +1,6 @@
 
 window.onload=function (){
+    islogin()
     var options={
         enableHighAccuracy:true, //是否允许高精度
         maximumAge:1000  //接受新点位的时间
