@@ -6,10 +6,11 @@ window.onload=function(){
     $(".information-Box").css("height",screenHeight*0.8);
     
 	   var postData = '';
-				    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
+				    var info = AjaxPost('index.php/cuser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
 					function errorCallback(date){
 //						console.log(date);
 					$("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+date[0].thumburl+'"/>');
+					$(".in-header").addClass("in-header2")
 					}    
 }
 // textarea输入字数判断
@@ -35,8 +36,12 @@ $('#next').click(function(){
 })
 //添加信息成功后执行的方法
 function succCallback(date){
+	
+	
+	
   	setTimeout(function(){
-			location.href='../index.html'
+  		  		
+			location.href='Company-information.html'
 		},500);	
 }
 //添加信息过程出现错误后执行的方法
