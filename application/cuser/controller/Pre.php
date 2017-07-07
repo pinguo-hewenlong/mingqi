@@ -3,7 +3,7 @@
  * 此页面提供用户首次注册填写信息的功能
  */
 
-namespace app\puser\controller;
+namespace app\cuser\controller;
 
 class Pre extends Base
 {
@@ -21,7 +21,7 @@ class Pre extends Base
 	{
 		
 		//发送到inner
-		$url = BASE_URL.url('/inner/puser/pregetfirst');
+		$url = BASE_URL.url('/inner/cuser/pregetfirst');
 		$return = curlHttp($url,'POST',$this->data);
 		
 		
@@ -39,7 +39,7 @@ class Pre extends Base
 	public function setFirst()
 	{
 		//发送到inner
-		$url = BASE_URL.url('/inner/puser/presetfirst');
+		$url = BASE_URL.url('/inner/cuser/presetfirst');
 		$return = curlHttp($url,'POST',$this->data);
 		
 		
