@@ -834,7 +834,34 @@ class Puser extends Base
 
 
 	}
-	
+	//设置用户注册状态
+	public function preSetFirst()
+	{
+		$data['id']	=	request()->post('uid');
+		
+		$dbData['id']	=	$data['id'];
+		
+		if(input('?post.status'))
+		{
+			$data['prestatus']	=	request()->post('status');
+		}
+
+		$request = db('puser')->where($dbData)->update($data);
+
+		if($request == 1)
+		{
+			$return['status']	=	1;
+			$return['message']	=	'success';
+			return json($return);
+		}
+		else
+		{
+			$return['status']	=	0;
+			$return['message']	=	'error';
+			return json($return);
+		}
+
+	}	
 	
 	
 
