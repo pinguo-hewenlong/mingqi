@@ -1,6 +1,9 @@
 
 window.onload=function (){
     islogin()
+    $(".success-btn").click(function(){
+        $(".success-box").toggleClass("heinn-btn");
+    })
     var options={
         enableHighAccuracy:true, //是否允许高精度
         maximumAge:1000  //接受新点位的时间
@@ -32,7 +35,6 @@ window.onload=function (){
            $("#ask").text(data[0].content);
            var  y=data[0].uid;
            x=y;
-        //   console.log(data[0].uid)
           return y
          }
      })
@@ -45,18 +47,23 @@ window.onload=function (){
        function errorCallback(data){
            $("#companyname").text(data[0].companyname);
            $("#address").text(data[0].address);
-        //    var pid=data[0].poid;
-        //    pids=pid;
-        //    return pid
        }
+       //简历投递
     $("#Job-Details-title-btn").bind('click',function(){
+        islogin2();
     let postData={"poid":"02bf8ead9f4cd51a25593d637d1eba54"};
     AjaxPost('index.php/puser/resume/send',postData,succCallback,errorCallback,"post","json");
     function succCallback(data){
-           alert("投递成功")
+         $(".success-box").toggleClass("heinn-btn");
+         $(".success-box>h4").text("恭喜你....");
+         $("#succes-status").text("投递成功了");
+         $(".success-btn").text("确定");
     }
     function errorCallback(data){
-       alert("投递失败")
+         $(".success-box").toggleClass("heinn-btn");
+         $(".success-box>h4").text("很遗憾....");
+         $("#succes-status").text("投递失败了");
+         $(".success-btn").text("再试一下");
     }
 
 })

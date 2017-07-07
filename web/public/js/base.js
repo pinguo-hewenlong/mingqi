@@ -42,7 +42,7 @@ var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataTyp
 
 
 
-  function islogin(){
+function islogin(){
    //判断是否登陆
   var postData2 = '';
     AjaxPost('index.php/sso/login/islogin',postData2,succCallback,errorCallback,"post","json");
@@ -82,6 +82,18 @@ var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataTyp
                              '<span class="little-text"><a href="logo-p-p.html">登陆</a></span>')
         }
     }
-  }
+}
+function islogin2(){
+    var postData2 = '';
+    AjaxPost('index.php/sso/login/islogin',postData2,succCallback,errorCallback,"post","json");
+    function succCallback(){
+      
+    }
+    function errorCallback(){
+         $(".success-box>h4").text("还没登陆呢....");
+         $("#succes-status").text("不能投递哦");
+         $(".success-btn").html('<a href="logo-p-p.html">返回登录</a>')
+    }
+}
   
  
