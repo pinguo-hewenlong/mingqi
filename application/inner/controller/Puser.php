@@ -213,12 +213,14 @@ class Puser extends Base
 	}
 	//删除项目经历
 	public function delProject(){
+
 		//获取数据
 		$data['id']   	=	request()->post('poid');
 
 		$data['uid']	=	request()->post('uid');
-
-		$dbData       	=	db('puser_project')->find($data);
+		$dbData       	=	db('puser_project') ->where('id',$data['id'])
+												->where('uid',$data['uid'])
+												->find();
 
 		if($dbData){
 			$rs         =  db('puser_project')->delete($dbData['id']);
