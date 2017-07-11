@@ -211,6 +211,32 @@ class Puser extends Base
 
 
 	}
+	//删除项目经历
+	public function delProject(){
+		//获取数据
+		$data['id']   	=	request()->post('poid');
+
+		$data['uid']	=	request()->post('uid');
+
+		$dbData       	=	db('puser_project')->find($data);
+
+		if($dbData){
+			$rs         =  db('puser_project')->delete($dbData['id']);
+			if ($rs) {
+				$return['status'] = 1;
+				$return['message'] = '项目经历删除成功';
+				return json($return);
+			} else {
+				$return['status'] = 0;
+				$return['message'] = '项目经历删除失败';
+				return json($return);
+			}
+		} else {
+			$return['status'] = 0;
+			$return['message'] = '未找到该项目经历';
+			return json($return);
+		}
+	}
 	//添加项目经历
 	public function setProject()
 	{
