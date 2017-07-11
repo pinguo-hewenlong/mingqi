@@ -353,7 +353,44 @@ class Profile extends Base
 		}		
 											
 	}
-	
+	/**
+	 * 删除项目经验接口
+	 * 参数 poid
+	 * 请求方式 post
+	 * */
+	public function delProject(){
+		//获取项目经历id
+		$data['uid']=$this->data['uid'];
+		$data['poid'] = trim(request()->post('poid'));
+		$validateResult = $this->validate($data,'Poid');
+		//输出错误信息
+		if(true !== $validateResult)
+		{
+			$return['status'] = 0;
+			$return['message'] = $validateResult;
+			if(request()->isAjax())
+			{
+				return $return;
+			}
+			else
+			{
+				return json($return);
+			}
+
+		}
+		//发送到inner
+		$url = BASE_URL.url('/inner/puser/delProject');
+		$return = curlHttp($url,'POST',$data);
+		if(request()->isAjax())
+		{
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}
+
+	}
 	//设置项目经历
 	public function setProject()
 	{

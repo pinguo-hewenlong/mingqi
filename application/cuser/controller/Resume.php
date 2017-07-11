@@ -10,7 +10,11 @@ class Resume extends Base
 	{
 		parent::__construct();
 		$this->data['uid'] = session('UID');
-	}	
+	}
+	//简历列表 分页
+	public function rmList(){
+		//@todo 简历列表 逻辑  并分页
+	}
 	//简历反馈
 	public function feedback()
 	{
