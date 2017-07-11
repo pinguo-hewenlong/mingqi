@@ -3,6 +3,11 @@
     margin: 0;
     font-family: 微软雅黑;
 }
+.section{
+    background: url("../images/enroll/background.jpg");
+    width: 100%;
+    background-size: cover;
+}
 a{
     text-decoration: none;
 }

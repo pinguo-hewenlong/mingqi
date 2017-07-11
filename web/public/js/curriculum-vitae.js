@@ -17,3 +17,9 @@ $(".t-btn").each(function(){
             $(this).addClass("active").removeClass("t-btn");
         })
 })
+window.onload=function(){
+    var postData="";
+    AjaxPost(
+        
+    )
+}
