@@ -2,8 +2,6 @@
 var BASE_URL	=	"http://127.0.0.1/mingqi/index.php/";
 
 window.onload=function (){
-    $("#header").load("header.html");
-    $("#footer").load("footer.html");
     var options={
         enableHighAccuracy:true, //是否允许高精度
         maximumAge:1000  //接受新点位的时间
