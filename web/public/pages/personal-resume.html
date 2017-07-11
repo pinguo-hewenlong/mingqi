@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/in-base.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/resume.css">
+    <link rel="stylesheet" href="../css/datepicker.css">
 </head>
 <body>
              <div class="col-lg-12 col-md-12 col-ms-12 col-xs-12 first-header">
@@ -45,7 +46,7 @@
                        <div  class="large-box col-lg-8 col-md-8">
                                 <div class="large-box-header"> </div>
                                 <div class="head-portrait">
-                                	<img src="../images/enroll/pt.jpg" alt="">
+                                	<img src="" alt="">
                                 </div>
                                 <div id="conent">
                                     <h1 class="name1 name">姓名</h1>
@@ -56,7 +57,7 @@
                                         <span class="simple-little1 simple-little"></span>
                                         <span class="simple-little2 simple-little"></span>
                                         <span class="simple-little3 simple-little"></span>
-                                        <span class="simple-little4 simple-little">2年工作经验</span>
+                                        <span class="simple-little4 simple-little"></span>
                                         <span class="simple-little5 simple-little"></span>
                                     </div>
                                     <div id="essential-information">
@@ -77,21 +78,15 @@
                                              <span class="first-line"></span>
                                              <span class="practice-text">工作经历</span>
                                              <span class="first-line"></span>
-                                             <span class=" editor" id="editor"><i class="iconfont rem-icon">&#xe68b;</i>编辑</span>
                                              <span class=" editor"  id="jod-editor"><i class="iconfont rem-icon">&#xe60a;</i>添加</span>
                                          </div>
                                        <!--工作经历编辑框-->
                                          <form action="" id="job-practice-bianji" class="job-practice">
-                                            <div class="information"><input type="text" placeholder="公司名称"></div>
-                                            <div class="information phone"><input type="text" placeholder="职位"></div>
-                                            <select name="" id="" class="first-select se-One">
-                                               <option value="">&nbsp;&nbsp;&nbsp;&nbsp;起始时间</option>
-                                               <option value="2016-10-28">博士</option>
-                                           </select>
-                                            <select name="" id="" class="se-One">
-                                              <option value="">&nbsp;&nbsp;&nbsp;&nbsp;结束时间</option>
-                                              <option value="2017-11-22">1-3年</option>
-                                            </select>
+                                            <div class="information"><input type="text" placeholder="公司名称" id="company-name"></div>
+                                            <div class="information phone"><input type="text" placeholder="职位" id='company-position'></div>
+                                            <!--<select name="" id="company-begintime" class="first-select se-One">-->
+                                              <input name=""  id="company-begintime" class="first-select se-One" value="开始时间">
+                                              <input name=""  id="company-endtime" class="first-select se-One" value="结束时间">
                                              <textarea name="" id="" placeholder="	"></textarea>
                                              <div class="modal-footer">
                                                 <button type="button" class="btn quxiao" data-dismiss="modal" id="e-qixiao">取消</button>
@@ -142,7 +137,7 @@
                                              <span class="first-line"></span>
                                              <span class="practice-text">教育经历</span>
                                              <span class="first-line"></span> 
-                                             <span class=" editor" id="edu-editor"><i class="iconfont rem-icon">&#xe68b;</i>&nbsp;编辑</span>
+                                             
                                             <span class=" editor" id="edu-tainjia"><i class="iconfont rem-icon">&#xe60a;</i>添加</span>
                                          </div>
                                          <!--教育经历编辑框-->
@@ -400,5 +395,6 @@
         <script src="../js/base.js"></script>
         <script src="../js/baseInfo.js"></script>
         <script src="../js/resume.js"></script>
+        <script src='../js/bootstrap-datepicker.js'></script>
 </body>
 </html>

@@ -218,7 +218,7 @@ class Profile extends Base
 		//工作年限
 		if(input('?post.workexp'))
 		{
-		$data['workexp']		= trim(request()->post('workexp'));
+		$data['workxp']		= trim(request()->post('workxp'));
 		}				
 		//邮箱
 		if(input('?post.email'))

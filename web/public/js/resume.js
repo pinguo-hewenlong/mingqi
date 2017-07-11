@@ -7,18 +7,12 @@ $("#quxiao").click(function()
 {
 	$("#job-practice").toggleClass("job-practice")
 });
-$("#editor").click(function()
-{
-	$("#job-practice-bianji").toggleClass("job-practice")
-});
+
 $("#e-qixiao").click(function()
 {
 	$("#job-practice-bianji").toggleClass("job-practice")
 });
-$("#edu-editor").click(function()
-{
-	$("#geteducational").toggleClass("job-practice")
-});
+
 $("#edu-quxiao").click(function()
 {
 	$("#geteducational").toggleClass("job-practice")
@@ -52,6 +46,8 @@ window.onload=function()
 {
 //判断是否登录
 	islogin();
+	$("#company-begintime").datepicker();
+	$("#company-endtime").datepicker();
     var postData = '';
 //获取基本信息
     var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
@@ -63,9 +59,15 @@ window.onload=function()
 		$(".simple-little1").html(date[0].gender);
 		$(".simple-little2").html(date[0].eduction);
 		//根据出生年月算当前年龄
-		var ages	=	agefun(date[0].birth);
-		$(".simple-little3").html(ages+"岁");	
-//		$(".simple-little4").html(date[0].gender);
+        //出生日期
+		var birth	=	date[0].birth;
+		//现在的时间
+		var newdata = Math.round(new Date().getTime()/1000)
+        //年龄
+			var ages= newdata - birth;
+			var  age = Math.ceil(ages /3600/24/365);
+		$(".simple-little3").html(age+"岁");
+		$(".simple-little4").html(date[0].Workxp);
 		$(".simple-little5").html(date[0].city);	
 		$(".info-phone").html(date[0].phone);
 		$(".info-email").html(date[0].email);
@@ -91,9 +93,17 @@ window.onload=function()
                                 '</div>'+
                                 '<div id="job-time" class="begin-endtime">'+obj.begintime +"-"+ obj.endtime+'</div>'+
                                 '<div class="describe work-description">'+  obj.description+'</div>'+ 
+                                '<span class=" editor" id="editor"><i class="iconfont rem-icon">&#xe68b;</i>编辑</span>'+
                                 '<div class="delete">'+'删除'+'</div>'+
                             '</div>';
 	  		$("#company-an1").append(html);
+	  		$("#editor").click(function(){
+	               $("#job-practice-bianji").toggleClass("job-practice");
+	               console.log(obj.company);
+	               $("#company-name").val(obj.company);
+	               $("#company-position").val(obj.position);
+//	               $("#begintime").
+            });
 	  		$(".delete").click(function()
 	  		{
              $(this).parent().remove()
@@ -123,9 +133,14 @@ window.onload=function()
                                 '<div id="major-time" class="edu-majortime">'+
                                     '2016年毕业'+
                                 '</div>'+ 
+                                '<span class=" editor" id="edu-editor"><i class="iconfont rem-icon">&#xe68b;</i>&nbsp;编辑</span>'+
                                 '<div class="delete">'+'删除'+'</div>'+
                             '</div>';
+                            
 	  		$("#company-an2").append(html);
+	  		$("#edu-editor").click(function(){
+	            $("#geteducational").toggleClass("job-practice")
+            });
 	  		$(".delete").click(function()
 	  		{
             	$(this).parent().remove()
@@ -146,17 +161,17 @@ window.onload=function()
 	{	
 	} 
 //获取期望工作
-	var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackExpectWork,errorCallbackExpectWork,"post","json");
-	function succCallbackExpectWork(date){
-        $("#pname").val(date[0].pname);
-        $("#zhiwei").val(date[0].description);
-        $("#city").val(date[0].city);
-        $("#salary").val(date[0].salary);
-	}
-	function errorCallbackExpectWork(date)
-	{
-		
-	}
+//	var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackExpectWork,errorCallbackExpectWork,"post","json");
+//	function succCallbackExpectWork(date){
+//      $("#pname").val(date[0].pname);
+//      $("#zhiwei").val(date[0].description);
+//      $("#city").val(date[0].city);
+//      $("#salary").val(date[0].salary);
+//	}
+//	function errorCallbackExpectWork(date)
+//	{
+//		
+//	}
 
 //获取技能评价
 	var skills	=	AjaxPost('index.php/puser/profile/getskills',postData,succCallbackskills,errorCallbackskills,"get","json");
@@ -182,14 +197,14 @@ window.onload=function()
 	{	
 	}
 //获取目前状态
-	var arrival	=	AjaxPost('index.php/puser/profile/getarrival',postData,succCallbackarrival,errorCallbackarrival,"get","json");
-	function succCallbackarrival(date)
-	{
-		$("#arrival").val(date[0].time);
-	}
-	function errorCallbackarrival(date)
-	{	
-	}
+//	var arrival	=	AjaxPost('index.php/puser/profile/getarrival',postData,succCallbackarrival,errorCallbackarrival,"get","json");
+//	function succCallbackarrival(date)
+//	{
+//		$("#arrival").val(date[0].time);
+//	}
+//	function errorCallbackarrival(date)
+//	{	
+//	}
 }
 //获取信息到此结束啦啦啦！！！
 
