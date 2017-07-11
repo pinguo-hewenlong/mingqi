@@ -2,21 +2,17 @@ window.onload=function(){
     //获取屏幕高度
     var screenHeight=$(document).height();
     $(".section").css("height",screenHeight);
-    console.log(screenHeight);
+    //console.log(screenHeight);
     $(".information-Box").css("height",screenHeight*0.8)
-    
-    
-    	  //继承前面设置好的头像
-
+	  //继承前面设置好的头像
 	  //获取基本信息
-	  var postData = '';
-				    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
-					function errorCallback(date){
-						console.log(date);
-					$("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+date[0].thumburl+'"/>');
-					}
-					
-}
+	var postData = '';
+		var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
+		function errorCallback(date){
+		//console.log(134565);
+		//alert(111)
+			$("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+date[0].thumburl+'"/>');
+		}
 }
 //调用接口发送信息给后台设置工作经历
 $('#next1').click(function(){
@@ -27,15 +23,8 @@ $('#next1').click(function(){
 })
 //添加信息成功后执行的方法
 function succCallback(date){
-	//console.log(555);
-	//console.log(date.status);
-	//显示登录成功！
-//		$('.tixoin').css({
-//			"display":"block"
-//		})
-		//三秒后跳转下一个页面
   	setTimeout(function(){
-			location.href='person-express.html'
+			location.href='personal-appraise.html'
 		},1000);
 		
 		//console.log(333333);

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/in-base.css">
     <link rel="stylesheet" href="../css/Educational.css">
+    <link rel="stylesheet" href="../css/datepicker.css">
 </head>
 <body>
      <!--<div class="container section">
@@ -33,22 +34,9 @@
                             <form id="setperson-express" action="">
                                 <div class="information"><input name="conpany" type="text" placeholder="公司名称"></div>
                                 <div class="information phone"><input name="position" type="text" placeholder="所在职位"></div>
-                                <select name="begintime" id="" class="first-select se-One">
-                                    <option value="">&nbsp;&nbsp;&nbsp;&nbsp;起始时间</option>
-                                    <option value="">博士</option>
-                                    <option value="">硕士</option>
-                                    <option value="">研究生</option>
-                                    <option value="">本科</option>
-                                    <option value="">大专</option>
-                                    <option value="">高中</option>
-                                </select>
-                                <select name="endtime" id="" class="se-One">
-                                    <option value="">&nbsp;&nbsp;&nbsp;&nbsp;结束时间</option>
-                                    <option value="">1-3年</option>
-                                    <option value="">3-5年</option>
-                                    <option value="">5-10年</option>
-                                    <option value="">10年以上</option>
-                                </select>
+                                <input name="begintime" id="begintime" class="first-select se-One" value="开始时间">
+                                <input name="endtime" id="endtime" class="se-One" value="结束时间">
+                               
                             </form>
                                 <div class="add">
                                     <span><a href=""><i class="iconfont">&#xf0037;</i></a>&nbsp;添加工作经历</span>
@@ -64,6 +52,38 @@
 <script src="../js/baseurl.js"></script>
 <script src="../js/base.js"></script>
 <script src='../js/Educational.js'></script>
+<script src='../js/bootstrap-datepicker.js'></script>
+<script>
+        $(function () {
+        	$("#begintime").datepicker();
+        	$("#endtime").datepicker();
+            $("#imgButton").change(function () {
+                var formData = new FormData();
+                formData.append("file", document.getElementById("imgButton").files[0]);   
+                console.log(document.getElementById("imgButton").files[0]);
+                $.ajax({
+                    url: "http://127.0.0.1/mingqi/index.php/file/upload/upsingle",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                    	console.log(data);
+                        if (data.status == "1") {
+                            $("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+data.url+'"/>');
+                        }
+                        if (data.status == "0") {
+                            alert(data.msg);
+                        }
+                       
+                    },
+                    error: function () {
+                        alert("上传失败！");
+                    }
+                });
+            });
+        });
+    </script>
 <!--[if IE 8]> 
 <script> 
    (function() {

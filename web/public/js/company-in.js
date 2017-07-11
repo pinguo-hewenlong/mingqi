@@ -4,7 +4,25 @@ window.onload=function(){
     $(".section").css("height",screenHeight);
     console.log(screenHeight);
     $(".information-Box").css("height",screenHeight*0.8)
+    
+	   var postData = '';
+				    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
+					function errorCallback(date){
+//						console.log(date);
+					$("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+date[0].thumburl+'"/>');
+					}    
 }
+
+
+//前端验证
+$('#comurl').bind('change',function(){
+	var str	=	$(this).val();
+	if(str.indexOf("http://") == -1)
+	{
+		$(this).val("http://"+str);
+		str	=	$(this).val();
+	}	
+})
 
 
 //调用接口发送信息给后台设置企业信息
@@ -24,7 +42,6 @@ function succCallback(date){
 //添加信息过程出现错误后执行的方法
 function errorCallback(date){
     
-		$('#errmessage').text(date.message);
+		$('.tixoin').text(date.message);
 		$(this).css('boderColor','red');
-//		//$('#span').text('网络错误');
 }

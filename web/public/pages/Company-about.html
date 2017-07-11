@@ -18,11 +18,8 @@
            </div>
     </div>-->
     <div class="information-Box">
-                        <div class="in-header">
-                        	<from id="fromthumburl" enctype="multipart/form-data">
-	                        	<input  id="imgButton" type="file" class="file-box" name="file" />
-	                        </from><i  class="iconfont camera">&#xe643;</i>
-                        </div>
+                       <div id="thumburl1" class="in-header"><from id="fromthumburl" enctype="multipart/form-data"><input  id="imgButton" type="file" class="file-box" name="file" /></from><i  class="iconfont camera">&#xe643;</i></div>
+
                         <div class="in-body">
                             <!--title-->
                             <div class='header-title'>
@@ -36,6 +33,7 @@
                             <form  id="company-about" action="" name="myform">
                                  <textarea name="description" id="" placeholder="请输入50字简单介绍下公司吧"  wrap="virtual" onkeypress="return(this.value.length<50)" onkeydown="textlen(this,50)" onkeyup="textlen(this,50)" onblur="maxtext(this,50)"></textarea>
                             </form>
+                            	<div id="errmessage"></div>
                                 <div class="add">
                                     <a href="company-in.html">返回</a>
                                 </div>

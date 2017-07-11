@@ -9,7 +9,7 @@ class Info extends Validate
 		'realname' => 'chsAlpha|length:2,10',
 		'email' => 'email',
 		'phone' => ['regex' => '13\d{9}|15\d{9}|18\d{9}|17\d{9}'],
-		'thumburl' => ['regex' => '/^(http|https):\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?$/'],
+		//'thumburl' => ['regex' => '/^(http|https):\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?$/'],
 		'eduction' => '\d{2,10}',
 		'city' => '\d{2,10}',
 		'gender' => 'chs|length:1,6',

@@ -4,6 +4,13 @@ window.onload=function(){
     $(".section").css("height",screenHeight);
     console.log(screenHeight);
     $(".information-Box").css("height",screenHeight*0.8);
+    
+	   var postData = '';
+				    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
+					function errorCallback(date){
+//						console.log(date);
+					$("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+date[0].thumburl+'"/>');
+					}    
 }
 // textarea输入字数判断
 function textlen(x,y){ 

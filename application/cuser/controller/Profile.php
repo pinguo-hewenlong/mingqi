@@ -70,6 +70,7 @@ class Profile extends Base
 	//设置企业基本信息
 	public function setInfo()
 	{
+		
 		$data	=	array();
 		
 		$data['uid']	=	$this->data['uid'];
@@ -142,7 +143,7 @@ class Profile extends Base
 			$data['address']	=	request()->post('address');
 		}							
 		}
-		//return json($data);
+		
 		//调用验证器:Cuser\valisate\Info
 		$validateResult = $this->validate($data,'Info');
 		//输出错误信息

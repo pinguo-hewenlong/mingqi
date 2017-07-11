@@ -46,6 +46,7 @@ class Puser extends Base
 		$data	=	array();
 		
 		$data['uid'] 	= request()->post('uid');
+		//print_r(request()->post());exit;
 		
 		
 		$dbData['uid']	= $data['uid'];
@@ -91,10 +92,14 @@ class Puser extends Base
 		{
 		$data['birth'] 			=  request()->post('birth');
 		}		
-		
+		//头像地址
+		if(input('?post.thumburl'))
+		{
+		$data['thumburl'] 		= trim(request()->post('thumburl'));
+		}
+		//return json($dbData);
 		//判断该用户个人信息是否存在
 		$request = db('puser_info')->where($dbData)->find();
-		//如果不存在就插入,如果存在就添加
 		if(!$request)
 		{
 			$request	=	db('puser_info')->insert($data);
@@ -166,7 +171,7 @@ class Puser extends Base
 		{
 		$data['record'] 		= request()->post('record');
 		}
-		
+		//var_dump($data);exit;
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{

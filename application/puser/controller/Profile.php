@@ -193,11 +193,13 @@ class Profile extends Base
 	//设置个人信息
 	public function setInfo()
 	{
+
+		//用户id，通过构造函数获取,无需传递	
+		$data['uid'] 			= $this->data['uid'];		
 				
 		if(request()->isPost())
 		{
-		//用户id，通过构造函数获取,无需传递	
-		$data['uid'] 			= $this->data['uid'];
+
 		//真实姓名
 		if(input('?post.realname'))
 		{
@@ -224,8 +226,10 @@ class Profile extends Base
 		$data['email'] 			= trim(request()->post('email'));
 		}
 		//头像地址
-		//$data['thumburl'] 		= $_POST['thumburl'];
-
+		if(input('?post.thumburl'))
+		{
+		$data['thumburl'] 		= trim(request()->post('thumburl'));
+		}
 		//所在城市
 		if(input('?post.city'))
 		{
@@ -243,7 +247,6 @@ class Profile extends Base
 		}
 
 		}
-		
 		//return json($data);
 		//调用验证器:Puser\valisate\index
 		$validateResult = $this->validate($data,'Info');
@@ -268,6 +271,7 @@ class Profile extends Base
 		//发送到inner
 		$url = BASE_URL.url('/inner/puser/setinfo');
 		$return = curlHttp($url,'POST',$data);
+		echo ($return);exit;
 		if(request()->isAjax())
 		{	
 			return json_decode ($return);
@@ -324,6 +328,7 @@ class Profile extends Base
 		
 		//return $data;
 		$validateResult = $this->validate($data,'Edu');
+		//var_dump($data);exit;
 		//输出错误信息
 		if(true !== $validateResult)
 		{

@@ -10,7 +10,6 @@ window.onload=function(){
 }
 //给获取短信验证码绑定点击事件
 $('#getMsgCode').click(function(){
-	//console.log('111');
 	$.ajax({
 		type:"post",
 		url:"http://127.0.0.1/mingqi/index.php/sso/Register/getMsgCode",

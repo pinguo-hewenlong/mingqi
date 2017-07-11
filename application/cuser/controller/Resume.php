@@ -33,5 +33,8 @@ class Resume extends Base
 		$return = curlHttp($url,'POST',$this->data);
 		return $return;	
 	}
+	
+	//简历查询
+	public function  
 
 }

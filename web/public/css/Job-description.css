@@ -193,6 +193,37 @@
 #companyname{
     font-size: 18px;
 }
+.success-box{
+    border: 1px solid #ccc;
+    box-shadow: 5px 5px 5px #ccc;
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    z-index: 10000;
+    text-align: center;
+    padding: 50px 0 0 0;
+    background: white;
+}
+.heinn-btn{
+    display: none;
+}
+.success-btn{
+    background: #7cd296;
+    color: white;
+    width: 100px;
+    height: 40px;
+    font-size: 18px ;
+    text-align: center;
+    line-height: 40px;
+    border-radius:10px;
+    margin-left: 32%;
+    margin-top: 10px;
+}
+.success-btn:hover{
+    cursor: pointer;
+}
 @media screen and (max-width:1024px){
     .the-min{
         display: none;
