@@ -68,7 +68,7 @@ window.onload=function (){
     		success:function(data){ 				
     		$("#bianji-information").toggleClass("bianji-information");		
      				//获取基本信息
-    				$.ajax({
+    			$.ajax({
     				type:"get",
     				url:"http://127.0.0.1/mingqi/index.php/cuser/profile/getinfo",
     				async:true,
@@ -77,9 +77,7 @@ window.onload=function (){
     					$("#description").html(data[0].description);
     					
     				}
-    				});
-    				
-    				
+    			});		
     		}
     	});
     })

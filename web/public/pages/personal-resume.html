@@ -82,12 +82,12 @@
                                          </div>
                                        <!--工作经历编辑框-->
                                          <form action="" id="job-practice-bianji" class="job-practice">
-                                            <div class="information"><input type="text" placeholder="公司名称" id="company-name"></div>
-                                            <div class="information phone"><input type="text" placeholder="职位" id='company-position'></div>
+                                            <div class="information"><input type="text" name="company" placeholder="公司名称" id="company-name"></div>
+                                            <div class="information phone"><input name="position" type="text" placeholder="职位" id='company-position'></div>
                                             <!--<select name="" id="company-begintime" class="first-select se-One">-->
-                                              <input name=""  id="company-begintime" class="first-select se-One" value="开始时间">
-                                              <input name=""  id="company-endtime" class="first-select se-One" value="结束时间">
-                                             <textarea name="" id="" placeholder="	"></textarea>
+                                              <input name="begintime"  id="company-begintime" class="first-select se-One" value="开始时间">
+                                              <input name="endtime"  id="company-endtime" class="first-select se-One" value="结束时间">
+                                             <textarea name="description" id="company-desc" placeholder="简单的描述一下你的工作吧"></textarea>
                                              <div class="modal-footer">
                                                 <button type="button" class="btn quxiao" data-dismiss="modal" id="e-qixiao">取消</button>
                                                 <button type="button" id = "keep" class="btn baocun">保存</button>
@@ -108,22 +108,8 @@
                                          <form action="" id="job-practice" class="job-practice">
                                             <div class="information"><input name="company" type="text" placeholder="公司名称"></div>
                                             <div class="information phone"><input name="position" type="text" placeholder="职位"></div>
-                                            <select name="begintime" id="" class="first-select se-One">
-                                               <option value="">&nbsp;&nbsp;&nbsp;&nbsp;起始时间</option>
-                                               <option value="">博士</option>
-                                               <option value="">硕士</option>
-                                               <option value="">研究生</option>
-                                               <option value="">本科</option>
-                                               <option value="">大专</option>
-                                               <option value="">高中</option>
-                                           </select>
-                                            <select name="endtime" id="" class="se-One">
-                                              <option value="">&nbsp;&nbsp;&nbsp;&nbsp;结束时间</option>
-                                              <option value="2017">1-3年</option>
-                                              <option value="2016">3-5年</option>
-                                              <option value="2015">5-10年</option>
-                                              <option value="2014">10年以上</option>
-                                            </select>
+                                            <input name="begintime"  id="company-begintime1" class="first-select se-One" value="开始时间">
+                                            <input name="endtime"  id="company-endtime1" class="first-select se-One" value="结束时间">
                                              <textarea name="description" id="" placeholder="简单的描述一下你的工作吧"></textarea>
                                              <div class="modal-footer">
                                                 <button type="button" class="btn quxiao" data-dismiss="modal" id="quxiao">取消</button>
@@ -144,25 +130,16 @@
                                         <form  id="geteducational" action="" class="job-practice">
                                             <div class="information"><input name="school" type="text" placeholder="学校名称"></div>
                                             <div class="information phone"><input name="major" type="text" placeholder="专业"></div>
-                                            <select name="begintime" id="" class="first-select se-One">
+                                            <select name="secord" id="" class="first-select se-One">
                                                 <option value="">&nbsp;&nbsp;&nbsp;&nbsp;学历</option>
-                                                <option value="">博士</option>
-                                                <option value="">硕士</option>
-                                                <option value="">研究生</option>
-                                                <option value="">本科</option>
-                                                <option value="">大专</option>
-                                                <option value="">高中</option>
+                                                <option value="博士">博士</option>
+                                                <option value="硕士">硕士</option>
+                                                <option value="研究生">研究生</option>
+                                                <option value="本科">本科</option>
+                                                <option value="大专">大专</option>
+                                                <option value="高中">高中</option>
                                             </select>
-                                            <select name="endtime"  id="endtime" class="se-One">
-                                                <option value="">&nbsp;&nbsp;&nbsp;&nbsp;毕业时间</option>
-                                                <option value="">2017年</option>
-                                                <option value="">2016年</option>
-                                                <option value="">2015年</option>
-                                                <option value="">研究生</option>
-                                                <option value="">本科</option>
-                                                <option value="">大专</option>
-                                                <option value="">高中</option>
-                                            </select>
+                                            <input name="endtime"  id="edu-endtime" class="first-select se-One" value="结束时间">
                                             <div class="modal-footer">
                                                 <button type="button" class="btn quxiao" data-dismiss="modal" id="edu-quxiao">取消</button>
                                                 <button type="button" class="btn baocun" >保存</button>
@@ -189,25 +166,16 @@
                                             <form  id="geteducational2" action="" class="job-practice">
                                                 <div class="information"><input name="school" type="text" placeholder="学校名称"></div>
                                                 <div class="information phone"><input name="major" type="text" placeholder="专业"></div>
-                                                <select name="begintime" id="" class="first-select se-One">
-                                                    <option value="">&nbsp;&nbsp;&nbsp;&nbsp;学历</option>
-                                                    <option value="">博士</option>
-                                                    <option value="">硕士</option>
-                                                    <option value="">研究生</option>
-                                                    <option value="">本科</option>
-                                                    <option value="">大专</option>
-                                                    <option value="">高中</option>
+                                                <select name="record" id="" class="first-select se-One">
+                                                    <option value="本科">&nbsp;&nbsp;&nbsp;&nbsp;学历</option>
+                                                    <option value="博士">博士</option>
+                                                    <option value="硕士">硕士</option>
+                                                    <option value="研究生">研究生</option>
+                                                    <option value="本科">本科</option>
+                                                    <option value="大专">大专</option>
+                                                    <option value="高中">高中</option>
                                                 </select>
-                                                <select name="endtime"  id="endtime" class="se-One">
-                                                    <option value="">&nbsp;&nbsp;&nbsp;&nbsp;毕业时间</option>
-                                                    <option value="">2017年</option>
-                                                    <option value="">2016年</option>
-                                                    <option value="">2015年</option>
-                                                    <option value="">研究生</option>
-                                                    <option value="">本科</option>
-                                                    <option value="">大专</option>
-                                                    <option value="">高中</option>
-                                                </select>
+                                                <input name="endtime"  id="edu-endtime1" class="first-select se-One" value="结束时间">
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn quxiao" data-dismiss="modal" id="edu-quxiao2">取消</button>
                                                     <button type="button" class="btn baocun" id="edubtn">保存</button>
@@ -224,8 +192,8 @@
                                          </div>
                                          <div id="describe" class="describe">
                                          </div> 
-                                         <form action="" id="pingjia" class="job-practice">
-                                            <textarea name="" id="" placeholder="霸气的自我评价一下吧"></textarea>
+                                         <form name="desc" action="" id="pingjia" class="job-practice">
+                                            <textarea name="self" id="" placeholder="霸气的自我评价一下吧"></textarea>
                                             <div class="modal-footer">
                                                     <button type="button" class="btn quxiao" data-dismiss="modal" id="edu-quxiao3">取消</button>
                                                     <button type="button" class="btn baocun" id="descbtn">保存</button>

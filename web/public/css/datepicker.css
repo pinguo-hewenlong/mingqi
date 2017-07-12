@@ -19,6 +19,25 @@ border-radius: 4px;
 border-top: 1px solid #ddd !important;
 }*/
 }
+.icon-arrow-left,.icon-arrow-right{
+	color: red;
+	border: 1px solid;
+	position: absolute;
+}
+.icon-arrow-left:before, .icon-arrow-left:after{
+        content: attr(data-content);
+        font-family: xms;
+        position: absolute;  
+
+       }
+    .icon-arrow-left:before{
+        color: :#f8d19f;
+        left: -10px;
+    }
+    .icon-arrow-left:after{
+        color:#fdfbb8;
+        left: -8px;
+    }
 .datepicker:before {
 content: '';
 display: inline-block;

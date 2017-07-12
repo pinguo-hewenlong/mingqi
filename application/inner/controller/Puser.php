@@ -354,6 +354,7 @@ class Puser extends Base
 		{	
 		$data['position'] 		= request()->post('position');
 		}
+		//工作描述
 		if(input('?post.description'))
 		{
 		$data['description'] 	= request()->post('description');

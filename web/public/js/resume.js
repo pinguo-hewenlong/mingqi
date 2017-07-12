@@ -48,6 +48,10 @@ window.onload=function()
 	islogin();
 	$("#company-begintime").datepicker();
 	$("#company-endtime").datepicker();
+	$("#company-begintime1").datepicker();
+	$("#company-endtime1").datepicker();
+	$("#edu-endtime").datepicker();
+	$("#edu-endtime1").datepicker();
     var postData = '';
 //获取基本信息
     var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
@@ -97,13 +101,15 @@ window.onload=function()
                                 '<div class="delete">'+'删除'+'</div>'+
                             '</div>';
 	  		$("#company-an1").append(html);
-	  		$("#editor").click(function(){
-	               $("#job-practice-bianji").toggleClass("job-practice");
-	               console.log(obj.company);
-	               $("#company-name").val(obj.company);
-	               $("#company-position").val(obj.position);
-//	               $("#begintime").
-            });
+//	  		//编辑工作经历
+//	  		$("#editor").click(function(){
+//	               $("#job-practice-bianji").toggleClass("job-practice");
+//	               $("#company-name").val(obj.company);
+//	               $("#company-position").val(obj.position);
+//	               $("#begintime").val(obj.begintime);
+//	               $("#company-desc").val(obj.description);
+//          });
+            
 	  		$(".delete").click(function()
 	  		{
              $(this).parent().remove()
@@ -131,7 +137,7 @@ window.onload=function()
                                     '</div>'+
                                 '</div>'+
                                 '<div id="major-time" class="edu-majortime">'+
-                                    '2016年毕业'+
+                                    obj.endtime+
                                 '</div>'+ 
                                 '<span class=" editor" id="edu-editor"><i class="iconfont rem-icon">&#xe68b;</i>&nbsp;编辑</span>'+
                                 '<div class="delete">'+'删除'+'</div>'+
@@ -160,6 +166,35 @@ window.onload=function()
 	function errorCallbackDesc(date)
 	{	
 	} 
+	
+	//修改个人描述
+    $('#descbtn').bind('click',function(){
+    	$.ajax({
+    		type:"post",
+    		url:"http://127.0.0.1/mingqi/index.php/puser/profile/setdesc",
+    		async:true,
+    		data:$('#desc').serialize(),
+    		success:function(data){ 				
+    		$("#pingjia").toggleClass("job-practice")	
+     				//获取基本信息
+    			$.ajax({
+    				type:"get",
+    				url:"http://127.0.0.1/mingqi/index.php/puser/profile/getDesc",
+    				async:true,
+    				success:function(data)
+    				{	
+    					$(".describe").html(date[0].self);
+    					
+    				}
+    			});		
+    		}
+    	});
+    })
+	
+	
+	
+	
+	
 //获取期望工作
 //	var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackExpectWork,errorCallbackExpectWork,"post","json");
 //	function succCallbackExpectWork(date){
@@ -207,7 +242,17 @@ window.onload=function()
 //	}
 }
 //获取信息到此结束啦啦啦！！！
-
+//编辑工作信息
+$('#keep').click(function(){
+	var postData = $('#job-practice-bianji').serialize();
+	console.log(postData);
+	AjaxPost('index.php/puser/profile/setwork',postData,succCallback,errorCallback,"post","json");
+})
+function succCallback(date){
+	
+}
+function errorCallback(date){
+}
 //出生年月计算如今年纪的计算方法
 var agefun=function  (birth) 
 {
