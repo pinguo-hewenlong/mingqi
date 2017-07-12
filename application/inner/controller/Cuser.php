@@ -160,9 +160,10 @@ class Cuser extends Controller
 		$dbData['workexp'] = $_POST['workexp'];
 		$dbData['eduction'] = $_POST['eduction'];
 		$dbData['salary'] = $_POST['salary'];
-		$dbData['team'] = $_POST['team'];
+		//$dbData['team'] = $_POST['team'];
 		$dbData['begintime'] = $_POST['begintime'];
-		$dbData['endtime'] = $_POST['endtime'];
+		//$dbData['endtime'] = $_POST['endtime'];
+		$dbData['qc']     =   $_POST['qc'];
 										
 		$result = Db::table('mq_cuser_post')->insert($dbData);
 		//dump($result);

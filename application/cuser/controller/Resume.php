@@ -1,6 +1,6 @@
 <?php
 	
-namespace app\inner\controller;
+namespace app\cuser\controller;
 
 class Resume extends Base
 {
@@ -14,6 +14,27 @@ class Resume extends Base
 	//简历列表 分页
 	public function rmList(){
 		//@todo 简历列表 逻辑  并分页
+		//获取职位id
+		//exit("aaa");
+		$this->data['poid']				    =	trim(request()->post('poid'));
+		//分页页码
+		$this->data['page']				    =	trim(request()->post('page'));
+		//每页条数
+		$this->data['perpage']				=	trim(request()->post('perpage'));
+		//var_dump($this->data);exit;
+		//调用验证器:Puser\validate\Rmlist
+		$validateResult = $this->validate($this->data,'Rmlist');
+//		输出错误信息
+		if(true !== $validateResult)
+		{
+			$return['status'] = 0;
+			$return['message'] = $validateResult;
+			return json($return);
+		}
+		//发送到inner
+		$url = BASE_URL.url('/inner/resume/resumeList');
+		$return = curlHttp($url,'POST',$this->data);
+		return $return;
 	}
 	//简历反馈
 	public function feedback()

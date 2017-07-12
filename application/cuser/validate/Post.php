@@ -9,7 +9,7 @@ class Post extends Validate
 		'title' => 'chsAlpha|length:1,16',
 		'content' => 'chs|length:8,1000',
 		'city' => '\d{1,16}',
-		'workexp' => '\d{1,2}',
+		'workexp' => '\d{1,6}',
 		'eduction' => '\d{1,16}',
 		'salary' => '\d{1,16}',	
 		'team' => '\d{1,2}',

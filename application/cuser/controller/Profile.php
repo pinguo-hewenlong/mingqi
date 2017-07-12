@@ -65,7 +65,7 @@ class Profile extends Base
 		$url = BASE_URL.url('/inner/cuser/getfromdb');
 		//return $url;
 		$return = curlHttp($url,'POST',$this->data);
-		return $return;		
+		return json_decode($return);		
 	}	
 	//设置企业基本信息
 	public function setInfo()
@@ -197,11 +197,13 @@ class Profile extends Base
 		//获取薪水代码
 		$data['salary'] 		=  $_POST['salary'];
 		//获取团队代码
-		$data['team'] 			= $_POST['team'];
+		//$data['team'] 			= $_POST['team'];
 		//获取职位发布时间
-		$data['begintime'] 		= $_POST['begintime'];
+		$data['begintime'] 		= time();
 		//获取职位失效时间
-		$data['endtime'] 		= $_POST['endtime'];					
+		//$data['endtime'] 		= $_POST['endtime'];
+		//获取任职资格
+		$data['qc']            =  $_POST['qc'];					
 		}
 		else
 		{

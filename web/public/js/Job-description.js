@@ -21,7 +21,7 @@ window.onload=function (){
      $.ajax({
          type:'get',
          url:'http://127.0.0.1/mingqi/index.php/index/index/getPostionView',
-         data:{"poid":'02bf8ead9f4cd51a25593d637d1eba54'},
+         data:{"poid":'5053b6ffdd59b1ef85598010f69f231b'},
          dataType:'json',
          async : false,
          success:function(data){

@@ -17,3 +17,15 @@ $(".t-btn").each(function(){
             $(this).addClass("active").removeClass("t-btn");
         })
 })
+window.onload=function(){
+     //获取简历信息 
+    var postData="";
+    AjaxPost('index.php/cuser/profile/getpost',postData,succCallback,errorCallback,"get","json")
+     function succCallback(){
+       
+     }
+     function errorCallback(){
+
+     }
+    
+}

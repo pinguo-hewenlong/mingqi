@@ -21,6 +21,7 @@
 body{
    background: url("../images/enroll/background.jpg");
    width: 100%;
+   background-size:cover ;
 }
 .file-box{
     position: absolute;
@@ -227,8 +228,7 @@ option{
     margin-top: 40px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 5px;
-   
+    border-radius: 5px;  
 }
 #next:hover{
    background: #60bbd5;
@@ -246,6 +246,7 @@ option{
 }
 .in-header2{
 	line-height: 100%;
+}
 @media screen and (min-width:1600px){
     .header-title {
     width: 90%;
@@ -266,7 +267,6 @@ option{
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
-    /*line-height: 100%;*/
     text-align: center;
     margin: 20px 0 0 38%;
 }

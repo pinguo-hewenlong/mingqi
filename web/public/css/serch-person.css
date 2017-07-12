@@ -1,0 +1,55 @@
+#vaite-header{
+     /*border: 1px solid red ;*/
+     width: 80%;
+     display: flex;
+     justify-content: space-between;
+     padding: 20px 0 0 0;
+}
+.vaite-title{
+    font-size: 16px;
+}
+.nominate{
+    border-left: 1px solid #9f9f9f;
+    padding-left: 5px; 
+}
+form{
+   margin-top:0; 
+}
+#vaite-conent{
+    padding: 20px 0 20px 0;
+}
+.v-heade{
+    width: 10%;
+    /*border: 1px solid red;*/
+    margin-left: 6px;
+    padding: 15px 0 0 0;
+}
+.v-circle{
+    width: 62px;
+    height: 62px;
+    border-radius: 62px; 
+    background:#0e8ed4; 
+}
+.v-heade-text{
+    font-size: 14px;
+    margin-left:15px; 
+    margin-top: 10px;
+}
+.vaite-text{
+        width: 85%;
+        margin-left: 15%;
+        margin-top: -100px;
+        overflow: hidden;
+        font-size: 12px;
+}
+.v-imformation{
+    padding: 15px 18px 0 15px ; 
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+.v-line{
+    width: 100%;
+    border: 1px solid #c6c6c6;
+    margin-top: 15px;
+}
