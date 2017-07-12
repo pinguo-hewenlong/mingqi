@@ -104,7 +104,7 @@ window.onload=function (){
 				html		=   '<div class="passages">'+
                                             '<div class="first-passages">'+
                                                     '<div>'+obj.time+'<i class="iconfont dian">&#xe61d;</i></div>'+
-                                                    '<div class="fp-text">'+
+                                                    '<div class="fp-text" style="margin-left: 20%;">'+
                                                         '<div>'+obj.title+'</div>'+
                                                         '<div>'+obj.description+'</div>'+
                                                     '</div>'+

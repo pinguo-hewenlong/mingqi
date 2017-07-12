@@ -18,8 +18,14 @@ $(".t-btn").each(function(){
         })
 })
 window.onload=function(){
+     //获取简历信息 
     var postData="";
-    AjaxPost(
-        
-    )
+    AjaxPost('index.php/cuser/profile/getpost',postData,succCallback,errorCallback,"get","json")
+     function succCallback(){
+       
+     }
+     function errorCallback(){
+
+     }
+    
 }

@@ -182,7 +182,7 @@ textarea {
 .fp-text{
      /*border: 1px solid red;*/
      width: 50%;
-     margin-left: 90px;
+     margin-left: 12%;
      margin-top: -15px;
 }
 .fp-add{
@@ -201,8 +201,9 @@ textarea {
     font-size: 16px;
 }
 .dian{
-    font-size: 12px;
+    font-size: 20px;
     color: #eeeeee;
+    margin-left: 10px;
 }
 .link{
     font-size: 25px;

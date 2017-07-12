@@ -21,7 +21,7 @@
 body{
    background: url("../images/enroll/background.jpg");
    width: 100%;
-   background-size:cover 
+   background-size:cover ;
 }
 .file-box{
     position: absolute;

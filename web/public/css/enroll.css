@@ -1,6 +1,7 @@
 .section{
     background: url("../images/enroll/background.jpg");
-    width: 100%
+    width: 100%;
+    background-size: cover;
 }
 .enroll-text{
        /*border: 1px solid red;*/
