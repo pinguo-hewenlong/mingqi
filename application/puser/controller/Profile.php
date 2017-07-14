@@ -362,6 +362,40 @@ class Profile extends Base
 	 * 参数 poid
 	 * 请求方式 post
 	 * */
+	//删除工作经历
+	public function delWork(){
+		$data['uid']=$this->data['uid'];
+		$data['poid'] = trim(request()->post('poid'));
+		$validateResult = $this->validate($data,'Poid');
+		if(true !== $validateResult)
+		{
+			$return['status'] = 0;
+			$return['message'] = $validateResult;
+			if(request()->isAjax())
+			{
+				return $return;
+			}
+			else
+			{
+				return json($return);
+			}
+
+		}
+		//发送到inner
+		//return json($data);
+		$url = BASE_URL.url('/inner/puser/delWork');
+		$return = curlHttp($url,'POST',$data);
+		if(request()->isAjax())
+		{
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}
+
+	}
+	//删除项目经历
 	public function delProject(){
 		//获取项目经历id
 		$data['uid']=$this->data['uid'];
@@ -477,7 +511,7 @@ class Profile extends Base
 		if(input('?get.update'))
 		{
 			$data['update']		=	request()->get('update');
-			$data['id']				= trim(request()->post('id'));
+			$data['id']				= (int)trim(request()->post('id'));
 		}
 				
 		if(request()->isPost())

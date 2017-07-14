@@ -86,13 +86,17 @@ window.onload=function()
 	{
 		$.each(date,function(n,obj)
 		{
+			//console.log(obj)
 			var begintime	=	new Date();
 			var endtime		=	new Date();
 			begintime.setTime(obj.begintime*1000);
 			endtime.setTime(obj.endtime*1000);
 			begintime 	= 	begintime.Format("yyyy-MM-dd");
 			endtime		= 	endtime.Format("yyyy-MM-dd");
-			var html	=	'<div>'+
+			var html	=	"";
+			var editor	=	"editor"+obj.id;
+			var delwork =	"delwork"+obj.id;
+			html	=	'<div>'+
                             	'<div class="company-an">'+
                                     '<div>'+
                                         '<div class="company-com class= work-company">'+obj.company+'</div>'+
@@ -103,10 +107,34 @@ window.onload=function()
                                 '</div>'+
                                 '<div id="job-time" class="begin-endtime">'+begintime +"---"+ endtime+'</div>'+
                                 '<div class="describe work-description">'+  obj.description+'</div>'+
-                                '<span class=" editor" id="editor"><i class="iconfont rem-icon">&#xe68b;</i>编辑</span>'+
-                                '<div class="delete">'+'删除'+'</div>'+
+                                '<span class="editor" id="'+editor+'" ><span style="display:none">'+obj.id+'</span><i class="iconfont rem-icon">&#xe68b;</i>编辑</span>'+
+                                '<div class="delete" id= "'+delwork+'"><span style="display:none">'+obj.id+'</span>'+'删除'+'</div>'+
                             '</div>';
 	  		$("#company-an1").append(html);
+	  		$("#"+editor).click(function(){
+	  			var id	=	$(this).find('span').text();
+	  			$("#job-practice-bianji").find("#company-id").remove();
+	  			$("#job-practice-bianji").toggleClass("job-practice");
+				$("#job-practice-bianji").append('<input id="company-id" name="id" type="hidden" value="'+id+'" />');
+				$("#job-practice-bianji").find('#company-name').val(obj.company);
+				$("#job-practice-bianji").find('#company-position').val(obj.position);
+				$("#job-practice-bianji").find('#company-begintime').val(begintime);
+				$("#job-practice-bianji").find('#company-endtime').val(endtime);
+				$("#job-practice-bianji").find('#company-desc').val(obj.description);
+				
+	  		})
+
+			$("#"+delwork).click(function(){
+			var id = $(this).find("span").text();
+			var postData	=	{"poid":id};
+			var work	=	AjaxPost('index.php/puser/profile/delWork',postData,succCallbackworkdel,errorCallbackworkdel,"post","json");
+				function errorCallbackworkdel(){
+				}
+				function succCallbackworkdel(){
+				}
+		})
+	  		
+	  		
 //	  		//编辑工作经历
 //	  		$("#editor").click(function(){
 //	               $("#job-practice-bianji").toggleClass("job-practice");
@@ -115,6 +143,7 @@ window.onload=function()
 //	               $("#begintime").val(obj.begintime);
 //	               $("#company-desc").val(obj.description);
 //          });
+
 
 	  		$(".delete").click(function()
 	  		{
@@ -133,11 +162,13 @@ window.onload=function()
 	{
 		$.each(date,function(n,obj)
 		{
+			console.log(obj);
 			var endtime		=	new Date();
 			endtime.setTime(obj.endtime*1000);
 			endtime			= 	endtime.Format("yyyy-MM-dd");
-
-			var html		=	'<div>'+
+			var html = "";
+			var edu_editor	=	"edu_editor"+obj.id;
+			html		=	'<div>'+
                                 '<div class="company-an">'+
                                     '<div>'+
                                         '<div id="schooledu" class="company-com edu-school">'+obj.school+'</div>'+
@@ -149,13 +180,24 @@ window.onload=function()
                                 '<div id="major-time" class="edu-majortime">'+
                                     endtime+'毕业'+
                                 '</div>'+ 
-                                '<span class=" editor" id="edu-editor"><i class="iconfont rem-icon">&#xe68b;</i>&nbsp;编辑</span>'+
+                                '<span class=" editor" id="'+edu_editor+'"><span style="display:none">'+obj.id+'</span><i class="iconfont rem-icon">&#xe68b;</i>&nbsp;编辑</span>'+
                                 '<div class="delete">'+'删除'+'</div>'+
                             '</div>';
                             
 	  		$("#company-an2").append(html);
-	  		$("#edu-editor").click(function(){
-	            $("#geteducational").toggleClass("job-practice")
+
+
+
+	  		$("#"+edu_editor).click(function(){
+				var id	=	$(this).find('span').text();
+				$("#geteducational").find("#edu-id").remove();
+				$("#geteducational").toggleClass("job-practice");
+				$("#geteducational").append('<input id="edu-id" name="id" type="hidden" value="'+id+'" />');
+				$("#geteducational").find('#school').val(obj.school);
+				$("#geteducational").find('#major').val(obj.major);
+				$("#geteducational").find('#record').val(obj.record);
+				$("#geteducational").find('#edu-endtime').val(endtime);
+				console.log($("#geteducational").html())
             });
 	  		$(".delete").click(function()
 	  		{
@@ -246,19 +288,14 @@ window.onload=function()
 	var arrival	=	AjaxPost('index.php/puser/profile/getarrival',postData,succCallbackarrival,errorCallbackarrival,"get","json");
 	function succCallbackarrival(date)
 	{
-		$("#arrival").val(date[0].time);
+		$("#arrival").val(date.time);
 	}
 	function errorCallbackarrival(date)
 	{
 	}
 }
 //获取信息END
-//编辑工作信息
-$('#keep').click(function(){
-	var postData = $('#job-practice-bianji').serialize();
-	console.log(postData);
-	AjaxPost('index.php/puser/profile/setwork',postData,succCallback,errorCallback,"post","json");
-})
+
 function succCallback(date){
 	
 }
@@ -456,3 +493,43 @@ function Change(){
 		data:$('#')
 	})
 }
+
+
+//修改工作经历
+$("#keep").click(function(){
+
+	var url = "http://127.0.0.1/mingqi/index.php/puser/profile/setwork?update=1";
+
+	$.ajax({
+	type:"post",
+	url:url,
+	async:true,
+	data:$('#job-practice-bianji').serialize(),
+	success:function(data){
+	  	//console.log(data);
+	  	}
+	});
+	$("#job-practice-bianji").toggleClass("job-practice");
+	location.reload();
+})
+
+//修改教育经历
+$("#keepedu").click(function(){
+
+	var url = "http://127.0.0.1/mingqi/index.php/puser/profile/setedu?update=1";
+
+	$.ajax({
+		type:"post",
+		url:url,
+		async:true,
+		data:$('#geteducational').serialize(),
+		success:function(data){
+			//console.log(data);
+		}
+	});
+	$("#geteducational").toggleClass("job-practice");
+	//location.reload();
+})
+
+
+

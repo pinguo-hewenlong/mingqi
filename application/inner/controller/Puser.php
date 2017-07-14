@@ -176,6 +176,7 @@ class Puser extends Base
 		if(input('?post.update'))
 		{
 			//更新教育信息
+			$dbData['id']	=	request()->post('id');
 			$request	=	db('puser_edu')->where($dbData)->update($data);
 			if($request !== 1)
 			{
@@ -215,6 +216,34 @@ class Puser extends Base
 
 
 
+	}
+	//删除工作经历
+	public function delWork(){
+
+		//获取数据
+		$data['id']   	=	request()->post('poid');
+
+		$data['uid']	=	request()->post('uid');
+		$dbData       	=	db('puser_work') ->where('id',$data['id'])
+				->where('uid',$data['uid'])
+				->find();
+
+		if($dbData){
+			$rs         =  db('puser_work')->delete($dbData['id']);
+			if ($rs) {
+				$return['status'] = 1;
+				$return['message'] = '工作经历删除成功';
+				return json($return);
+			} else {
+				$return['status'] = 0;
+				$return['message'] = '工作经历删除失败';
+				return json($return);
+			}
+		} else {
+			$return['status'] = 0;
+			$return['message'] = '未找到该工作经历';
+			return json($return);
+		}
 	}
 	//删除项目经历
 	public function delProject(){
@@ -365,7 +394,8 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
-			//更新教育信息
+			//更新工作经历
+			$dbData['id']	=	request()->post('id');
 			$request	=	db('puser_work')->where($dbData)->update($data);
 			if($request !== 1)
 			{
@@ -446,6 +476,7 @@ class Puser extends Base
 		if(input('?post.update'))
 		{
 			//更新教育信息
+			$dbData['id']	=	request()->post('id');
 			$request	=	db('puser_train')->where($dbData)->update($data);
 			if($request !== 1)
 			{
@@ -506,6 +537,7 @@ class Puser extends Base
 		if(input('?post.update'))
 		{
 			//更新教育信息
+			$dbData['id']	=	request()->post('id');
 			$request	=	db('puser_desc')->where($dbData)->update($data);
 			if($request !== 1)
 			{
@@ -580,6 +612,7 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
+			$dbData['id']	=	request()->post('id');
 			//更新教育信息
 			$request	=	db('puser_skills')->where($dbData)->update($data);
 			if($request !== 1)
@@ -655,6 +688,7 @@ class Puser extends Base
 		if(input('?post.update'))
 		{
 			//更新教育信息
+			$dbData['id']	=	request()->post('id');
 			$request	=	db('puser_expectwork')->where($dbData)->update($data);
 			if($request !== 1)
 			{
@@ -725,6 +759,7 @@ class Puser extends Base
 		if(input('?post.update'))
 		{
 			//更新个人作品
+			$dbData['id']	=	request()->post('id');
 			$request	=	db('puser_product')->where($dbData)->update($data);
 			if($request !== 1)
 			{
@@ -784,6 +819,7 @@ class Puser extends Base
 		if(input('?post.update'))
 		{
 			//更新到岗信息
+			$dbData['id']	=	request()->post('id');
 			$request	=	db('puser_arrival')->where($dbData)->update($data);
 			if($request !== 1)
 			{
