@@ -21,7 +21,7 @@ window.onload=function (){
      $.ajax({
          type:'get',
          url:'http://127.0.0.1/mingqi/index.php/index/index/getPostionView',
-         data:{"poid":'5053b6ffdd59b1ef85598010f69f231b'},
+         data:{"poid":'fc22fa6d3f9d7cbc576f4dbbb2e9ad22'},
          dataType:'json',
          async : false,
          success:function(data){
@@ -38,7 +38,7 @@ window.onload=function (){
           return y
          }
      })
-       var postData2={"uid":x}
+       var postData2={"uid":1}
        
        AjaxPost('index.php/index/index/getinfo',postData2,succCallback,errorCallback,"get","json");
        function succCallback(data){
