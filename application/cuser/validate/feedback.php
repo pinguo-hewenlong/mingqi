@@ -3,7 +3,7 @@ namespace app\cuser\validate;
 
 use think\Validate;
 
-class feedback extends Validate
+class Feedback extends Validate
 {
 	protected $rule = [
 		'poid'=> 'require|alphaNum|length:6,32',

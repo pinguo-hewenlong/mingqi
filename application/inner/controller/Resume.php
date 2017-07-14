@@ -28,7 +28,7 @@ class Resume extends Base
 			    ->order('sendtime desc')
 				->limit($start,$perpage)
 				->select();
-
+		//var_dump($dbData);exit;
 		//查询有结果
 		if ($dbData) {
 			//循环查询个人简历情况
@@ -37,19 +37,20 @@ class Resume extends Base
 				//查询个人信息 userinfo
 				$uInfo  =	db('puser_info') ->where('uid',$uid)
 						->find();
+						// if($uid!=15){var_dump($uInfo,$uid);}
 				if ($uInfo) {
-					$dbData['uInfo']['thumburl'] = $uInfo['thumburl'];
-					$dbData['uInfo']['realname'] = $uInfo['realname'];
-					$dbData['uInfo']['eduction'] = $uInfo['eduction'];
-					$dbData['uInfo']['city'] = $uInfo['city'];
-					$dbData['uInfo']['city'] = $uInfo['city'];
+					$dbData[$id]['uInfo']['thumburl'] = $uInfo['thumburl'];
+					$dbData[$id]['uInfo']['realname'] = $uInfo['realname'];
+					$dbData[$id]['uInfo']['eduction'] = $uInfo['eduction'];
+					$dbData[$id]['uInfo']['city'] = $uInfo['city'];
+					$dbData[$id]['uInfo']['city'] = $uInfo['city'];
 				}
 				//查询期望工作信息
 				$expire = db('puser_expectwork') ->where('uid',$uid)
 						->find();
 				if ($expire) {
-					$dbData['uInfo']['expect_name'] = $expire['pname'];
-					$dbData['uInfo']['expect_salary'] = $expire['salary'];
+					$dbData[$id]['uInfo']['expect_name'] = $expire['pname'];
+					$dbData[$id]['uInfo']['expect_salary'] = $expire['salary'];
 				}
 				//查询学历信息
 				$edu = db('puser_edu') ->where('uid',$uid)
@@ -68,20 +69,20 @@ class Resume extends Base
 //				print_r($work);exit;
 				if ($work) {
 					//计算工作年限 （当前时间 -第一份工作时间）/一年的秒数  向下取整
-					$dbData['uInfo']['expAge'] = floor((time() - $work[count($work)-1]['begintime'])/31536000);
-					$dbData['uInfo']['company'] = $work[0]['company'];
-					$dbData['uInfo']['position'] = $work[0]['position'];
+					$dbData[$id]['uInfo']['expAge'] = floor((time() - $work[count($work)-1]['begintime'])/31536000);
+					$dbData[$id]['uInfo']['company'] = $work[0]['company'];
+					$dbData[$id]['uInfo']['position'] = $work[0]['position'];
 				}
 				//查询到岗时间
 				$arrival = db('puser_arrival') ->where('uid',$uid)
 						->find();
 //				print_r($arrival);exit;
 				if ($arrival) {
-					$dbData['uInfo']['arrival'] = $arrival['time'];
+					$dbData[$id]['uInfo']['arrival'] = $arrival['time'];
 				}
 
 			}
-			unset($dbData[0]);
+			//unset($dbData[0]);
 			$return['status']	=	1;
 			$return['message']	=	'获取简历列表成功';
 			$return['count']	=	$count;
@@ -129,16 +130,17 @@ class Resume extends Base
 	public function resumeFeedback()
 	{
 		//个人用户uid
-		$data['uid']			=	request()->post('uid');
+		$data['uid']			=	request()->post('userid');
 		//投递的职位id
 		$data['poid']			=	request()->post('poid');
 		//投递时间
 		$data['feedbacktime']	=	request()->post('feedbacktime');
 		//反馈状态
 		$data['status']			=	request()->post('status');
-		
-		$request	=	db('puser_resumesend')->insert($data);
-		
+		$request	=	db('puser_resumesend')->where('uid', $data['uid'])
+											  ->where('poid',$data['poid'])
+    										  ->update(['status' => $data['status'],'feedbacktime'=>$data['feedbacktime']]);
+		// var_dump($request);exit;
 		if($request == 1)
 		{
 			$return['status']	=	1;
