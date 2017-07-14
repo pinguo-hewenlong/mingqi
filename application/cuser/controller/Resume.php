@@ -43,16 +43,18 @@ class Resume extends Base
 		$this->data['poid']				=	trim(request()->post('poid'));
 		$this->data['feedbacktime']		=	time();
 		$this->data['status']			=	trim(request()->post('status'));
+		$this->data['userid']			    =	trim(request()->post('uid'));
+		// var_dump($this->data);exit;
 		//调用验证器:Puser\valisate\send
-		$validateResult = $this->validate($this->data,'Feedback');
-		//输出错误信息
-		if(true !== $validateResult)
-		{
-			$return['status'] = 0;
-			$return['message'] = $validateResult;	
-			return json($return);
+		// $validateResult = $this->validate($this->data,'Feedback');
+		// //输出错误信息
+		// if(true !== $validateResult)
+		// {
+		// 	$return['status'] = 0;
+		// 	$return['message'] = $validateResult;	
+		// 	return json($return);
 
-		}		
+		// }		
 		//发送到inner
 		$url = BASE_URL.url('/inner/resume/resumefeedback');
 		$return = curlHttp($url,'POST',$this->data);

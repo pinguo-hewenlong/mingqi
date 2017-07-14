@@ -2,11 +2,11 @@
      /*border: 1px solid red ;*/
      width: 80%;
      display: flex;
-     justify-content: space-between;
+     justify-content: space-around;
      padding: 20px 0 0 0;
 }
 .vaite-title{
-    font-size: 16px;
+    font-size: 20px;
 }
 .nominate{
     border-left: 1px solid #9f9f9f;
@@ -71,7 +71,7 @@ form{
     color: black;
     position: relative;
     z-index: 1;
-    line-height: 28px;
+    /*line-height: 28px;*/
     text-align: center;
 }
 .t-btn:hover{
@@ -83,13 +83,26 @@ form{
     background: #0e8ed4;
     color: white;
 }
+#three-btns{
+    /*border: 1px solid red ;*/
+    height: 50px;
+}
 input{
     outline: none;
-    display: inline-block;
+    /*display: inline-block;*/
     vertical-align: middle;
     height: 28px;
     line-height: 28px;
-    margin: 0
+    margin: 0;
+    opacity: 0
+}
+input[type="radio"], input[type="checkbox"] {
+    margin: 4px 0 0;
+    margin-top: 1px \9;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 label {
     position: absolute;
@@ -121,9 +134,11 @@ label {
 .footer{
     border-top: 1px solid #ccc;
     text-align: center;
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     padding-bottom:20px;
-    padding-top:20px;  
+    padding-top:20px; 
+    position: relative;
+    top:300px; 
 }
 .groom-name-text2 {
     text-align: right;
@@ -141,6 +156,11 @@ label {
     font-size: 14px;
     line-height: 30px;
     padding-left: 10px;
+}
+.v-circle>img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
 }
 @media screen and (max-width:1024px){
     .v-circle{

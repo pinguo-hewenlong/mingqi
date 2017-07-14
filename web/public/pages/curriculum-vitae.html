@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/resume.css">
     <link rel="stylesheet" href="../css/C-information.css">
     <link rel="stylesheet" href="../css/curriculum-vitae.css">
+    <link href="../css/page.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
              <div class="col-lg-12 col-md-12 col-ms-12 col-xs-12 first-header">
@@ -44,18 +45,17 @@
                             <div class="vaite-header">
                                 <div class="vaite-title">简历管理</div>
                                 <div>
-                                        <form action="">
-                                            <select name="" id="">
+                                        <form action="" id="select-poid">
+                                            <select name="" id="job-category">
+                                                 <!--<option value="">职位类别</option>
                                                  <option value="">职位类别</option>
-                                                 <option value="">职位类别</option>
-                                                 <option value="">职位类别</option>
+                                                 <option value="">职位类别</option>-->
                                             </select>
                                       </form>
-                                </div>                               
-                                <div class="nominate">人才推荐</div>
+                                </div>
                             </div>    
                             <div id="vaite-conent">
-                                <div class="first-vconent">
+                                <!--<div class="first-vconent">
                                      <div class="v-heade">
                                          <div class="v-circle"></div>
                                          <div class="v-heade-text">5-6k</div>
@@ -82,9 +82,6 @@
                                          <input type="button" value="不合适"  class="t-btn">
                                          <input type="button" value="邀面试"  class="t-btn">
                                          <input type="button" value="已查看"  class="t-btn">
-                                         <!--<input type="button" class="t-btn">不合适</input>-->
-                                         <!--<div class="t-btn">邀面试</div>
-                                         <div class="t-btn">已查看</div>-->
                                      </div>
                                 </div>
                                 <div class="first-vconent">
@@ -172,12 +169,12 @@
                                          <input name="an" type="radio" value="不合适"  class="t-btn">
                                          <input name="an" type="radio" value="邀面试"  class="t-btn">
                                          <input name="an" type="radio" value="已查看"  class="t-btn">-->
-                                         <label for="male" class="t-btn">                        
+                                         <!--<label for="male" class="t-btn">                        
                                                 <input type="radio" name="sex" id="male" checked>不合适
                                          </label>
                                          <label for="male" class="t-btn">                        
                                                 <input type="radio" name="sex" id="male" checked>邀面试
-                                         </label>
+                                         </label>-->
                                          <!--<div  class="t-btn">
                                              <label for="male">                        
                                                 <input type="radio" name="sex" id="male" checked>已查看
@@ -190,9 +187,10 @@
                                             </label>
                                             <span>已查看</span>
                                          </div>-->
-                                     </div>
-                                </div>
+                                     <!--</div>
+                                </div>-->
                             </div>
+                            <ul class="page col-lg-offset-2 col-md-offset-2 " maxshowpageitem="5" pagelistcount="5"  id="page"></ul>
                        </div>
                      <div class="little-box col-lg-3 col-md-3  col-lg-offset-1 col-md-offset-1">
                             <div class="little-header">
@@ -281,6 +279,7 @@
         <script src="../js/jquery-1.11.0.min.js"></script>
         <script src="../js/bootstrap.js"></script>
         <script src="../js/base.js"></script>
+        <script src="../js/page.js"></script>
         <script src="../js/curriculum-vitae.js"></script>
 </body>
 </html>
