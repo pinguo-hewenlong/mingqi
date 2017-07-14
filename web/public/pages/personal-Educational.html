@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/in-base.css">
     <link rel="stylesheet" href="../css/Educational.css">
+    <link rel="stylesheet" href="../css/datepicker.css">
 </head>
 <body>
      <!--<div class="container section">
@@ -33,28 +34,20 @@
                             <form  id="geteducational" action="">
                                 <div class="information"><input name="school" type="text" placeholder="学校名称"></div>
                                 <div class="information phone"><input name="major" type="text" placeholder="专业"></div>
-                                <select name="begintime" id="" class="first-select se-One">
-                                    <option value="">&nbsp;&nbsp;&nbsp;&nbsp;学历</option>
-                                    <option value="">博士</option>
-                                    <option value="">硕士</option>
-                                    <option value="">研究生</option>
-                                    <option value="">本科</option>
-                                    <option value="">大专</option>+
-                                    <option value="">高中</option>
+                                <select name="record" id="" class="first-select se-One">
+                                    <option value="大专">&nbsp;&nbsp;&nbsp;&nbsp;学历</option>
+                                    <option value="博士">博士</option>
+                                    <option value="硕士">硕士</option>
+                                    <option value="研究生">研究生</option>
+                                    <option value="本科">本科</option>
+                                    <option value="大专">大专</option>+
+                                    <option value="高中">高中</option>
                                 </select>
-                                <select name="endtime"  id="endtime" class="se-One">
-                                    <option value="">&nbsp;&nbsp;&nbsp;&nbsp;毕业时间</option>
-                                    <option value="">2017年</option>
-                                    <option value="">2016年</option>
-                                    <option value="">2015年</option>
-                                     <option value="">研究生</option>
-                                    <option value="">本科</option>
-                                    <option value="">大专</option>
-                                    <option value="">高中</option>
-                                </select>
+                                <input name="endtime"  id="endtime" class="se-One" value="毕业时间">
+                                    
                             </form>
                                 <div class="add">
-                                    <span  type="button" class="iconfont ticon btn  btn-lg" data-toggle="modal" data-target="#myModal"><a href=""><i class="iconfont ticon">&#xe60a;</i></a>&nbsp;添加工作经历</span>
+                                    <span  type="button" class="iconfont ticon btn  btn-lg" data-toggle="modal" data-target="#myModal"><a href=""><i class="iconfont ticon">&#xe60a;</i></a>&nbsp;添加教育经历</span>
                                     <a href="personal-information.html">上一步</a>
                                 </div>
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -62,24 +55,15 @@
                                         <div class="information"><input name="school" type="text" placeholder="学校名称"></div>
                                         <div class="information phone"><input name="major" type="text" placeholder="专业"></div>
                                         <select name="record" id="" class="first-select se-One">
-                                            <option value="">&nbsp;&nbsp;&nbsp;&nbsp;学历</option>
-                                            <option value="">博士</option>
-                                            <option value="">硕士</option>
-                                            <option value="">研究生</option>
-                                            <option value="">本科</option>
-                                            <option value="">大专</option>
-                                            <option value="">高中</option>
+                                            <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;学历</option>
+                                            <option value="1">博士</option>
+                                            <option value="2">硕士</option>
+                                            <option value="3">研究生</option>
+                                            <option value="4">本科</option>
+                                            <option value="5">大专</option>
+                                            <option value="6">高中</option>
                                         </select>
-                                        <select name="endtime"  id="endtime" class="se-One">
-                                            <option value="">&nbsp;&nbsp;&nbsp;&nbsp;毕业时间</option>
-                                            <option value="">2017年</option>
-                                            <option value="">2016年</option>
-                                            <option value="">2015年</option>
-                                            <option value="">研究生</option>
-                                            <option value="">本科</option>
-                                            <option value="">大专</option>
-                                            <option value="">高中</option>
-                                        </select>
+                                        <input name="endtime"  id="endtime1" class="se-One" value="毕业时间">
                                    </form>
                                     <div class="modal-footer">
                                         <button type="button" class="btn quxiao" data-dismiss="modal">取消</button>
@@ -97,8 +81,11 @@
 <script src="../js/baseurl.js"></script>
 <script src="../js/base.js"></script>
 <script src='../js/Educational.js'></script>
+<script src='../js/bootstrap-datepicker.js'></script>
  <script>
         $(function () {
+        	$("#endtime").datepicker();
+        	$("#endtime1").datepicker();
             $("#imgButton").change(function () {
                 var formData = new FormData();
                 formData.append("file", document.getElementById("imgButton").files[0]);   

@@ -46,6 +46,7 @@ class Puser extends Base
 		$data	=	array();
 		
 		$data['uid'] 	= request()->post('uid');
+		//print_r(request()->post());exit;
 		
 		
 		$dbData['uid']	= $data['uid'];
@@ -91,7 +92,11 @@ class Puser extends Base
 		{
 		$data['birth'] 			=  request()->post('birth');
 		}		
-		
+		//头像地址
+		if(input('?post.thumburl'))
+		{
+		$data['thumburl'] 		= trim(request()->post('thumburl'));
+		}
 		//return json($dbData);
 		//判断该用户个人信息是否存在
 		$request = db('puser_info')->where($dbData)->find();
@@ -166,7 +171,7 @@ class Puser extends Base
 		{
 		$data['record'] 		= request()->post('record');
 		}
-		
+		//var_dump($data);exit;
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
@@ -351,6 +356,7 @@ class Puser extends Base
 		{	
 		$data['position'] 		= request()->post('position');
 		}
+		//工作描述
 		if(input('?post.description'))
 		{
 		$data['description'] 	= request()->post('description');
@@ -777,7 +783,7 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
-			//更新教育信息
+			//更新到岗信息
 			$request	=	db('puser_arrival')->where($dbData)->update($data);
 			if($request !== 1)
 			{
@@ -864,30 +870,15 @@ class Puser extends Base
 	//设置用户注册状态
 	public function preSetFirst()
 	{
-		$data['id']	=	request()->post('uid');
-		
-		$dbData['id']	=	$data['id'];
-		
-		if(input('?post.status'))
-		{
-			$data['prestatus']	=	request()->post('status');
-		}
-
-		$request = db('puser')->where($dbData)->update($data);
-
-		if($request == 1)
-		{
-			$return['status']	=	1;
-			$return['message']	=	'success';
-			return json($return);
-		}
-		else
-		{
-			$return['status']	=	0;
-			$return['message']	=	'error';
-			return json($return);
-		}
-
+		$uid	= request()->post('uid');
+		$data   = array(
+			'prestatus' => 1,
+		);
+		$res    = db('puser')->where('id',$uid)->update($data);
+		//var_dump($res,$uid);exit;
+		$return['status']	=	1;
+		$return['message']	=	'success';
+		return json($return);
 	}	
 	
 	

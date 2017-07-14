@@ -65,7 +65,7 @@ class Http
       */
     protected static function getRequestSize($header, $method)
     {
-        if($method=='GET') {
+        if($method === 'GET' || $method === 'OPTIONS' || $method === 'HEAD') {
             return strlen($header) + 4;
         }
         $match = array();
@@ -145,7 +145,11 @@ class Http
                 // content-type
                 case 'CONTENT_TYPE':
                     if (!preg_match('/boundary="?(\S+)"?/', $value, $match)) {
-                        $_SERVER['CONTENT_TYPE'] = $value;
+                        if ($pos = strpos($value, ';')) {
+                            $_SERVER['CONTENT_TYPE'] = substr($value, 0, $pos);
+                        } else {
+                            $_SERVER['CONTENT_TYPE'] = $value;
+                        }
                     } else {
                         $_SERVER['CONTENT_TYPE'] = 'multipart/form-data';
                         $http_post_boundary      = '--' . $match[1];
@@ -167,23 +171,12 @@ class Http
                     case 'application/x-www-form-urlencoded':
                         parse_str($http_body, $_POST);
                         break;
-                    default:
-                        // $GLOBALS['HTTP_RAW_POST_DATA']
-                        $GLOBALS['HTTP_RAW_REQUEST_DATA'] = $GLOBALS['HTTP_RAW_POST_DATA'] = $http_body;
                 }
-            } else {
-                // $GLOBALS['HTTP_RAW_POST_DATA']
-                $GLOBALS['HTTP_RAW_REQUEST_DATA'] = $GLOBALS['HTTP_RAW_POST_DATA'] = $http_body;
             }
         }
 
-        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-            $GLOBALS['HTTP_RAW_REQUEST_DATA'] = $http_body;
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-            $GLOBALS['HTTP_RAW_REQUEST_DATA'] = $http_body;
-        }
+        // HTTP_RAW_REQUEST_DATA HTTP_RAW_POST_DATA
+        $GLOBALS['HTTP_RAW_REQUEST_DATA'] = $GLOBALS['HTTP_RAW_POST_DATA'] = $http_body;
 
         // QUERY_STRING
         $_SERVER['QUERY_STRING'] = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
@@ -377,7 +370,7 @@ class Http
         if (HttpCache::$instance->sessionFile) {
             $raw = file_get_contents(HttpCache::$instance->sessionFile);
             if ($raw) {
-                session_decode($raw);
+                $_SESSION = unserialize($raw);
             }
         }
         return true;
@@ -394,7 +387,7 @@ class Http
             return session_write_close();
         }
         if (!empty(HttpCache::$instance->sessionStarted) && !empty($_SESSION)) {
-            $session_str = session_encode();
+            $session_str = serialize($_SESSION);
             if ($session_str && HttpCache::$instance->sessionFile) {
                 return file_put_contents(HttpCache::$instance->sessionFile, $session_str);
             }

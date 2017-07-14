@@ -35,6 +35,7 @@ $('#next').click(function(){
     
 	//声明要传递给服务器的json数据
 	var postData = $('#personal-information').serialize();
+	console.log(postData);
 	AjaxPost('index.php/puser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
 })
 //添加信息成功后执行的方法

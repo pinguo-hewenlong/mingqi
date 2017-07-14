@@ -156,6 +156,7 @@ textarea {
 }
 .editor{
     color: #16f07b;
+    margin-left: 86%;
 }
 .editor:hover{
 	cursor: pointer;

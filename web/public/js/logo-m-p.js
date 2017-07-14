@@ -61,9 +61,9 @@ $('#btn').click(function(){
 //登录成功后执行的代码块
 function succCallback(date){
 	//显示登录成功！
-		$('.tixoin').css({
-			"display":"block"
-		})
+		//$('.tixoin').css({
+			//"display":"block"
+		//})
 		//三秒后跳转下一个页面
   	setTimeout(function(){
   		var postData = '';
