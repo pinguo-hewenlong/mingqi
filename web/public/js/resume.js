@@ -55,7 +55,7 @@ window.onload=function()
     var postData = '';
 //获取基本信息
     var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
-    var b	 = document.getElementById("Mastery-select").value;
+    //var b	 = document.getElementById("Mastery-select").value;
 	function succCallback(date)
 	{
 		$(".head-portrait>img").attr("src","http://127.0.0.1/mingqi/public/uploads/"+date[0].thumburl); 
@@ -64,12 +64,12 @@ window.onload=function()
 		$(".simple-little2").html(date[0].eduction);
 		//根据出生年月算当前年龄
         //出生日期
-		var birth	=	date[0].birth;
+		var birth	  =	  date[0].birth;
 		//现在的时间
-		var newdata = Math.round(new Date().getTime()/1000)
+		var newdata   =  Math.round(new Date().getTime()/1000)
         //年龄
-			var ages= newdata - birth;
-			var  age = Math.ceil(ages /3600/24/365);
+			var ages  =  newdata - birth;
+			var  age  =  Math.ceil(ages /3600/24/365);
 		$(".simple-little3").html(age+"岁");
 		$(".simple-little4").html(date[0].Workxp);
 		$(".simple-little5").html(date[0].city);	
@@ -83,20 +83,26 @@ window.onload=function()
 //获取工作经历
 	var work	=	AjaxPost('index.php/puser/profile/getwork',postData,succCallbackwork,errorCallbackwork,"post","json");
 	function succCallbackwork(date)
-	{	
+	{
 		$.each(date,function(n,obj)
 		{
+			var begintime	=	new Date();
+			var endtime		=	new Date();
+			begintime.setTime(obj.begintime*1000);
+			endtime.setTime(obj.endtime*1000);
+			begintime 	= 	begintime.Format("yyyy-MM-dd");
+			endtime		= 	endtime.Format("yyyy-MM-dd");
 			var html	=	'<div>'+
                             	'<div class="company-an">'+
                                     '<div>'+
                                         '<div class="company-com class= work-company">'+obj.company+'</div>'+
                                         '<div id="job" class="work-position">'+obj.position+'</div>'+
                                     '</div>'+
-                                    '<div>'+             
+                                    '<div>'+
                                     '</div>'+
                                 '</div>'+
-                                '<div id="job-time" class="begin-endtime">'+obj.begintime +"-"+ obj.endtime+'</div>'+
-                                '<div class="describe work-description">'+  obj.description+'</div>'+ 
+                                '<div id="job-time" class="begin-endtime">'+begintime +"---"+ endtime+'</div>'+
+                                '<div class="describe work-description">'+  obj.description+'</div>'+
                                 '<span class=" editor" id="editor"><i class="iconfont rem-icon">&#xe68b;</i>编辑</span>'+
                                 '<div class="delete">'+'删除'+'</div>'+
                             '</div>';
@@ -109,12 +115,12 @@ window.onload=function()
 //	               $("#begintime").val(obj.begintime);
 //	               $("#company-desc").val(obj.description);
 //          });
-            
+
 	  		$(".delete").click(function()
 	  		{
              $(this).parent().remove()
             })
-			
+
 		})
 	}
 	function errorCallbackwork(date)
@@ -127,7 +133,11 @@ window.onload=function()
 	{
 		$.each(date,function(n,obj)
 		{
-			var html	=	'<div>'+
+			var endtime		=	new Date();
+			endtime.setTime(obj.endtime*1000);
+			endtime			= 	endtime.Format("yyyy-MM-dd");
+
+			var html		=	'<div>'+
                                 '<div class="company-an">'+
                                     '<div>'+
                                         '<div id="schooledu" class="company-com edu-school">'+obj.school+'</div>'+
@@ -137,7 +147,7 @@ window.onload=function()
                                     '</div>'+
                                 '</div>'+
                                 '<div id="major-time" class="edu-majortime">'+
-                                    obj.endtime+
+                                    endtime+'毕业'+
                                 '</div>'+ 
                                 '<span class=" editor" id="edu-editor"><i class="iconfont rem-icon">&#xe68b;</i>&nbsp;编辑</span>'+
                                 '<div class="delete">'+'删除'+'</div>'+
@@ -164,7 +174,8 @@ window.onload=function()
 		$("#describe").html(date[0].self);
 	}
 	function errorCallbackDesc(date)
-	{	
+	{
+		//$("#geteducational").toggleClass("job-practice")
 	} 
 	
 	//修改个人描述
@@ -174,19 +185,19 @@ window.onload=function()
     		url:"http://127.0.0.1/mingqi/index.php/puser/profile/setdesc",
     		async:true,
     		data:$('#desc').serialize(),
-    		success:function(data){ 				
-    		$("#pingjia").toggleClass("job-practice")	
-     				//获取基本信息
+    		success:function(data){
+    		$("#pingjia").toggleClass("job-practice")
+     				//获取个人描述
     			$.ajax({
     				type:"get",
     				url:"http://127.0.0.1/mingqi/index.php/puser/profile/getDesc",
     				async:true,
     				success:function(data)
-    				{	
+    				{
     					$(".describe").html(date[0].self);
-    					
+
     				}
-    			});		
+    			});
     		}
     	});
     })
@@ -196,17 +207,17 @@ window.onload=function()
 	
 	
 //获取期望工作
-//	var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackExpectWork,errorCallbackExpectWork,"post","json");
-//	function succCallbackExpectWork(date){
-//      $("#pname").val(date[0].pname);
-//      $("#zhiwei").val(date[0].description);
-//      $("#city").val(date[0].city);
-//      $("#salary").val(date[0].salary);
-//	}
-//	function errorCallbackExpectWork(date)
-//	{
-//		
-//	}
+	var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackExpectWork,errorCallbackExpectWork,"post","json");
+	function succCallbackExpectWork(date){
+      $("#pname").val(date[0].pname);
+      $("#zhiwei").val(date[0].description);
+      $("#city").val(date[0].city);
+      $("#salary").val(date[0].salary);
+	}
+	function errorCallbackExpectWork(date)
+	{
+
+	}
 
 //获取技能评价
 	var skills	=	AjaxPost('index.php/puser/profile/getskills',postData,succCallbackskills,errorCallbackskills,"get","json");
@@ -232,16 +243,16 @@ window.onload=function()
 	{	
 	}
 //获取目前状态
-//	var arrival	=	AjaxPost('index.php/puser/profile/getarrival',postData,succCallbackarrival,errorCallbackarrival,"get","json");
-//	function succCallbackarrival(date)
-//	{
-//		$("#arrival").val(date[0].time);
-//	}
-//	function errorCallbackarrival(date)
-//	{	
-//	}
+	var arrival	=	AjaxPost('index.php/puser/profile/getarrival',postData,succCallbackarrival,errorCallbackarrival,"get","json");
+	function succCallbackarrival(date)
+	{
+		$("#arrival").val(date[0].time);
+	}
+	function errorCallbackarrival(date)
+	{
+	}
 }
-//获取信息到此结束啦啦啦！！！
+//获取信息END
 //编辑工作信息
 $('#keep').click(function(){
 	var postData = $('#job-practice-bianji').serialize();
@@ -267,17 +278,17 @@ var agefun=function  (birth)
     return age;
 };
 //时间戳与年月日的转换
-Date.prototype.Format = function (fmt) 
+Date.prototype.Format = function (fmt)
 {
-    var o = 
+    var o =
     {
-        "M+": this.getMonth() + 1, //月份 
-        "d+": this.getDate(), //日 
-        "h+": this.getHours(), //小时 
-        "m+": this.getMinutes(), //分 
-        "s+": this.getSeconds(), //秒 
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
-        "S": this.getMilliseconds() //毫秒 
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
     };
     if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
     for (var k in o)
@@ -359,7 +370,7 @@ $('#edubtn').bind('click',function()
                                 		'</div>'+
                                 		'<div id="major-time" class="edu-majortime">'+
                                     	'2016年毕业'+
-                                		'</div>'+ 
+                                		'</div>'+
                                			'<div class="delete">'+'删除'+'</div>'+
                             			'</div>';                 
                 	$('#company-an1').append(html);                    
@@ -373,9 +384,9 @@ $('#edubtn').bind('click',function()
 //添加技能
 $("#baocun-skill").click(function()
 {
-	let a=document.getElementById("input-text").value;
-	let b=document.getElementById("Mastery-select").value;
-	let options=$("#Mastery-select option:selected");
+	var a=document.getElementById("input-text").value;
+	var b=document.getElementById("Mastery-select").value;
+	var options		=		$("#Mastery-select option:selected");
 	if(a != 0)
 	{
       	$("#skill-box").append

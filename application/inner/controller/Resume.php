@@ -90,7 +90,7 @@ class Resume extends Base
 		}else {
 			//查询无结果 返回空数组
 			$return['status']	=	1;
-			$return['message']	=	'获取简历列表成功';
+			$return['message']	=	'获取简历列表失败';
 			$return['count']	=	$count;
 			$return['data']     =   array();
 			return json($return);

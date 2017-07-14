@@ -20,9 +20,17 @@ $('#next').click(function(){
 	AjaxPost('index.php/puser/profile/setdesc',postData,succCallback,errorCallback,"post","json");
 })
 function succCallback(date){
-  	setTimeout(function(){
+	setTimeout(function(){
+		var postData1 = '';
+		AjaxPost('index.php/puser/pre/setFirst',postData1,succCallback,errorCallback,"post","json");
+		function succCallback(date){
+			alert(111)
 			location.href='../index.html'
-		},1000);	
+		}
+		function errorCallback(date){
+			//location.href='personal-information.html'
+		}
+	},500);
 	}
 //添加信息过程出现错误后执行的方法
 function errorCallback(date){

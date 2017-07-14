@@ -783,7 +783,7 @@ class Puser extends Base
 		//判断是更新还是添加
 		if(input('?post.update'))
 		{
-			//更新教育信息
+			//更新到岗信息
 			$request	=	db('puser_arrival')->where($dbData)->update($data);
 			if($request !== 1)
 			{
@@ -870,30 +870,15 @@ class Puser extends Base
 	//设置用户注册状态
 	public function preSetFirst()
 	{
-		$data['id']	=	request()->post('uid');
-		
-		$dbData['id']	=	$data['id'];
-		
-		if(input('?post.status'))
-		{
-			$data['prestatus']	=	request()->post('status');
-		}
-
-		$request = db('puser')->where($dbData)->update($data);
-
-		if($request == 1)
-		{
-			$return['status']	=	1;
-			$return['message']	=	'success';
-			return json($return);
-		}
-		else
-		{
-			$return['status']	=	0;
-			$return['message']	=	'error';
-			return json($return);
-		}
-
+		$uid	= request()->post('uid');
+		$data   = array(
+			'prestatus' => 1,
+		);
+		$res    = db('puser')->where('id',$uid)->update($data);
+		//var_dump($res,$uid);exit;
+		$return['status']	=	1;
+		$return['message']	=	'success';
+		return json($return);
 	}	
 	
 	

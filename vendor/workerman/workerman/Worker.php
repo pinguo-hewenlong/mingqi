@@ -33,7 +33,7 @@ class Worker
      *
      * @var string
      */
-    const VERSION = '3.4.2';
+    const VERSION = '3.4.4';
 
     /**
      * Status starting.
@@ -1214,6 +1214,10 @@ class Worker
                 posix_kill($worker_pid, SIGINT);
                 Timer::add(self::KILL_WORKER_TIMER_TIME, 'posix_kill', array($worker_pid, SIGKILL), false);
             }
+            // Remove statistics file.
+            if (is_file(self::$_statisticsFile)) {
+                @unlink(self::$_statisticsFile);
+            }
         } // For child processes.
         else {
             // Execute exit.
@@ -1302,7 +1306,7 @@ class Worker
     public static function checkErrors()
     {
         if (self::STATUS_SHUTDOWN != self::$_status) {
-            $error_msg = "WORKER EXIT UNEXPECTED ";
+            $error_msg = 'Worker['. posix_getpid() .'] process terminated with ';
             $errors    = error_get_last();
             if ($errors && ($errors['type'] === E_ERROR ||
                     $errors['type'] === E_PARSE ||
@@ -1310,7 +1314,9 @@ class Worker
                     $errors['type'] === E_COMPILE_ERROR ||
                     $errors['type'] === E_RECOVERABLE_ERROR)
             ) {
-                $error_msg .= self::getErrorType($errors['type']) . " {$errors['message']} in {$errors['file']} on line {$errors['line']}";
+                $error_msg .= self::getErrorType($errors['type']) . " \"{$errors['message']} in {$errors['file']} on line {$errors['line']}\"";
+            } else {
+                $error_msg .= 'exit()/die(). Please do not call exit()/die() in workerman.';
             }
             self::log($error_msg);
         }
@@ -1550,9 +1556,13 @@ class Worker
                 call_user_func($this->onWorkerStart, $this);
             } catch (\Exception $e) {
                 self::log($e);
+                // Avoid rapid infinite loop exit.
+                sleep(1);
                 exit(250);
             } catch (\Error $e) {
                 self::log($e);
+                // Avoid rapid infinite loop exit.
+                sleep(1);
                 exit(250);
             }
         }
