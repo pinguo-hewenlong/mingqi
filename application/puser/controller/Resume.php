@@ -41,6 +41,39 @@ class Resume extends Base
 		$return = curlHttp($url,'POST',$this->data);
 		return json_decode($return);	
 	}
+
+	//获取简历状态
+
+	public function getStatus()
+	{
+		//职位ID
+		$this->data['poid']			=	request()->get('poid');
+		//调用验证器:Puser\valisate\send
+		$validateResult = $this->validate($this->data,'Send');
+		//输出错误信息
+		if(true !== $validateResult)
+		{
+			$return['status'] = 0;
+			$return['message'] = $validateResult;
+			return json($return);
+
+		}
+		//发送到inner
+		$url = BASE_URL.url('/inner/resume/resumegetstatus');
+		$return = curlHttp($url,'POST',$this->data);
+		if(request()->isAjax())
+		{
+			return json_decode($return);
+		}
+		else
+		{
+			return $return;
+		}
+
+	}
+
+	//获取简历状态
+
 	
 		
 }

@@ -59,8 +59,8 @@ class Resume extends Base
 						->select();
 //				 print_r($edu);exit;
 				if ($edu) {
-					$dbData[$id]['uInfo']['school'] = $edu[0]['school'];
-					$dbData[$id]['uInfo']['major'] = $edu[0]['major'];
+					$dbData['uInfo']['school'] = $edu[0]['school'];
+					$dbData['uInfo']['major']  = $edu[0]['major'];
 				}
 				//查询工作经历
 				$work = db('puser_work') ->where('uid',$uid)
@@ -154,6 +154,29 @@ class Resume extends Base
 			return json($return);
 		}
 		
-	}	
+	}
+
+	public function resumegetstatus()
+	{
+		$data['poid']	=	request()->post('poid');
+
+		//return json($data);
+
+		$request  = db('puser_resumesend')->where($data)->find();
+
+		if($request)
+		{
+			$return['status']	=	$request['status'];
+			$return['message']	=	'职位状态查询成功';
+			return json($return);
+		}
+		else
+		{
+			$return['status']	=	0;
+			$return['message']	=	'职位状态查询失败';
+			return json($return);
+		}
+
+	}
 
 }
