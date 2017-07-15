@@ -218,6 +218,34 @@ class Puser extends Base
 
 	}
 	//删除工作经历
+	public function delEdu(){
+
+		//获取数据
+		$data['id']   	=	request()->post('poid');
+
+		$data['uid']	=	request()->post('uid');
+		$dbData       	=	db('puser_edu') ->where('id',$data['id'])
+				->where('uid',$data['uid'])
+				->find();
+
+		if($dbData){
+			$rs         =  db('puser_edu')->delete($dbData['id']);
+			if ($rs) {
+				$return['status'] = 1;
+				$return['message'] = '教育经历删除成功';
+				return json($return);
+			} else {
+				$return['status'] = 0;
+				$return['message'] = '教育经历删除失败';
+				return json($return);
+			}
+		} else {
+			$return['status'] = 0;
+			$return['message'] = '未找到该教育经历';
+			return json($return);
+		}
+	}
+	//删除工作经历
 	public function delWork(){
 
 		//获取数据

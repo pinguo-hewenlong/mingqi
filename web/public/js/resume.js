@@ -86,7 +86,6 @@ window.onload=function()
 	{
 		$.each(date,function(n,obj)
 		{
-			//console.log(obj)
 			var begintime	=	new Date();
 			var endtime		=	new Date();
 			begintime.setTime(obj.begintime*1000);
@@ -121,7 +120,6 @@ window.onload=function()
 				$("#job-practice-bianji").find('#company-begintime').val(begintime);
 				$("#job-practice-bianji").find('#company-endtime').val(endtime);
 				$("#job-practice-bianji").find('#company-desc').val(obj.description);
-				
 	  		})
 
 			$("#"+delwork).click(function(){
@@ -133,18 +131,6 @@ window.onload=function()
 				function succCallbackworkdel(){
 				}
 		})
-	  		
-	  		
-//	  		//编辑工作经历
-//	  		$("#editor").click(function(){
-//	               $("#job-practice-bianji").toggleClass("job-practice");
-//	               $("#company-name").val(obj.company);
-//	               $("#company-position").val(obj.position);
-//	               $("#begintime").val(obj.begintime);
-//	               $("#company-desc").val(obj.description);
-//          });
-
-
 	  		$(".delete").click(function()
 	  		{
              $(this).parent().remove()
@@ -162,12 +148,12 @@ window.onload=function()
 	{
 		$.each(date,function(n,obj)
 		{
-			console.log(obj);
 			var endtime		=	new Date();
 			endtime.setTime(obj.endtime*1000);
 			endtime			= 	endtime.Format("yyyy-MM-dd");
 			var html = "";
 			var edu_editor	=	"edu_editor"+obj.id;
+			var edu_del	=	"edu_del"+obj.id;
 			html		=	'<div>'+
                                 '<div class="company-an">'+
                                     '<div>'+
@@ -181,13 +167,9 @@ window.onload=function()
                                     endtime+'毕业'+
                                 '</div>'+ 
                                 '<span class=" editor" id="'+edu_editor+'"><span style="display:none">'+obj.id+'</span><i class="iconfont rem-icon">&#xe68b;</i>&nbsp;编辑</span>'+
-                                '<div class="delete">'+'删除'+'</div>'+
+                                '<div class="delete" id= "'+edu_del+'"><span style="display:none">'+obj.id+'</span>'+'删除'+'</div>'+
                             '</div>';
-                            
 	  		$("#company-an2").append(html);
-
-
-
 	  		$("#"+edu_editor).click(function(){
 				var id	=	$(this).find('span').text();
 				$("#geteducational").find("#edu-id").remove();
@@ -197,8 +179,18 @@ window.onload=function()
 				$("#geteducational").find('#major').val(obj.major);
 				$("#geteducational").find('#record').val(obj.record);
 				$("#geteducational").find('#edu-endtime').val(endtime);
-				console.log($("#geteducational").html())
-            });
+            })
+
+			$("#"+edu_del).click(function(){
+				var id = $(this).find("span").text();
+				var postData	=	{"poid":id};
+				var edu	=	AjaxPost('index.php/puser/profile/deledu',postData,succCallbackedudel,errorCallbackedudel,"post","json");
+				function succCallbackedudel(){
+				}
+				function errorCallbackedudel(){
+				}
+			})
+
 	  		$(".delete").click(function()
 	  		{
             	$(this).parent().remove()
@@ -528,7 +520,7 @@ $("#keepedu").click(function(){
 		}
 	});
 	$("#geteducational").toggleClass("job-practice");
-	//location.reload();
+	location.reload()
 })
 
 

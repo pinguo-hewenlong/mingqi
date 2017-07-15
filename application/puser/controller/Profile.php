@@ -395,6 +395,41 @@ class Profile extends Base
 		}
 
 	}
+
+	//删除教育经历
+	public function delEdu(){
+		$data['uid']=$this->data['uid'];
+		$data['poid'] = trim(request()->post('poid'));
+		$validateResult = $this->validate($data,'Poid');
+		if(true !== $validateResult)
+		{
+			$return['status'] = 0;
+			$return['message'] = $validateResult;
+			if(request()->isAjax())
+			{
+				return $return;
+			}
+			else
+			{
+				return json($return);
+			}
+
+		}
+		//发送到inner
+		//return json($data);
+		$url = BASE_URL.url('/inner/puser/delEdu');
+		$return = curlHttp($url,'POST',$data);
+		if(request()->isAjax())
+		{
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}
+
+	}
+
 	//删除项目经历
 	public function delProject(){
 		//获取项目经历id
