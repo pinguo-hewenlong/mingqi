@@ -305,4 +305,16 @@ class Profile extends Base
 		$return = curlHttp($url,'POST',$data);
 		return $return;					
 	}
+	//获取在招职位
+	public function getPosts(){
+		//获取当前页码
+		$data['page']	    = trim(request()->post('page'));
+		//每页条数
+		$data['perpage']	= trim(request()->post('perpage'));
+		//获取企业id
+		$data['cid']	    = trim(request()->post('cid'));
+		$url = BASE_URL.url('/inner/cuser/getPosts');
+		$return = curlHttp($url,'POST',$data);
+		return $return;
+	}
 }

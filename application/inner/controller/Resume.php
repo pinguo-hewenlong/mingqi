@@ -219,21 +219,24 @@ class Resume extends Base
 					'status'   => $value['status'],
 				);
 				$poInfo                 = db('cuser_post')->where('poid',$value['poid'])->find();
-				$list[$key]['title']    = $poInfo['title'];
-				$list[$key]['content']  = $poInfo['content'];
-				$list[$key]['city']     = $poInfo['city'];
-				$list[$key]['workexp']  = $poInfo['workexp'];
-				$list[$key]['eduction'] = $poInfo['eduction'];
-				$list[$key]['salary']   = $poInfo['salary'];
-				$list[$key]['endtime']  = $poInfo['endtime'];
+				if ($poInfo) {
+					$list[$key]['title']    = $poInfo['title'];
+					$list[$key]['content']  = $poInfo['content'];
+					$list[$key]['city']     = $poInfo['city'];
+					$list[$key]['workexp']  = $poInfo['workexp'];
+					$list[$key]['eduction'] = $poInfo['eduction'];
+					$list[$key]['salary']   = $poInfo['salary'];
+					$list[$key]['endtime']  = $poInfo['endtime'];
+				}
 				//根据企业uid 查询企业信息
 				$pInfo                     = db('cuser_info')->where('uid',$poInfo['uid'])->find();
-				$list[$key]['thumburl']    = $pInfo['thumburl'];
-				$list[$key]['companyname'] = $pInfo['companyname'];
+				if ($pInfo) {
+					$list[$key]['thumburl']    = $pInfo['thumburl'];
+					$list[$key]['companyname'] = $pInfo['companyname'];
+				}
 			}
-
 			$return['list']     = $list;
-			$return['count']    = 0;
+			$return['count']    = ceil($total/$perpage);
 			$return['status']	=	1;
 			$return['message']	=	'获取投递列表成功';
 			return json($return);

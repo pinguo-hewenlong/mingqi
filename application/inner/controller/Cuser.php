@@ -303,5 +303,45 @@ class Cuser extends Controller
 			return json($return);
 		}
 
-	}		
+	}
+	//获取已发布的职位列表
+	public function getPosts()
+	{
+		$page    = request()->post('page');
+		//每页条数
+		$perpage = request()->post('perpage');
+		//开始查询的游标
+		$start  = ($page - 1) * $perpage;
+		$cid    = request()->post('cid');
+		$total  = db('cuser_post')->where('uid', $cid)
+				->count();
+		if ($total) {
+			$rs = db('cuser_post')->where('uid', $cid)
+					->order('begintime desc')
+					->limit($start, $perpage)
+					->field(array(
+							'poid',
+							'title',
+							'content',
+							'city',
+							'workexp',
+							'eduction',
+							'salary',
+							'begintime',
+							'endtime'
+					))
+					->select();
+			$return['list']     = $rs;
+			$return['count']    = ceil($total/$perpage);;
+			$return['status']	=	1;
+			$return['message']	=	'获取职位列表成功';
+			return json($return);
+		} else {
+			$return['list']     = array();
+			$return['count']    = ceil($total/$perpage);;
+			$return['status']	=	1;
+			$return['message']	=	'获取职位列表成功';
+			return json($return);
+		}
+	}
 }
