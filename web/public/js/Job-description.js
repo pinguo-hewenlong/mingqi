@@ -19,14 +19,34 @@ window.onload=function (){
     var x;
     var pids;
      $.ajax({
-         type:'get',
+         type:'post',
          url:'http://127.0.0.1/mingqi/index.php/index/index/getPostionView',
          data:{"poid":'fc22fa6d3f9d7cbc576f4dbbb2e9ad22'},
          dataType:'json',
          async : false,
          success:function(data){
+            var salary;
+            var eduction;
+            var workexp;
+            var status;
+            if(data.salary==101){
+               salary="3k以下"
+            }else if(data.salary==102){
+                salary="4-8k"
+            }else if(data.salary==103){
+              salary="8-10k"
+            }else if(data.salary==104){
+                salary="10k以上"
+            }
+            if(obj.status==1){
+                status="邀面试"
+            }else if(obj.status==2){
+                status="已查看"
+            }else if(obj.status==3){
+              status="不合适"
+            }
              $(".job-name").text(data[0].title);
-            $("#salary").text(data[0].salary+'/');
+            $("#salary").text(salary+'/');
             $("#city").text(data[0].city+'/');
             $("#workexp").text(data[0].workexp+'/');
             $("#eduction").text(data[0].eduction+'/');

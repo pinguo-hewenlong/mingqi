@@ -61,7 +61,6 @@ class Resume extends Base
 		return $return;	
 	}
 	
-	//简历查询
-	public function  
+
 
 }

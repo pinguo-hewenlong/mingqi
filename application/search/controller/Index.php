@@ -73,7 +73,7 @@ class Index extends Controller
 		
 		$dbword			=	'%'.$word.'%';
 		
-		$begin			=	$page*$size;
+		$begin			=	($page-1)*$size;
 		
 		$vadata['word']	=	$word;
 		$vadata['page']	=	$page;
@@ -88,18 +88,44 @@ class Index extends Controller
 			$return['message'] = $validateResult;	
 			return json($return);
 		}
-		//构造查询		
-		$request	=	db('cuser_post')->where('title','like',$dbword)->limit($begin,$size)->select();
-		
-		return json($request);			
+		//构造查询
+		$condition  = $this->byCondition();
+		$condition['title'] = array('like',$dbword);
+		$resCount = db('cuser_post')->where($condition)->count();
+		$list          =   array();
+		if ($resCount) {
+			$res	  =	db('cuser_post')->where($condition)->limit($begin,$size)->select();
+			$list['data']  = $res;
+			$list['pages'] = ceil($resCount/$size);
+		} else {
+			$list['data']  = $list;
+			$list['pages'] = 0;
+		}
+		return json($list);
 	
 				
 		
 	}
 	//根据条件搜索职位(等待添加)
-	public function byCondition()
+	private function byCondition()
 	{
-		
+		//组合where条件
+		$exp	=	request()->get('exp');
+		$edu	=	request()->get('edu');
+		$sal	=	request()->get('sal');
+
+		$condition = array();
+		if ($exp) {
+			$condition['workexp'] = $exp;
+		}if ($edu) {
+			$condition['eduction'] = $edu;
+		}if ($sal) {
+			$condition['salary'] = $sal;
+		}
+
+		return $condition;
+
+
 	}
 }	
 

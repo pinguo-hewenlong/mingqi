@@ -178,5 +178,77 @@ class Resume extends Base
 		}
 
 	}
+	public function getSendList(){
+		//分页页码
+		$page    = request()->post('page');
+		//每页条数
+		$perpage = request()->post('perpage');
+		//开始查询的游标
+		$start   = ($page - 1) * $perpage;
+		$uid     = request()->post('uid');
+		$status  = request()->post('status')?request()->post('status'):'all';
+		//获取已投递简历总条数
+		if ($status == 'all') {
+			$total   =	db('puser_resumesend')  ->where('uid',$uid)
+					->count();
+		} else {
+			$total   =	db('puser_resumesend')  ->where('uid',$uid)
+					->where('status',$status)
+					->count();
+		}
+		
+		if ($total) {
+			if ($status == 'all') {
+				$rs  = db('puser_resumesend')->where('uid',$uid)
+						->order('sendtime desc')
+						->limit($start,$perpage)
+						->select();
+			} else {
+				$rs  = db('puser_resumesend')->where('uid',$uid)
+						->where('status',$status)
+						->order('sendtime desc')
+						->limit($start,$perpage)
+						->select();
+			}
+			//根据poid查询职位信息
+			$list = array();
+			foreach($rs as $key => $value) {
+				$list[$key] = array(
+					'poid'     => $value['poid'],
+					'sendtime' => $value['sendtime'],
+					'status'   => $value['status'],
+				);
+				$poInfo                 = db('cuser_post')->where('poid',$value['poid'])->find();
+				if ($poInfo) {
+					$list[$key]['title']    = $poInfo['title'];
+					$list[$key]['content']  = $poInfo['content'];
+					$list[$key]['city']     = $poInfo['city'];
+					$list[$key]['workexp']  = $poInfo['workexp'];
+					$list[$key]['eduction'] = $poInfo['eduction'];
+					$list[$key]['salary']   = $poInfo['salary'];
+					$list[$key]['endtime']  = $poInfo['endtime'];
+				}
+				//根据企业uid 查询企业信息
+				$pInfo                     = db('cuser_info')->where('uid',$poInfo['uid'])->find();
+				if ($pInfo) {
+					$list[$key]['thumburl']    = $pInfo['thumburl'];
+					$list[$key]['companyname'] = $pInfo['companyname'];
+				}
+			}
+			$return['list']     = $list;
+			$return['pages']    = ceil($total/$perpage);
+			$return['count']    = $total;
+			$return['status']	=	1;
+			$return['message']	=	'获取投递列表成功';
+			return json($return);
+		} else {
+			$return['list']     = array();
+			$return['count']    = 0;
+			$return['status']	= 1;
+			$return['pages']    = 0;
+			$return['message']	=	'获取投递列表成功';
+			return json($return);
+		}
 
+	}
 }

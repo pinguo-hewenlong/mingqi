@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/Notification-Center.css">
 </head>
 <body>
+    <!--头部-->
             <div class="col-lg-12 col-md-12 col-ms-12 col-xs-12 first-header">
                       <div class="left-text">
                           <i class="iconfont phone">&#xe6d1;</i>
@@ -52,30 +53,26 @@
                                <h4>投递反馈</h4>
                                <div><a href="">刷新</a></div>
                             </div>
-                            <div class="Rem-heade">
-                                <div>
-                                     <a href="" class="all">全部</a>
-                                     <div id="numbers">2</div>
+                            <div class="status Rem-heade" id="Rem-heade">
+                                 <div id="allist">
+                                     <span class="all">全部</span>
+                                     <div class="numbers" id="all-numbers"></div>
                                  </div>
-                                 <div>
-                                     <a href="">已投递</a>
-                                     <div id="numbers">2</div>
+                                 <div class="status" id="Be-viewed">
+                                     <sapn>被查看<sapn>
+                                     <div class="numbers number2 number3" id="be-numbers"></div>
                                  </div>
-                                 <div>
-                                     <a href="">被查看</a>
-                                     <div id="numbers">2</div>
+                                 <div class="status" id="Inappropriate">
+                                     <sapn>不合适</sapn>
+                                     <div class="numbers number2 number4" id="in-numbers"></div>
                                  </div>
-                                 <div>
-                                     <a href="">不合适</a>
-                                     <div id="numbers">2</div>
-                                 </div>
-                                 <div>
-                                     <a href="">邀面试</a>
-                                     <div id="numbers">2</div>
+                                 <div class="status" id="an-audition">
+                                     <sapn>邀面试</sapn>
+                                     <div class="numbers number2 number5" id="an-numbers"></div>
                                  </div>
                             </div>
-                            <div class="Rem-conent">
-                                 <div class="first-conent the-one">
+                            <div class="Rem-conent" id="Rem-conent">
+                                 <!--<div class="first-conent the-one">
                                      <div class="conent-heade"></div>
                                      <div class="conent-box">
                                          <div class="position"> <span class="p-postin">UI设计师</span> <span class="p-pay">(5-10k)</span></div>
@@ -118,7 +115,7 @@
                                              <div class="p-postin">等待查看</div>
                                          </div>
                                      </div>
-                                   </div>
+                                   </div>-->
                             
                             
                             </div>
@@ -129,11 +126,11 @@
                                 <span>个人中心</span>
                             </div>
                             <div class="three-three">
-                                <div><i class="iconfont little-icon">&#xe708;</i><span>我的简历</span></div>
-                                <div><i class="iconfont little-icon">&#xe67b;</i><span>简历状态</span></div>
-                                <div><i class="iconfont little-icon">&#xe62f;</i><span>我的测试</span></div>
+                                <div><a href="personal-resume.html"><i class="iconfont little-icon">&#xe708;</i><span>我的简历</span></a></div>
+                                <div><a href="Notification-Center.html"><i class="iconfont little-icon">&#xe67b;</i><span>简历状态</span></a></div>
+                                <div><a href="my-Evaluation.html"><i class="iconfont little-icon">&#xe62f;</i><span>我的测试</span></a></div>
                             </div>
-                            <div class="perfect">
+                            <div class="perfect" style="display:none">
                                 <div class="groom"><i class="iconfont little-icon">&#xe652;</i><span>职位推荐</span></div>
                                 <div id="groom">
                                     <div class="groom-litbox">
