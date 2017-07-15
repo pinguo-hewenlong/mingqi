@@ -24,3 +24,10 @@
    color: white;
    font-size: 20px;
 }
+.conent-heade>img{
+    width: 100%;
+    height: 100%;
+}
+.number2{
+    display: none
+}

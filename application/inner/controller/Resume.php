@@ -236,14 +236,16 @@ class Resume extends Base
 				}
 			}
 			$return['list']     = $list;
-			$return['count']    = ceil($total/$perpage);
+			$return['pages']    = ceil($total/$perpage);
+			$return['count']    = $total;
 			$return['status']	=	1;
 			$return['message']	=	'获取投递列表成功';
 			return json($return);
 		} else {
 			$return['list']     = array();
 			$return['count']    = 0;
-			$return['status']	=	1;
+			$return['status']	= 1;
+			$return['pages']    = 0;
 			$return['message']	=	'获取投递列表成功';
 			return json($return);
 		}

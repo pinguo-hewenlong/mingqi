@@ -28,21 +28,19 @@ function maxtext(x,y){
 
 //调用接口发送信息给后台设置企业信息
 $('#next').click(function(){
-    
-	//声明要传递给服务器的json数据
 	var postData = $('#company-h').serialize();
-	//AjaxPost方法传递数据
 	AjaxPost('index.php/cuser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
 })
-//添加信息成功后执行的方法
 function succCallback(date){
-	
-	
-	
-  	setTimeout(function(){
-  		  		
+setTimeout(function(){
+		var postData1 = '';
+		AjaxPost('index.php/cuser/pre/setFirst',postData1,succCallback,errorCallback,"post","json");
+		function succCallback(date){
 			location.href='Company-information.html'
-		},500);	
+		}
+		function errorCallback(date){
+		}
+	},500);	
 }
 //添加信息过程出现错误后执行的方法
 function errorCallback(date){
