@@ -196,7 +196,7 @@ class Resume extends Base
 					->where('status',$status)
 					->count();
 		}
-
+		
 		if ($total) {
 			if ($status == 'all') {
 				$rs  = db('puser_resumesend')->where('uid',$uid)

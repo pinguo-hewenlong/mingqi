@@ -81,7 +81,7 @@ window.onload=function(){
                                         '</div>'+
                                         '<div class="v-line"></div>'+
                                         '<div class="three-btn">'+
-                                        '<form id="three-btns"><div class="t-btn">不合适<input type="radio" value="0"  class="t-btn" name="'+obj.uid+'"></div>'+
+                                        '<form id="three-btns"><div class="t-btn">不合适<input type="radio" value="3"  class="t-btn" name="'+obj.uid+'"></div>'+
                                         '<div class="t-btn">邀面试<input type="radio" value="1"  class="t-btn" name="'+obj.uid+'"></div>'+
                                         '<div class="t-btn">已查看<input type="radio" value="2"  class="t-btn" name="'+obj.uid+'"></div>'+
                                         '</form>'+
@@ -91,8 +91,8 @@ window.onload=function(){
                                     $("#three-btns>div>input").change(function(){
                                         $("input[name='"+obj.uid+"']:checked").parent().addClass("active").siblings().removeClass("active");
                                         var status;
-                                        if($("input[name='"+obj.uid+"']:checked").val()==0){
-                                            status=0
+                                        if($("input[name='"+obj.uid+"']:checked").val()==3){
+                                            status=3
                                         }else if($("input[name='"+obj.uid+"']:checked").val()==1){
                                         status=1
                                         }else if($("input[name='"+obj.uid+"']:checked").val()==2){
@@ -181,7 +181,7 @@ $("#job-category").change(function(){
                                     '</div>'+
                                     '<div class="v-line"></div>'+
                                     '<div class="three-btn">'+
-                                        '<form id="three-btns"><div class="t-btn">不合适<input type="radio" value="0"  class="t-btn" name="'+obj.uid+'"></div>'+
+                                        '<form id="three-btns"><div class="t-btn">不合适<input type="radio" value="3"  class="t-btn" name="'+obj.uid+'"></div>'+
                                         '<div class="t-btn">邀面试<input type="radio" value="1"  class="t-btn" name="'+obj.uid+'"></div>'+
                                         '<div class="t-btn">已查看<input type="radio" value="2"  class="t-btn" name="'+obj.uid+'"></div>'+
                                         '</form>'+
@@ -191,8 +191,8 @@ $("#job-category").change(function(){
                                 $("#three-btns>div>input").change(function(){
                                         $("input[name='"+obj.uid+"']:checked").parent().addClass("active").siblings().removeClass("active");
                                         var status;
-                                        if($("input[name='"+obj.uid+"']:checked").val()==0){
-                                            status=0
+                                        if($("input[name='"+obj.uid+"']:checked").val()==3){
+                                            status=3
                                         }else if($("input[name='"+obj.uid+"']:checked").val()==1){
                                         status=1
                                         }else if($("input[name='"+obj.uid+"']:checked").val()==2){
