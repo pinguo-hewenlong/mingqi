@@ -1,6 +1,8 @@
 .search-header{
    width: 100%;
-   /*background: white;*/
+   background: #f8f8f8;
+   padding: 20px;
+
 }
 .large-box{
     background: white;
