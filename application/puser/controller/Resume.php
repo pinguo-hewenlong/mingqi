@@ -72,7 +72,23 @@ class Resume extends Base
 
 	}
 
-	//获取简历状态
+	//获取已投递简历列表
+	public function getSendList(){
+		//获取当前页码
+		$this->data['page']	    = trim(request()->post('page'));
+		//每页条数
+		$this->data['perpage']	= trim(request()->post('perpage'));
+		//获取状态
+		$this->data['status']	= trim(request()->post('status'));
+		$url = BASE_URL.url('/inner/resume/getSendList');
+		$return = curlHttp($url,'POST',$this->data);
+		if(request()->isAjax()) {
+			return json_decode($return);
+		}
+		else {
+			return $return;
+		}
+	}
 
 	
 		
