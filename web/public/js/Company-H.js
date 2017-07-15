@@ -37,12 +37,12 @@ $('#next').click(function(){
 //添加信息成功后执行的方法
 function succCallback(date){
 	
-	
-	
-  	setTimeout(function(){
-  		  		
+			var postData1 = '';
+		AjaxPost('index.php/cuser/pre/setFirst',postData1,succCallback,errorCallback,"post","json");
+		function succCallback(date){
 			location.href='Company-information.html'
-		},500);	
+		}
+		
 }
 //添加信息过程出现错误后执行的方法
 function errorCallback(date){

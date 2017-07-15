@@ -211,8 +211,6 @@ window.onload=function()
 	{
 		//$("#geteducational").toggleClass("job-practice")
 	} 
-	
-	//修改个人描述
     $('#descbtn').bind('click',function(){
     	$.ajax({
     		type:"post",
@@ -380,7 +378,7 @@ $('#edubtn').bind('click',function()
     	{
     		$.ajax({
     		type:"get",
-    		url:"http://127.0.0.1/mingqi/index.php/puser/profile/getedu",
+    		url:"http://127.0.0.1/mingqi/index.php/puser/profile/getedu  ",
     		async:true,
     		success:function(data)
     			{	
