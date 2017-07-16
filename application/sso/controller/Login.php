@@ -213,15 +213,12 @@ class Login extends Controller
 					return json($return);
 				}
 		}
-		//通过阿里云短信接口发送短信
-		//$alimns		=	new Alimns($phone);
-		//$smsArr		=	$alimns->postMessage();
-		
-		//调试代码
-		$smsArr['status']	=	1;
-		$smsArr['msgCode']	=	'123456';
-		
-		
+	//通过阿里云短信接口发送短信
+		$alimns		=	new Alimns($phone);
+		$smsArr		=	$alimns->postMessage();
+	//调试代码
+		//$smsArr['status']	=	1;
+		//$smsArr['msgCode']	=	'123456';
 		//短信发送成功返回信息，并将短信值存入session
 		if($smsArr['status'] ==	true)
 		{
