@@ -60,8 +60,8 @@ class Index extends Controller
 	public function byWord()
 	{
 		$word			=	request()->get('word');
-		$page			=	request()->get('page');
-		$size			=	request()->get('size');
+		$page			=	request()->get('page')?request()->get('page'):1;
+		$size			=	request()->get('size')?request()->get('size'):10;
 		if(empty($page))
 		{
 			$page		=	'0';
