@@ -59,7 +59,7 @@ window.onload=function(){
                      //console.log(obj.uid); 
                         var html='<div class="first-vconent">'+
                                         '<div class="v-heade">'+
-                                            '<div class="v-circle"><img src="http://127.0.0.1/mingqi/public/uploads/'+obj.uInfo.thumburl+'"/></div>'+
+                                            '<div class="v-circle"><img src="'+host+'public/uploads/'+obj.uInfo.thumburl+'"/></div>'+
                                             '<div class="v-heade-text">'+obj.uInfo.expect_salary+'k'+'</div>'+
                                         '</div>'+
                                         '<div class="vaite-text">'+
@@ -159,7 +159,7 @@ $("#job-category").change(function(){
                     } 
                     var html='<div class="first-vconent">'+
                                     '<div class="v-heade">'+
-                                        '<div class="v-circle"><img src="http://127.0.0.1/mingqi/public/uploads/'+obj.uInfo.thumburl+'"/></div>'+
+                                        '<div class="v-circle"><img src="'+host+'public/uploads/'+obj.uInfo.thumburl+'"/></div>'+
                                         '<div class="v-heade-text">'+obj.uInfo.expect_salary+'k'+'</div>'+
                                     '</div>'+
                                     '<div class="vaite-text">'+

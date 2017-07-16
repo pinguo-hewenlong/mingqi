@@ -1,32 +1,46 @@
 window.onload=function(){
+    islogin()
+    var request = (function (){
+    var obj = {};
+    var arr = window.location.search.slice(1).split("&");
+    for (var i = 0, len = arr.length; i < len; i++) {
+        var nv = arr[i].split("=");
+        obj[unescape(nv[0]).toLowerCase()] = unescape(nv[1]);
+    }
+    return obj;   
+   })()
+    var cid=request.cid;
     // 获取基本信息
-    var postData="";
-     AjaxPost('index.php/cuser/profile/getinfo',postData,succCallback,errorCallback,"get","json");
-     function succCallback(data){
-         alert("1111")
-     }
-     function errorCallback(data){
-          //alert("2222");
-          $("#title").text(data[0].companyname);
-          $("#description").text(data[0].description);
-     }
-     //获取公司发展历程
-     var postData2="";
-     AjaxPost('index.php/cuser/profile/getmilepost',postData2,succCallback,errorCallback,"get","json");
-     function succCallback(data){
-         alert("1111")
-     }
-     function errorCallback(data){
-          //alert("2222");
-          console.log(data)
-         $('#milepost').empty();
+     $.ajax({
+         type:'post',
+         url:host+'index.php/cuser/profile/getInfoFromUser',
+         data:{"uid":cid},
+         dataType:'json',
+         async : true,
+         success:function(data){
+                $("#title").text(data[0].companyname);
+              $("#description").text(data[0].description);
+         }
+     })
+      //获取公司发展历程
+     $.ajax({
+         type:'post',
+         url:host+'hindex.php/cuser/profile/getFromUser',
+         data:{"uid":cid},
+         dataType:'json',
+         async : true,
+         success:function(data){
+                $('#milepost').empty();
 				$.each(data,function(n,obj){
-                    var thetime=obj.time;
-                    
-				var html	=	"";
-				html		=   '<div class="passages">'+
+                    //var thetime=obj.time;
+                    function getLocalTime(nS) {     
+                    return time= new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');     
+                }     
+                getLocalTime(obj.time);
+				 
+				var html		=   '<div class="passages">'+
                                             '<div class="first-passages">'+
-                                                    '<div>'+obj.time+'<i class="iconfont dian">&#xe61d;</i></div>'+
+                                                    '<div>'+time+'<i class="iconfont dian">&#xe61d;</i></div>'+
                                                     '<div class="fp-text">'+
                                                         '<div>'+obj.title+'</div>'+
                                                         '<div>'+obj.description+'</div>'+
@@ -37,6 +51,7 @@ window.onload=function(){
                 //alert(html);                    
                 $('#milepost').append(html); 
                })
-     }
-
+         }
+     })
+    
 }

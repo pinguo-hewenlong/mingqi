@@ -37,6 +37,27 @@ class Profile extends Base
 			return $return;
 		}			
 	}
+	//获取企业基本信息
+	public function getInfoFromUser()
+	{
+		//设置要查询的表		
+		$data['table'] = 'cuser_info';
+		$data['uid']   =  request()->post('uid');
+		//return json($this->data);
+		//发送到inner
+		$url = BASE_URL.url('/inner/cuser/getfromdb');
+		//return $url;
+		$return = curlHttp($url,'POST',$data);
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}			
+	}
+
 	//获取企业发展历程
 	public function getMilePost()
 	{
@@ -47,6 +68,25 @@ class Profile extends Base
 		$url = BASE_URL.url('/inner/cuser/getfromdb');
 		//return $url;
 		$return = curlHttp($url,'POST',$this->data);
+		if(request()->isAjax())
+		{	
+			return json_decode ($return);
+		}
+		else
+		{
+			return $return;
+		}			
+	}	
+	//用户获取企业发展历程
+	public function getFromUser()
+	{
+		//设置要查询的表		
+		$data['uid']	=	request()->post('uid');
+		$data['table']  = 'cuser_milepost';
+		//发送到inner
+		$url = BASE_URL.url('/inner/cuser/getfromdb');
+		//return $url;
+		$return = curlHttp($url,'POST',$data);
 		if(request()->isAjax())
 		{	
 			return json_decode ($return);

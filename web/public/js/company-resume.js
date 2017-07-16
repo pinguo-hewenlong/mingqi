@@ -7,7 +7,7 @@ window.onload=function(){
     //var b	 = document.getElementById("Mastery-select").value;
     function succCallback(date)
     {
-        $(".head-portrait>img").attr("src","http://127.0.0.1/mingqi/public/uploads/"+date[0].thumburl);
+        $(".head-portrait>img").attr("src",host+'public/uploads/'+date[0].thumburl);
         $(".name1").html(date[0].realname);
         $(".simple-little1").html(date[0].gender);
         $(".simple-little2").html(date[0].eduction);

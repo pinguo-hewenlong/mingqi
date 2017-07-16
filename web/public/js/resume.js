@@ -58,7 +58,7 @@ window.onload=function()
     //var b	 = document.getElementById("Mastery-select").value;
 	function succCallback(date)
 	{
-		$(".head-portrait>img").attr("src","http://127.0.0.1/mingqi/public/uploads/"+date[0].thumburl); 
+		$(".head-portrait>img").attr("src",host+"public/uploads/"+date[0].thumburl); 
 		$(".name1").html(date[0].realname);
 		$(".simple-little1").html(date[0].gender);
 		$(".simple-little2").html(date[0].eduction);
@@ -214,7 +214,7 @@ window.onload=function()
     $('#descbtn').bind('click',function(){
     	$.ajax({
     		type:"post",
-    		url:"http://127.0.0.1/mingqi/index.php/puser/profile/setdesc",
+    		url:host+"/index.php/puser/profile/setdesc",
     		async:true,
     		data:$('#desc').serialize(),
     		success:function(data){
@@ -222,7 +222,7 @@ window.onload=function()
      				//获取个人描述
     			$.ajax({
     				type:"get",
-    				url:"http://127.0.0.1/mingqi/index.php/puser/profile/getDesc",
+    				url:host+"index.php/puser/profile/getDesc",
     				async:true,
     				success:function(data)
     				{
@@ -328,14 +328,14 @@ $('#workbtn').bind('click',function()
 {
     $.ajax({
     	type:"post",
-    	url:"http://127.0.0.1/mingqi/index.php/puser/profile/setwork",
+    	url:host+"index.php/puser/profile/setwork",
     	async:true,
     	data:$('#job-practice').serialize(),
     	success:function(data)
     	{
     		$.ajax({
     		type:"get",
-    		url:"http://127.0.0.1/mingqi/index.php/puser/profile/getwork",
+    		url:host+"x.php/puser/profile/getwork",
     		async:true,
     		success:function(data)
     		{	
@@ -371,14 +371,14 @@ $('#edubtn').bind('click',function()
 {
     $.ajax({
     	type:"post",
-    	url:"http://127.0.0.1/mingqi/index.php/puser/profile/setedu",
+    	url:host+'index.php/puser/profile/setedu',
     	async:true,
     	data:$('#geteducational2').serialize(),
     	success:function(data)
     	{
     		$.ajax({
     		type:"get",
-    		url:"http://127.0.0.1/mingqi/index.php/puser/profile/getedu  ",
+    		url:host+"index.php/puser/profile/getedu  ",
     		async:true,
     		success:function(data)
     			{	
@@ -446,7 +446,7 @@ function Change(){
     var strvalue=$("#arrivalselect").val();
     $.ajax({
     	type:"post",
-        url:"http://127.0.0.1/mingqi/index.php/puser/profile/setarrival",
+        url:host+"index.php/puser/profile/setarrival",
         async:"true",
         dataType: "json",
         data:$('#arrival').serialize(),
@@ -461,7 +461,7 @@ function Changework(){
     var strvalue=$("#arrivalselect").val();
     $.ajax({
     	type:"post",
-        url:"http://127.0.0.1/mingqi/index.php/puser/profile/setExpectwork",
+        url:host+"index.php/puser/profile/setExpectwork",
         async:"true",
         dataType: "json",
         data:$('#Expectwork').serialize(),
@@ -477,7 +477,7 @@ function Change(){
 	var strvalue=$("#arrivalselect").val();
 	$.ajax({
 		type:"post",
-		url:"http://127.0.0.1/mingqi/index.php/puser/profile/setarrival",
+		url:host+"index.php/puser/profile/setarrival",
 		async:"true",
 		dataType:"json",
 		data:$('#')
@@ -488,7 +488,7 @@ function Change(){
 //修改工作经历
 $("#keep").click(function(){
 
-	var url = "http://127.0.0.1/mingqi/index.php/puser/profile/setwork?update=1";
+	var url = host+"index.php/puser/profile/setwork?update=1";
 
 	$.ajax({
 	type:"post",
@@ -506,7 +506,7 @@ $("#keep").click(function(){
 //修改教育经历
 $("#keepedu").click(function(){
 
-	var url = "http://127.0.0.1/mingqi/index.php/puser/profile/setedu?update=1";
+	var url = host+"index.php/puser/profile/setedu?update=1";
 
 	$.ajax({
 		type:"post",

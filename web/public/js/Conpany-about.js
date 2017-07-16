@@ -11,7 +11,7 @@ window.onload=function(){
 					function errorCallback(date){
 //						console.log(date);
 					//console.log(date[0]);
-					$("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+date[0].thumburl+'"/>');
+					$("#thumburl1").html('<img src="'+host+'public/uploads/'+date[0].thumburl+'"/>');
 					$(".in-header").addClass("in-header2")
 					}
     

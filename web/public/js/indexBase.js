@@ -4,7 +4,7 @@
  * 2、首页最新职位加载
  * 3、首页行业精英加载
  */
-var BASE_URL    =   'http://127.0.0.1/mingqi/index.php/';
+var BASE_URL    =   host+'index.php/';
 $(document).ready(function(){
 	
 
@@ -91,14 +91,17 @@ $(document).ready(function(){
         success:function(data)
         {
 
-
+        var id;
             $.each(data, function(n,obj) {
 
                 var html;
-                var begintime	=	new Date();
-                begintime.setTime(obj.begintime*1000);
-                begintime = begintime.Format("hh:mm");
-
+                // var begintime	=	new Date();
+                // begintime.setTime(obj.begintime*1000);
+                // begintime = begintime.Format("hh:mm");
+               function getLocalTime(nS) {     
+                return begintime= new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');     
+            }     
+            getLocalTime(obj.begintime);
 
                 $.ajax({
                     type:"get",
@@ -113,34 +116,84 @@ $(document).ready(function(){
                         //console.log(obj.scale);
                     },
                 });
-
-                console.log(obj.scale)
-                html ='<div class="jobs-first">'+
+            var salary;
+            var eduction;
+            var workexp;
+            var scale;
+            var nature;
+            if(obj.salary==101){
+               salary="3k以下"
+            }else if(obj.salary==102){
+                salary="4-8k"
+            }else if(obj.salary==103){
+              salary="8-10k"
+            }else if(obj.salary==104){
+                salary="10k以上"
+            }
+            if(obj.eduction==101){
+              eduction="高中"
+            }else if(obj.eduction==102){
+                 eduction="大专以上"
+            }else if(obj.eduction==103){
+                 eduction="本科以上"
+            }
+            if(obj.workexp==101){
+                workexp="1年以下"
+            }else if(obj.workexp==102){
+                workexp="1-3年"
+            }else if(obj.workexp==103){
+                workexp="3-5年"
+            }else if(obj.workexp==104){
+                workexp="5年以上"
+            }
+            if(obj.scale==101){
+               scale="20人以下"
+            }else if(obj.scale==102){
+                 scale="20-50人"
+            }else if(obj.scale==103){
+                 scale="50-100人"
+            }else if(obj.scale==104){
+                 scale="100-500人"
+            }else if(obj.scale==105){
+                 scale="500人以上"
+            }
+            if(obj.nature==101){
+               nature="互联网"
+            }else if(obj.nature==102){
+                 nature="移动互联网"
+            }
+            //console.log(obj.poid)
+                html ='<div class="jobs-first jods-poid" title="'+obj.poid+'">'+
                     '<div class="job-first-text">'+
                     '<div><span>'+obj.title+'</span><span>【成都】</span><span>'+begintime+'发布</span></div>'+
                     '<div class="job-com">'+obj.companyname+'</div>'+
                     '</div>'+
                     '<div class="job-first-text job-first-text2">'+
                     '<div>'+
-                    '<span class="jobs-money">'+obj.salary+'</span>'+
-                    '<span>'+obj.workexp+'/'+obj.eduction+'</span>'+
+                    '<span class="jobs-money">'+salary+'</span>'+
+                    '<span>'+workexp+'/'+eduction+'</span>'+
                     '</div>'+
                     '<div>'+
-                    ''+obj.nature+'/'+obj.scale+'）'+
+                    '（'+nature+'/'+scale+'）'+
                     '</div>'+
                     '</div>'+
                     '<div class="job-first-text job-first-text2">'+
                     '<div class="little-text">'+
-                    '<span>中级</span>'+
-                    '<span>web</span>'+
-                    '<span>软件开发</span>'+
+                    // '<span>中级</span>'+
+                    // '<span>web</span>'+
+                    // '<span>软件开发</span>'+
                     '</div>'+
                     '<div>"'+obj.content+'"</div>'+
                     '</div>'+
                     '</div>';
-
+                
                 $('#jobs').append(html);
+            $(".jods-poid").bind('click',function(){
+                //console.log($(this).attr("title"))   
+                location.href ='pages/Job-description.html?id='+$(this).attr("title");
+            })
             });
+            
         }
     });
 
@@ -163,7 +216,7 @@ $(document).ready(function(){
         $.ajax({
             type:'get',
             url:BASE_URL+'search',
-            data:{'word':word},
+            data:{'word':word,"page":1,"size":10},
             async:true,
             success:function(data)
             {
@@ -171,7 +224,7 @@ $(document).ready(function(){
                 $('#fuzzySearch').show();
                 var html	=	'';
                 $.each(data,function(n,obj){
-
+                    console.log(obj.poid)
                     html	=	'<li><span class="li-des">'+obj.des+'</span><span class="li-span">共<span class="li-num">50</span>个职位</span></li>';
 
                     $('#fuzzySearch').append(html);

@@ -16,41 +16,65 @@ window.onload=function (){
     }else{
         //浏览器不支持geolocation
     }
+    // 获取职位id
+    var request = (function (){
+    var obj = {};
+    var arr = window.location.search.slice(1).split("&");
+    for (var i = 0, len = arr.length; i < len; i++) {
+        var nv = arr[i].split("=");
+        obj[unescape(nv[0]).toLowerCase()] = unescape(nv[1]);
+    }
+    return obj;   
+})()
+console.log(request.id)
     var x;
     var pids;
      $.ajax({
-         type:'post',
-         url:'http://127.0.0.1/mingqi/index.php/index/index/getPostionView',
-         data:{"poid":'fc22fa6d3f9d7cbc576f4dbbb2e9ad22'},
+         type:'get',
+         url:host+'hindex.php/index/index/getPostionView',
+         data:{"poid":request.id},
          dataType:'json',
          async : false,
          success:function(data){
             var salary;
             var eduction;
             var workexp;
-            var status;
-            if(data.salary==101){
+            if(data[0].salary==101){
                salary="3k以下"
-            }else if(data.salary==102){
+            }else if(data[0].salary==102){
                 salary="4-8k"
-            }else if(data.salary==103){
+            }else if(data[0].salary==103){
               salary="8-10k"
-            }else if(data.salary==104){
+            }else if(data[0].salary==104){
                 salary="10k以上"
             }
-            if(obj.status==1){
-                status="邀面试"
-            }else if(obj.status==2){
-                status="已查看"
-            }else if(obj.status==3){
-              status="不合适"
+            if(data[0].eduction==101){
+              eduction="高中"
+            }else if(data[0].eduction==102){
+                 eduction="大专以上"
+            }else if(data[0].eduction==103){
+                 eduction="本科以上"
             }
-             $(".job-name").text(data[0].title);
+            if(data[0].workexp==101){
+                workexp="1年以下"
+            }else if(data[0].workexp==102){
+                workexp="1-3年"
+            }else if(data[0].workexp==103){
+                workexp="3-5年"
+            }else if(data[0].workexp==104){
+                workexp="5年以上"
+            }
+            //console.log(workexp)
+            function getLocalTime(nS) {     
+                return begintime= new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');     
+            }     
+            getLocalTime(data[0].begintime);
+            $(".job-name").text(data[0].title);
             $("#salary").text(salary+'/');
-            $("#city").text(data[0].city+'/');
-            $("#workexp").text(data[0].workexp+'/');
-            $("#eduction").text(data[0].eduction+'/');
-            $("#begintime").text(data[0].begintime+'发布');
+            $("#city").text('成都/');
+            $("#workexp").text(workexp+'/');
+            $("#eduction").text(eduction+'/');
+            $("#begintime").text(begintime+'发布');
             $(".responsibility-text").text(data[0].content);
            $("#ask").text(data[0].content);
            var  y=data[0].uid;
@@ -58,8 +82,8 @@ window.onload=function (){
           return y
          }
      })
-       var postData2={"uid":1}
-       
+       var postData2={"uid":x}
+       //console.log(postData2)
        AjaxPost('index.php/index/index/getinfo',postData2,succCallback,errorCallback,"get","json");
        function succCallback(data){
         
@@ -67,11 +91,16 @@ window.onload=function (){
        function errorCallback(data){
            $("#companyname").text(data[0].companyname);
            $("#address").text(data[0].address);
+           $("#companyname").attr("title",data[0].uid); 
        }
+       var cid;
+       $("#companyname").bind('click',function(){
+          location.href ='introduce-company.html?cid='+$(this).attr("title");
+       })
        //简历投递
     $("#Job-Details-title-btn").bind('click',function(){
         islogin2();
-    let postData={"poid":"02bf8ead9f4cd51a25593d637d1eba54"};
+    let postData={"poid":request.id};
     AjaxPost('index.php/puser/resume/send',postData,succCallback,errorCallback,"post","json");
     function succCallback(data){
          $(".success-box").toggleClass("heinn-btn");

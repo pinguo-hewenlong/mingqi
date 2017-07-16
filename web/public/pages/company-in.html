@@ -70,7 +70,7 @@
                 formData.append('pictype','avatar_c');   
                 console.log(document.getElementById("imgButton").files[0]);
                 $.ajax({
-                    url: "http://127.0.0.1/mingqi/index.php/file/upload/upsingle",
+                    url: host+"index.php/file/upload/upsingle",
                     type: "POST",
                     data: formData,
                     contentType: false,
@@ -78,7 +78,7 @@
                     success: function (data) {
                     	console.log(data);
                         if (data.status == "1") {
-                            $("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+data.url+'"/>');
+                            $("#thumburl1").html('<img src="'+host+'public/uploads/'+data.url+'"/>');
                             $(".in-header").addClass("in-header2")
                         }
                         if (data.status == "0") {

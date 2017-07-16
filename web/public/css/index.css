@@ -9,6 +9,10 @@
     text-align: center;
     list-style: none;
 }
+.carousel {
+    position: relative;
+    margin-left: 100px;
+}
 .carousel-indicators li {
     display: inline-block;
     width: 15px;

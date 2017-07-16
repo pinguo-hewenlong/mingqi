@@ -1,7 +1,17 @@
 
-
+function getremoteurl(){
+    // alert(window.location.host);
+    var host = window.location.host;
+    if (host == '127.0.0.1') {
+        //线下环境
+        return host= 'http://'+host+'/mingqi/';
+    } else {
+        host = 'http://www.scmqyc.com/';
+        return host;
+    }
+}
+var host = getremoteurl()
 var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataType){
-		//alert("ccc");
         /**
          * ajax封装
          * url 发送请求的地址
@@ -10,7 +20,7 @@ var AjaxPost = function(url, postData, succCallback, errorCallback, type,dataTyp
          * errorCallback 失败回调函数
          * type 请求方式("POST" 或 "GET")， 默认已经设置为 "POST"
          */
-    var demiain="http://127.0.0.1/mingqi/"
+    var demiain=host
         //console.log(url);
         //function $ajax(url, postData, succCallback, errorCallback, type,dataType){
         var type = type || "post";

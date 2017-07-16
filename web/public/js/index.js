@@ -61,7 +61,7 @@ window.onload=function(){
     //判断是否登录
     $.ajax({
         type:"get",
-        url:"http://127.0.0.1/mingqi/index.php/index/base",
+        url:host+'index.php/index/base',
         async:true,
         success:function(data)
         {

@@ -11,7 +11,7 @@ window.onload=function(){
 		function errorCallback(date){
 		//console.log(134565);
 		//alert(111)
-			$("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+date[0].thumburl+'"/>');
+			$("#thumburl1").html('<img src="'+host+'public/uploads/'+date[0].thumburl+'"/>');
 		}
 }
 //调用接口发送信息给后台设置工作经历
