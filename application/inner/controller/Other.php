@@ -136,8 +136,8 @@ class Other extends Base
 		{
 			$data['sortid']	=	request()->post('sortid');
 		}
-		
-		$request	=	db('sys_elite')->where($data)->limit(3)->select();
+		db('sys_elite')->query("set names utf8");	
+		$request	=	db('sys_elite')->where($data)->limit(10)->select();
 		if($request)
 		{
 			return json($request);

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+		
+<form action="http://127.0.0.1/mingqiyoucai/index.php/file/upload/upsingle" enctype="multipart/form-data" method="post">
+<input type="file" name="file" /> <br>
+
+<input type="submit" value="上传" />
+</form>
+
+	</body>
+
+<script type="text/javascript">
+
+	$('#file').bind('change',function(){
+		$.ajax({
+			url: 'http://127.0.0.1/mingqi/index.php/file/upload/upsingle',
+			type: 'POST',
+			cache: false,
+			async:true,
+			data: new FormData($('#uploadForm')[0]),
+			processData: false,
+			contentType: false
+		}).done(function(res) {}).fail(function(res) {});
+	})
+
+
+
+</script>
+</html>

@@ -2,11 +2,27 @@ window.onload=function(){
     // islogin()
     //获取个人简历信息
     //获取基本信息
-    var postData = '';
-    var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
+    var request = (function (){
+            var obj = {};
+            var arr = window.location.search.slice(1).split("&");
+            for (var i = 0, len = arr.length; i < len; i++) {
+                var nv = arr[i].split("=");
+                obj[unescape(nv[0]).toLowerCase()] = unescape(nv[1]);
+            }
+            return obj;   
+   })()
+    var postData = {"uid":request.id};
+    var info = AjaxPost('index.php/cuser/profile/getUsersInfo',postData,succCallback,errorCallback,"post","json");
+    //console.log(postData)
+    
     //var b	 = document.getElementById("Mastery-select").value;
     function succCallback(date)
     {
+       
+    }
+    function errorCallback(date)
+    {
+         //console.log(date)
         $(".head-portrait>img").attr("src",host+'public/uploads/'+date[0].thumburl);
         $(".name1").html(date[0].realname);
         $(".simple-little1").html(date[0].gender);
@@ -25,14 +41,18 @@ window.onload=function(){
         $(".info-phone").html(date[0].phone);
         $(".info-email").html(date[0].email);
     }
-    function errorCallback(date)
-    {
-    }
 
     //获取工作经历
-    var work	=	AjaxPost('index.php/puser/profile/getwork',postData,succCallbackwork,errorCallbackwork,"post","json");
-    function succCallbackwork(date)
+    var work	=	AjaxPost('index.php/cuser/profile/getUsersWork',postData,succCallbackworks,errorCallbackworks,"post","json");
+    //console.log(postData)
+    function succCallbackworks(date)
     {
+        alert("2222")
+        
+    }
+    function errorCallbackworks(date)
+    {
+        //alert("1111")
         $.each(date,function(n,obj)
         {
             var begintime	=	new Date();
@@ -56,14 +76,16 @@ window.onload=function(){
             $("#company-an1").append(html);
         })
     }
-    function errorCallbackwork(date)
-    {
-    }
 
     //获取教育经历
-    var edu	=	AjaxPost('index.php/puser/profile/getedu',postData,succCallbackEdu,errorCallbackEdu,"post","json");
+    var edu	=	AjaxPost('index.php/cuser/profile/getUsersEdu',postData,succCallbackEdu,errorCallbackEdu,"post","json");
     function succCallbackEdu(date)
     {
+        //alert("1111")
+    }
+    function errorCallbackEdu(date)
+    {
+        //alert("222")
         $.each(date,function(n,obj)
         {
             var endtime		=	new Date();
@@ -87,36 +109,74 @@ window.onload=function(){
             $("#company-an").append(html);
         })
     }
-    function errorCallbackEdu(date)
-    {
-    }
 
     //获取自我描述
-    var desc	=	AjaxPost('index.php/puser/profile/getDesc',postData,succCallbackDesc,errorCallbackDesc,"post","json");
+    var desc	=	AjaxPost('index.php/cuser/profile/getUsersDesc',postData,succCallbackDesc,errorCallbackDesc,"post","json");
     function succCallbackDesc(date)
     {
-        $("#describe").html(date[0].self);
+       
     }
     function errorCallbackDesc(date)
     {
+         $("#describe").html(date[0].self);
     }
 
     //获取期望工作
-    var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackExpectWork,errorCallbackExpectWork,"post","json");
+    var expectwork	=	AjaxPost('index.php/cuser/profile/getUsersExpectWork',postData,succCallbackExpectWork,errorCallbackExpectWork,"post","json");
     function succCallbackExpectWork(date){
-        $("#pname").val(date[0].pname);
-        $("#zhiwei").val(date[0].description);
-        $("#city").val(date[0].city);
-        $("#salary").val(date[0].salary);
+        alert("22")
     }
     function errorCallbackExpectWork(date)
     {
+        var salary;
+            var eduction;
+            var workexp;
+            var scale;
+            var nature;
+            //console.log(date[0].salary)
+            if(date[0].salary==101){
+               salary="3k以下"
+            }else if(date[0].salary==102){
+                salary="4-8k"
+            }else if(date[0].salary==103){
+              salary="8-10k"
+            }else if(date[0].salary==104){
+                salary="10k以上"
+            }
+            if(date[0].eduction==101){
+              eduction="高中"
+            }else if(date[0].eduction==102){
+                 eduction="大专以上"
+            }else if(date[0].eduction==103){
+                 eduction="本科以上"
+            }
+            if(date[0].workexp==101){
+                workexp="1年以下"
+            }else if(date[0].workexp==102){
+                workexp="1-3年"
+            }else if(date[0].workexp==103){
+                workexp="3-5年"
+            }else if(date[0].workexp==104){
+                workexp="5年以上"
+            }
+            
+        //alert("11")
+        $("#pname").text(date[0].pname);
+        // $("#zhiwei").text(date[0].description);
+        $("#city").text(date[0].city);
+        $("#salary").text(salary);
     }
 
     //获取技能评价
-    var skills	=	AjaxPost('index.php/puser/profile/getskills',postData,succCallbackskills,errorCallbackskills,"get","json");
+    var skills	=	AjaxPost('index.php/cuser/profile/getUsersSkills',postData,succCallbackskills,errorCallbackskills,"post","json");
     function succCallbackskills(date)
     {
+        alert("222")
+    }
+    function errorCallbackskills(date)
+    {
+        //alert("11")
+        console.log(date)
         $.each(date,function(n,obj){
             var html	=	'<div>'+'<h3 class="progress-title">'+obj.pname +'</h3>'+
                 '<div class="progress">' +
@@ -127,9 +187,6 @@ window.onload=function(){
                 '</div>';
             $("#skill-box").append(html);
         })
-    }
-    function errorCallbackskills(date)
-    {
     }
 
 

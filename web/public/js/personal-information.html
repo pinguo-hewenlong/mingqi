@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/in-base.css">
+    <link rel="stylesheet" href="../css/personal-information.css">
+    <link rel="stylesheet" href="../css/datepicker.css">
+</head>
+<body>
+   
+               <div class="col-12 col-md-12 col-sm-12 col-xs-12">
+                   <div class="information-Box">
+                        <div id="thumburl1" class="in-header"><from id="fromthumburl" enctype="multipart/form-data"><input  id="imgButton" type="file" class="file-box" name="file" /></from><i  class="iconfont camera">&#xe643;</i></div>
+                        <div class="in-body">
+                            <!--title-->
+                            <div class='header-title'>
+                                <div class="title" style="color:#7cd296">基本信息</div>
+                                <div class="lines title"></div>
+                                <div class="title">教育经历</div>
+                                <div class="lines title lines2"></div>
+                                <div class="title">工作经历</div>
+                                <div class="lines title lines3"></div>
+                                <div class="title">自我评价</div>
+                            </div>
+                            <div class="boder"></div>
+                            <form id="personal-information" action="">
+                                <div class="information"><input name="realname" type="text" placeholder="姓名"></div>
+                                <div class="information phone"><input name="phone" type="text" placeholder="电话"></div>
+                                <select name="eduction" id="" class="first-select se-One">
+                                    <option value="本科">最高学历</option>
+                                    <option value="博士">博士</option>
+                                    <option value="硕士">硕士</option>
+                                    <option value="本科">本科</option>
+                                    <option value="大专">大专</option>
+                                    <option value="高中">高中</option>
+                                </select>
+                                <select name="workxp" id="" class="se-One">
+                                    <option value="1-3年">工作年限</option>
+                                    <option value="1-3年">1-3年</option>
+                                    <option value="3-5年">3-5年</option>
+                                    <option value="5-10年">5-10年</option>
+                                    <option value="10年以上">10年以上</option>
+                                </select>
+                                <div class="information phone"><input name="email" type="text" placeholder="邮箱"></div>
+                                 <select name="city" id="" class="city">
+                                    <option value="成都">城市</option>
+                                    <option value="成都">成都</option>
+                                </select>
+                                <input name="birth"  id="birth" class="se-One" value="出生年月">
+                                <div class="sex">
+   
+                                    <div class="select fr">
+                                        <div class="male fl">
+                                            <label for="male">                        
+                                                <input type="radio" name="gender" id="male" checked value="男">男
+                                            </label>
+                                            <span class="btn active">男</span>
+                                        </div>
+                                        <div class="female fl">
+                                            <label for="female">
+                                                <input type="radio" name="gender" id="female" value="女">女
+                                            </label>
+                                            <span class="btn">女</span>
+                                        </div>                    
+                                    </div> 
+                                </div>        
+                            </form>
+                            <div id="errmessage"></div>
+                            <div class="btn" type="botton" id="next">下一步</div>
+                        </div>
+                   </div>
+               </div>
+      
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/baseurl.js"></script>
+<script src='../js/personal-information.js'></script>
+<script src='../js/bootstrap-datepicker.js'></script>
+ <script>
+        $(function () {
+        	$("#birth").datepicker();
+            $("#imgButton").change(function () {
+                var formData = new FormData();
+                formData.append("file", document.getElementById("imgButton").files[0]);
+                formData.append('pictype','avatar');   
+                console.log(document.getElementById("imgButton").files[0]);
+                $.ajax({
+                    url: host+'index.php/file/upload/upsingle',
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                    	console.log(data);
+                        if (data.status == "1") {
+                            $("#thumburl1").html('<img src="'+host+'public/uploads/'+data.url+'"/>');
+                            $("#personal-information").append('<input name="thumburl" style="display:none" type="text" value='+data.url+'>')
+                        }
+                        if (data.status == "0") {
+                            alert(data.msg);
+                        }
+                       
+                    },
+                    error: function () {
+                        alert("上传失败！");
+                    }
+                });
+            });
+        });
+    </script>
+<!--[if IE 8]> 
+<script> 
+   (function() {
+     if (! 
+     /*@cc_on!@*/
+     0) return;
+     var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
+     var i= e.length;
+     while (i--){
+         document.createElement(e[i])
+     } 
+})() 
+</script>
+<![endif]-->
+ <!--<script>
+        $(function () {
+            $("#imgButton").change(function () {
+                var formData = new FormData();
+                formData.append("file", document.getElementById("imgButton").files[0]);   
+                console.log(document.getElementById("imgButton").files[0]);
+                $.ajax({
+                    url: "http://127.0.0.1/mingqi/index.php/file/upload/upsingle",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                    	console.log(data);
+                        if (data.status == "1") {
+                            alert("上传成功！");
+                        }
+                        if (data.status == "0") {
+                            alert(data.msg);
+                        }
+                       
+                    },
+                    error: function () {
+                        alert("上传失败！");
+                    }
+                });
+            });
+        });
+ </script>-->
+</body>

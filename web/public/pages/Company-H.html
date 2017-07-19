@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/in-base.css">
+    <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/Company-H.css">
+    <link rel="stylesheet" href="../css/datepicker.css">
 </head>
 <body>
     <div class="information-Box">
@@ -24,7 +26,7 @@
                                 <div class="lines title"></div>
                                 <div class="t itle">公司介绍</div>
                                 <div class="lines title lines2"></div>
-                                <div class="title">发展历程</div>
+                                <div class="title" style="color:#7cd296">发展历程</div>
                                 <!--<div class="lines title lines3"></div>
                                 <div class="title">自我评价</div>-->
                             </div>
@@ -32,9 +34,10 @@
                             <form id="company-h" action="" name="myform">
 
                                 <div class="information phone"><input type="text" name="time" id="event-time" placeholder="时间"></div>
-                                <div class="information phone"><input type="text" name="title" id="event-time" placeholder="标题"></div>
+                                <div class="information phone"><input type="text" name="title"  placeholder="标题" class="biaoti"></div>
                                 <textarea name="description" id="title" placeholder="请输入50字简单说下公司的历程吧"  wrap="virtual" onkeypress="return(this.value.length<50)" onkeydown="textlen(this,50)" onkeyup="textlen(this,50)" onblur="maxtext(this,50)"></textarea>
                             </form>
+                            <div class='tixoin' style=""></div>
                                 <div class="add">
                                     <a href="company-about.html">返回</a>
                                 </div>
@@ -46,6 +49,7 @@
 <script src="../js/baseurl.js"></script>
 <script src="../js/base.js"></script>
 <script src='../js/Company-H.js'></script>
+<script src='../js/bootstrap-datepicker.js'></script>
 <!--[if IE 8]> 
 <script> 
    (function() {

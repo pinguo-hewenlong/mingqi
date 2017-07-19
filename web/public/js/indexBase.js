@@ -62,10 +62,11 @@ $(document).ready(function(){
 			{
 				html	=	''
 				$.each(data, function(n,obj) {
+                    console.log(obj);
 					
 					html	+=	'<div class="fb-img">'+
                                         '<div class="body-img">'+
-                                              '<img src="'+obj.imgurl+'" alt="">'+
+                                              '<img src="http://www.scmqyc.com/mingqi/public/uploads/elite/ma.jpg" alt="">'+
                                         '</div>'+
                                         '<div class="fb-text">'+
                                              '<h4>'+obj.realname+'</h4>'+
@@ -75,7 +76,7 @@ $(document).ready(function(){
                                     '</div>'
                                    
 				});
-				console.log(html);
+				//console.log(html);
 				$('#elite').html(html);
 			}
 				

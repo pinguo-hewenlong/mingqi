@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/in-base.css">
+    <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/Educational.css">
     <link rel="stylesheet" href="../css/datepicker.css">
 </head>
@@ -32,7 +33,7 @@
                             </div>
                             <div class="boder"></div>
                             <form  id="geteducational" action="">
-                                <div class="information"><input name="school" type="text" placeholder="学校名称"></div>
+                                <div class="information"><input name="school" type="text" placeholder="学校名称" class="school-name"></div>
                                 <div class="information phone"><input name="major" type="text" placeholder="专业"></div>
                                 <select name="record" id="" class="first-select se-One">
                                     <option value="大专">&nbsp;&nbsp;&nbsp;&nbsp;学历</option>
@@ -52,8 +53,8 @@
                                 </div>
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                    <form  id="geteducational" action="">
-                                        <div class="information"><input name="school" type="text" placeholder="学校名称"></div>
-                                        <div class="information phone"><input name="major" type="text" placeholder="专业"></div>
+                                        <div class="information"><input name="school" type="text" placeholder="学校名称" class="school-name"></div>
+                                        <div class="information phone"><input name="major" type="text" placeholder="专业" class="adj"></div>
                                         <select name="record" id="" class="first-select se-One">
                                             <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;学历</option>
                                             <option value="1">博士</option>
@@ -65,12 +66,14 @@
                                         </select>
                                         <input name="endtime"  id="endtime1" class="se-One" value="毕业时间">
                                    </form>
+                                    <div class='tixoin'style="margin-top:20px;z-index: 1000000;display: inline-block;line-height: 3.9rem;cursor: pointer"></div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn quxiao" data-dismiss="modal">取消</button>
                                         <button type="button" class="btn baocun">保存</button>
                                     </div>
                                 </div>
                                 <div id="errmessage"></div>
+                                <div class='tixoin'style="float: right;margin-top: -90px; margin-right: 70px;z-index: 3;display: inline-block;line-height: 3.9rem;cursor: pointer"></div>
                             <div type="botton" id="next">下一步</div>
                         </div>
                    </div>

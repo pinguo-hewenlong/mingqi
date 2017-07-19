@@ -7,7 +7,7 @@ $(document).ready(function(){
     //初始化分页
 var GG = {
        "kk":function(mm){
-           console.log(1111);
+          // console.log(1111);
        }
    }
 $("#page").initPage(71,1,GG.kk);	
@@ -29,9 +29,9 @@ $('#search-btn').bind('click',function(){
 		data:{'word':word,"page":1,"size":10},
 		async:true,
 		success:function(data){
-			console.log(data)
+		//console.log(data)
 			$.each(data,function(n,obj){
-				
+				//console.log(n)
 				var html	=	'';
                 // var begintime	=	new Date();
                 // begintime.setTime(obj.begintime*1000);
@@ -103,11 +103,10 @@ $('#search-btn').bind('click',function(){
             }else if(obj.nature==102){
                  nature="移动互联网"
             }
-				
+				$('#search_res').empty();
 				html	=	'<div class="first-job jods-poid" title="'+obj.poid+'">'+'<div class="first-job-title">'+
 							'<div><span class="job-podtions">'+obj.title+'</span>'+
                                        '<span class="job-time">'+begintime+'发布</span>'+
-                                       '<span class="news"><i class="iconfont">&#xe622;</i></span>'+
                                    '</div>'+
                                    '<div class="company-name">'+obj.companyname+'</div>'+
                                '</div>'+
@@ -122,16 +121,12 @@ $('#search-btn').bind('click',function(){
                                '</div>'+
                                '<div class=" job-first-text job-first-text2">'+
                                          '<div class="little-text">'+
-                                            //   '<span>中级</span>'+
-                                            //   '<span>web</span>'+
-                                            //   '<span>软件开发</span>'+
                                         '</div>'+
                                         '<div class="company-name first-job-section-text">'+obj.content+'</div>'+
                                 '</div>'+
                            '</div>';
             $('#search_res').append(html);   
             $(".jods-poid").bind('click',function(){
-                //console.log($(this).attr("title"))   
                 location.href ='Job-description.html?id='+$(this).attr("title");
             })            
 			})
@@ -159,15 +154,15 @@ Date.prototype.Format = function (fmt) { //author: meizz
 }
 
 
-//if($.cookie('search_res') == '') {
+// if($.cookie('search_res') == '') {
 //    $("#search_res").html('无搜索结果');
-//} else {
+// } else {
 //    $("#search_res").innerHTMLhtml('有结果');
-//}
-//$("#search-btn").click(function(){
+// }
+// $("#search-btn").click(function(){
 //    var data=new Array();
 //    data=$("#search-input").val()==''?'web':$("#search-input").val();
 //        $.get("http://127.0.0.1/mingqi/index.php/search/index/byword?word="+data, function(result){
-//
+
 //        });
-//});
+// });

@@ -6,7 +6,8 @@ function getremoteurl(){
         //线下环境
         return  'http://'+host+'/mingqi/';
     } else {
-        host = 'http://www.scmqyc.com/';
+        host = 'http://www.scmqyc.com/mingqi/' +
+            '';
         return host;
     }
 }
@@ -61,7 +62,7 @@ function islogin(){
         if(date.status==1){
             $(".right-text").html('<span class="little-text"><a href="Message-center.html">消息</a></span>'+
                              '<span class="little-text"><a href="personal-resume.html">我的简历</a></span>'+
-                             '<span class="little-text"><a href="Resume-status.html">投递箱</a></span>'+
+                             '<span class="little-text"><a href="Notification-Center.html">投递箱</a></span>'+
                              '<span class="little-text" id="login-out"><a href="../index.html">注销</a></span>');
                              //退出登陆
                               $("#login-out").bind('click',function(){
@@ -70,7 +71,7 @@ function islogin(){
                                   AjaxPost('index.php/sso/logout',postData3,succCallback,errorCallback,"post","json");
                                   function succCallback(data){
                                     if(data.status==1){
-                                        $(".right-text").html('<span class="little-text"><a href="enroll-p">注册</a></span>'+
+                                        $(".right-text").html('<span class="little-text"><a href="enroll-p.html">注册</a></span>'+
                                                           '<span class="little-text"><a href="logo-p-p.html">登陆</a></span>')
                                     }
                                     
@@ -88,7 +89,7 @@ function islogin(){
     }
     function errorCallback(date){
         if(date.status==0){
-            $(".right-text").html('<span class="little-text"><a href="enroll-p">注册</a></span>'+
+            $(".right-text").html('<span class="little-text"><a href="enroll-p.html">注册</a></span>'+
                              '<span class="little-text"><a href="logo-p-p.html">登陆</a></span>')
         }
     }

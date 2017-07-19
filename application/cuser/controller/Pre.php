@@ -42,7 +42,6 @@ class Pre extends Base
 		$url = BASE_URL.url('/inner/cuser/presetfirst');
 		$return = curlHttp($url,'POST',$this->data);
 		
-		
 		if(request()->isAjax())
 		{
 			return json_decode($return);

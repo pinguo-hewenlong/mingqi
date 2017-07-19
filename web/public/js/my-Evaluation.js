@@ -1,2 +1,3 @@
-$("#header").load("header.html");
-$("#footer").load("footer.html");
+window.onload=function(){
+    islogin()
+}

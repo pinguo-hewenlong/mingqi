@@ -97,7 +97,7 @@ input{
     width: 85%;
     height: 46px;
     background: #50dab1;
-    margin: 30px 0 0 1%;
+    margin: 30px 0 0 0;
     font-size: 18px;
     color: white;
     -webkit-border-radius: 5px;
@@ -136,13 +136,35 @@ input{
     margin-top: -10px;
 }
 /*其他注册登录方式*/
-/*.three-icon{
-    font-size: 50px;
-    margin-left: 18%;
-}*/
+.three-icon{
+    font-size: 30px;
+    margin-left: 17%;
+}
+.other-login {
+    /* border: 1px solid red; */
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+.three-icon{
+    font-size: 30px;
+    /*margin-left: 17%;*/
+}
 .three-icon:hover{
     color: #60bbd5;
     cursor: pointer;
+}
+#btn:hover{
+    background: #60bbd5;
+    cursor: pointer;
+}
+.last-text{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+}
+.last-text>a{
+    color: #50dab1;
 }
 #btn:hover{
     background: #60bbd5;
@@ -163,7 +185,7 @@ input{
 	color: red;
 	text-align: center;
 	font-size: 16px;
-	display: none;
+	/*display: none;*/
 }
 #getMsgCode{
 	float: right;

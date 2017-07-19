@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/header.css">
@@ -31,10 +31,10 @@
                         </div>
                         <div>
                             <span class="header-nav"><a href="index.html" style="color:#119ec7">首页</a></span>
-                            <span class="header-nav"><a href="">公司</a></span>
+                            <!--<span class="header-nav"><a href="">公司</a></span>-->
                             <span class="header-nav"><a href="pages/serch-job.html">职位</a></span>
                             <span class="header-nav"><a href="pages/youxiang.html">优项</a></span>
-                            <span class="header-nav"><a href="">社区</a></span>
+                            <!--<span class="header-nav"><a href="">社区</a></span>-->
                             <span class="header-nav"><a href="pages/Evaluation.html">测评</a></span>
                        </div>
                     </div> 
@@ -49,15 +49,15 @@
                         </ol>
 
                         <!-- Wrapper for slides -->
-                        <div class="carousel-inner" role="listbox">
+                        <div class="carousel-inner" role="listbox" style="width:100%">
                             <div class="item active">
-                                <img src="images/index/banner1.jpg" alt="...">
+                                <img src="images/index/banner1.jpg" alt="..." style="width:100%">
                             </div>
                             <div class="item">
-                                <img src="images/index/banner2.jpg" alt="...">
+                                <img src="images/index/banner2.jpg" alt="..." style="width:100%">
                             </div>
                             <div class="item">
-                                <img src="images/index/banner1.jpg" alt="...">
+                                <img src="images/index/banner1.jpg" alt="..." style="width:100%">
                             </div>     
                         </div>  
                     </div>
@@ -74,12 +74,12 @@
                         </div>
                         <div class="popular">
                              <span>热门搜索：</span>
-                             <span class="pop-job">web前端</span>
-                             <span class="pop-job">web前端</span>
-                             <span class="pop-job">web前端</span>
-                             <span class="pop-job">web前端</span>
-                             <span class="pop-job">web前端</span>
-                             <span class="pop-job">web前端</span>
+                             <span class="pop-job" id="pop-web-serch">web前端工程师</span>
+                             <span class="pop-job" id="pop-php-serch">php工程师</span>
+                             <span class="pop-job" id="pop-java-serch">java工程师</span>
+                             <span class="pop-job" id="pop-ui-serch">UI设计师</span>
+                             <!--<span class="pop-job">web前端</span>
+                             <span class="pop-job">web前端</span>-->
                         </div>                               
                     </div>  
                 </div>
@@ -88,45 +88,45 @@
                          <h3>职位类别</h3>
                          <div class="category-lines"></div>
                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 four-icon">
-                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ui-box">
+                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ui-box" id="ui-serch">
                                  <div class="icon-circle"><i class="iconfont icon-ui">&#xe63a;</i></div>
                                  <div class="ui-text">
                                      <h3>UI</h3>
                                     <div>user interface</div>
-                                    <div>人机交互、操作逻辑、界面美观的整体设计</div>
+                                    <div>人机交互、操作逻辑、界面美观的<br>整体设计</div>
                                     <div class="ui-btn">
                                         <i class="iconfont">&#xe630;</i> <span>more</span>
                                     </div>
                                  </div>
                              </div>
-                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ui-box">
+                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ui-box" id="web-serch">
                                  <div class="icon-circle"><i class="iconfont icon-ui">&#xe707;</i></div>
                                  <div class="ui-text">
                                      <h3>WEB</h3>
                                     <div>web前端开发设计、</div>
-                                    <div>分为网页设计师、网页美工、web前端开发工程师</div>
+                                    <div>分为网页设计师、网页美工、web<br>前端开发工程师</div>
                                     <div class="ui-btn">
                                         <i class="iconfont">&#xe630;</i> <span>more</span>
                                     </div>
                                  </div>
                              </div>
-                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ui-box">
+                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ui-box" id='php-serch'>
                                  <div class="icon-circle"><i class="iconfont icon-ui">&#xe6fe;</i></div>
                                  <div class="ui-text">
                                      <h3>PHP</h3>
                                     <div>Hypertext Preprocessor</div>
-                                    <div>适用于web开发领域、混合了java、c、Perl的语法</div>
+                                    <div>适用于web开发领域、混合了java、<br>c、Perl的语法</div>
                                     <div class="ui-btn">
                                         <i class="iconfont">&#xe630;</i> <span>more</span>
                                     </div>
                                  </div>
                              </div>
-                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ui-box">
+                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ui-box" id="java-serch">
                                  <div class="icon-circle"><i class="iconfont icon-ui">&#xe6af;</i></div>
                                  <div class="ui-text">
                                      <h3>JAVA</h3>
                                     <div>面向对象编程语言</div>
-                                    <div>JAVA可以编写桌面应用程序、web应用程序等</div>
+                                    <div>JAVA可以编写桌面应用程序、web<br>应用程序等</div>
                                     <div class="ui-btn">
                                         <i class="iconfont">&#xe630;</i> <span>more</span>
                                     </div>
@@ -135,7 +135,7 @@
                          </div>
                     </div>
                 </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 parcram">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 cram">
                           <h3>行业精英</h3>
                           <div class="category-lines"></div>
@@ -159,7 +159,7 @@
                         <div class="jobs" id="jobs">
                         </div>
                         <div class="more-btn">
-                            <div class="jobs-btn"><a href="">查看更多</a></div>
+                            <div class="jobs-btn"><a href="pages/serch-job.html">查看更多</a></div>
                         </div>
                     </div>
                 </div>
@@ -348,13 +348,14 @@
                             <div class="footer-text-box">
                                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                     <p>
-                                        其中srcset指定图片的地址和对应的图片质量。sizes用来设置图片的尺寸零界点。
-                                     对于srcset里面出现了一个w单位，可以理解成图片质量。如果可视区域小于这个质量的值，就可以使用，当然，浏览器会自动选择一个最大的可用图片。
+                                        四川名企优才人力资源有限公司成立于2017年初，注册资金100万，主要经营范围是做人才中介和人力派遣服务。
+                                        名企优才的定位是做互联网行业和通信行业的初中级技术人才招聘服务平台。互联网行业人才方向包括：UI、前端、PHP、JAVA、嵌入式等；通信行业人才方向：LTE无线网络优化、网络测试等；目前为止，已经为行业匹配了1000+的专业人才，服务的企业包括：川通服、侠客岛、软通动力、文思海辉等等
+                                        名企优才的理念是：做专业擅长事，用心为客户服务！
                                     </p>
-                                    <div class="phone-number">400200-56552-20</div>
-                                    <div>咨询邮箱：66350451@163.come</div>
+                                    <div class="phone-number">028-67876795(转999)</div>
+                                    <div style="display:none">咨询邮箱：66350451@163.come</div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-2">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-2" style="display:none">
                                     <div class="footer-right-box">
                                         <span><a href="">常见问题</a></span>
                                         <span><a href="">直播合作</a></span>

@@ -2,9 +2,9 @@ window.onload=function(){
     //获取屏幕高度
     var screenHeight=$(document).height();
     $(".section").css("height",screenHeight);
-    console.log(screenHeight);
+    //console.log(screenHeight);
     $(".information-Box").css("height",screenHeight*0.8);
-    
+    $("#event-time").datepicker();
 	   var postData = '';
 				    var info = AjaxPost('index.php/cuser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
 					function errorCallback(date){
@@ -29,7 +29,7 @@ function maxtext(x,y){
 //调用接口发送信息给后台设置企业信息
 $('#next').click(function(){
 	var postData = $('#company-h').serialize();
-	AjaxPost('index.php/cuser/profile/setinfo',postData,succCallback,errorCallback,"post","json");
+	AjaxPost('index.php/cuser/profile/setmilepost',postData,succCallback,errorCallback,"post","json");
 })
 function succCallback(date){
 setTimeout(function(){

@@ -36,3 +36,33 @@ a:hover{
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
 }
+.pop-job:hover{
+    cursor: pointer;
+    color: black
+}
+@media screen and (max-width: 500px) {
+   #carousel-example-generic{
+     display:none;
+   }
+   .popular{
+       display:none;
+   }
+   #positionHead{
+       display: none
+   }
+   .footer{
+       display: none
+   }
+   .first-job{
+       width: 100%
+   }
+   #search_res{
+       width: 100%
+   }
+   .job-category{
+       display: none
+   }
+   .parcram{
+       display: none
+   }
+}

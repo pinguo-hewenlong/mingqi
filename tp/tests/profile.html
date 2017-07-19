@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人信息</title>
+		<link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>		
+	</head>
+	<body>
+		<div class="bbs">
+			<button id="btn">测试</button>
+			<select></select>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+$("#btn").bind('click',function(){
+	var i;
+	$.ajax({
+		type:"post",
+		url:"../index.php/other/info/getskills",
+		data:{'iid':'24'},
+		async:true,
+		success:function(data)
+		{
+			
+		}
+	});
+})
+</script>

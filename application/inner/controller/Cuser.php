@@ -279,17 +279,9 @@ class Cuser extends Controller
 	//设置用户注册状态
 	public function preSetFirst()
 	{
-		$data['id']	=	request()->post('uid');
-		
-		$dbData['id']	=	$data['id'];
-		
-		if(input('?post.status'))
-		{
-			$data['prestatus']	=	request()->post('status');
-		}
-
-		$request = db('cuser')->where($dbData)->update($data);
-
+		$uid	=	request()->post('uid');
+		$data['prestatus']	=1;
+		$request = db('cuser')->where('id',$uid)->update($data);
 		if($request == 1)
 		{
 			$return['status']	=	1;

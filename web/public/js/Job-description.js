@@ -31,7 +31,7 @@ console.log(request.id)
     var pids;
      $.ajax({
          type:'get',
-         url:host+'hindex.php/index/index/getPostionView',
+         url:host+'index.php/index/index/getPostionView',
          data:{"poid":request.id},
          dataType:'json',
          async : false,

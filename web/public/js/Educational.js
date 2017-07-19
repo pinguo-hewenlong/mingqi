@@ -24,6 +24,6 @@ function succCallback(date){
 		},1000);	
 }
 function errorCallback(date){
-	alert("555")
+	//alert("555")
 		$('#errmessage').text(date.message);
 }

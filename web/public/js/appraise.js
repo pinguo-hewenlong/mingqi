@@ -24,7 +24,7 @@ function succCallback(date){
 		var postData1 = '';
 		AjaxPost('index.php/puser/pre/setFirst',postData1,succCallback,errorCallback,"post","json");
 		function succCallback(date){
-			alert(111)
+			//alert(111)
 			location.href='../index.html'
 		}
 		function errorCallback(date){

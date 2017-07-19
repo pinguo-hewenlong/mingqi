@@ -29,8 +29,8 @@
                             </div>
                             <div class="boder"></div>
                             <form id="personal-information" action="">
-                                <div class="information"><input name="realname" type="text" placeholder="姓名"></div>
-                                <div class="information phone"><input name="phone" type="text" placeholder="电话"></div>
+                                <div class="information"><input name="realname" type="text" placeholder="姓名" class="name"></div>
+                                <div class="information phone"><input name="phone" type="text" placeholder="电话" class="phone-input"></div>
                                 <select name="eduction" id="" class="first-select se-One">
                                     <option value="本科">最高学历</option>
                                     <option value="博士">博士</option>
@@ -46,7 +46,7 @@
                                     <option value="5-10年">5-10年</option>
                                     <option value="10年以上">10年以上</option>
                                 </select>
-                                <div class="information phone"><input name="email" type="text" placeholder="邮箱"></div>
+                                <div class="information phone"><input name="email" type="text" placeholder="邮箱" class="email"></div>
                                  <select name="city" id="" class="city">
                                     <option value="成都">城市</option>
                                     <option value="成都">成都</option>
@@ -66,7 +66,8 @@
                                                 <input type="radio" name="gender" id="female" value="女">女
                                             </label>
                                             <span class="btn">女</span>
-                                        </div>                    
+                                        </div>  
+                                        <div class='tixoin' style="position: absolute;z-index: 3;margin: auto;display: inline-block;line-height: 3.9rem;cursor: pointer"></div>                  
                                     </div> 
                                 </div>        
                             </form>
@@ -78,8 +79,8 @@
       
 <script src="../js/jquery-1.11.0.min.js"></script>
 <script src="../js/bootstrap.js"></script>
-<script src="../js/baseurl.js"></script>
 <script src="../js/base.js"></script>
+<script src="../js/baseurl.js"></script>
 <script src='../js/personal-information.js'></script>
 <script src='../js/bootstrap-datepicker.js'></script>
  <script>
@@ -91,7 +92,7 @@
                 formData.append('pictype','avatar');   
                 console.log(document.getElementById("imgButton").files[0]);
                 $.ajax({
-                    url: "http://127.0.0.1/mingqi/index.php/file/upload/upsingle",
+                    url:host+'index.php/file/upload/upsingle',
                     type: "POST",
                     data: formData,
                     contentType: false,
@@ -99,7 +100,7 @@
                     success: function (data) {
                     	console.log(data);
                         if (data.status == "1") {
-                            $("#thumburl1").html('<img src="http://127.0.0.1/mingqi/public/uploads/'+data.url+'"/>');
+                            $("#thumburl1").html('<img src="'+host+'public/uploads/'+data.url+'"/>');
                             $("#personal-information").append('<input name="thumburl" style="display:none" type="text" value='+data.url+'>')
                         }
                         if (data.status == "0") {

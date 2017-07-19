@@ -78,7 +78,7 @@ input{
       float: right;
 }
 .identifying>div>img{
-	width:120px;
+	/*width:120px;*/
 	height:42px;
 	border:1px solid grey;
 }

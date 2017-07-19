@@ -18,14 +18,14 @@
                        <!--头部-->
                        <div class="enroll-header">
                            <div><img src="../images/enroll/logo.png" alt=""></div>
-                           <div class="enroll-header-text">使用手机号注册</div>
+                           <div class="enroll-header-text" style="color:#7cd296">使用手机号注册</div>
                        </div>
                        <div class="lines"></div>
                        <!--信息-->
                        <form id="enroll" action="" class="enroll-message">
                                <div class="phone-number">
                                    <i class="iconfont phone ">&#xe625;</i>
-                                   <input name="username" type="text" placeholder="请输入您的手机号码">
+                                   <input name="username" type="text" placeholder="请输入您的手机号码" class="phone-input">
                                </div>
                                <div class="phone-number password">
                                    <i class="iconfont phone ">&#xe612;</i>
@@ -36,10 +36,10 @@
                                    <input name="smsCode" type="text" placeholder="验证码">
                                    <input type="button" id="getMsgCode" value="获取验证码" onclick="settime(this)" />
                                </div>
-                               <span id="spantx"></span>
+                               <span id="spantx" style="color:red"></span>
                                <input name="gateway" type="hidden" value="mqyc">
                                <input name="type" type="hidden" value="cuser">
-                               <div class='tixoin'>注册成功</div>
+                               <div class='tixoin'></div>
                                <div typeof="button" id="btn">注册</div>
                            </form>
                        <div class="other">

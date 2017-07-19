@@ -5,7 +5,7 @@ window.onload=function(){
     //获取屏幕高度
     var screenHeight=$(document).height();
     $(".section").css("height",screenHeight);
-    console.log(screenHeight);
+   // console.log(screenHeight);
     $(".enroll-text").css("height",screenHeight*0.8)
 }
 //点击切换图片验证吗

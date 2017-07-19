@@ -20,11 +20,11 @@ function succCallback(date){
 		var postData1 = '';
 		AjaxPost('index.php/puser/pre/getfirst',postData1,succCallback,errorCallback,"post","json");
 		function succCallback(date){
-			alert(111)
+			//alert(111)
 			location.href='../index.html'
 		}
 		function errorCallback(date){
-			alert(222)
+			//alert(222)
 
 			location.href='personal-information.html'
 

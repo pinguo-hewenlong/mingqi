@@ -53,36 +53,38 @@ window.onload=function()
 	$("#edu-endtime").datepicker();
 	$("#edu-endtime1").datepicker();
     var postData = '';
+
 //获取基本信息
     var info = AjaxPost('index.php/puser/profile/getinfo',postData,succCallback,errorCallback,"post","json");
     //var b	 = document.getElementById("Mastery-select").value;
 	function succCallback(date)
 	{
-		$(".head-portrait>img").attr("src",host+"public/uploads/"+date[0].thumburl); 
+
+	}
+	function errorCallback(date)
+	{
+		$(".head-portrait>img").attr("src",host+'public/uploads/'+date[0].thumburl);
 		$(".name1").html(date[0].realname);
 		$(".simple-little1").html(date[0].gender);
 		$(".simple-little2").html(date[0].eduction);
 		//根据出生年月算当前年龄
-        //出生日期
+		//出生日期
 		var birth	  =	  date[0].birth;
 		//现在的时间
 		var newdata   =  Math.round(new Date().getTime()/1000)
-        //年龄
-			var ages  =  newdata - birth;
-			var  age  =  Math.ceil(ages /3600/24/365);
+		//年龄
+		var ages  =  newdata - birth;
+		var  age  =  Math.ceil(ages /3600/24/365);
 		$(".simple-little3").html(age+"岁");
 		$(".simple-little4").html(date[0].Workxp);
-		$(".simple-little5").html(date[0].city);	
+		$(".simple-little5").html(date[0].city);
 		$(".info-phone").html(date[0].phone);
 		$(".info-email").html(date[0].email);
-	}
-	function errorCallback(date)
-	{		
 	}
 	
 //获取工作经历
 	var work	=	AjaxPost('index.php/puser/profile/getwork',postData,succCallbackwork,errorCallbackwork,"post","json");
-	function succCallbackwork(date)
+	function errorCallbackwork(date)
 	{
 		$.each(date,function(n,obj)
 		{
@@ -138,13 +140,13 @@ window.onload=function()
 
 		})
 	}
-	function errorCallbackwork(date)
+	function succCallbackwork(date)
 	{	
 	}
 	
 //获取教育经历
 	var edu	=	AjaxPost('index.php/puser/profile/getedu',postData,succCallbackEdu,errorCallbackEdu,"post","json");
-	function succCallbackEdu(date)
+	function errorCallbackEdu(date)
 	{
 		$.each(date,function(n,obj)
 		{
@@ -197,24 +199,24 @@ window.onload=function()
            })	
 		})
 	}
-	function errorCallbackEdu(date)
+	function succCallbackEdu(date)
 	{	
 	}
 
 //获取自我描述
 	var desc	=	AjaxPost('index.php/puser/profile/getDesc',postData,succCallbackDesc,errorCallbackDesc,"post","json");
-	function succCallbackDesc(date)
+	function errorCallbackDesc(date)
 	{
 		$("#describe").html(date[0].self);
 	}
-	function errorCallbackDesc(date)
+	function succCallbackDesc(date)
 	{
 		//$("#geteducational").toggleClass("job-practice")
 	} 
     $('#descbtn').bind('click',function(){
     	$.ajax({
     		type:"post",
-    		url:host+"/index.php/puser/profile/setdesc",
+    		url:host+'index.php/puser/profile/setdesc',
     		async:true,
     		data:$('#desc').serialize(),
     		success:function(data){
@@ -222,7 +224,7 @@ window.onload=function()
      				//获取个人描述
     			$.ajax({
     				type:"get",
-    				url:host+"index.php/puser/profile/getDesc",
+    				url:host+'index.php/puser/profile/getDesc',
     				async:true,
     				success:function(data)
     				{
@@ -240,20 +242,20 @@ window.onload=function()
 	
 //获取期望工作
 	var expectwork	=	AjaxPost('index.php/puser/profile/getExpectWork',postData,succCallbackExpectWork,errorCallbackExpectWork,"post","json");
-	function succCallbackExpectWork(date){
+	function errorCallbackExpectWork(date){
       $("#pname").val(date[0].pname);
       $("#zhiwei").val(date[0].description);
       $("#city").val(date[0].city);
       $("#salary").val(date[0].salary);
 	}
-	function errorCallbackExpectWork(date)
+	function succCallbackExpectWork(date)
 	{
 
 	}
 
 //获取技能评价
 	var skills	=	AjaxPost('index.php/puser/profile/getskills',postData,succCallbackskills,errorCallbackskills,"get","json");
-	function succCallbackskills(date)
+	function errorCallbackskills(date)
 	{
 		$.each(date,function(n,obj){
 			var html	=	'<div>'+'<h3 class="progress-title">'+obj.pname +'</h3>'+
@@ -271,16 +273,16 @@ window.onload=function()
            })	
 		})
 	}
-	function errorCallbackskills(date)
+	function succCallbackskills(date)
 	{	
 	}
 //获取目前状态
 	var arrival	=	AjaxPost('index.php/puser/profile/getarrival',postData,succCallbackarrival,errorCallbackarrival,"get","json");
-	function succCallbackarrival(date)
+	function errorCallbackarrival(date)
 	{
 		$("#arrival").val(date.time);
 	}
-	function errorCallbackarrival(date)
+	function succCallbackarrival(date)
 	{
 	}
 }
@@ -328,14 +330,14 @@ $('#workbtn').bind('click',function()
 {
     $.ajax({
     	type:"post",
-    	url:host+"index.php/puser/profile/setwork",
+    	url:host+'index.php/puser/profile/setwork',
     	async:true,
     	data:$('#job-practice').serialize(),
     	success:function(data)
     	{
     		$.ajax({
     		type:"get",
-    		url:host+"x.php/puser/profile/getwork",
+    		url:host+'index.php/puser/profile/getwork',
     		async:true,
     		success:function(data)
     		{	
@@ -378,7 +380,7 @@ $('#edubtn').bind('click',function()
     	{
     		$.ajax({
     		type:"get",
-    		url:host+"index.php/puser/profile/getedu  ",
+    		url:host+'index.php/puser/profile/getedu  ',
     		async:true,
     		success:function(data)
     			{	
@@ -409,32 +411,43 @@ $('#edubtn').bind('click',function()
 })
 
 //添加技能
-$("#baocun-skill").click(function()
-{
-	var a=document.getElementById("input-text").value;
-	var b=document.getElementById("Mastery-select").value;
-	var options		=		$("#Mastery-select option:selected");
-	if(a != 0)
-	{
-      	$("#skill-box").append
-      	('<div>'+
-	  	'<h3 class="progress-title">'+$("#input-text").val() +'</h3>'+
-	  	'<div class="progress">' +
-	    '<div class="progress-bar" style="width:'+b+'%; background:#7ad396;">'+
-	    '<div class="progress-value">'+ options.val()+'%'+'</div>'+ 
-	    '</div>'+
-      	'</div>'+
-	  	'<div class="delete-skill">删除</div>'+
-	  	'</div>')
-	  	$(".delete-skill").click(function()
-	  	{
-      		$(this).parent().remove()
-     	})
-	}
-	else
-	{
-		$(".skill-language").append('<span>*</span>')
-	}
+$("#baocun-skill").click(function(){
+	$.ajax({
+		type:"post",
+		url:host+'index.php/puser/profile/setskill',
+		async:true,
+		data:$('#geteducational2').serialize(),
+		success:function(data) {
+
+			$.ajax({
+				type:"get",
+				url:host+'index.php/puser/profile/getskill',
+				async:true,
+				success:function(data) {
+					var a = document.getElementById("input-text").value;
+					var b = document.getElementById("Mastery-select").value;
+					var options = $("#Mastery-select option:selected");
+					if (a != 0) {
+						$("#skill-box").append
+						('<div>' +
+								'<h3 class="progress-title">' + $("#input-text").val() + '</h3>' +
+								'<div class="progress">' +
+								'<div class="progress-bar" style="width:' + b + '%; background:#7ad396;">' +
+								'<div class="progress-value">' + options.val() + '%' + '</div>' +
+								'</div>' +
+								'</div>' +
+								'<div class="delete-skill">删除</div>' +
+								'</div>')
+						$(".delete-skill").click(function () {
+							$(this).parent().remove()
+						})
+					}
+					else {
+						$(".skill-language").append('<span>*</span>')
+					}
+
+		}
+
 })
 $(".delete").click(function()
 	{
@@ -446,7 +459,7 @@ function Change(){
     var strvalue=$("#arrivalselect").val();
     $.ajax({
     	type:"post",
-        url:host+"index.php/puser/profile/setarrival",
+        url:host+'index.php/puser/profile/setarrival',
         async:"true",
         dataType: "json",
         data:$('#arrival').serialize(),
@@ -461,7 +474,7 @@ function Changework(){
     var strvalue=$("#arrivalselect").val();
     $.ajax({
     	type:"post",
-        url:host+"index.php/puser/profile/setExpectwork",
+        url:host+'index.php/puser/profile/setExpectwork',
         async:"true",
         dataType: "json",
         data:$('#Expectwork').serialize(),
@@ -470,25 +483,25 @@ function Changework(){
         }
     });
 }
-//修改工作经历
-
-
-function Change(){
-	var strvalue=$("#arrivalselect").val();
-	$.ajax({
-		type:"post",
-		url:host+"index.php/puser/profile/setarrival",
-		async:"true",
-		dataType:"json",
-		data:$('#')
-	})
-}
+////修改工作经历
+//
+//
+//function Change(){
+//	var strvalue=$("#arrivalselect").val();
+//	$.ajax({
+//		type:"post",
+//		url:host+'index.php/puser/profile/setarrival',
+//		async:"true",
+//		dataType:"json",
+//		data:$('#')
+//	})
+//}
 
 
 //修改工作经历
 $("#keep").click(function(){
 
-	var url = host+"index.php/puser/profile/setwork?update=1";
+	var url = host+'index.php/puser/profile/setwork?update=1';
 
 	$.ajax({
 	type:"post",
